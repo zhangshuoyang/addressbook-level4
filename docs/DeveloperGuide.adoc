@@ -725,7 +725,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |add a new person |
 
-|`* * *` |user |sort the address boook alphabetically |locate my contacts easily 
+|`* * *` |user |sort the address book alphabetically |locate my contacts easily
 
 |`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
 
@@ -847,6 +847,7 @@ Use case ends.
 ** 3a1. AddressBook will not respond.
 +
 Use case ends.
+
 {More to be added}
 
 [appendix]
