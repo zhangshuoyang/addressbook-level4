@@ -803,7 +803,8 @@ Use case ends.
 
 .  Should work on any link:#mainstream-os[mainstream OS] as long as it has Java `1.8.0_60` or higher installed.
 .  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+.  Should be compatible with Mac and Windows users
+.  Should be able to handle unicode (UTF-8) text
 
 {More to be added}
 
@@ -824,6 +825,14 @@ Private contact detail
 
 ....
 A contact detail that is not meant to be shared with others
+....
+
+[[Substring]]
+Substring
+
+....
+A string containing one or more consecutive characters of
+a longer string. E.g. ppl is a substring of apple but ae is not.
 ....
 
 [appendix]
