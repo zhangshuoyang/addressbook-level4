@@ -742,32 +742,61 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 (For all use cases below, the *System* is the `AddressBook` and the *Actor* is the `user`, unless specified otherwise)
 
 [discrete]
-=== Use case: Delete person
+=== Use case: Backup and restore contacts
 
 *MSS*
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to backup contacts to a particular location.
+2.  AddressBook makes a copy of the existing contacts database to the specified location.
+3.  User requests to restore contacts from a particular location on the local disk.
+4.  AddressBook makes a backup of the current database and overrides the existing file with
+the user's backup.
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 2a. The list is empty.
+* 2a. The backup file cannot be read during restoration.
 +
-Use case ends.
+[none]
+** 2a1. AddressBook shows an error message.
++
+Use case resumes at step 3.
 
-* 3a. The given index is invalid.
+* 3a. The specified location cannot be written to during backup.
 +
 [none]
 ** 3a1. AddressBook shows an error message.
 +
-Use case resumes at step 2.
+Use case resumes at step 1.
 
-{More to be added}
+[discrete]
+[discrete]
+=== Use case: Search contacts by multiple criteria
+
+*MSS*
+
+1.  User requests to list contacts by specifying substrings of name and/or address.
+2.  AddressBook displays the matching contacts in the GUI interface (if any).
++
+Use case ends.
+
+*Extensions*
+
+[discrete]
+[discrete]
+=== Use case: Delete many contacts simultaneously
+
+*MSS*
+
+1.  User requests to delete contacts with a certain tag
+2.  AddressBook deletes the contacts with the stated tag and reports the entries
+that have been deleted (if any).
++
+Use case ends.
+
+*Extensions*
 
 [appendix]
 == Non Functional Requirements
@@ -777,6 +806,8 @@ Use case resumes at step 2.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
 {More to be added}
+
+[discrete]
 
 [appendix]
 == Glossary
