@@ -818,7 +818,7 @@ Use case resumes at step 2.
 1.  User requests to list persons
 2.  AddressBook shows a list of persons
 3.  User requests to search a person's contact on facebook
-4.  AddressBook shows the link to search result 
+4.  AddressBook shows the link to search result
 +
 Use case ends.
 
