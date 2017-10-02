@@ -721,17 +721,17 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 [width="59%",cols="22%,<23%,<25%,<30%",options="header",]
 |=======================================================================
 |Priority |As a ... |I want to ... |So that I can...
-|`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
+|`* * *` |user |backup and restore my contacts |recover my contacts in case of unexpected incidents
 
-|`* * *` |user |add a new person |
+|`* * *` |user |filter my contacts by multiple criteria |search for specific contacts more easily
 
-|`* * *` |user |delete a person |remove entries that I no longer need
+|`* *` |user |delete multiple users simultaneously|perform bookeeping more easily
 
-|`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
+|`* *` |user |view different contacts in different font color |identify different groups easily
 
-|`* *` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
+|`*` |user |display avatars for each contact|recall who a particular person is
 
-|`*` |user with many persons in the address book |sort persons by name |locate a person easily
+|`*` |user |change the font size and font family of my contacts' records|have a more aesthetically pleasing addressbook interface.
 |=======================================================================
 
 {More to be added}
