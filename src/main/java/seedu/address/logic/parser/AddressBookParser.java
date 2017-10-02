@@ -86,11 +86,14 @@ public class AddressBookParser {
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
-            
+
         case ListCommand.COMMAND_WORD_ALIAS:
             return new ListCommand();
 
         case HistoryCommand.COMMAND_WORD:
+            return new HistoryCommand();
+
+        case HistoryCommand.COMMAND_WORD_ALIAS:
             return new HistoryCommand();
 
         case ExitCommand.COMMAND_WORD:
