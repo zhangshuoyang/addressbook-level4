@@ -21,6 +21,7 @@ public class PersonCard extends UiPart<Region> {
     private static HashMap<String, String> tagColors = new HashMap<String, String>();
     private static Random random = new Random();
 
+
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
@@ -62,8 +63,6 @@ public class PersonCard extends UiPart<Region> {
 
         return tagColors.get(tagValue);
     }
-
-
 
     /**
      * Binds the individual UI elements to observe their respective {@code Person} properties
