@@ -729,9 +729,21 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
 
+|`* * *` |user |sort friends by tags |search friends by group
+
 |`* *` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
 
+|`* *` |user |record the appointments with friends and be notified y address book |be reminded to attend the appointments
+
+|`* *` |user |voice out the commands rather than typing |be more efficient at adding contacts
+
 |`*` |user with many persons in the address book |sort persons by name |locate a person easily
+
+|`*` |user |access address boook through slack |access address book quickly and conveniently
+
+|`*` |user |add emoji as special tags to the contact cards |have an interesting address book contacts
+
+|`*` |user with non-english as their native speaking language |add non-english names of friends |have localization for the language
 |=======================================================================
 
 {More to be added}
