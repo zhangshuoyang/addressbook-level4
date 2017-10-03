@@ -767,6 +767,44 @@ Use case ends.
 +
 Use case resumes at step 2.
 
+[discrete]
+=== Use case: Sort person by tag
+
+*MSS*
+
+1. User requests to sort persons with a specific tag
+2. AddressBook shows a list of persons with the same tag
++
+Use case ends.
+
+*Extensions*
+
+* 1a. The list is empty
++
+Use case ends.
+
+* 1b. The tag is not recognizable
++
+Use case ends.
+
+[discrete]
+=== Use case: Add appointment
+
+*MSS*
+
+1. User inputs the appointment
+2. Address book shows the message that the appointment is recorded
+3. Address book pushes the notification the day before the appointment
++
+Use case ends.
+
+*Extensions*
+
+* 1a. The input date is invalid
+** 1a1. Address book requests user to input a valid date
++
+Use case resumes at step 2.
+
 {More to be added}
 
 [appendix]
