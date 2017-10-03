@@ -719,7 +719,7 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (unlikely to have) - `*`
 
 [width="59%",cols="22%,<23%,<25%,<30%",options="header",]
-|=======================================================================
+
 |Priority |As a ... |I want to ... |So that I can...
 
 |`* * *` |user |have autocorrection for my misspelt words |my contact details will be properly spelt
@@ -730,10 +730,25 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |load more than 100,000 persons at one time |load all my schoolmates in NUS
 
+|`* * *` |user |sort friends by tags |search friends by group
+
+|`* *` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
+
+|`* *` |user |record the appointments with friends and be notified y address book |be reminded to attend the appointments
+
+|`* *` |user |voice out the commands rather than typing |be more efficient at adding contacts
+
 |`* *` |user |check my most frequently contacted list of people |add them to my favourite list, or located them more easily
 
+|`*` |user with many persons in the address book |sort persons by name |locate a person easily
+
+|`*` |user |access address boook through slack |access address book quickly and conveniently
+
+|`*` |user |add emoji as special tags to the contact cards |have an interesting address book contacts
+
+|`*` |user with non-english as their native speaking language |add non-english names of friends |have localization for the language
+
 |`*` |user |change the colour theme |make my address book more personalised
-|=======================================================================
 
 {More to be added}
 
@@ -768,7 +783,6 @@ Use case ends.
 +
 Use case resumes at step 2.
 
-
 [discrete]
 === Use case: Autocorrect misspelt words
 
@@ -776,11 +790,26 @@ Use case resumes at step 2.
 
 1.  User inputs a misspelt word
 2.  AddressBook identifies and autocorrects the word
+
+[discrete]
+=== Use case: Sort person by tag
+
+*MSS*
+
+1. User requests to sort persons with a specific tag
+2. AddressBook shows a list of persons with the same tag
 +
 Use case ends.
 
 *Extensions*
 
+* 1a. The list is empty
++
+Use case ends.
+
+* 1b. The tag is not recognizable
++
+Use case ends.
 
 [discrete]
 === Use case: Search for people who are using address book
@@ -798,7 +827,6 @@ Use case ends.
 * 2a. The list is empty.
 +
 Use case ends.
-
 
 [discrete]
 === Use case: Load more than 100,000 persons at one time
@@ -827,16 +855,29 @@ Use case ends.
 2.  AddressBook shows a list of matching persons
 3.  User requests to add the list to his/her favourite list
 4.  AddressBook add the list to the favourite list
-+
-Use case ends.
-
-*Extensions*
 
 [none]
 * 2a. The list is empty.
 +
 Use case ends.
 
+[discrete]
+=== Use case: Add appointment
+
+*MSS*
+
+1. User inputs the appointment
+2. Address book shows the message that the appointment is recorded
+3. Address book pushes the notification the day before the appointment
++
+Use case ends.
+
+*Extensions*
+
+* 1a. The input date is invalid
+** 1a1. Address book requests user to input a valid date
++
+Use case resumes at step 2.
 
 [discrete]
 === Use case: Change colour theme
@@ -850,9 +891,6 @@ Use case ends.
 +
 Use case ends.
 
-*Extensions*
-
-
 {More to be added}
 
 [appendix]
@@ -863,6 +901,12 @@ Use case ends.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 .  The system should be backward compatible with data produced by earlier versions of the system.
 .  The system should work on both 32-bit and 64-bit environments.
+.  Should return the list of persons in the storage within 1 second when users sort persons by tag.
+.  System should be able to recover itself after a power shutdown.
+.  Should display sepcific error messages if the system fails react to user.
+.  Should be able to give suggestions to user on how to handle an error messages.
+.  This product should be free for the public.
+.  Should be easy for user to remember the commands.
 
 {More to be added}
 
@@ -882,6 +926,14 @@ Private contact detail
 ....
 A contact detail that is not meant to be shared with others
 ....
+
+[[error-message]]
+Error Message
+
+....
+A message displayed on a monitor screen or printout indicating that an incorrect instruction has been given or that there is an error resulting from faulty software or hardware.
+....
+
 
 [appendix]
 == Product Survey
