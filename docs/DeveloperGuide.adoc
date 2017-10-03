@@ -719,15 +719,16 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (unlikely to have) - `*`
 
 [width="59%",cols="22%,<23%,<25%,<30%",options="header",]
-|=======================================================================
+
 |Priority |As a ... |I want to ... |So that I can...
-|`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
 
-|`* * *` |user |add a new person |
+|`* * *` |user |have autocorrection for my misspelt words |my contact details will be properly spelt
 
-|`* * *` |user |delete a person |remove entries that I no longer need
+|`* * *` |user |add multiple phone numbers to a person |know different ways of contacting one person
 
-|`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
+|`* * *` |user |search for people who are using address book |make more friends
+
+|`* * *` |user |load more than 100,000 persons at one time |load all my schoolmates in NUS
 
 |`* * *` |user |sort friends by tags |search friends by group
 
@@ -737,6 +738,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |user |voice out the commands rather than typing |be more efficient at adding contacts
 
+|`* *` |user |check my most frequently contacted list of people |add them to my favourite list, or located them more easily
+
 |`*` |user with many persons in the address book |sort persons by name |locate a person easily
 
 |`*` |user |access address boook through slack |access address book quickly and conveniently
@@ -744,7 +747,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`*` |user |add emoji as special tags to the contact cards |have an interesting address book contacts
 
 |`*` |user with non-english as their native speaking language |add non-english names of friends |have localization for the language
-|=======================================================================
+
+|`*` |user |change the colour theme |make my address book more personalised
 
 {More to be added}
 
@@ -754,14 +758,14 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 (For all use cases below, the *System* is the `AddressBook` and the *Actor* is the `user`, unless specified otherwise)
 
 [discrete]
-=== Use case: Delete person
+=== Use case: Add multiple phone numbers
 
 *MSS*
 
 1.  User requests to list persons
 2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+3.  User requests to add multiple phone numbers to a specific person in the list
+4.  AddressBook add multiple phone numbers of the person
 +
 Use case ends.
 
@@ -772,12 +776,20 @@ Use case ends.
 +
 Use case ends.
 
-* 3a. The given index is invalid.
+* 3a. The number added is already existed.
 +
 [none]
 ** 3a1. AddressBook shows an error message.
 +
 Use case resumes at step 2.
+
+[discrete]
+=== Use case: Autocorrect misspelt words
+
+*MSS*
+
+1.  User inputs a misspelt word
+2.  AddressBook identifies and autocorrects the word
 
 [discrete]
 === Use case: Sort person by tag
@@ -800,6 +812,56 @@ Use case ends.
 Use case ends.
 
 [discrete]
+=== Use case: Search for people who are using address book
+
+*MSS*
+
+1.  User requests to search for people who are using address book
+2.  AddressBook shows a list of matching persons (if any)
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+[discrete]
+=== Use case: Load more than 100,000 persons at one time
+
+*MSS*
+
+1.  User requests to list more than 100,000 persons at one time
+2.  AddressBook shows a list of matching persons
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+
+[discrete]
+=== Use case: Check most frequently contacted list of persons
+
+*MSS*
+
+1.  User requests to list most frequently contacted persons
+2.  AddressBook shows a list of matching persons
+3.  User requests to add the list to his/her favourite list
+4.  AddressBook add the list to the favourite list
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+[discrete]
 === Use case: Add appointment
 
 *MSS*
@@ -817,6 +879,18 @@ Use case ends.
 +
 Use case resumes at step 2.
 
+[discrete]
+=== Use case: Change colour theme
+
+*MSS*
+
+1.  User requests to change colour theme of the address book
+2.  AddressBook shows a list of colours available
+3.  User requests to change the theme to a specific colour
+4.  AddressBook changes the address book to the specified colour theme
++
+Use case ends.
+
 {More to be added}
 
 [appendix]
@@ -825,6 +899,8 @@ Use case resumes at step 2.
 .  Should work on any link:#mainstream-os[mainstream OS] as long as it has Java `1.8.0_60` or higher installed.
 .  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+.  The system should be backward compatible with data produced by earlier versions of the system.
+.  The system should work on both 32-bit and 64-bit environments.
 .  Should return the list of persons in the storage within 1 second when users sort persons by tag.
 .  System should be able to recover itself after a power shutdown.
 .  Should display sepcific error messages if the system fails react to user.
