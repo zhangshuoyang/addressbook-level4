@@ -743,14 +743,14 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 (For all use cases below, the *System* is the `AddressBook` and the *Actor* is the `user`, unless specified otherwise)
 
 [discrete]
-=== Use case: Delete person
+=== Use case: Add multiple phone numbers
 
 *MSS*
 
 1.  User requests to list persons
 2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+3.  User requests to add multiple phone numbers to a specific person in the list
+4.  AddressBook add multiple phone numbers of the person
 +
 Use case ends.
 
@@ -761,12 +761,97 @@ Use case ends.
 +
 Use case ends.
 
-* 3a. The given index is invalid.
+* 3a. The number added is already existed.
 +
 [none]
 ** 3a1. AddressBook shows an error message.
 +
 Use case resumes at step 2.
+
+
+[discrete]
+=== Use case: Autocorrect misspelt words
+
+*MSS*
+
+1.  User inputs a misspelt word
+2.  AddressBook identifies and autocorrects the word
++
+Use case ends.
+
+*Extensions*
+
+
+[discrete]
+=== Use case: Search for people who are using address book
+
+*MSS*
+
+1.  User requests to search for people who are using address book
+2.  AddressBook shows a list of matching persons (if any)
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+
+[discrete]
+=== Use case: Load more than 100,000 persons at one time
+
+*MSS*
+
+1.  User requests to list more than 100,000 persons at one time
+2.  AddressBook shows a list of matching persons
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+
+[discrete]
+=== Use case: Check most frequently contacted list of persons
+
+*MSS*
+
+1.  User requests to list most frequently contacted persons
+2.  AddressBook shows a list of matching persons
+3.  User requests to add the list to his/her favourite list
+4.  AddressBook add the list to the favourite list
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+
+
+[discrete]
+=== Use case: Change colour theme
+
+*MSS*
+
+1.  User requests to change colour theme of the address book 
+2.  AddressBook shows a list of colours available
+3.  User requests to change the theme to a specific colour
+4.  AddressBook changes the address book to the specified colour theme
++
+Use case ends.
+
+*Extensions*
+
 
 {More to be added}
 
