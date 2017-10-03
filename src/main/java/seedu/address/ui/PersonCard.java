@@ -11,9 +11,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.ReadOnlyPerson;
 
-/**
- * An UI component that displays information of a {@code Person}.
- */
 public class PersonCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
@@ -54,7 +51,6 @@ public class PersonCard extends UiPart<Region> {
         initTags(person);
         bindListeners(person);
     }
-
 
     private static String getColorForTag(String tagValue) {
         if (!tagColors.containsKey(tagValue)) {
