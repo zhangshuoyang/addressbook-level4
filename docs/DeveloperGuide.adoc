@@ -732,7 +732,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |user |check my most frequently contacted list of people |add them to my favourite list, or located them more easily
 
-|`*` |user |change the colour theme |make my address book more personalised 
+|`*` |user |change the colour theme |make my address book more personalised
 |=======================================================================
 
 {More to be added}
@@ -843,7 +843,7 @@ Use case ends.
 
 *MSS*
 
-1.  User requests to change colour theme of the address book 
+1.  User requests to change colour theme of the address book
 2.  AddressBook shows a list of colours available
 3.  User requests to change the theme to a specific colour
 4.  AddressBook changes the address book to the specified colour theme
