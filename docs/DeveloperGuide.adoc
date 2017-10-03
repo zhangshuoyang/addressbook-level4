@@ -799,7 +799,7 @@ A contact detail that is not meant to be shared with others
 Error Message
 
 ....
-a message displayed on a monitor screen or printout indicating that an incorrect instruction has been given or that there is an error resulting from faulty software or hardware.
+A message displayed on a monitor screen or printout indicating that an incorrect instruction has been given or that there is an error resulting from faulty software or hardware.
 ....
 
 
