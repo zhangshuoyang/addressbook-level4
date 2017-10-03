@@ -779,11 +779,11 @@ Use case ends.
 
 *Extensions*
 
-1a. The list is empty
+* 1a. The list is empty
 +
 Use case ends.
 
-1b. The tag is not recognizable
+* 1b. The tag is not recognizable
 +
 Use case ends.
 
@@ -800,8 +800,8 @@ Use case ends.
 
 *Extensions*
 
-1a. The input date is invalid
-> 1a1. Address book requests user to input a valid date
+* 1a. The input date is invalid
+** 1a1. Address book requests user to input a valid date
 +
 Use case resumes at step 2.
 
