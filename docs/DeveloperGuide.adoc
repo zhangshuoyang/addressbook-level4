@@ -15,7 +15,10 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
 
 == Welcome to Contact Plus
-Contact Plus is a contact-managing service through command line. There are lots of ways to contribute to Contact Plus: coding for new features, testing, integrating with third party APIs, or simply contributing to the documentations.
+Contact Plus is a contact-managing service through command line. We strive to provide the very comprehensive services for busy students on the campus so that they can manage their contacts efficiently. For example, the auto-correction feature allows
+our busy friend - David, a university student, to type fast on the keyboard without worrying spelling mistakes.
+
+To make Contact Plus better, there are many ways for you to contribute to this project: coding for new features, testing, integrating with third party APIs, or simply contributing to the documentations.
 This guide will not only help you get started as a Contact Plus contributor, but that you will find useful even though you are an experienced contributor.
 
 
