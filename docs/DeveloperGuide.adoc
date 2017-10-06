@@ -1125,7 +1125,17 @@ a longer string. E.g. ppl is a substring of apple but ae is not.
 Error Message
 
 ....
-A message displayed on a monitor screen or printout indicating that an incorrect instruction has been given or that there is an error resulting from faulty software or hardware.
+A message displayed on a monitor screen or printout indicating that
+an incorrect instruction has been given or that there is an error resulting from faulty software or hardware.
+....
+
+[[API]]
+API
+
+....
+An Application Programming Interface (API) specifies the interface
+through which other programs can interact with a software component.
+It is a contract between the component and its clients.
 ....
 
 [appendix]
