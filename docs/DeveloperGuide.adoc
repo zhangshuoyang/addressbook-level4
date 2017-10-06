@@ -722,37 +722,37 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |Priority |As a ... |I want to ... |So that I can...
 
-|`* * *` |user |backup and restore my contacts |recover my contacts in case of unexpected incidents
+|`* * *` |university student |backup and restore my contacts |recover my contacts in case of unexpected incidents
 
-|`* * *` |user |filter my contacts by multiple criteria |search for specific contacts more easily
+|`* * *` |person with a large social circle |filter my contacts by multiple criteria |search for specific contacts more easily
 
-|`* * *` |user |have autocorrection for my misspelt words |my contact details will be properly spelt
+|`* * *` |careless user |have autocorrection for my misspelt words |my contact details will be properly spelt
 
 |`* * *` |user |add multiple phone numbers to a person |know different ways of contacting one person
 
 |`* * *` |user |search for people who are using address book |make more friends
 
-|`* * *` |user |sort the address book alphabetically |locate my contacts easily
+|`* * *` |busy user |sort the address book alphabetically |locate my contacts easily
 
 |`* * *` |user |load more than 100,000 persons at one time |load all my schoolmates in NUS
 
 |`* * *` |user |sort friends by tags |search friends by group
 
-|`* *` |user |delete multiple users simultaneously|perform bookeeping more easily
+|`* *` |busy businessma |delete multiple users simultaneously|perform bookeeping more easily
 
-|`* *` |user |view different contacts in different font color |identify different groups easily
+|`* *` |efficient user |view different contacts in different font color |identify different groups easily
 
 |`* *` |user |delete a person |remove entries that I no longer need
 
 |`* *` |businessman |share my contact |easier for my client to contact me
 
-|`* *` |user |listed contacts to be arranged into several pages |easier for me to read
+|`* *` |user with many contacts |listed contacts to be arranged into several pages |easier for me to read
 
-|`* *` |user |autocomplete commands|type lengthy commands in full
+|`* *` |user with bad memory of commands |autocomplete commands|type lengthy commands in full
 
-|`* *` |user |record the appointments with friends and be notified y address book |be reminded to attend the appointments
+|`* *` |user with many friends |record the appointments with friends and be notified y address book |be reminded to attend the appointments
 
-|`* *` |user |voice out the commands rather than typing |be more efficient at adding contacts
+|`* *` |lazy user |voice out the commands rather than typing |be more efficient at adding contacts
 
 |`* *` |user |check my most frequently contacted list of people |add them to my favourite list, or located them more easily
 
@@ -764,15 +764,15 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`*` |user |access address boook through slack |access address book quickly and conveniently
 
-|`*` |user |add emoji as special tags to the contact cards |have an interesting address book contacts
+|`*` |user loves emoji |add emoji as special tags to the contact cards |have an interesting address book contacts
 
 |`*` |user with non-english as their native speaking language |add non-english names of friends |have localization for the language
 
-|`*` |user |change the colour theme |make my address book more personalised
+|`*` |user likes customization |change the colour theme |make my address book more personalised
 
-|`*` |user |display avatars for each contact|recall who a particular person is
+|`*` |forgetful person |display avatars for each contact|recall who a particular person is
 
-|`*` |user |change the font size and font family of my contacts' records|have a more aesthetically pleasing addressbook interface.
+|`*` |artistic person |change the font size and font family of my contacts' records|have a more aesthetically pleasing addressbook interface.
 
 {More to be added}
 
