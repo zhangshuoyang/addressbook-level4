@@ -1058,11 +1058,19 @@ Use case ends.
 .  The system should be backward compatible with data produced by earlier versions of the system.
 .  The system should work on both 32-bit and 64-bit environments.
 .  Should return the list of persons in the storage within 1 second when users sort persons by tag.
-.  System should be able to recover itself after a power shutdown.
+.  Should be able to recover itself after a power shutdown.
 .  Should display sepcific error messages if the system fails react to user.
 .  Should be able to give suggestions to user on how to handle an error messages.
 .  This product should be free for the public.
 .  Should be easy for user to remember the commands.
+.  Should be backward compatible with data produced by earlier versions of the system.
+.  Should be usable by a novice who has never tried command line.
+.  The project is expected to adhere to a schedule that delivers a feature set every week.
+.  The product is not required to handle the printing of reports.
+.  Should produce clean code when contribute to the project.
+.  Should strictly adhere OOP standard and follow the existing code style when changes are made on the project.
+.  Should update documentation necessarily with each new change on the project.
+.  Should update JUnit tests for each new feature, and important newly-created functions.
 
 {More to be added}
 
