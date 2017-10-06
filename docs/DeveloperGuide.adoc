@@ -938,7 +938,6 @@ Use case ends
 
 *Extensions*
 
-[none]
 * 2a. The list is empty
 +
 Use case ends
@@ -952,8 +951,11 @@ Use case ends
 2.  AddressBook shows a list of matching persons
 3.  User requests to add the list to his/her favourite list
 4.  AddressBook add the list to the favourite list
++
+Use case ends
 
-[none]
+*Extensions*
+
 * 2a. The list is empty
 +
 Use case ends
