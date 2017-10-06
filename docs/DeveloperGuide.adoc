@@ -794,29 +794,30 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 *MSS*
 
-1.  User requests to backup contacts to a particular location.
-2.  AddressBook makes a copy of the existing contacts database to the specified location.
-3.  User requests to restore contacts from a particular location on the local disk.
+1.  User requests to backup contacts to a particular location
+2.  AddressBook makes a copy of the existing contacts database to the specified location
+3.  User requests to restore contacts from a particular location on the local disk
 4.  AddressBook makes a backup of the current database and overrides the existing file with
-the user's backup.
+the user's backup
 +
-Use case ends.
+Use case ends
 
 *Extensions*
 
 [none]
-* 2a. The backup file cannot be read during restoration.
+* 2a. The backup file cannot be read during restoration
 +
 [none]
-** 2a1. AddressBook shows an error message.
+** 2a1. AddressBook shows an error message
 +
-Use case resumes at step 3.
+Use case resumes at step 3
 
-* 3a. The specified location cannot be written to during backup.
-** 3a1. AddressBook shows an error message.
+* 3a. The specified location cannot be written to during backup
+** 3a1. AddressBook shows an error message
 +
-Use case resumes at step 1.
+Use case resumes at step 1
 
+[discrete]
 === Use case: Add multiple phone numbers
 
 *MSS*
@@ -828,25 +829,26 @@ Use case resumes at step 1.
 
 *Extensions*
 
-* 3a. The number added is already existed.
-** 3a1. AddressBook shows an error message.
+* 3a. The number added is already existed
+** 3a1. AddressBook shows an error message
 +
-Use case ends.
+Use case ends
 
 [discrete]
 === Use case: Search contacts by multiple criteria
 
 *MSS*
 
-1.  User requests to list contacts by specifying substrings of name and/or address.
-2.  AddressBook displays the matching contacts in the GUI interface (if any).
+1.  User requests to list contacts by specifying substrings of name and/or address
+2.  AddressBook displays the matching contacts in the GUI interface (if any)
 
 *Extensions*
 
-2a. The list is empty
+* 2a. The list is empty
 +
 Use case ends
 
+[discrete]
 === Use case: Sort persons names in alphabetical order
 
 *MSS*
@@ -858,17 +860,23 @@ Use case ends
 *Extensions*
 
 [none]
-* 2a. The list is sorted.
+* 2a. The list is sorted
 +
-Use case ends.
+Use case ends
+
+* 2b. The list is empty
++
+Use case ends
 
 [discrete]
-=== Use case: Autocorrect misspelt words
+=== Use case: Auto-correct misspelt words
 
 *MSS*
 
 1.  User inputs a misspelt word
 2.  AddressBook identifies and autocorrects the word
++
+Use case ends
 
 [discrete]
 === Use case: Sort person by tag
@@ -878,17 +886,20 @@ Use case ends.
 1. User requests to sort persons with a specific tag
 2. AddressBook shows a list of persons with the same tag
 +
-Use case ends.
+Use case ends
 
 *Extensions*
 
-* 1a. The list is empty
+* 1a. The tag is not recognizable
+** 1a1. Addressbook requests the user to input a new tag name
 +
-Use case ends.
+Steps 1a - 1a1 are repeated util the tag name entered is correct
++
+Use case resumes from step 2
 
-* 1b. The tag is not recognizable
+* 2a. The list is empty
 +
-Use case ends.
+Use case ends
 
 [discrete]
 === Use case: Search for people who are using address book
@@ -898,14 +909,14 @@ Use case ends.
 1.  User requests to search for people who are using address book
 2.  AddressBook shows a list of matching persons (if any)
 +
-Use case ends.
+Use case ends
 
 *Extensions*
 
 [none]
-* 2a. The list is empty.
+* 2a. The list is empty
 +
-Use case ends.
+Use case ends
 
 [discrete]
 === Use case: Delete many contacts simultaneously
@@ -913,10 +924,10 @@ Use case ends.
 *MSS*
 
 1.  User requests to delete contacts with a certain tag
-2.  AddressBook deletes the contacts with the stated tag and reports the entries
-that have been deleted (if any).
+2.  AddressBook deletes the contacts with the stated tag
+3.  Addressbook reports the entries that have been deleted (if any)
 +
-Use case ends.
+Use case ends
 
 [discrete]
 === Use case: Load more than 100,000 persons at one time
@@ -926,14 +937,14 @@ Use case ends.
 1.  User requests to list more than 100,000 persons at one time
 2.  AddressBook shows a list of matching persons
 +
-Use case ends.
+Use case ends
 
 *Extensions*
 
 [none]
-* 2a. The list is empty.
+* 2a. The list is empty
 +
-Use case ends.
+Use case ends
 
 [discrete]
 === Use case: Check most frequently contacted list of persons
@@ -946,25 +957,29 @@ Use case ends.
 4.  AddressBook add the list to the favourite list
 
 [none]
-* 2a. The list is empty.
+* 2a. The list is empty
 +
-Use case ends.
+Use case ends
 
 [discrete]
-=== Use case: Add appointment
+=== Use case: Add appointments
 
 *MSS*
 
 1. User inputs the appointment
 2. Address book shows the message that the appointment is recorded
 3. Address book pushes the notification the day before the appointment
++
+Use case ends
 
 *Extensions*
 
 * 1a. The input date is invalid
 ** 1a1. Address book requests user to input a valid date
 +
-Use case resumes at step 2.
+Steps 1a - 1a1 are repeated util the date entered is correct
++
+Use case resumes from Step 2
 
 [discrete]
 === Use case: Change colour theme
@@ -975,6 +990,8 @@ Use case resumes at step 2.
 2.  AddressBook shows a list of colours available
 3.  User requests to change the theme to a specific colour
 4.  AddressBook changes the address book to the specified colour theme
++
+Use case ends
 
 [discrete]
 === Use case: Share contact by index
@@ -985,13 +1002,15 @@ Use case resumes at step 2.
 2.  AddressBook shows a list of persons
 3.  User requests to share a person contact detail by specifying an index
 4.  AddressBook shows the person's contact detail and export the contact
++
+Use case ends
+
+*Extensions*
 
 * 3a. The given index is invalid
+** 3a1. AddressBook shows an error message
 +
-[none]
-** 3a1. AddressBook shows an error message.
-+
-Use case resumes at step 2.
+Use case ends
 
 [discrete]
 === Use case: Search contact on Facebook
@@ -1003,13 +1022,13 @@ Use case resumes at step 2.
 3.  User requests to search a person's contact on facebook
 4.  AddressBook shows the link to search result
 +
-Use case ends.
+Use case ends
 
 *Extensions*
 
-3a. The person is not on Facebook
+* 3a. The person is not on Facebook
 +
-Use cas eends.
+Use case ends.
 
 [discrete]
 === Use case: Show contacts by pages
@@ -1025,8 +1044,9 @@ Use case ends.
 
 *Extensions*
 
-2a. The list is empty
-+Use case ends.
+* 2a. The list is empty
++
+Use case ends.
 
 [discrete]
 === Use case: Auto-complete user input
@@ -1040,13 +1060,10 @@ Use case ends.
 
 *Extensions*
 
-[none]
 * 3a. No command has been typed
-+
-[none]
 ** 3a1. AddressBook will not respond.
 +
-Use case ends.
+Use case ends
 
 {More to be added}
 
