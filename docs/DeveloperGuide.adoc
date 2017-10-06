@@ -758,10 +758,6 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |user with bad memory of commands |autocomplete commands|type lengthy commands in full
 
-|`* *` |user with many friends |record the appointments with friends and be notified y address book |be reminded to attend the appointments
-
-|`* *` |lazy user |voice out the commands rather than typing |be more efficient at adding contacts
-
 |`* *` |user |check my most frequently contacted list of people |add them to my favourite list, or located them more easily
 
 |`*` |user |merge my address book with another address book|add contacts in bulk
@@ -779,6 +775,10 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`*` |user likes customization |change the colour theme |make my address book more personalised
 
 |`*` |forgetful person |display avatars for each contact|recall who a particular person is
+
+|`*` |lazy user |voice out the commands rather than typing |be more efficient at adding contacts
+
+|`*` |user with many friends |record the appointments with friends and be notified y address book |be reminded to attend the appointments
 
 |`*` |artistic person |change the font size and font family of my contacts' records|have a more aesthetically pleasing addressbook interface.
 
