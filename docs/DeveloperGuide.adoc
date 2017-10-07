@@ -979,7 +979,7 @@ Use case ends
 * 1a. The input date is invalid
 ** 1a1. Address book requests user to input a valid date
 +
-Steps 1a - 1a1 are repeated util the date entered is correct
+Steps 1a - 1a1 are repeated util the date entered is valid
 +
 Use case resumes from Step 2
 
