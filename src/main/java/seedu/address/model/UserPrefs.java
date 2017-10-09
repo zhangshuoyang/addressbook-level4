@@ -11,7 +11,6 @@ public class UserPrefs {
 
     private GuiSettings guiSettings;
     private String addressBookFilePath = "data/addressbook.xml";
-
     private String addressBookName = "MyAddressBook";
 
     public UserPrefs() {
@@ -33,7 +32,6 @@ public class UserPrefs {
     public String getAddressBookFilePath() {
         return addressBookFilePath;
     }
-
 
 
     public void setAddressBookFilePath(String addressBookFilePath) {
