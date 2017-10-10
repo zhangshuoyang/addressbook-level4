@@ -33,7 +33,9 @@ public abstract class Command {
      * @return summary message for names of persons displayed
      */
     public static String getMessageForPersonList(ObservableList<ReadOnlyPerson> displayList) {
-        if(displayList.isEmpty()) return Messages.MESSAGE_UNKNOWN_TAG;
+        if (displayList.isEmpty()) {
+            return Messages.MESSAGE_UNKNOWN_TAG;
+        }
 
         StringBuilder builder = new StringBuilder();
         for (ReadOnlyPerson person : displayList) {
