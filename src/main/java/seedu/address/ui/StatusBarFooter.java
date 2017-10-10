@@ -40,14 +40,23 @@ public class StatusBarFooter extends UiPart<Region> {
     private StatusBar syncStatus;
     @FXML
     private StatusBar saveLocationStatus;
+    @FXML
+    private StatusBar totalPersons;
 
 
-    public StatusBarFooter(String saveLocation) {
+    public StatusBarFooter(String saveLocation, int totalPersons) {
         super(FXML);
         setSyncStatus(SYNC_STATUS_INITIAL);
         setSaveLocation("./" + saveLocation);
+        setTotalPersons(totalPersons);
         registerAsAnEventHandler(this);
     }
+
+    private void setTotalPersons(int totalPersons) {
+//        this.totalPersons.setText(totalPersons + "person(s) total");
+        this.totalPersons.setText(totalPersons + " person(s) in total");
+    }
+
 
     /**
      * Sets the clock used to determine the current time.
