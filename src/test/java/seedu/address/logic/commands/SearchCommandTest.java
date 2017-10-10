@@ -53,7 +53,7 @@ public class SearchCommandTest {
 
     @Test
     public void execute_zeroKeywords_noPersonFound() {
-        String expectedMessage = "";
+        String expectedMessage = "Unknown tag";
         SearchCommand command = prepareCommand(" ");
         assertCommandSuccess(command, expectedMessage, Collections.emptyList());
     }
