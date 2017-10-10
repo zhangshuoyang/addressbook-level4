@@ -46,6 +46,12 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate);
 
+    /*
+     * Clears the filters that have been applied to the filterd person list
+     */
+
+    void clearFiltersOnPersonList();
+
     /**
      * Deletes a specified tag from contacts in AddressBook
      *
