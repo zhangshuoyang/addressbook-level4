@@ -893,9 +893,7 @@ Use case ends
 * 1a. The tag is not recognizable
 ** 1a1. Addressbook shows the user "Unknown tag"
 +
-Steps 1a - 1a1 are repeated util the tag name entered is correct
-+
-Use case resumes from step 2
+Use case ends
 
 * 2a. The list is empty
 +
