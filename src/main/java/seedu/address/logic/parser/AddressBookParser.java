@@ -62,7 +62,7 @@ public class AddressBookParser {
 
         case SearchCommand.COMMAND_WORD: case SearchCommand.COMMAND_WORD_ALIAS:
             return new SearchCommandParser().parse(arguments);
-            
+
         case DeleteCommand.COMMAND_WORD: case DeleteCommand.COMMAND_WORD_ALIAS:
 
             return new DeleteCommandParser().parse(arguments);
