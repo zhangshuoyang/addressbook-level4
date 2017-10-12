@@ -11,44 +11,36 @@ We are a team based in the http://www.comp.nus.edu.sg[School of Computing, Natio
 
 == Project Team
 
-=== John Doe
+=== Chai Rui Zhong
 image::damithc.jpg[width="150", align="left"]
-{empty}[http://www.comp.nus.edu.sg/~damithch[homepage]] [https://github.com/damithc[github]] [<<johndoe#, portfolio>>]
+{empty}[https://github.com/chairz[homepage]] [https://github.com/damithc[github]] [<<johndoe#, portfolio>>]
 
-Role: Project Advisor
-
-'''
-
-=== John Roe
-image::lejolly.jpg[width="150", align="left"]
-{empty}[http://github.com/lejolly[github]] [<<johndoe#, portfolio>>]
-
-Role: Team Lead +
-Responsibilities: UI
+Role: Developer +
+Responsibilities: Storage
 
 '''
 
-=== Johnny Doe
+=== Li Hong Sheng Gabriel
+image::gabriellhs.jpg[width="150", align="left"]
+{empty}[http://github.com/lancehaoh[github]]
+
+Role: Developer +
+Responsibilities: Model
+
+'''
+
+=== Li Jiayao
 image::yijinl.jpg[width="150", align="left"]
-{empty}[http://github.com/yijinl[github]] [<<johndoe#, portfolio>>]
+{empty}[https://github.com/JYL123[github]] [<<johndoe#, portfolio>>]
 
-Role: Developer +
-Responsibilities: Data
+Role: Team Leader +
+Responsibilities: Logic
 
 '''
 
-=== Johnny Roe
+=== Zhang Shuoyang
 image::m133225.jpg[width="150", align="left"]
-{empty}[http://github.com/m133225[github]] [<<johndoe#, portfolio>>]
-
-Role: Developer +
-Responsibilities: Dev Ops + Threading
-
-'''
-
-=== Benson Meier
-image::yl_coder.jpg[width="150", align="left"]
-{empty}[http://github.com/yl-coder[github]] [<<johndoe#, portfolio>>]
+{empty}[https://github.com/zhangshuoyang[github]] [<<johndoe#, portfolio>>]
 
 Role: Developer +
 Responsibilities: UI
