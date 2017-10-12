@@ -744,7 +744,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |load more than 100,000 persons at one time |load all my schoolmates in NUS
 
-|`* * *` |user |sort friends by tags |search friends by group
+|`* * *` |user |search friends by tags |search friends by group
 
 |`* *` |busy businessma |delete multiple users simultaneously|perform bookeeping more easily
 
@@ -879,7 +879,7 @@ Use case ends
 Use case ends
 
 [discrete]
-=== Use case: Sort person by tag
+=== Use case: Search person by tag
 
 *MSS*
 
@@ -891,11 +891,9 @@ Use case ends
 *Extensions*
 
 * 1a. The tag is not recognizable
-** 1a1. Addressbook requests the user to input a new tag name
+** 1a1. Addressbook shows the user "Unknown tag"
 +
-Steps 1a - 1a1 are repeated util the tag name entered is correct
-+
-Use case resumes from step 2
+Use case ends
 
 * 2a. The list is empty
 +

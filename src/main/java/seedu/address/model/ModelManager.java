@@ -29,6 +29,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final AddressBook addressBook;
     private final FilteredList<ReadOnlyPerson> filteredPersons;
+    private final FilteredList<ReadOnlyPerson> filteredPersonsByTags;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -41,6 +42,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredPersonsByTags =  new FilteredList<>(this.addressBook.getPersonList());
     }
 
     public ModelManager() {
@@ -107,6 +109,11 @@ public class ModelManager extends ComponentManager implements Model {
         }
     }
 
+    @Override
+    public ObservableList<ReadOnlyPerson> getFilteredPersonByTagList() {
+        return FXCollections.unmodifiableObservableList(filteredPersonsByTags);
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -122,6 +129,17 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredPersonByTagList(Predicate<ReadOnlyPerson> predicate) {
+        requireNonNull(predicate);
+        filteredPersonsByTags.setPredicate(predicate);
+    }
+
+    @Override
+    public void clearFiltersOnPersonList() {
+        filteredPersons.setPredicate(dummy -> true);
     }
 
     @Override
