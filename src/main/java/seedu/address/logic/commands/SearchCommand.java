@@ -23,6 +23,7 @@ public class SearchCommand extends Command {
 
     @Override
     public CommandResult execute() {
+        model.updateFilteredPersonList(predicate);
         model.updateFilteredPersonByTagList(predicate);
         return new CommandResult(getMessageForPersonList(model.getFilteredPersonByTagList()));
     }
