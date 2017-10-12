@@ -125,6 +125,11 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
+    public void clearFiltersOnPersonList() {
+        filteredPersons.setPredicate(dummy -> true);
+    }
+
+    @Override
     public boolean equals(Object obj) {
         // short circuit if same object
         if (obj == this) {
