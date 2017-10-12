@@ -135,8 +135,8 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredPersonByTagList(Predicate<ReadOnlyPerson> predicate) {
         requireNonNull(predicate);
         filteredPersonsByTags.setPredicate(predicate);
-   }
-  
+    }
+
     @Override
     public void clearFiltersOnPersonList() {
         filteredPersons.setPredicate(dummy -> true);
