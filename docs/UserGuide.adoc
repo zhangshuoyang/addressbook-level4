@@ -128,11 +128,55 @@ Format: `search KEYWORD [MORE_KEYWORDS]`
 ****
 
 Examples:
-
 * `search friends` +
 Returns `John Alice`
 * `search fri` +
 Returns `Unknown tag`
+
+=== Locating persons by multiple criteria: `multifilter`
+
+Finds persons whose names, phone no., emails and addresses, +
+match a set of specified criteria. +
+Format: `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]`
+
+****
+* The alias for this command is `mf`. That means that you can type +
+`mf` instead of `multifilter`.
+* The search is case-insensitive for all fields. e.g `mf n/hans` will +
+match `Hans`.
+* The search performs a substring match. This means that the 'mf n/a' +
+will match both `alice` and `Hans` since both contain the letter `a`,
+* The order of the fields does not matter. +
+e.g.`mf n/hans e/a@ex.com` and `mf e/a@ex.com n/hans` +
+both mean the same thing.
+* Matching is performed based on ALL the criteria. +
+i.e. `mf n/a p/9` will find the contact `matt` with a phone no. of `999`
+but it will not find the contact `alice` with a phone no. of `888`.
+* None of the fields are compulsory. i.e. you can use `mf p/999` to find +
+contacts whose phone no. contain `999` and `mf e/yahoo` to find +
+contacts whose emails contain `yahoo` without entering the rest of the fields.
+* If only `mf` is entered, all contacts will be displayed.
+* `mf p/987 e/gmail` +
+Contact `alice` with phone no. `9876` and email `a@gmail.com` +
+will be matched. Contact `Bob` with phone no. `987` and email `a@yahoo.com`
+will not be matched
+****
+
+Examples:
+
+* `mf a/gey` +
+Returns contacts whose address contain `gey`
+* `mf` +
+Returns all contacts
+* `mf n/iv p/9 e/g a/ge` +
+Returns contacts who match ALL of the following criteria: +
+1. Name contains `iv`
+2. Phone no. contains `9`
+3. Email contains `g`
+4. Address contains `ge`
+
+An example of a matching contact for this command would be +
+`Ivan` that has phone no. `999`, email `g@y.com` and address `123 geylang road`
 
 === Deleting a person : `delete`
 

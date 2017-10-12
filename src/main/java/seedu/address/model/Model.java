@@ -46,6 +46,21 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate);
 
+    /*
+     * Clears the filters that have been applied to the filterd person list
+     */
+
+    void clearFiltersOnPersonList();
+
+    /**
+     * Updates the filter of the filtered tag list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredPersonByTagList(Predicate<ReadOnlyPerson> predicate);
+
+    /** Returns an unmodifiable view of the filtered tag list */
+    ObservableList<ReadOnlyPerson> getFilteredPersonByTagList();
+
     /**
      * Deletes a specified tag from contacts in AddressBook
      *
