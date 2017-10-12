@@ -112,6 +112,27 @@ Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
 
+=== Locating persons by name: `search`
+
+Searches persons whose tag names contain any of the given keywords. +
+Format: `search KEYWORD [MORE_KEYWORDS]`
+
+****
+* The search is case sensitive. e.g `Friends` will not match `friends`
+* The order of the keywords does not matter. e.g. `friends colleague` is the same as `colleague friends`
+* Only the tag name is searched.
+* Only full tag name will be accepted e.g. `friends` will not match `fri`
+* Result displays "Unknown tag" if no person has the tag
+* Alias for "search" is "st"
+* Persons's tag names matching at least one keyword will be returned (i.e. `OR` search). e.g. `friends colleague` will return persons with `friends`, or `colleague` tag
+****
+
+Examples:
+* `search friends` +
+Returns `John Alice`
+* `search fri` +
+Returns `Unknown tag`
+
 === Locating persons by multiple criteria: `multifilter`
 
 Finds persons whose names, phone no., emails and addresses, +
@@ -135,14 +156,13 @@ but it will not find the contact `alice` with a phone no. of `888`.
 contacts whose phone no. contain `999` and `mf e/yahoo` to find +
 contacts whose emails contain `yahoo` without entering the rest of the fields.
 * If only `mf` is entered, all contacts will be displayed.
-****
-
-Examples:
-
 * `mf p/987 e/gmail` +
 Contact `alice` with phone no. `9876` and email `a@gmail.com` +
 will be matched. Contact `Bob` with phone no. `987` and email `a@yahoo.com`
 will not be matched
+****
+
+Examples:
 
 * `mf a/gey` +
 Returns contacts whose address contain `gey`
