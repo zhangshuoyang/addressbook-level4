@@ -22,6 +22,8 @@ public class PersonCard extends UiPart<Region> {
     private static Random random = new Random();
 
 
+
+
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
@@ -44,6 +46,11 @@ public class PersonCard extends UiPart<Region> {
     private Label address;
     @FXML
     private Label email;
+
+    // added remark
+    @FXML
+    private Label remark;
+
     @FXML
     private FlowPane tags;
 
@@ -54,6 +61,7 @@ public class PersonCard extends UiPart<Region> {
         initTags(person);
         bindListeners(person);
     }
+
 
     private static String getColorForTag(String tagValue) {
         if (!tagColors.containsKey(tagValue)) {
