@@ -13,7 +13,7 @@ We are a team based in the http://www.comp.nus.edu.sg[School of Computing, Natio
 
 === Chai Rui Zhong
 image::damithc.jpg[width="150", align="left"]
-{empty}[https://github.com/chairz[homepage]] [https://github.com/damithc[github]] [<<johndoe#, portfolio>>]
+{empty}[https://github.com/chairz[github]]
 
 Role: Developer +
 Responsibilities: Storage
@@ -30,17 +30,17 @@ Responsibilities: Model
 '''
 
 === Li Jiayao
-image::yijinl.jpg[width="150", align="left"]
-{empty}[https://github.com/JYL123[github]] [<<johndoe#, portfolio>>]
+image::Li Jiayao.jpg[width="150", align="left"]
+{empty}[https://github.com/JYL123[github]]
 
-Role: Team Leader +
+Role: Developer +
 Responsibilities: Logic
 
 '''
 
 === Zhang Shuoyang
 image::m133225.jpg[width="150", align="left"]
-{empty}[https://github.com/zhangshuoyang[github]] [<<johndoe#, portfolio>>]
+{empty}[https://github.com/zhangshuoyang[github]]
 
 Role: Developer +
 Responsibilities: UI
