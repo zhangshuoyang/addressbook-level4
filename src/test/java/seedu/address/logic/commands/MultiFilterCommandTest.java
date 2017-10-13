@@ -233,13 +233,13 @@ public class MultiFilterCommandTest {
     private MultiFilterCommand prepareCommand(String name, String phone, String email, String address) {
         MultiFilterCommand command = new MultiFilterCommand(
                 name == null ? null : new NameContainsKeywordsSubstrPredicate(
-                        Arrays.asList(name.toString())),
+                        Arrays.asList(name)),
                 phone == null ? null : new PhoneContainsKeywordsSubstrPredicate(
-                        Arrays.asList(phone.toString())),
+                        Arrays.asList(phone)),
                 email == null ? null : new EmailContainsKeywordsSubstrPredicate(
-                        Arrays.asList(email.toString())),
+                        Arrays.asList(email)),
                 address == null ? null : new AddressContainsKeywordsSubstrPredicate(
-                        Arrays.asList(address.toString()))
+                        Arrays.asList(address))
         );
 
         command.setData(model, new CommandHistory(), new UndoRedoStack());
