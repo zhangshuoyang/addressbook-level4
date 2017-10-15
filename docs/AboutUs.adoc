@@ -5,9 +5,9 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :stylesDir: stylesheets
 
 AddressBook - Level 4 was developed by the https://se-edu.github.io/docs/Team.html[se-edu] team. +
-The dummy content given below serves as a placeholder to be used by future forks of the project. +
+We are a team based in the http://www.comp.nus.edu.sg[School of Computing, National University of Singapore]. +
+Contact Plus is built based on AddressBook - Level 4. The team is as follows:
 {empty} +
-We are a team based in the http://www.comp.nus.edu.sg[School of Computing, National University of Singapore].
 
 == Project Team
 
@@ -33,7 +33,7 @@ Responsibilities: Model
 image::Li Jiayao.jpg[width="150", align="left"]
 {empty}[https://github.com/JYL123[github]]
 
-Role: Developer +
+Role: Team Lead +
 Responsibilities: Logic
 
 '''
