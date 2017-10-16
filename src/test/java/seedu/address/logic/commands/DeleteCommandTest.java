@@ -9,6 +9,9 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.junit.Test;
 
 import seedu.address.commons.core.Messages;
@@ -19,9 +22,6 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.ReadOnlyPerson;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for {@code DeleteCommand}.

@@ -22,9 +22,9 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
     public DeleteCommand parse(String args) throws ParseException {
         try {
             args.trim();
-            String[] arr = args.split("/", 0 );
+            String[] arr = args.split("/", 0);
             ArrayList<Index> index = new ArrayList<>();
-            for ( String w : arr) {
+            for (String w : arr) {
                 index.add(ParserUtil.parseIndex(w));
             }
 

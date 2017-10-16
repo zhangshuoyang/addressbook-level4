@@ -88,7 +88,8 @@ public class EditCommandTest {
     public void execute_filteredList_success() throws Exception {
         showFirstPersonOnly(model);
 
-        ReadOnlyPerson personInFilteredList = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.get(0).getZeroBased());
+        ReadOnlyPerson personInFilteredList = model.getFilteredPersonList().get(
+                INDEX_FIRST_PERSON.get(0).getZeroBased());
         Person editedPerson = new PersonBuilder(personInFilteredList).withName(VALID_NAME_BOB).build();
         EditCommand editCommand = prepareCommand(INDEX_FIRST_PERSON.get(0),
                 new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
@@ -115,7 +116,8 @@ public class EditCommandTest {
         showFirstPersonOnly(model);
 
         // edit person in filtered list into a duplicate in address book
-        ReadOnlyPerson personInList = model.getAddressBook().getPersonList().get(INDEX_SECOND_PERSON.get(0).getZeroBased());
+        ReadOnlyPerson personInList = model.getAddressBook().getPersonList().get(
+                INDEX_SECOND_PERSON.get(0).getZeroBased());
         EditCommand editCommand = prepareCommand(INDEX_FIRST_PERSON.get(0),
                 new EditPersonDescriptorBuilder(personInList).build());
 

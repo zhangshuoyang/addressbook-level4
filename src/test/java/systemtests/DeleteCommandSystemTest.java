@@ -32,7 +32,8 @@ public class DeleteCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: delete the first person in the list, command with leading spaces and trailing spaces -> deleted */
         Model expectedModel = getModel();
-        String command = "     " + DeleteCommand.COMMAND_WORD + "      " + INDEX_FIRST_PERSON.get(0).getOneBased() + "       ";
+        String command = "     " + DeleteCommand.COMMAND_WORD + "      "
+                + INDEX_FIRST_PERSON.get(0).getOneBased() + "       ";
         ReadOnlyPerson deletedPerson = removePerson(expectedModel, INDEX_FIRST_PERSON.get(0));
         String expectedResultMessage = String.format(MESSAGE_DELETE_PERSON_SUCCESS, deletedPerson);
         assertCommandSuccess(command, expectedModel, expectedResultMessage);
