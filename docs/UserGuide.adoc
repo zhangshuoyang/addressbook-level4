@@ -112,7 +112,7 @@ Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
 
-=== Locating persons by name: `search`
+=== Locating persons by tag: `search`
 
 Searches persons whose tag names contain any of the given keywords. +
 Format: `search KEYWORD [MORE_KEYWORDS]`
@@ -132,6 +132,20 @@ Examples:
 Returns `John Alice`
 * `search fri` +
 Returns `Unknown tag`
+
+=== Add second phone number for a person
+
+Add the second phone number for a person by using prefix "p2/" +
+Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS`
+
+****
+* Input "p2/-" for add command, when no second phone number is provided.
+* The order of the parameters does not matter. e.g. `p/87435783 p2/54729635` is the same as `p2/749374658 p/97453735`
+****
+
+Examples:
+* `add n/John Doe p/98765432 p2/73624789 e/johnd@example.com a/John street, block 123, #01-01` +
+* `edit 1 p/91234567 p2/73624789 e/johndoe@example.com` +
 
 === Locating persons by multiple criteria: `multifilter`
 

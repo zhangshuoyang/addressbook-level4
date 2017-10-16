@@ -38,5 +38,4 @@ public interface Storage extends AddressBookStorage, UserPrefsStorage {
      */
     void handleAddressBookChangedEvent(AddressBookChangedEvent abce);
 
-    void backupAddressBook(ReadOnlyAddressBook addressBook) throws IOException;
 }

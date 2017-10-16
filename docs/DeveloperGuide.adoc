@@ -764,8 +764,6 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |add multiple phone numbers to a person |know different ways of contacting one person
 
-|`* * *` |user |search for people who are using address book |make more friends
-
 |`* * *` |busy user |sort the address book alphabetically |locate my contacts easily
 
 |`* * *` |user |load more than 100,000 persons at one time |load all my schoolmates in NUS
@@ -924,30 +922,35 @@ Use case ends
 Use case ends
 
 [discrete]
-=== Use case: Search for people who are using address book
-
-*MSS*
-
-1.  User requests to search for people who are using address book
-2.  AddressBook shows a list of matching persons (if any)
-+
-Use case ends
-
-*Extensions*
-
-[none]
-* 2a. The list is empty
-+
-Use case ends
-
-[discrete]
 === Use case: Delete a tag with a particular name
 
 *MSS*
 
 1.  User requests to delete a tag with a particular name
 2.  AddressBook deletes the specified tag from all contacts in
- AddressBook (if tag is found) and updates the GUI.
+ AddressBook and updates the GUI.
+ +
+Use case ends
+
+*Extensions*
+
+* 1a. The tag is not found
++
+Use case ends
+ 
+=== Use case: Delete many persons simultaneously
+
+*MSS*
+
+1.  User requests to delete persons specified by indices
+2.  AddressBook deletes the requested contacts
+3.  Addressbook reports the entries that have been deleted
++
+Use case ends
+
+*Extensions*
+
+* 1a. The index is invalid
 +
 Use case ends
 
@@ -957,13 +960,13 @@ Use case ends
 *MSS*
 
 1.  User requests to list more than 100,000 persons at one time
-2.  AddressBook shows a list of matching persons
+2.  AddressBook shows a list of 100,000 persons
 +
 Use case ends
 
 *Extensions*
 
-* 2a. The list is empty
+* 1a. The list is empty
 +
 Use case ends
 
@@ -1107,22 +1110,19 @@ Use case ends.
 
 .  Should work on any link:#mainstream-os[mainstream OS] as long as it has Java `1.8.0_60` or higher installed.
 .  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-.  Should be compatible with Mac and Windows users
-.  Should be able to handle unicode (UTF-8) text
+.  Should be compatible with both Mac and Windows operating system.
+.  Should be able to handle unicode (UTF-8) text.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 .  The system should be backward compatible with data produced by earlier versions of the system.
 .  The system should work on both 32-bit and 64-bit environments.
 .  Should return the list of persons in the storage within 1 second when users sort persons by tag.
 .  Should be able to recover itself after a power shutdown.
 .  Should display specific error messages if the system fails react to user.
-.  Should be able to give suggestions to user on how to handle an error messages.
 .  This product should be free for the public.
-.  Should be easy for user to remember the commands.
-.  Should be backward compatible with data produced by earlier versions of the system.
+.  Should be no more than 10 alphabets for a command so that users can easily memorize it.
 .  Should be usable by a novice who has never tried command line interface.
-.  The project is expected to adhere to a schedule that delivers a feature set every week.
 .  The product is not required to handle the printing of reports.
-.  Should produce clean code when contribute to the project.
+.  Should follow Java naming convention.
 .  Should strictly adhere OOP standard and follow the existing code style when changes are made on the project.
 .  Should update documentation necessarily with each new change on the project.
 .  Should update JUnit tests for each new feature, and important newly-created functions.
