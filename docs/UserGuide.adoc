@@ -213,6 +213,17 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
+=== Deleting multiple person : `delete`
+
+Deletes multiple person from the address book. +
+Format: `delete INDEX/INDEX`
+
+Examples:
+
+* `list` +
+`delete 2/3` +
+Deletes the 2nd and 3rd person in the address book.
+
 === Deleting a tag : `deletetag`
 
 Deletes the specified tag from the address book. +

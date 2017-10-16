@@ -59,7 +59,7 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_delete() throws Exception {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.get(0).getOneBased());
         assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
     }
 
@@ -68,8 +68,8 @@ public class AddressBookParserTest {
         Person person = new PersonBuilder().build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getPersonDetails(person));
-        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
+                + INDEX_FIRST_PERSON.get(0).getOneBased() + " " + PersonUtil.getPersonDetails(person));
+        assertEquals(new EditCommand(INDEX_FIRST_PERSON.get(0), descriptor), command);
     }
 
     @Test
@@ -122,8 +122,8 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_select() throws Exception {
         SelectCommand command = (SelectCommand) parser.parseCommand(
-                SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
-        assertEquals(new SelectCommand(INDEX_FIRST_PERSON), command);
+                SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.get(0).getOneBased());
+        assertEquals(new SelectCommand(INDEX_FIRST_PERSON.get(0)), command);
     }
 
     @Test
