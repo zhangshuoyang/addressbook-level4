@@ -937,7 +937,7 @@ Use case ends
 * 1a. The tag is not found
 +
 Use case ends
- 
+
 === Use case: Delete many persons simultaneously
 
 *MSS*
