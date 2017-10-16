@@ -1,8 +1,6 @@
 package seedu.address.logic.commands;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import javafx.collections.ObservableList;
@@ -17,7 +15,7 @@ import seedu.address.model.person.ReadOnlyPerson;
  * Represents a command with hidden internal logic and the ability to be executed.
  */
 public abstract class Command {
-    public static final List<String> listOfAvailableCommands = Arrays.asList (
+    private static final List<String> listOfAvailableCommands = Arrays.asList (
             AddCommand.COMMAND_WORD,
             ClearCommand.COMMAND_WORD,
             DeleteCommand.COMMAND_WORD,
@@ -35,7 +33,7 @@ public abstract class Command {
             UndoCommand.COMMAND_WORD
     );
 
-    public static final List<String> listOfAvailableCommandAliases = Arrays.asList (
+    private static final List<String> listOfAvailableCommandAliases = Arrays.asList (
             AddCommand.COMMAND_WORD_ALIAS,
             ClearCommand.COMMAND_WORD_ALIAS,
             DeleteCommand.COMMAND_WORD_ALIAS,
@@ -82,6 +80,14 @@ public abstract class Command {
             builder.append("\n");
         }
         return  builder.toString();
+    }
+
+    public static List<String> getListOfAvailableCommands() {
+        return listOfAvailableCommands;
+    }
+
+    public static List<String> getListOfAvailableCommandAliases() {
+        return listOfAvailableCommandAliases;
     }
 
     /**

@@ -50,7 +50,7 @@ public class LogicManager extends ComponentManager implements Logic {
     @Override
     public List<String> getPossibleCommands(String commandText) {
         logger.info("---------------[AUTO COMPLETE][PREFIX ENTERED:" + commandText + "]");
-        return AutoCompleteUtil.autoCompleteCommand(commandText, Command.listOfAvailableCommands);
+        return AutoCompleteUtil.autoCompleteCommand(commandText, Command.getListOfAvailableCommands());
     }
 
     @Override
