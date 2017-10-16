@@ -1,10 +1,12 @@
 package seedu.address.logic;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.util.AutoCompleteUtil;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -43,6 +45,12 @@ public class LogicManager extends ComponentManager implements Logic {
         } finally {
             history.add(commandText);
         }
+    }
+
+    @Override
+    public List<String> getPossibleCommands(String commandText) {
+        logger.info("---------------[AUTO COMPLETE][PREFIX ENTERED:" + commandText + "]");
+        return AutoCompleteUtil.autoCompleteCommand(commandText, Command.listOfAvailableCommands);
     }
 
     @Override

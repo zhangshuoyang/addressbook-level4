@@ -34,7 +34,7 @@ public class MultiFilterCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    /*
+    /**
      * Use various comparsions to verify if equals method has been properly overriden
      */
     public void equals() {
@@ -113,7 +113,7 @@ public class MultiFilterCommandTest {
     }
 
     @Test
-    /*
+    /**
      * Verifies that multiple values in a field will be treated as a single string
      * and used to match contacts in address book
      */
@@ -130,7 +130,7 @@ public class MultiFilterCommandTest {
     }
 
     @Test
-    /*
+    /**
      * Verifies if comparison is case-insensitive
      */
     public void execute_caseInsensitive_multiplePersonsFound() {
@@ -168,7 +168,7 @@ public class MultiFilterCommandTest {
     }
 
     @Test
-    /*
+    /**
      * Verifies that a null predicate will not be used to filter persons
      * i.e. if the user does not enter any filters, all persons in the address book are returned
      */
@@ -181,7 +181,7 @@ public class MultiFilterCommandTest {
     }
 
     @Test
-    /*
+    /**
      * Checks if able to perform a substring filtering on names
      * Match is case-insensitive
      */
@@ -197,7 +197,7 @@ public class MultiFilterCommandTest {
     }
 
     @Test
-    /*
+    /**
      * Checks if able to perform a substring filtering on email
      * Match is case-insensitive
      */
@@ -212,7 +212,7 @@ public class MultiFilterCommandTest {
     }
 
     @Test
-    /*
+    /**
      * Checks if able to perform a multi-filter search (by name and email)
      * Match is case-insensitive
      */

@@ -178,6 +178,33 @@ Returns contacts who match ALL of the following criteria: +
 An example of a matching contact for this command would be +
 `Ivan` that has phone no. `999`, email `g@y.com` and address `123 geylang road`
 
+=== Autocomplete command names
+
+Finds commands whose names start with the user-entered text.
+Names of matching commands would be suggested to the user or automatically entered
+ depending on how many matching commands were found. +
+Format: [Prefix]
+
+****
+* The hotkey for autocomplete is the `TAB` key.
+* The match is case-insensitive. E.g. `del` and `Del` will both match the `delete`
+command.
+* The system looks for commands whose names start with the user-entered text. This means that `del` will match `delete` but `ele`
+will not.
+* If no text is entered before pressing the hotkey, the system displays all available commands.
+* The system does not support autocompletion for command aliases.
+* If there is more than one matching command, the names of all matching
+commands will be displayed as a suggestion in the result pane.
+* If there is only one matching command, then the full
+name for the command will be automatically filled into the command bar instead of being displayed in the result pane.
+****
+
+Examples:
+
+* `del` expands to `delete` in the command bar
+* `df` does not match with any command name. Hence, nothing is returned by address book.
+* `d` returns various command suggestions in the result pane. e.g.`delete` and `deletetag`
+
 === Deleting a person : `delete`
 
 Deletes the specified person from the address book. +
@@ -204,13 +231,18 @@ Deletes the specified tag from the address book. +
 Format: `delete tag_name`
 
 ****
-* Deletes the tag with the specified `tag_name` from all records.
+* The alias for this command is `dt`. That means that you can type +
+`dt` instead of `deletetag`.
+* Deletes the tag with the specified `tag_name` from all records in the
+address book.
+* `tag_name` is case-sensitive (i.e. `Friends` is not the
+same as `friends`).
 ****
 
 Examples:
 
 * `deletetag friends` +
-Deletes the tag "friends" from all records in the address book.
+Deletes the tag `friends` from all records in the address book.
 
 === Selecting a person : `select`
 

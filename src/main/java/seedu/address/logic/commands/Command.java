@@ -1,5 +1,10 @@
 package seedu.address.logic.commands;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.CommandHistory;
@@ -12,6 +17,40 @@ import seedu.address.model.person.ReadOnlyPerson;
  * Represents a command with hidden internal logic and the ability to be executed.
  */
 public abstract class Command {
+    public static final List<String> listOfAvailableCommands = Arrays.asList (
+            AddCommand.COMMAND_WORD,
+            ClearCommand.COMMAND_WORD,
+            DeleteCommand.COMMAND_WORD,
+            DeleteTagCommand.COMMAND_WORD,
+            EditCommand.COMMAND_WORD,
+            ExitCommand.COMMAND_WORD,
+            FindCommand.COMMAND_WORD,
+            HelpCommand.COMMAND_WORD,
+            HistoryCommand.COMMAND_WORD,
+            ListCommand.COMMAND_WORD,
+            MultiFilterCommand.COMMAND_WORD,
+            RedoCommand.COMMAND_WORD,
+            SearchCommand.COMMAND_WORD,
+            SelectCommand.COMMAND_WORD,
+            UndoCommand.COMMAND_WORD
+    );
+
+    public static final List<String> listOfAvailableCommandAliases = Arrays.asList (
+            AddCommand.COMMAND_WORD_ALIAS,
+            ClearCommand.COMMAND_WORD_ALIAS,
+            DeleteCommand.COMMAND_WORD_ALIAS,
+            DeleteTagCommand.COMMAND_WORD_ALIAS,
+            EditCommand.COMMAND_WORD_ALIAS,
+            FindCommand.COMMAND_WORD_ALIAS,
+            HistoryCommand.COMMAND_WORD_ALIAS,
+            ListCommand.COMMAND_WORD_ALIAS,
+            MultiFilterCommand.COMMAND_WORD_ALIAS,
+            RedoCommand.COMMAND_WORD_ALIAS,
+            SearchCommand.COMMAND_WORD_ALIAS,
+            SelectCommand.COMMAND_WORD_ALIAS,
+            UndoCommand.COMMAND_WORD_ALIAS
+    );
+
     protected Model model;
     protected CommandHistory history;
     protected UndoRedoStack undoRedoStack;
