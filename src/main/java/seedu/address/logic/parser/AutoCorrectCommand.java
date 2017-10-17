@@ -78,19 +78,19 @@ public class AutoCorrectCommand {
           "editDistance1" *again* to each word of its own output do?)
         - Finally, if no good replacements are found, return the word.
     */
-    public static String correctWord (String inputCommand) {
+    public static String correctWord (String toBeChecked) {
 
-        inputCommand = inputCommand.toLowerCase();
+        toBeChecked = toBeChecked.toLowerCase();
         ArrayList<String> commandPool = getCommandPool();
         final String defaultresult = "No Such Command";
         String result = "";
 
-        if (commandPool.contains(inputCommand)) {
-            return inputCommand;
+        if (commandPool.contains(toBeChecked)) {
+            return toBeChecked;
         }
 
         for (String command : commandPool) {
-            result = checkMisspeltWords(command, inputCommand);
+            result = checkMisspeltWords(command, toBeChecked);
             if (!result.equals(defaultresult)) {
                 return result;
             }
