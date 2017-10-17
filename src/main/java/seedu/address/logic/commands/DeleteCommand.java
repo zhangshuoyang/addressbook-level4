@@ -43,7 +43,7 @@ public class DeleteCommand extends UndoableCommand {
             }
         }
 
-        String result = new String();
+        String result = "";
         Collections.sort(targetIndex);
         for (Index i : targetIndex) {
             ReadOnlyPerson personToDelete = lastShownList.get(i.getZeroBased());
