@@ -82,156 +82,46 @@ public class AutoCorrectCommand {
 
         word = word.toLowerCase();
         ArrayList<String> commandPool = getCommandPool();
+        final String defaultresult = "No Such Command";
+        String result = "";
 
         if (commandPool.contains(word)) {
             return word;
         }
 
-        ArrayList<String> editDistance1WordsAdd = editDistance1(AddCommand.COMMAND_WORD);
-        ArrayList<ArrayList<String>> editDistance2WordsAdd = new ArrayList<ArrayList<String>>();
-        for (String editDistance1WordAdd : editDistance1WordsAdd) {
-            editDistance2WordsAdd.add(editDistance1(editDistance1WordAdd));
-        }
-
-        if (editDistance1WordsAdd.contains(word)) {
-            return AddCommand.COMMAND_WORD;
-        }
-
-        for (ArrayList<String> editDistance2WordAdd : editDistance2WordsAdd) {
-            if (editDistance2WordAdd.contains(word)) {
-                return AddCommand.COMMAND_WORD;
+        for (String command : commandPool) {
+            result = checkMisspeltWords(command, word);
+            if (!result.equals(defaultresult)) {
+                return result;
             }
         }
 
-        ArrayList<String> editDistance1WordsEdit = editDistance1(EditCommand.COMMAND_WORD);
-        ArrayList<ArrayList<String>> editDistance2WordsEdit = new ArrayList<ArrayList<String>>();
-        for (String editDistance1WordEdit : editDistance1WordsEdit) {
-            editDistance2WordsEdit.add(editDistance1(editDistance1WordEdit));
+        return result;
+    }
+
+    /**
+     * Check input command with every possible misspelt word
+     */
+    public static String checkMisspeltWords (String command, String input) {
+        final String defaultResult = "No Such Command";
+
+        ArrayList<String> editDistance1Words = editDistance1(command);
+        ArrayList<ArrayList<String>> editDistance2Words = new ArrayList<ArrayList<String>>();
+        for (String editDistance1Word : editDistance1Words) {
+            editDistance2Words.add(editDistance1(editDistance1Word));
         }
 
-        if (editDistance1WordsEdit.contains(word)) {
-            return EditCommand.COMMAND_WORD;
+        if (editDistance1Words.contains(input)) {
+            return command;
         }
 
-        for (ArrayList<String> editDistance2WordEdit : editDistance2WordsEdit) {
-            if (editDistance2WordEdit.contains(word)) {
-                return EditCommand.COMMAND_WORD;
+        for (ArrayList<String> editDistance2Word : editDistance2Words) {
+            if (editDistance2Word.contains(input)) {
+                return command;
             }
         }
 
-        ArrayList<String> editDistance1WordsDelete = editDistance1(DeleteCommand.COMMAND_WORD);
-        ArrayList<ArrayList<String>> editDistance2WordsDelete = new ArrayList<ArrayList<String>>();
-        for (String editDistance1WordDelete : editDistance1WordsDelete) {
-            editDistance2WordsDelete.add(editDistance1(editDistance1WordDelete));
-        }
-
-        if (editDistance1WordsDelete.contains(word)) {
-            return DeleteCommand.COMMAND_WORD;
-        }
-
-        for (ArrayList<String> editDistance2WordDelete : editDistance2WordsDelete) {
-            if (editDistance2WordDelete.contains(word)) {
-                return DeleteCommand.COMMAND_WORD;
-            }
-        }
-
-        ArrayList<String> editDistance1WordsSearch = editDistance1(SearchCommand.COMMAND_WORD);
-        ArrayList<ArrayList<String>> editDistance2WordsSearch = new ArrayList<ArrayList<String>>();
-        for (String editDistance1WordSearch : editDistance1WordsSearch) {
-            editDistance2WordsSearch.add(editDistance1(editDistance1WordSearch));
-        }
-
-        if (editDistance1WordsSearch.contains(word)) {
-            return SearchCommand.COMMAND_WORD;
-        }
-
-        for (ArrayList<String> editDistance2WordSearch : editDistance2WordsSearch) {
-            if (editDistance2WordSearch.contains(word)) {
-                return SearchCommand.COMMAND_WORD;
-            }
-        }
-
-        ArrayList<String> editDistance1WordsHelp = editDistance1(HelpCommand.COMMAND_WORD);
-        ArrayList<ArrayList<String>> editDistance2WordsHelp = new ArrayList<ArrayList<String>>();
-        for (String editDistance1WordHelp : editDistance1WordsHelp) {
-            editDistance2WordsHelp.add(editDistance1(editDistance1WordHelp));
-        }
-
-        if (editDistance1WordsHelp.contains(word)) {
-            return HelpCommand.COMMAND_WORD;
-        }
-
-        for (ArrayList<String> editDistance2WordHelp : editDistance2WordsHelp) {
-            if (editDistance2WordHelp.contains(word)) {
-                return HelpCommand.COMMAND_WORD;
-            }
-        }
-
-        ArrayList<String> editDistance1WordsHistory = editDistance1(HistoryCommand.COMMAND_WORD);
-        ArrayList<ArrayList<String>> editDistance2WordsHistory = new ArrayList<ArrayList<String>>();
-        for (String editDistance1WordHistory : editDistance1WordsHistory) {
-            editDistance2WordsHistory.add(editDistance1(editDistance1WordHistory));
-        }
-
-        if (editDistance1WordsHistory.contains(word)) {
-            return HistoryCommand.COMMAND_WORD;
-        }
-
-        for (ArrayList<String> editDistance2WordHistory : editDistance2WordsHistory) {
-            if (editDistance2WordHistory.contains(word)) {
-                return HistoryCommand.COMMAND_WORD;
-            }
-        }
-
-        ArrayList<String> editDistance1WordsUndo = editDistance1(UndoCommand.COMMAND_WORD);
-        ArrayList<ArrayList<String>> editDistance2WordsUndo = new ArrayList<ArrayList<String>>();
-        for (String editDistance1WordUndo : editDistance1WordsUndo) {
-            editDistance2WordsUndo.add(editDistance1(editDistance1WordUndo));
-        }
-
-        if (editDistance1WordsUndo.contains(word)) {
-            return UndoCommand.COMMAND_WORD;
-        }
-
-        for (ArrayList<String> editDistance2WordUndo : editDistance2WordsUndo) {
-            if (editDistance2WordUndo.contains(word)) {
-                return UndoCommand.COMMAND_WORD;
-            }
-        }
-
-        ArrayList<String> editDistance1WordsRedo = editDistance1(RedoCommand.COMMAND_WORD);
-        ArrayList<ArrayList<String>> editDistance2WordsRedo = new ArrayList<ArrayList<String>>();
-        for (String editDistance1WordRedo : editDistance1WordsRedo) {
-            editDistance2WordsRedo.add(editDistance1(editDistance1WordRedo));
-        }
-
-        if (editDistance1WordsRedo.contains(word)) {
-            return RedoCommand.COMMAND_WORD;
-        }
-
-        for (ArrayList<String> editDistance2WordRedo : editDistance2WordsRedo) {
-            if (editDistance2WordRedo.contains(word)) {
-                return RedoCommand.COMMAND_WORD;
-            }
-        }
-
-        ArrayList<String> editDistance1WordsMulti = editDistance1(MultiFilterCommand.COMMAND_WORD);
-        ArrayList<ArrayList<String>> editDistance2WordsMulti = new ArrayList<ArrayList<String>>();
-        for (String editDistance1WordMulti : editDistance1WordsMulti) {
-            editDistance2WordsMulti.add(editDistance1(editDistance1WordMulti));
-        }
-
-        if (editDistance1WordsMulti.contains(word)) {
-            return MultiFilterCommand.COMMAND_WORD;
-        }
-
-        for (ArrayList<String> editDistance2WordMulti : editDistance2WordsMulti) {
-            if (editDistance2WordMulti.contains(word)) {
-                return MultiFilterCommand.COMMAND_WORD;
-            }
-        }
-
-        return "no such command";
+        return defaultResult;
     }
 
     public static ArrayList<String> getCommandPool () {
