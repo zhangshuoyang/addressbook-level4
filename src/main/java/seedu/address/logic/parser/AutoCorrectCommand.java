@@ -100,7 +100,7 @@ public class AutoCorrectCommand {
     }
 
     /**
-     * Check input command with every possible misspelt word
+     * Check input command with every possible mis-spelt word
      */
     public static String checkMisspeltWords (String command, String input) {
         final String defaultResult = "No Such Command";
@@ -123,7 +123,9 @@ public class AutoCorrectCommand {
 
         return defaultResult;
     }
-
+    /**
+     * Generate a list of current command
+     */
     public static ArrayList<String> getCommandPool () {
 
         ArrayList<String> commandPool = new ArrayList<String>();
