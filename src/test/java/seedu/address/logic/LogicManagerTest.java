@@ -59,7 +59,7 @@ public class LogicManagerTest {
     /**
      * Test the correctness of the auto complete mechanism
      */
-    public void execute_autoCompleteCommand_success() {
+    public void executeAutoCompleteCommandSuccess() {
         List<String> actualList;
         List<String> expectedList;
 
