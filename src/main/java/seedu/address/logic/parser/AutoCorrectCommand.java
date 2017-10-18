@@ -80,20 +80,20 @@ public class AutoCorrectCommand {
     */
     public static String correctWord (String misSpeltWord) {
 
-        misSpeltWord = misSpeltWord.toLowerCase();
+        String formattedMisSpeltword = misSpeltWord.toLowerCase();
         ArrayList<String> commandPool = getCommandPool();
         final String defaultresult = "No Such Command";
         String result = "";
 
-        if (commandPool.contains(misSpeltWord)) {
-            return misSpeltWord;
+        if (commandPool.contains(formattedMisSpeltword)) {
+            return formattedMisSpeltword;
         }
 
         for (String command : commandPool) {
-            if (command.charAt(0) != misSpeltWord.charAt(0)) {
+            if (command.charAt(0) != formattedMisSpeltword.charAt(0)) {
                 continue;
             }
-            result = checkMisspeltWords(command, misSpeltWord);
+            result = checkMisspeltWords(command, formattedMisSpeltword);
             if (!result.equals(defaultresult)) {
                 return result;
             }
