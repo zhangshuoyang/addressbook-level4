@@ -90,6 +90,7 @@ public class AutoCorrectCommand {
         }
 
         for (String command : commandPool) {
+            if(command.charAt(0) != toBeChecked.charAt(0)) continue;
             result = checkMisspeltWords(command, toBeChecked);
             if (!result.equals(defaultresult)) {
                 return result;
