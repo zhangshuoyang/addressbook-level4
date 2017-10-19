@@ -372,6 +372,32 @@ We are using `java.util.logging` package for logging. The `LogsCenter` class is 
 
 Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: `config.json`).
 
+=== Autocomplete
+
+The `Autocomplete` feature eables commands to be automatically suggested and
+completed for users. It is invoked in the `LogicManager` class.
+
+*Prerequisites/Dependencies*
+
+* The hotkey for lauching Autocomplete is indicated in the `CommandBox` class.
+Currently, the hotkey is `TAB`.
+* The `COMMAND_WORD` for every command must be added to
+the `listOfAvaliableCommands` list in the  `Command` class.
+* Although the autocomplete feature currently does not support autocompletion
+for aliases. The `COMMAND_WORD_ALIAS` alias for every command, that has an alias,
+should be added to the `listOfCommandAliases` list in the `Command` class
+for completeness and testing purposes.
+* The logic for filtering matching commands is implemented in the `AutoCompleteUtil`
+class.
+* If the need arises to autocomplete other fields such as `name`, `address` and `email`,
+another method should be implemented in the `AutoCompleteUtil` class.
+
+*Citeria for autocomplete*
+
+* `COMMAND_WORD` starts with user-entered prefix (e.g. del matchs `Delete` commmand).
+*  `If no prefix is entered`, all commands are displayed to the user.
+* Match is case-insensitive.
+
 == Documentation
 
 We use asciidoc for writing documentation.
@@ -898,7 +924,23 @@ Use case ends
 Use case ends
 
 [discrete]
-=== Use case: Delete many contacts simultaneously
+=== Use case: Delete a particular tag
+
+*MSS*
+
+1.  User requests to delete a tag with a particular name
+2.  AddressBook deletes the specified tag from all contacts in
+ AddressBook and updates the GUI.
+ +
+Use case ends
+
+*Extensions*
+
+* 1a. The tag is not found
++
+Use case ends
+
+=== Use case: Delete many persons simultaneously
 
 *MSS*
 
@@ -1030,21 +1072,32 @@ Use case ends.
 Use case ends.
 
 [discrete]
-=== Use case: Auto-complete user input
+=== Use case: Auto-complete command names
 
 *MSS*
 
-1.  User types a command halfway and press the autocomplete hotkey
-2.  AddressBook returns the command that is to be completed
+1.  User types a command halfway and presses the autocomplete hotkey.
+2.  AddressBook prints suggested commands, whose prefixes match the
+ text (case-insenstive) entered by user, in the result pane of the GUI.
+3. User enters one of the suggested commands to perform
+his task.
 +
 Use case ends.
 
 *Extensions*
 
-* 3a. No command has been typed
-** 3a1. AddressBook will not respond.
+* 3a. No text has been entered.
+** 3a1. AddressBook prints the names of all available commands in the result pane.
+* 3b. Text entered does not match the prefix of the name of any available command.
+** 3b1. AddressBook will not respond.
+* 3c. There is only 1 command whose prefix matches the
+ text entered by the user.
+** 3c1. AddressBook replaces the text entered by user, in
+the command box, with the name of the matching command.
+** 3c2. User types additional flags and options for the
+completed command name (if any).
 +
-Use case ends
+Use case ends.
 
 {More to be added}
 

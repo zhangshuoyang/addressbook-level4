@@ -33,7 +33,7 @@ public class MultiFilterCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    /*
+    /**
      * Use various comparsions to verify if equals method has been properly overriden
      */
     public void equals() {
@@ -112,7 +112,24 @@ public class MultiFilterCommandTest {
     }
 
     @Test
-    /*
+    /**
+     * Verifies that multiple values in a field will be treated as a single string
+     * and used to match contacts in address book
+     */
+    public void execute_multipleValuesInField_singlePersonFound() throws IllegalValueException {
+        MultiFilterCommand command = prepareCommand("Benson Meier", null, null, null);
+
+        List<ReadOnlyPerson> expectedList = new ArrayList<>(model.getAddressBook().getPersonList())
+                .stream()
+                .filter(p -> p.getName().toString().toLowerCase().contains("Benson Meier".toLowerCase()))
+                .collect(Collectors.toList());
+        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW,
+                expectedList.size());
+        assertCommandSuccess(command, expectedMessage, expectedList);
+    }
+
+    @Test
+    /**
      * Verifies if comparison is case-insensitive
      */
     public void execute_caseInsensitive_multiplePersonsFound() {
@@ -150,14 +167,7 @@ public class MultiFilterCommandTest {
     }
 
     @Test
-    public void execute_zeroKeywords_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
-        MultiFilterCommand command = prepareCommand(" ", " ", " ", " ");
-        assertCommandSuccess(command, expectedMessage, Collections.emptyList());
-    }
-
-    @Test
-    /*
+    /**
      * Verifies that a null predicate will not be used to filter persons
      * i.e. if all fields are null, all persons in the address book are returned
      */
@@ -170,7 +180,7 @@ public class MultiFilterCommandTest {
     }
 
     @Test
-    /*
+    /**
      * Checks if able to perform a substring filtering on names
      * Match is case-insensitive
      */
@@ -186,7 +196,7 @@ public class MultiFilterCommandTest {
     }
 
     @Test
-    /*
+    /**
      * Checks if able to perform a substring filtering on email
      * Match is case-insensitive
      */
@@ -201,7 +211,7 @@ public class MultiFilterCommandTest {
     }
 
     @Test
-    /*
+    /**
      * Checks if able to perform a multi-filter search (by name and email)
      * Match is case-insensitive
      */

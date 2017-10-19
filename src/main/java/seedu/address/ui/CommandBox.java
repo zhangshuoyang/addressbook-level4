@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -48,15 +49,59 @@ public class CommandBox extends UiPart<Region> {
             // As up and down buttons will alter the position of the caret,
             // consuming it causes the caret's position to remain unchanged
             keyEvent.consume();
-
             navigateToPreviousInput();
             break;
         case DOWN:
             keyEvent.consume();
             navigateToNextInput();
             break;
+        case TAB:
+            keyEvent.consume();
+            launchAutoComplete();
+            commandTextField.requestFocus(); // focus the caret in the command box after autocomplete
+            commandTextField.end(); // move caret to the end of the completed command
+            break;
         default:
             // let JavaFx handle the keypress
+        }
+    }
+
+    /**
+     * Launches auto complete mechanism in logic
+     * when the auto complete hotkey is pressed in the Command Box
+     */
+    private void launchAutoComplete() {
+        List<String> listOfPossibleCommandWords = logic.getPossibleCommands(commandTextField.getText());
+        final int numberOfCommandsOnOneLine = 6;
+        int count = 0;
+        StringBuffer feedbackToUser = new StringBuffer();
+
+        /*
+         * Append all possible command words into a single formatted string
+         */
+        for (String commandWord : listOfPossibleCommandWords) {
+            // format the command so that it will be aligned when displayed to user
+            String s = String.format("%-20s", commandWord);
+            feedbackToUser.append(s);
+            count++;
+            if (count == numberOfCommandsOnOneLine) {
+                count = 0;
+                feedbackToUser.append("\n");
+            }
+        }
+
+        logger.info(listOfPossibleCommandWords.toString());
+
+        if (listOfPossibleCommandWords.size() == 1) {
+            /*
+             * there is only one possible command for the given prefix
+             * directly complete the command in the command box
+             */
+            commandTextField.setText(listOfPossibleCommandWords.get(0));
+            raise(new NewResultAvailableEvent(""));
+        } else {
+            // Display the list of command words to the user
+            raise(new NewResultAvailableEvent(feedbackToUser.toString()));
         }
     }
 
@@ -106,6 +151,7 @@ public class CommandBox extends UiPart<Region> {
             historySnapshot.next();
             // process result of the command
             commandTextField.setText("");
+
             logger.info("Result: " + commandResult.feedbackToUser);
             raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
 

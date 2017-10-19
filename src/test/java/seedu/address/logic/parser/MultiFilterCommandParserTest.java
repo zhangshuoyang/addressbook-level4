@@ -131,7 +131,7 @@ public class MultiFilterCommandParserTest {
     }
 
     @Test
-    /*
+    /**
      * Tests if parser can handle cases where certain fields are not entered by the user
      */
     public void parse_partialFieldsPresent_success() {
@@ -231,7 +231,7 @@ public class MultiFilterCommandParserTest {
     }
 
     @Test
-    /*
+    /**
      * Tests if fields can be parsed properly when they are entered in an arbitrary order
      */
     public void parse_rearrangedFieldsPresent_success() {

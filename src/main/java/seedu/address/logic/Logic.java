@@ -1,5 +1,7 @@
 package seedu.address.logic;
 
+import java.util.List;
+
 import javafx.collections.ObservableList;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -18,6 +20,11 @@ public interface Logic {
      * @throws ParseException If an error occurs during parsing.
      */
     CommandResult execute(String commandText) throws CommandException, ParseException;
+
+    /**
+     * Enables the auto-completion of commands when a particular hotkey is pressed
+     */
+    List<String> getPossibleCommands(String commandText);
 
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<ReadOnlyPerson> getFilteredPersonList();
