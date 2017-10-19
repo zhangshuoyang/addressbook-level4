@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.parser.AutoCorrectCommand.correctWord;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -49,7 +50,8 @@ public class AddressBookParser {
 
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
-        switch (commandWord) {
+        final String autoCorrectedCommand = autoCorrectCommand(commandWord);
+        switch (autoCorrectedCommand) {
 
         case AddCommand.COMMAND_WORD: case AddCommand.COMMAND_WORD_ALIAS:
             return new AddCommandParser().parse(arguments);
@@ -99,6 +101,10 @@ public class AddressBookParser {
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
+    }
+
+    public String autoCorrectCommand(String commandWord) {
+        return correctWord(commandWord);
     }
 
 }
