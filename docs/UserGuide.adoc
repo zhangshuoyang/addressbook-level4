@@ -240,6 +240,17 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
+=== Deleting multiple person : `delete`
+
+Deletes multiple person from the address book. +
+Format: `delete INDEX/INDEX`
+
+Examples:
+
+* `list` +
+`delete 2/3` +
+Deletes the 2nd and 3rd person in the address book.
+
 === Deleting a tag : `deletetag` [since v1.0]
 
 Deletes the specified tag from the address book. +
@@ -349,6 +360,21 @@ Format: `clear`
 
 Exits the program. +
 Format: `exit`
+
+=== Tag use emoji : `tag emoji` (Coming in V2.0)
+
+Input characters to represent an emoji as a tag
+Format: `tag :)`
+
+=== Add no-English words as input (Coming in V2.0)
+
+Input non-English words to be saved in the application
+Format: CommandWrd + inputText
+
+=== Add tasks (Coming in V2.0)
+
+Add personal tasks into the application
+Format: `Add Task homework`
 
 === Saving the data
 
