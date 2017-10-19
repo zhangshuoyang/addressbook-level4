@@ -379,11 +379,13 @@ completed for users. It is invoked in the `LogicManager` class.
 
 *Prerequisites/Dependencies*
 
-* The hotkey for lauching Autocomplete is indicated in the `CommandBox` class.
+* The hotkey for lauching `Autocomplete` is indicated in the `CommandBox` class.
 Currently, the hotkey is `TAB`.
 * The `COMMAND_WORD` for every command must be added to
 the `listOfAvaliableCommands` list in the  `Command` class.
-* Although the autocomplete feature currently does not support autocompletion
+If the developer forgets to perform this step, `AddressBook` will work
+normally but there will be no hints for those commands.
+* Although `Autocomplete` currently does not support autocompletion
 for aliases. The `COMMAND_WORD_ALIAS` alias for every command, that has an alias,
 should be added to the `listOfCommandAliases` list in the `Command` class
 for completeness and testing purposes.
@@ -395,8 +397,25 @@ another method should be implemented in the `AutoCompleteUtil` class.
 *Citeria for autocomplete*
 
 * `COMMAND_WORD` starts with user-entered prefix (e.g. del matchs `Delete` commmand).
-*  `If no prefix is entered`, all commands are displayed to the user.
+*  If no prefix is entered, all commands are displayed to the user.
 * Match is case-insensitive.
+
+==== Design Considerations
+
+**Aspect:** Implementation of `Autocomplete` +
+**Alternative 1 (current choice):** Add a list of names of available commands to `Command` class. +
+**Pros:** We do not need to care about how `Autocomplete` works when adding new commands. We simply need to add the
+ `COMMAND_WORD` of new commands to the Command class and `Autocomplete` will automatically use them for hints.
+ Furthermore, command names can be dynamically obtained via the `COMMAND_WORD` field for every command. +
+**Cons:** Additional level of dependency as the developer has to consistently update the `Command` class whenever
+ a new type of command is created. +
+**Alternative 2:** Place the `COMMAND_WORD` of all commands into a text file and read it when `AddressBook` starts. +
+**Pros:** No additional dependency among classes as `AddressBook` gets all command names from a text file rather
+ than obtaining them from the `COMMAND_WORD` field of each type of command. +
+**Cons:** The developer has to add the `COMMAND_WORD` of every new command to the text file.
+ Furthermore, there is repeated work (and higher risk of error) as the developer must take care to ensure that the text file's entry corresponds with the
+`COMMAND WORD` field.
+
 
 == Documentation
 
@@ -756,7 +775,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |Priority |As a ... |I want to ... |So that I can...
 
-|`* * *` |university student |backup and restore my contacts |recover my contacts in case of unexpected incidents
+|`* * *` |university student |backup and restore my contacts |recover my contacts in case of unexpected incidents.
 
 |`* * *` |person with a large social circle |filter my contacts by multiple criteria |search for specific contacts more easily
 
@@ -771,8 +790,6 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* * *` |user |search friends by tags |search friends by group
 
 |`* *` |busy businessma |delete multiple users simultaneously|perform bookeeping more easily
-
-|`* *` |efficient user |view different contacts in different font color |identify different groups easily
 
 |`* *` |user |delete a person |remove entries that I no longer need
 
@@ -798,7 +815,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`*` |user likes customization |change the colour theme |make my address book more personalised
 
-|`*` |forgetful person |display avatars for each contact|recall who a particular person is
+|`*` |forgetful person |display avatars for each contact|recall who a particular person is.
 
 |`*` |lazy user |voice out the commands rather than typing |be more efficient at adding contacts
 
