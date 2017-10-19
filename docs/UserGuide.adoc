@@ -148,7 +148,7 @@ Examples:
 * `add n/John Doe p/98765432 p2/73624789 e/johnd@example.com a/John street, block 123, #01-01` +
 * `edit 1 p/91234567 p2/73624789 e/johndoe@example.com` +
 
-=== Locating persons by multiple criteria: `multifilter`
+=== Locating persons by multiple criteria: `multifilter` [since v1.1]
 
 Finds persons whose names, phone no., emails and addresses, +
 match a set of specified criteria. +
@@ -193,7 +193,7 @@ Returns contacts who match ALL of the following criteria: +
 An example of a matching contact for this command would be +
 `Ivan` that has phone no. `999`, email `g@y.com` and address `123 geylang road`
 
-=== Autocomplete command names
+=== Autocomplete command names [since v1.2]
 
 Finds commands whose names start with the user-entered text.
 Names of matching commands would be suggested to the user or automatically entered
@@ -240,7 +240,7 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
-=== Deleting a tag : `deletetag`
+=== Deleting a tag : `deletetag` [since v1.0]
 
 Deletes the specified tag from the address book. +
 Format: `delete tag_name`
@@ -252,6 +252,7 @@ Format: `delete tag_name`
 address book.
 * `tag_name` is case-sensitive (i.e. `Friends` is not the
 same as `friends`).
+* The result of this command is not undoable.
 ****
 
 Examples:
