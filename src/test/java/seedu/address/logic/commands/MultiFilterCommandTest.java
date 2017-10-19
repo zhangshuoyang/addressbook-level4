@@ -116,7 +116,7 @@ public class MultiFilterCommandTest {
      * Verifies that multiple values in a field will be treated as a single string
      * and used to match contacts in address book
      */
-    public void execute_multipleValuesInField_singlePersonFound() throws IllegalValueException {
+    public void execute_multipleValuesInField_singlePersonFound() {
         MultiFilterCommand command = prepareCommand("Benson Meier", null, null, null);
 
         List<ReadOnlyPerson> expectedList = new ArrayList<>(model.getAddressBook().getPersonList())
@@ -232,13 +232,14 @@ public class MultiFilterCommandTest {
     private MultiFilterCommand prepareCommand(String name, String phone, String email, String address) {
         MultiFilterCommand command = new MultiFilterCommand(
                 name == null ? null : new NameContainsKeywordsSubstrPredicate(
-                        Arrays.asList(name.split("\\s+"))),
+                        Arrays.asList(name)),
                 phone == null ? null : new PhoneContainsKeywordsSubstrPredicate(
-                        Arrays.asList(phone.split("\\s+"))),
+                        Arrays.asList(phone)),
                 email == null ? null : new EmailContainsKeywordsSubstrPredicate(
-                        Arrays.asList(email.split("\\s+"))),
+                        Arrays.asList(email)),
                 address == null ? null : new AddressContainsKeywordsSubstrPredicate(
-                        Arrays.asList(address.split("\\s+"))));
+                        Arrays.asList(address))
+        );
 
         command.setData(model, new CommandHistory(), new UndoRedoStack());
         return command;
