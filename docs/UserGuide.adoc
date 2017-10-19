@@ -360,6 +360,21 @@ Format: `clear`
 Exits the program. +
 Format: `exit`
 
+=== Tag use emoji : `tag emoji` (Coming in V2.0)
+
+Input characters to represent an emoji as a tag
+Format: `tag :)`
+
+=== Add no-English words as input (Coming in V2.0)
+
+Input non-English words to be saved in the application
+Format: CommandWrd + inputText
+
+=== Add tasks (Coming in V2.0)
+
+Add personal tasks into the application
+Format: `Add Task homework`
+
 === Saving the data
 
 Address book data are saved in the hard disk automatically after any command that changes the data. +
