@@ -21,7 +21,7 @@ public class AutoCorrectCommandTest {
     /**
      *  Check for the situation where the misspelt word cannot be corrected.
      */
-    public void execute_commandIsNotFound_throwsException() {
+    public void executeCommandIsNotFoundThrowsException() {
         final String defaultResult = "Unknown Command";
 
         /*
@@ -43,7 +43,7 @@ public class AutoCorrectCommandTest {
     /**
      * Check for the input parameter, throws exception when it is null or empty string
      */
-    public void execute_inputCommand_nullException() {
+    public void executeInputCommandNullException() {
         thrown.expect(IllegalArgumentException.class);
         autoCorrectCommand.correctWord("");
         autoCorrectCommand.correctWord(null);
@@ -53,7 +53,7 @@ public class AutoCorrectCommandTest {
     /**
      * Check the method will return the correct command for edit distance 1 input
      */
-    public void execute_editDistance1_matchCommandTest() {
+    public void executeEditDistance1MatchCommandTest() {
         final String commandSearch = "search";
         final String inputCommandSearch = "serach";
         ArrayList<String> misspeltWordsPoolSearch = autoCorrectCommand.editDistance1(commandSearch);
@@ -74,7 +74,7 @@ public class AutoCorrectCommandTest {
     /**
      * Check the method will return the correct command for edit distance 2 input
      */
-    public void execute_editDistance2_matchCommandTest() {
+    public void executeEditDistance2MatchCommandTest() {
         final String commandSearch = "search";
         final String inputCommandSearch = "sreach";
         String correctCommandSearch = autoCorrectCommand.correctWord(inputCommandSearch);
@@ -91,7 +91,7 @@ public class AutoCorrectCommandTest {
      * Check the method will not return the correct command if
      * the first alphabet of the input command does not match any available commands.
      */
-    public void execute_correctWords_notMatchTest() {
+    public void executeCorrectWordsNotMatchTest() {
         final String defaultResult = "Unknown Command";
 
         final String inputCommandSearch = "ereach";
