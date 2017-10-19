@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 
 import org.junit.Test;
 
-import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.model.AddressBook;
@@ -170,9 +169,9 @@ public class MultiFilterCommandTest {
     @Test
     /**
      * Verifies that a null predicate will not be used to filter persons
-     * i.e. if the user does not enter any filters, all persons in the address book are returned
+     * i.e. if all fields are null, all persons in the address book are returned
      */
-    public void execute_noFilters_allPersonsFound() {
+    public void execute_multipleKeywords_allPersonsFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW,
                 model.getAddressBook().getPersonList().size());
         MultiFilterCommand command = prepareCommand(null, null, null, null);
@@ -233,14 +232,13 @@ public class MultiFilterCommandTest {
     private MultiFilterCommand prepareCommand(String name, String phone, String email, String address) {
         MultiFilterCommand command = new MultiFilterCommand(
                 name == null ? null : new NameContainsKeywordsSubstrPredicate(
-                        Arrays.asList(name)),
+                        Arrays.asList(name.split("\\s+"))),
                 phone == null ? null : new PhoneContainsKeywordsSubstrPredicate(
-                        Arrays.asList(phone)),
+                        Arrays.asList(phone.split("\\s+"))),
                 email == null ? null : new EmailContainsKeywordsSubstrPredicate(
-                        Arrays.asList(email)),
+                        Arrays.asList(email.split("\\s+"))),
                 address == null ? null : new AddressContainsKeywordsSubstrPredicate(
-                        Arrays.asList(address))
-        );
+                        Arrays.asList(address.split("\\s+"))));
 
         command.setData(model, new CommandHistory(), new UndoRedoStack());
         return command;

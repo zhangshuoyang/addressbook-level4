@@ -772,6 +772,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |busy businessma |delete multiple users simultaneously|perform bookeeping more easily
 
+|`* *` |efficient user |view different contacts in different font color |identify different groups easily
+
 |`* *` |user |delete a person |remove entries that I no longer need
 
 |`* *` |businessman |share my contact |easier for my client to contact me
@@ -922,7 +924,7 @@ Use case ends
 Use case ends
 
 [discrete]
-=== Use case: Delete a tag with a particular name
+=== Use case: Delete a particular tag
 
 *MSS*
 
@@ -942,15 +944,9 @@ Use case ends
 
 *MSS*
 
-1.  User requests to delete persons specified by indices
+1.  User requests to delete contacts specified by indices
 2.  AddressBook deletes the requested contacts
-3.  Addressbook reports the entries that have been deleted
-+
-Use case ends
-
-*Extensions*
-
-* 1a. The index is invalid
+3.  Addressbook reports the entries that have been deleted (if any)
 +
 Use case ends
 
