@@ -15,7 +15,7 @@ public class CommandTest {
     /**
      * Check for duplicate command aliases.
      */
-    public void execute_findDuplicateCommandAliases_errorIfFound() {
+    public void executeFindDuplicateCommandAliasesErrorIfFound() {
         Set<String> uniqueAliases = new HashSet<>();
         uniqueAliases.addAll(Command.getListOfAvailableCommandAliases());
         assertEquals(Command.getListOfAvailableCommandAliases().size(), uniqueAliases.size());
