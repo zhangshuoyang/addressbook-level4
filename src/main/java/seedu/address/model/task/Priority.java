@@ -29,11 +29,7 @@ public class Priority {
      * Returns true is the given integer is a valid priority level
      */
     public static boolean isValidPriority(int test) {
-        if (test < 0 || test > 2) {
-            return false;
-        } else {
-            return true;
-        }
+        return test <= 2 && test >= 0;
     }
 
     @Override
