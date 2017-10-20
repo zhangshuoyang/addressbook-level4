@@ -234,8 +234,9 @@ Format: [mis-spelt command]
 
 Examples:
 
-* `deleet` will match to `delete`
+* `deleet` will match to `delete`.
 * `del` will not match to any command, application will display "Unkown command"
+* `d` will be matched to `delete` still as it is an alias.
 
 === Deleting a person : `delete`
 
@@ -257,7 +258,7 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
-=== Deleting multiple person : `delete`
+=== Deleting multiple person : `delete index/another index/...`
 
 Deletes multiple person from the address book. +
 Format: `delete INDEX/INDEX`
@@ -380,17 +381,17 @@ Format: `exit`
 
 === Tag use emoji : `tag emoji` [Coming in V2.0]
 
-Input characters to represent an emoji as a tag
+Input characters to represent an emoji as a tag. +
 Format: `tag :wink:`
 
 === Add non-English words as input [Coming in V2.0]
 
-Input non-English words to be saved in the application
+Input non-English words to be saved in the application.
 Format: CommandWrd + inputText
 
 === Add tasks [Coming in V2.0]
 
-Add personal tasks into the application
+Add personal tasks into the application.
 Format: `Add Task homework`
 
 === Add music [Coming in V2.0]
@@ -424,7 +425,7 @@ Provides keyboard shortcuts for commands.
 
 Example:
 
-* `Command l` +
+* Press `Command + l` on Mac or Press `Control + l` on Windows +
 The application will list all the contacts in the address book.
 
 === Saving the data
@@ -455,3 +456,14 @@ e.g.`select 2`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
+* *Search* : `search NAME` +
+e.g. `search John`
+* *AutoCorrect* : `MIS-SPELT COMMAND + correct command format` +
+e.g. `serach John will be matched to search John`
+* *Multi-filter*: `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]` +
+e.g. `mf n/iv p/9 e/g a/ge`
+* *Deleting multiple person*: `delete index/another index/...` +
+e.g. `delete 2/3`
+* *AutoCompele*: `[Prefix]` +
+e.g. `del` expands to `delete` in the command bar
+
