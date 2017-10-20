@@ -12,7 +12,7 @@ Contact Plus is built based on AddressBook - Level 4. The team is as follows:
 == Project Team
 
 === Chai Rui Zhong
-image::RuiZhong.jpg[width="150", align="left"]
+image::chairz.jpg[width="150", align="left"]
 {empty}[https://github.com/chairz[github]]
 
 Role: Developer +
@@ -30,7 +30,7 @@ Responsibilities: Model
 '''
 
 === Li Jiayao
-image::Li Jiayao.jpg[width="150", align="left"]
+image::jyl123.jpg[width="150", align="left"]
 {empty}[https://github.com/JYL123[github]]
 
 Role: Team Lead +
