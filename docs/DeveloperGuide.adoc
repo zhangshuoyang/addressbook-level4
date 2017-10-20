@@ -1106,7 +1106,7 @@ Use case ends.
 * 3a. No text has been entered.
 ** 3a1. AddressBook prints the names of all available commands in the result pane.
 * 3b. Text entered does not match the prefix of the name of any available command.
-** 3b1. AddressBook will not respond.
+** 3b1. AddressBook does not provide any suggestions.
 * 3c. There is only 1 command whose prefix matches the
  text entered by the user.
 ** 3c1. AddressBook replaces the text entered by user, in
