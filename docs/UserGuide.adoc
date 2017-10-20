@@ -381,7 +381,7 @@ Format: `exit`
 === Tag use emoji : `tag emoji` [Coming in V2.0]
 
 Input characters to represent an emoji as a tag
-Format: `tag :)`
+Format: `tag :wink:`
 
 === Add non-English words as input [Coming in V2.0]
 
@@ -392,6 +392,40 @@ Format: CommandWrd + inputText
 
 Add personal tasks into the application
 Format: `Add Task homework`
+
+=== Add music [Coming in V2.0]
+
+A default music folder will store serveral sounds for different events. +
+
+***
+* The music folder should be in the same level as data folder.
+***
+
+Example:
+
+* `delete 1` +
+The application will produce a sound to notify users that the deletion is performed.
+
+=== Add weather forecast [Coming in V2.0]
+
+Displaying weather forecast on the application according to the location detected.
+
+***
+* Assume the location data can be gotten (depends on the specific implementation).
+***
+
+=== Add push notification [Coming in V2.0]
+
+The application will prompt notifications for users on the computer for the up coming tasks.
+
+=== Add keyboard shorts [Coming in V2.0]
+
+Provides keyboard shortcuts for commands.
+
+Example:
+
+* `Command l` +
+The application will list all the contacts in the address book.
 
 === Saving the data
 
