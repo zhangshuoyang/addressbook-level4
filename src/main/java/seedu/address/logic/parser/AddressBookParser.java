@@ -47,6 +47,8 @@ public class AddressBookParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
 
+        AutoCorrectCommand autoCorrectCommand = new AutoCorrectCommand();
+        autoCorrectCommand.setMessageToUser(""); //reset the string value to empty after each auto-correct
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
         final String autoCorrectedCommand = autoCorrectCommand(commandWord);

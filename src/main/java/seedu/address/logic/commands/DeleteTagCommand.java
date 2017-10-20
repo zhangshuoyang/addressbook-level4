@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.AutoCorrectCommand;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
@@ -20,6 +21,8 @@ public class DeleteTagCommand extends Command {
 
     private final Tag tagToDelete;
 
+    private AutoCorrectCommand autoCorrectCommand = new AutoCorrectCommand();
+
     public DeleteTagCommand(Tag tagToDelete) {
         this.tagToDelete = tagToDelete;
     }
@@ -34,6 +37,12 @@ public class DeleteTagCommand extends Command {
             assert false : "Update will cause two contacts to be the same";
         }
 
-        return new CommandResult(String.format(MESSAGE_DELETE_TAG_SUCCESS, tagToDelete));
+        if (autoCorrectCommand.getMessageToUser().equals("")) {
+            return new CommandResult(String.format(MESSAGE_DELETE_TAG_SUCCESS, tagToDelete));
+        } else {
+            return new CommandResult(autoCorrectCommand.getMessageToUser()
+                    + "\n"
+                    + String.format(MESSAGE_DELETE_TAG_SUCCESS, tagToDelete));
+        }
     }
 }
