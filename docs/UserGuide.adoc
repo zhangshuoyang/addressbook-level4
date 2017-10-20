@@ -258,7 +258,7 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
-=== Deleting multiple person : `delete index/another index/...`
+=== Deleting multiple person : `delete index/another index/...` [since v1.2]
 
 Deletes multiple person from the address book. +
 Format: `delete INDEX/INDEX`
