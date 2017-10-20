@@ -374,12 +374,12 @@ Certain properties of the application can be controlled (e.g App name, logging l
 
 === Autocomplete
 
-The `Autocomplete` feature eables commands to be automatically suggested and
+The `Autocomplete` feature enables commands to be automatically suggested and
 completed for users. It is invoked in the `LogicManager` class.
 
 *Prerequisites/Dependencies*
 
-* The hotkey for lauching `Autocomplete` is indicated in the `CommandBox` class.
+* The hotkey for launching `Autocomplete` is indicated in the `CommandBox` class.
 Currently, the hotkey is `TAB`.
 * The `COMMAND_WORD` for every command must be added to
 the `listOfAvaliableCommands` list in the  `Command` class.
@@ -394,11 +394,7 @@ class.
 * If the need arises to autocomplete other fields such as `name`, `address` and `email`,
 another method should be implemented in the `AutoCompleteUtil` class.
 
-*Citeria for autocomplete*
 
-* `COMMAND_WORD` starts with user-entered prefix (e.g. del matchs `Delete` commmand).
-*  If no prefix is entered, all commands are displayed to the user.
-* Match is case-insensitive.
 
 ==== Design Considerations
 
@@ -416,6 +412,28 @@ another method should be implemented in the `AutoCompleteUtil` class.
  Furthermore, there is repeated work (and higher risk of error) as the developer must take care to ensure that the text file's entry corresponds with the
 `COMMAND WORD` field.
 
+=== Delete Multiple Contact
+The `Delete` multiple contact feature enables user to delete more than one contact in a single command. It is
+invoked in the `DeleteCommand` class.
+
+*Prerequisites/Dependencies*
+
+* The `Index` to be deleted is added to an ArrayList of `Index`.
+* To identify different `Index`, Regex `/` is used.
+* ArrayList `Index` needs to be sorted in descending order to prevent IndexOutOfBound
+exception.
+
+==== Design Considerations
+
+**Aspect:** Implementation of `delete` Multiple Contact +
+**Alternative 1 (current choice):** Add the `Index` to be deleted to an ArrayList. +
+**Pros:** We do not need to care how many `Index` or the order of the `Index` being input by the user as long as it
+is separated by `/`. +
+**Cons:** Additional space if required for the ArrayList of `Index`. +
+**Alternative 2:** Use 'Lazy' delete by adding a boolean field to each element +
+**Pros:** We do not need to remove anything from the ArrayList. The boolean 0 or 1 will just
+indicate if the contact has been deleted. +
+ **Cons:** The whole List has to be iterated to check if the contact has been deleted.
 
 == Documentation
 
@@ -822,6 +840,16 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`*` |user with many friends |record the appointments with friends and be notified y address book |be reminded to attend the appointments
 
 |`*` |artistic person |change the font size and font family of my contacts' records|have a more aesthetically pleasing addressbook interface.
+
+|`*` |music lovers |add different sound for different events|have a better feedback system to the user.
+
+|`*` |traveller |add weather forecast|plan my trips efficiently.
+
+|`*` |forgetful person |push notifications for upcoming tasks| i can be reminded of my priorities and tasks.
+
+|`*` |impatient person |date picker| so that i can input the format of the date correctly.
+
+|`*` |lazy person |have keyboard shortcuts| so i can perform the functions without typing the whole command.
 
 {More to be added}
 
