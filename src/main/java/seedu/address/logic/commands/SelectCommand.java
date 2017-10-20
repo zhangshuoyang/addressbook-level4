@@ -7,6 +7,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.AutoCorrectCommand;
 import seedu.address.model.person.ReadOnlyPerson;
 
 /**
@@ -26,6 +27,8 @@ public class SelectCommand extends Command {
 
     private final Index targetIndex;
 
+    private AutoCorrectCommand autoCorrectCommand = new AutoCorrectCommand();
+
     public SelectCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
@@ -40,7 +43,14 @@ public class SelectCommand extends Command {
         }
 
         EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex));
-        return new CommandResult(String.format(MESSAGE_SELECT_PERSON_SUCCESS, targetIndex.getOneBased()));
+
+        if (autoCorrectCommand.getMessageToUser().equals("")) {
+            return new CommandResult(String.format(MESSAGE_SELECT_PERSON_SUCCESS, targetIndex.getOneBased()));
+        } else {
+            return new CommandResult(autoCorrectCommand.getMessageToUser()
+                    + "\n"
+                    + String.format(MESSAGE_SELECT_PERSON_SUCCESS, targetIndex.getOneBased()));
+        }
 
     }
 
