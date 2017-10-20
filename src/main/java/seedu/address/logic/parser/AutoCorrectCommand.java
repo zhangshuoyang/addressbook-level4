@@ -26,12 +26,12 @@ public class AutoCorrectCommand {
     /**
      * Generate misspelt words with 1 alphabet mistake
      */
-    public static ArrayList<String> editDistance1(String word) {
+    public ArrayList<String> editDistance1(String word) {
         ArrayList<String> results = new ArrayList<String>();
         String formattedWord = word.toLowerCase();
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-        //Adding any one character (from teh alphabet) anywhere in the word.
+        //Adding any one character (from the alphabet) anywhere in the word.
         for (int i = 0; i <= formattedWord.length(); i++) {
             for (int j = 0; j < alphabet.length(); j++) {
                 String newWord = formattedWord.substring(0, i) + alphabet.charAt(j)
@@ -78,11 +78,15 @@ public class AutoCorrectCommand {
           "editDistance1" *again* to each word of its own output do?)
         - Finally, if no good replacements are found, return the word.
     */
-    public static String correctWord (String misSpeltWord) {
+    public String correctWord (String misSpeltWord) {
+
+        if (misSpeltWord == null || misSpeltWord.equals("")) {
+            throw new IllegalArgumentException("Unknown Command");
+        }
 
         String formattedMisSpeltword = misSpeltWord.toLowerCase();
         ArrayList<String> commandPool = getCommandPool();
-        final String defaultresult = "No Such Command";
+        final String defaultresult = "Unknown Command";
         String result = "";
 
         if (commandPool.contains(formattedMisSpeltword)) {
@@ -103,10 +107,10 @@ public class AutoCorrectCommand {
     }
 
     /**
-     * Check input command with every possible mis-spelt word
+     * Check input command with every possible misspelt word
      */
-    public static String checkMisspeltWords (String command, String input) {
-        final String defaultResult = "No Such Command";
+    public String checkMisspeltWords (String command, String input) {
+        final String defaultResult = "Unknown Command";
 
         ArrayList<String> editDistance1Words = editDistance1(command);
         ArrayList<ArrayList<String>> editDistance2Words = new ArrayList<ArrayList<String>>();
@@ -129,7 +133,7 @@ public class AutoCorrectCommand {
     /**
      * Generate a list of current command
      */
-    public static ArrayList<String> getCommandPool () {
+    public ArrayList<String> getCommandPool () {
 
         ArrayList<String> commandPool = new ArrayList<String>();
         commandPool.add(FindCommand.COMMAND_WORD);
