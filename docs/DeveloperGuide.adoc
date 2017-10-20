@@ -416,7 +416,6 @@ another method should be implemented in the `AutoCompleteUtil` class.
 The `Delete` multiple contact feature enables user to delete more than one contact in a single command. It is
 invoked in the `DeleteCommand` class.
 
-
 *Prerequisites/Dependencies*
 
 * The `Index` to be deleted is added to an ArrayList of `Index`.
@@ -434,7 +433,7 @@ is separated by `/`. +
 **Alternative 2:** Use 'Lazy' delete by adding a boolean field to each element +
 **Pros:** We do not need to remove anything from the ArrayList. The boolean 0 or 1 will just
 indicate if the contact has been deleted. +
- **Cons:** The whole List has to be iterated to check if the contact has been deleted. 
+ **Cons:** The whole List has to be iterated to check if the contact has been deleted.
 
 == Documentation
 
@@ -841,6 +840,16 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`*` |user with many friends |record the appointments with friends and be notified y address book |be reminded to attend the appointments
 
 |`*` |artistic person |change the font size and font family of my contacts' records|have a more aesthetically pleasing addressbook interface.
+
+|`*` |music lovers |add different sound for different events|have a better feedback system to the user.
+
+|`*` |traveller |add weather forecast|plan my trips efficiently.
+
+|`*` |forgetful person |push notifications for upcoming tasks| i can be reminded of my priorities and tasks.
+
+|`*` |impatient person |date picker| so that i can input the format of the date correctly.
+
+|`*` |lazy person |have keyboard shortcuts| so i can perform the functions without typing the whole command.
 
 {More to be added}
 
