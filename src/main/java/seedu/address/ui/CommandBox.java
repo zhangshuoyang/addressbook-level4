@@ -101,7 +101,12 @@ public class CommandBox extends UiPart<Region> {
             raise(new NewResultAvailableEvent(""));
         } else {
             // Display the list of command words to the user
-            raise(new NewResultAvailableEvent(feedbackToUser.toString()));
+            if (feedbackToUser.length() > 0) {
+                raise(new NewResultAvailableEvent(feedbackToUser.toString()));
+            } else {
+                // Clear suggestions if there were any when the user types a wrong prefix
+                raise(new NewResultAvailableEvent(""));
+            }
         }
     }
 
