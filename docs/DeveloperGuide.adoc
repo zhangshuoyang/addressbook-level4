@@ -372,12 +372,40 @@ We are using `java.util.logging` package for logging. The `LogsCenter` class is 
 
 Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: `config.json`).
 
-=== Autocomplete
+=== Auto-Correct
 
-The `Autocomplete` feature enables commands to be automatically suggested and
+The `Auto-correct` feature enables mis-spelt commands entered by users to be auto-corrected by the application,
+and perform the correct command.
+
+==== Prerequisites/Dependencies
+
+* The `COMMAND_WORD` for every available command must be added to the `getCommandPool` method for the command to be auto-corrected.
+* Auto-correct will only work for mis-spelt words within edit distance of 2.
+* Auto-correct is based on four types of prediction of mis-spelt words, namely, addition, deletion, switch, and substitution.
+* Alias will not be auto-corrected as it consists only one or two alphabets.
+* The logic for auto-correcting commands is implemented in AutoCorrectCommand class.
+
+==== Design Consideration
+
+**Aspect:** Implementation of `Auto-correct` +
+
+**Alternative 1 (current choice):** Consider edit distance is 2 and the command is predicted based on the first alphabet. +
+**Pros:** The speed of searching is improved by implementing matching command by the first alphabet as the first alphabet entered by users is often correct.
+Edit distance 2 allows a considerable number of commands to be corrected by the application. +
+**Cons:** The prediction by first alphabet limits the auto-correction on those commands that have first alphabet wrong.
+Edit distance 2 does not cover many other mis-spelt commands. +
+
+**Alternative 2:** Read all the available file from an external file when the application begins. +
+**Pros:** It would be easier for developers to maintain the auto-correct feature as it is easier to update new commands into a file rather than in a method. +
+**Cons:** It would not be able to utilise `COMMAND_WORD` defined in each command class
+as it is a good practice to reused what is already defined and extend its usage (Close to modification and Open to extension Principle). +
+
+=== Auto-Complete
+
+The `Auto-complete` feature enables commands to be automatically suggested and
 completed for users. It is invoked in the `LogicManager` class.
 
-*Prerequisites/Dependencies*
+==== Prerequisites/Dependencies
 
 * The hotkey for launching `Autocomplete` is indicated in the `CommandBox` class.
 Currently, the hotkey is `TAB`.
@@ -394,17 +422,17 @@ class.
 * If the need arises to autocomplete other fields such as `name`, `address` and `email`,
 another method should be implemented in the `AutoCompleteUtil` class.
 
-
-
 ==== Design Considerations
 
 **Aspect:** Implementation of `Autocomplete` +
+
 **Alternative 1 (current choice):** Add a list of names of available commands to `Command` class. +
 **Pros:** We do not need to care about how `Autocomplete` works when adding new commands. We simply need to add the
  `COMMAND_WORD` of new commands to the Command class and `Autocomplete` will automatically use them for hints.
  Furthermore, command names can be dynamically obtained via the `COMMAND_WORD` field for every command. +
 **Cons:** Additional level of dependency as the developer has to consistently update the `Command` class whenever
  a new type of command is created. +
+
 **Alternative 2:** Place the `COMMAND_WORD` of all commands into a text file and read it when `AddressBook` starts. +
 **Pros:** No additional dependency among classes as `AddressBook` gets all command names from a text file rather
  than obtaining them from the `COMMAND_WORD` field of each type of command. +
@@ -412,11 +440,12 @@ another method should be implemented in the `AutoCompleteUtil` class.
  Furthermore, there is repeated work (and higher risk of error) as the developer must take care to ensure that the text file's entry corresponds with the
 `COMMAND WORD` field.
 
+
 === Delete Multiple Contact
 The `Delete` multiple contact feature enables user to delete more than one contact in a single command. It is
 invoked in the `DeleteCommand` class.
 
-*Prerequisites/Dependencies*
+==== Prerequisites/Dependencies
 
 * The `Index` to be deleted is added to an ArrayList of `Index`.
 * To identify different `Index`, Regex `/` is used.
@@ -426,14 +455,16 @@ exception.
 ==== Design Considerations
 
 **Aspect:** Implementation of `delete` Multiple Contact +
+
 **Alternative 1 (current choice):** Add the `Index` to be deleted to an ArrayList. +
 **Pros:** We do not need to care how many `Index` or the order of the `Index` being input by the user as long as it
 is separated by `/`. +
 **Cons:** Additional space if required for the ArrayList of `Index`. +
+
 **Alternative 2:** Use 'Lazy' delete by adding a boolean field to each element +
 **Pros:** We do not need to remove anything from the ArrayList. The boolean 0 or 1 will just
 indicate if the contact has been deleted. +
- **Cons:** The whole List has to be iterated to check if the contact has been deleted.
+**Cons:** The whole List has to be iterated to check if the contact has been deleted.
 
 == Documentation
 
