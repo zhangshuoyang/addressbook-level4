@@ -1,27 +1,24 @@
 package seedu.address.commons.events;
 
-import static java.util.Objects.requireNonNull;
-
 import java.io.File;
-import java.io.IOException;
 
 /**
  * Provides sound for events
  */
-public abstract class AudibleEvent {
+public class AudibleEvent {
+    public static final String AUDIO_PREFIX = "sounds\\";
+
     protected String successSound;
     protected String failureSound;
-    public static String audioPathPrefix = "sounds\\";
 
-    public AudibleEvent(String successSound, String failureSound) throws IOException {
-        requireNonNull(successSound);
-        requireNonNull(failureSound);
-
+    public AudibleEvent(String successSound, String failureSound) throws IllegalArgumentException {
         // check if specified audio files can be accessed
-        if (!canAccessFile(successSound) || !canAccessFile(failureSound)) {
-            throw new IOException("Audio file cannot be read!");
+        if (successSound != null && !canAccessFile(successSound)) {
+            throw new IllegalArgumentException("Success audio file cannot be read!");
         }
-
+        if (failureSound != null && !canAccessFile(failureSound)) {
+            throw new IllegalArgumentException("Failure audio file cannot be read!");
+        }
         this.successSound = successSound;
         this.failureSound = failureSound;
     }
