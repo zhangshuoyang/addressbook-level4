@@ -10,6 +10,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE_2;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.AutoCorrectCommand;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
@@ -41,7 +42,7 @@ public class AddCommand extends UndoableCommand {
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
-
+    private AutoCorrectCommand autoCorrectCommand = new AutoCorrectCommand();
     private final Person toAdd;
 
     /**
@@ -56,7 +57,15 @@ public class AddCommand extends UndoableCommand {
         requireNonNull(model);
         try {
             model.addPerson(toAdd);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+
+            if (autoCorrectCommand.getMessageToUser().equals("")) {
+                return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+            } else {
+                return new CommandResult(autoCorrectCommand.getMessageToUser()
+                        + "\n"
+                        + String.format(MESSAGE_SUCCESS, toAdd));
+            }
+
         } catch (DuplicatePersonException e) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }

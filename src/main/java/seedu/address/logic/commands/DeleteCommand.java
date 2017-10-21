@@ -7,6 +7,7 @@ import java.util.List;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.AutoCorrectCommand;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -26,6 +27,8 @@ public class DeleteCommand extends UndoableCommand {
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
 
     private final ArrayList<Index> targetIndex;
+
+    private AutoCorrectCommand autoCorrectCommand = new AutoCorrectCommand();
 
     public DeleteCommand(ArrayList<Index> targetIndex) {
         this.targetIndex = targetIndex;
@@ -61,7 +64,13 @@ public class DeleteCommand extends UndoableCommand {
 
         }
 
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, result));
+        if (autoCorrectCommand.getMessageToUser().equals("")) {
+            return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, result));
+        } else {
+            return new CommandResult(autoCorrectCommand.getMessageToUser()
+                    + "\n"
+                    + String.format(MESSAGE_DELETE_PERSON_SUCCESS, result));
+        }
     }
 
     @Override

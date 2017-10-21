@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 
 import java.util.function.Predicate;
 
+import seedu.address.logic.parser.AutoCorrectCommand;
 import seedu.address.model.person.AddressContainsKeywordsSubstrPredicate;
 import seedu.address.model.person.EmailContainsKeywordsSubstrPredicate;
 import seedu.address.model.person.NameContainsKeywordsSubstrPredicate;
@@ -33,6 +34,8 @@ public class MultiFilterCommand extends Command {
             + PREFIX_NAME + "John "
             + PREFIX_PHONE + "999 "
             + " finds a contact with name \"John\" and has a contact that contains the string \"999\"";
+
+    private AutoCorrectCommand autoCorrectCommand = new AutoCorrectCommand();
 
     private NameContainsKeywordsSubstrPredicate namePredicate;
     private PhoneContainsKeywordsSubstrPredicate phonePredicate;
@@ -70,7 +73,13 @@ public class MultiFilterCommand extends Command {
             }
         });
 
-        return new CommandResult(getMessageForPersonListShownSummary(model.getFilteredPersonList().size()));
+        if (autoCorrectCommand.getMessageToUser().equals("")) {
+            return new CommandResult(getMessageForPersonListShownSummary(model.getFilteredPersonList().size()));
+        } else {
+            return new CommandResult(autoCorrectCommand.getMessageToUser()
+                    + "\n"
+                    + getMessageForPersonListShownSummary(model.getFilteredPersonList().size()));
+        }
     }
 
     @Override
