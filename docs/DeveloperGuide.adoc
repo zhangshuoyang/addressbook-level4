@@ -466,6 +466,33 @@ is separated by `/`. +
 indicate if the contact has been deleted. +
 **Cons:** The whole List has to be iterated to check if the contact has been deleted.
 
+=== Theme Support
+
+The 'theme support' feature allows user to choose their favorite theme for the address book, other than the default
+Dark Theme.
+
+Currently, Contact Plus v1.2 is presented with two themes: Dark and Light.
+
+Users are also allowed to preview themes at runtime before they choose them. The previews are supported with
+screenshots of the selected theme.
+
+==== Prerequisities/Dependencies
+
+* The line <URL value="@ThemeName.css" /> in `fxml` files is replaced by a method call via `javafx.scene.Scene` object
+in respective models.
+* The call is set to be `scene.getStylesheet().add(Theme Name);`
+* The theme preview images are stored in `/images/theme_image/'
+* The selection window would be implemented as a pop out window.
+
+==== Design Considerations
+
+**Aspect:** Implementation of `choose theme` feature +
+
+**Alternative 1 (current choice):** Use a selection window with theme preview image. +
+**Pros:** Users are able to know what the theme looks like before they choose the respective theme. +
+**Cons:** Additional space for `Theme Selection` window. +
+
+
 == Documentation
 
 We use asciidoc for writing documentation.
