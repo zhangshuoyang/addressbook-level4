@@ -8,13 +8,13 @@ import java.util.Hashtable;
  */
 class SoundList extends Hashtable {
 
-    private String currentlyPlaying = new String();
-
+    private String currentlyPlaying;
     private boolean isPlaying;
     private AudioClip tempClip;
 
     public SoundList(int lengthOfSoundList, String[] soundList) {
         super(lengthOfSoundList); //Initialize Hashtable with capacity of 5 entries.
+        currentlyPlaying = "";
         startLoading(soundList);
         isPlaying = false;
     }
@@ -64,7 +64,7 @@ class SoundList extends Hashtable {
         tempClip = getClip(key);
         if (this.isPlaying) {
             tempClip.stop();
-            this.currentlyPlaying = new String();
+            this.currentlyPlaying = "";
             this.isPlaying = false;
         }
     }

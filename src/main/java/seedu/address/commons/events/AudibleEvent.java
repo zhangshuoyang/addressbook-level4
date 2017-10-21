@@ -6,12 +6,12 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Provides sound for command success and failure
+ * Provides sound for events
  */
 public abstract class AudibleEvent {
     protected String successSound;
     protected String failureSound;
-    private String audioPathPrefix = "sounds\\";
+    public static String audioPathPrefix = "sounds\\";
 
     public AudibleEvent(String successSound, String failureSound) throws IOException {
         requireNonNull(successSound);
