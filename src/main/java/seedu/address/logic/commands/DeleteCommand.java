@@ -1,10 +1,13 @@
 package seedu.address.logic.commands;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.AutoCorrectCommand;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -23,9 +26,11 @@ public class DeleteCommand extends UndoableCommand {
 
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
 
-    private final Index targetIndex;
+    private final ArrayList<Index> targetIndex;
 
-    public DeleteCommand(Index targetIndex) {
+    private AutoCorrectCommand autoCorrectCommand = new AutoCorrectCommand();
+
+    public DeleteCommand(ArrayList<Index> targetIndex) {
         this.targetIndex = targetIndex;
     }
 
@@ -35,19 +40,37 @@ public class DeleteCommand extends UndoableCommand {
 
         List<ReadOnlyPerson> lastShownList = model.getFilteredPersonList();
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        for (Index i : targetIndex) {
+            if (i.getZeroBased() >= lastShownList.size()) {
+                throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            }
         }
 
-        ReadOnlyPerson personToDelete = lastShownList.get(targetIndex.getZeroBased());
+        String result = "";
+        Collections.sort(targetIndex);
+        for (Index i : targetIndex) {
+            ReadOnlyPerson personToDelete = lastShownList.get(i.getZeroBased());
 
-        try {
-            model.deletePerson(personToDelete);
-        } catch (PersonNotFoundException pnfe) {
-            assert false : "The target person cannot be missing";
+            try {
+                model.deletePerson(personToDelete);
+                if (targetIndex.size() == 1) {
+                    result = result.concat(personToDelete.toString());
+                } else {
+                    result = result.concat("\n" + personToDelete.toString());
+                }
+            } catch (PersonNotFoundException pnfe) {
+                assert false : "The target person cannot be missing";
+            }
+
         }
 
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, personToDelete));
+        if (autoCorrectCommand.getMessageToUser().equals("")) {
+            return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, result));
+        } else {
+            return new CommandResult(autoCorrectCommand.getMessageToUser()
+                    + "\n"
+                    + String.format(MESSAGE_DELETE_PERSON_SUCCESS, result));
+        }
     }
 
     @Override

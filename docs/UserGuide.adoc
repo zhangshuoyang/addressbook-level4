@@ -26,7 +26,7 @@ This app will not work with earlier versions of Java 8.
 .  Copy the file to the folder you want to use as the home folder for your Address Book.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
-image::Ui.png[width="790"]
+image::UI-V1.2.png[width="790"]
 +
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
@@ -113,7 +113,7 @@ Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
 
-=== Locating persons by tag: `search`
+=== Locating persons by tag: `search` [since v1.1]
 
 Searches persons whose tag names contain any of the given keywords. +
 Format: `search KEYWORD [MORE_KEYWORDS]`
@@ -134,7 +134,7 @@ Returns `John Alice`
 * `search fri` +
 Returns `Unknown tag`
 
-=== Add second phone number for a person
+=== Add second phone number for a person [since v1.1]
 
 Add the second phone number for a person by using prefix "p2/" +
 Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS`
@@ -202,7 +202,7 @@ Format: [Prefix]
 
 ****
 * The hotkey for autocomplete is the `TAB` key.
-* The match is case-insensitive. E.g. `del` and `Del` will both match the `delete`
+* The match is case-insensitive, e.g. `del` and `Del` will both match the `delete`
 command.
 * The system looks for commands whose names start with the user-entered text. This means that `del` will match `delete` but `ele`
 will not.
@@ -219,6 +219,24 @@ Examples:
 * `del` expands to `delete` in the command bar
 * `df` does not match with any command name. Hence, nothing is returned by address book.
 * `d` returns various command suggestions in the result pane. e.g.`delete` and `deletetag`
+
+=== AutoCorrect command names [Since v1.2]
+
+Finds command whose names start with the command entered from the user.
+Application will notify the user that the command entered is corrected and perform the corrected commmand. +
+Format: [mis-spelt command]
+
+****
+* The auto-correct function will only work on the mis-spelt words within edit distance of 2.
+* The match is case-insensitive, e.g. "sEarhC" is equals to "search".
+* If no match is found, the application will display "Unknown command".
+****
+
+Examples:
+
+* `deleet` will match to `delete`.
+* `del` will not match to any command, application will display "Unkown command"
+* `d` will be matched to `delete` still as it is an alias.
 
 === Deleting a person : `delete`
 
@@ -239,6 +257,17 @@ Deletes the 2nd person in the address book.
 * `find Betsy` +
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
+
+=== Deleting multiple person : `delete index/another index/...` [since v1.2]
+
+Deletes multiple person from the address book. +
+Format: `delete INDEX/INDEX`
+
+Examples:
+
+* `list` +
+`delete 2/3` +
+Deletes the 2nd and 3rd person in the address book.
 
 === Deleting a tag : `deletetag` [since v1.0]
 
@@ -350,6 +379,55 @@ Format: `clear`
 Exits the program. +
 Format: `exit`
 
+=== Tag use emoji : `tag emoji` [Coming in V2.0]
+
+Input characters to represent an emoji as a tag. +
+Format: `tag :wink:`
+
+=== Add non-English words as input [Coming in V2.0]
+
+Input non-English words to be saved in the application.
+Format: CommandWrd + inputText
+
+=== Add tasks [Coming in V2.0]
+
+Add personal tasks into the application.
+Format: `Add Task homework`
+
+=== Add music [Coming in V2.0]
+
+A default music folder will store serveral sounds for different events. +
+
+***
+* The music folder should be in the same level as data folder.
+***
+
+Example:
+
+* `delete 1` +
+The application will produce a sound to notify users that the deletion is performed.
+
+=== Add weather forecast [Coming in V2.0]
+
+Displaying weather forecast on the application according to the location detected.
+
+***
+* Assume the location data can be gotten (depends on the specific implementation).
+***
+
+=== Add push notification [Coming in V2.0]
+
+The application will prompt notifications for users on the computer for the up coming tasks.
+
+=== Add keyboard shortcuts [Coming in V2.0]
+
+Provides keyboard shortcuts for commands.
+
+Example:
+
+* Press `Command + l` on Mac or Press `Control + l` on Windows +
+The application will list all the contacts in the address book.
+
 === Saving the data
 
 Address book data are saved in the hard disk automatically after any command that changes the data. +
@@ -378,3 +456,14 @@ e.g.`select 2`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
+* *Search* : `search NAME` +
+e.g. `search John`
+* *AutoCorrect* : `MIS-SPELT COMMAND + correct command format` +
+e.g. `serach John will be matched to search John`
+* *Multi-filter*: `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]` +
+e.g. `mf n/iv p/9 e/g a/ge`
+* *Deleting multiple person*: `delete index/another index/...` +
+e.g. `delete 2/3`
+* *AutoCompele*: `[Prefix]` +
+e.g. `del` expands to `delete` in the command bar
+

@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import seedu.address.logic.parser.AutoCorrectCommand;
 import seedu.address.model.tag.NameWithTagContainsKeywordsPredicate;
 
 /**
@@ -17,6 +18,8 @@ public class SearchCommand extends Command {
 
     private final NameWithTagContainsKeywordsPredicate predicate;
 
+    private AutoCorrectCommand autoCorrectCommand = new AutoCorrectCommand();
+
     public SearchCommand(NameWithTagContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
@@ -25,7 +28,14 @@ public class SearchCommand extends Command {
     public CommandResult execute() {
         model.updateFilteredPersonList(predicate);
         model.updateFilteredPersonByTagList(predicate);
-        return new CommandResult(getMessageForPersonList(model.getFilteredPersonByTagList()));
+
+        if (autoCorrectCommand.getMessageToUser().equals("")) {
+            return new CommandResult(getMessageForPersonList(model.getFilteredPersonByTagList()));
+        } else {
+            return new CommandResult(autoCorrectCommand.getMessageToUser()
+                    + "\n"
+                    + getMessageForPersonList(model.getFilteredPersonByTagList()));
+        }
     }
 
     @Override

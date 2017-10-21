@@ -47,9 +47,12 @@ public class AddressBookParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
 
+        AutoCorrectCommand autoCorrectCommand = new AutoCorrectCommand();
+        autoCorrectCommand.setMessageToUser(""); //reset the string value to empty after each auto-correct
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
-        switch (commandWord) {
+        final String autoCorrectedCommand = autoCorrectCommand(commandWord);
+        switch (autoCorrectedCommand) {
 
         case AddCommand.COMMAND_WORD: case AddCommand.COMMAND_WORD_ALIAS:
             return new AddCommandParser().parse(arguments);
@@ -99,6 +102,10 @@ public class AddressBookParser {
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
+    }
+
+    public String autoCorrectCommand(String commandWord) {
+        return new AutoCorrectCommand().correctWord(commandWord);
     }
 
 }
