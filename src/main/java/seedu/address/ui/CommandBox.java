@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -10,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.NewResultAvailableEvent;
+import seedu.address.commons.util.AudioUtil;
 import seedu.address.logic.ListElementPointer;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
@@ -156,16 +158,26 @@ public class CommandBox extends UiPart<Region> {
             historySnapshot.next();
             // process result of the command
             commandTextField.setText("");
-
-            logger.info("Result: " + commandResult.feedbackToUser);
             raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
 
+            // Play success sound
+            AudioUtil.playClip("command-success.wav");
+            logger.info("Result: " + commandResult.feedbackToUser);
         } catch (CommandException | ParseException e) {
             initHistory();
             // handle command failure
             setStyleToIndicateCommandFailure();
             logger.info("Invalid command: " + commandTextField.getText());
             raise(new NewResultAvailableEvent(e.getMessage()));
+
+            // Play failure sound
+            try {
+                AudioUtil.playClip("command-failure.wav");
+            } catch (IllegalArgumentException | MalformedURLException err) {
+                err.printStackTrace();
+            }
+        } catch (IllegalArgumentException | MalformedURLException e) {
+            e.printStackTrace();
         }
     }
 
