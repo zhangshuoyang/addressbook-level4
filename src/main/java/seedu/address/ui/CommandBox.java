@@ -2,18 +2,22 @@ package seedu.address.ui;
 
 import java.net.MalformedURLException;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.NewResultAvailableEvent;
 import seedu.address.commons.util.AudioUtil;
+import seedu.address.commons.util.AutoCompleteUtil;
 import seedu.address.logic.ListElementPointer;
 import seedu.address.logic.Logic;
+import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -46,6 +50,16 @@ public class CommandBox extends UiPart<Region> {
      */
     @FXML
     private void handleKeyPress(KeyEvent keyEvent) {
+        // Handles cases where multple keys are pressed simultaneously
+        if (keyEvent.isControlDown()) {
+            keyEvent.consume();
+            launchExtendedAutocomplete();
+            commandTextField.requestFocus();
+            commandTextField.end();
+            return;
+        }
+
+        // Handles single key press
         switch (keyEvent.getCode()) {
         case UP:
             // As up and down buttons will alter the position of the caret,
@@ -65,6 +79,21 @@ public class CommandBox extends UiPart<Region> {
             break;
         default:
             // let JavaFx handle the keypress
+        }
+    }
+
+    /**
+     * Launches extended auto complete mechanism in logic
+     * when the special key is pressed in the Command Box
+     * Extended auto complete fills the command box with the full format of
+     * a command rather than just the command word
+     */
+    private void launchExtendedAutocomplete() {
+        String userCommand = commandTextField.getText().split("\\s+")[0];
+        System.out.println("The user's command is " + userCommand);
+        Map<String, String> commandFormatMap = Command.getMapOfAvailableCommands();
+        if (commandFormatMap.containsKey(userCommand)) {
+            commandTextField.setText(commandFormatMap.get(userCommand));
         }
     }
 

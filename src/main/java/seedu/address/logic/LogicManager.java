@@ -1,5 +1,6 @@
 package seedu.address.logic;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -50,7 +51,15 @@ public class LogicManager extends ComponentManager implements Logic {
     @Override
     public List<String> getPossibleCommands(String commandText) {
         logger.info("---------------[AUTO COMPLETE][PREFIX ENTERED:" + commandText + "]");
-        return AutoCompleteUtil.autoCompleteCommand(commandText, Command.getListOfAvailableCommands());
+        List<String> listOfAvaliableCommands = new ArrayList<>();
+        listOfAvaliableCommands.addAll(Command.getMapOfAvailableCommands().keySet());
+        return AutoCompleteUtil.autoCompleteCommand(commandText, listOfAvaliableCommands);
+    }
+
+    @Override
+    public String getAutocompleteFormat(String commandText) {
+        logger.info("---------------[AUTO COMPLETE FORMAT][commandText: :" + commandText + "]");
+        return Command.getMapOfAvailableCommands().get(commandText);
     }
 
     @Override

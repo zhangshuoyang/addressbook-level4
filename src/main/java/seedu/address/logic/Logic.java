@@ -26,6 +26,15 @@ public interface Logic {
      */
     List<String> getPossibleCommands(String commandText);
 
+    /**
+     * Get the fields for a given command word
+     *
+     * @param commandText a valid command word
+     * @return string containing all fields for a given comamand
+     *
+     */
+    String getAutocompleteFormat(String commandText);
+
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<ReadOnlyPerson> getFilteredPersonList();
 

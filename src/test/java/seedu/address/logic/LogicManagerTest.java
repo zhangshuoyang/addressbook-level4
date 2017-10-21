@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,9 +64,11 @@ public class LogicManagerTest {
         List<String> actualList;
         List<String> expectedList;
 
+        List<String> allCommands = new ArrayList<>(Command.getMapOfAvailableCommands().keySet());
+
         // All commands should be shown if the user types a blank prefix
         actualList = logic.getPossibleCommands("");
-        expectedList = Command.getListOfAvailableCommands()
+        expectedList = allCommands
                 .stream()
                 .filter(command -> command.startsWith(""))
                 .collect(Collectors.toList());
@@ -77,7 +80,7 @@ public class LogicManagerTest {
             final String lowercasePrefix = String.valueOf(currentChar);
 
             actualList = logic.getPossibleCommands(lowercasePrefix);
-            expectedList = Command.getListOfAvailableCommands()
+            expectedList = allCommands
                     .stream()
                     .filter(command -> command.startsWith(lowercasePrefix.toLowerCase()))
                     .collect(Collectors.toList());
@@ -90,7 +93,7 @@ public class LogicManagerTest {
             final String uppercasePrefix = String.valueOf(currentChar);
 
             actualList = logic.getPossibleCommands(uppercasePrefix);
-            expectedList = Command.getListOfAvailableCommands()
+            expectedList = allCommands
                     .stream()
                     .filter(command -> command.startsWith(uppercasePrefix.toLowerCase()))
                     .collect(Collectors.toList());
@@ -102,7 +105,7 @@ public class LogicManagerTest {
         final String prefix = String.valueOf("d8");
 
         actualList = logic.getPossibleCommands(prefix);
-        expectedList = Command.getListOfAvailableCommands()
+        expectedList = allCommands
                 .stream()
                 .filter(command -> command.startsWith(prefix.toLowerCase()))
                 .collect(Collectors.toList());
