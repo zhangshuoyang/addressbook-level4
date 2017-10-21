@@ -851,63 +851,53 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |Priority |As a ... |I want to ... |So that I can...
 
-|`* * *` |university student |backup and restore my contacts |recover my contacts in case of unexpected incidents.
+|`* * *` |university student |backup and restore my contacts |recover my contacts in case of unexpected incidents. [Coming in V2.0]
 
-|`* * *` |person with a large social circle |filter my contacts by multiple criteria |search for specific contacts more easily
+|`* * *` |person with a large social circle |filter my contacts by multiple criteria |search for specific contacts more easily [Since V1.1]
 
-|`* * *` |careless user |have autocorrection for my misspelt words |my contact details will be properly spelt
+|`* * *` |careless user |have autocorrection for my misspelt words |my contact details will be properly spelt [Since V1.2]
 
-|`* * *` |user |add multiple phone numbers to a person |know different ways of contacting one person
+|`* * *` |user |add multiple phone numbers to a person |know different ways of contacting one person [Since V1.1]
 
-|`* * *` |busy user |sort the address book alphabetically |locate my contacts easily
+|`* * *` |busy user |sort the address book alphabetically |locate my contacts easily [Since V1.0]
 
-|`* * *` |user |load more than 100,000 persons at one time |load all my schoolmates in NUS
+|`* * *` |user |search friends by tags |search friends by group [Since V1.1]
 
-|`* * *` |user |search friends by tags |search friends by group
+|`* * *` |music lovers |add different sound for different events|have a better feedback system to the user. [Coming in V2.0]
 
-|`* *` |busy businessma |delete multiple users simultaneously|perform bookeeping more easily
+|`* * *` |traveller |add weather forecast|plan my trips efficiently. [Coming in V2.0]
 
-|`* *` |user |delete a person |remove entries that I no longer need
+|`* * *` |forgetful person |push notifications for upcoming tasks| i can be reminded of my priorities and tasks. [Coming in V2.0]
 
-|`* *` |businessman |share my contact |easier for my client to contact me
+|`* * *` |impatient person |date picker| so that i can input the format of the date correctly. [Coming in V2.0]
 
-|`* *` |user with many contacts |listed contacts to be arranged into several pages |easier for me to read
+|`* * *` |lazy person |have keyboard shortcuts| so i can perform the functions without typing the whole command. [Coming in V2.0]
 
-|`* *` |user with bad memory of commands |autocomplete commands|type lengthy commands in full
+|`* * *` |artistic person |change the font size and font family of my contacts' records|have a more aesthetically pleasing addressbook interface. [Since V1.2]
 
-|`* *` |user |check my most frequently contacted list of people |add them to my favourite list, or located them more easily
+|`* * *` |user loves emoji |add emoji as special tags to the contact cards |have an interesting address book contacts. [Coming in V2.0]
 
-|`*` |user |merge my address book with another address book|add contacts in bulk
+|`* *` |busy businessman |delete multiple users simultaneously|perform bookeeping more easily [Since V1.2]
 
-|`*` |user that loves social media |search for my contact's facebook profile via phone number |connect with them on a deeper level
+|`* *` |businessman |share my contact |easier for my client to contact me [Coming in V2.0]
 
-|`*` |user with many persons in the address book |sort persons by name |locate a person easily
+|`* *` |user with bad memory of commands |autocomplete commands|type lengthy commands in full [Since V1.2]
 
-|`*` |user |access address boook through slack |access address book quickly and conveniently
+|`* *` |user |check my most frequently contacted list of people |add them to my favourite list, or located them more easily. [Coming in V2.0]
 
-|`*` |user loves emoji |add emoji as special tags to the contact cards |have an interesting address book contacts
+|`*` |user |merge my address book with another address book|add contacts in bulk. [Coming in V2.0]
 
-|`*` |user with non-english as their native speaking language |add non-english names of friends |have localization for the language
+|`*` |user |access address boook through slack |access address book quickly and conveniently. [Coming in V2.0]
 
-|`*` |user likes customization |change the colour theme |make my address book more personalised
+|`*` |user with non-english as their native speaking language |add non-english names of friends |have localization for the language. [Coming in V2.0]
 
-|`*` |forgetful person |display avatars for each contact|recall who a particular person is.
+|`*` |user likes customization |change the colour theme |make my address book more personalised. [Coming in V2.0]
 
-|`*` |lazy user |voice out the commands rather than typing |be more efficient at adding contacts
+|`*` |forgetful person |display avatars for each contact|recall who a particular person is. [Coming in V2.0]
 
-|`*` |user with many friends |record the appointments with friends and be notified y address book |be reminded to attend the appointments
+|`*` |lazy user |voice out the commands rather than typing |be more efficient at adding contacts. [Coming in V2.0]
 
-|`*` |artistic person |change the font size and font family of my contacts' records|have a more aesthetically pleasing addressbook interface.
-
-|`*` |music lovers |add different sound for different events|have a better feedback system to the user.
-
-|`*` |traveller |add weather forecast|plan my trips efficiently.
-
-|`*` |forgetful person |push notifications for upcoming tasks| i can be reminded of my priorities and tasks.
-
-|`*` |impatient person |date picker| so that i can input the format of the date correctly.
-
-|`*` |lazy person |have keyboard shortcuts| so i can perform the functions without typing the whole command.
+|`*` |user with many friends |record the appointments with friends and be notified by the application |be reminded to attend the appointments. [Coming in V2.0]
 
 {More to be added}
 
