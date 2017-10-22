@@ -39,7 +39,7 @@ Responsibilities: Logic
 '''
 
 === Zhang Shuoyang
-image::m133225.jpg[width="150", align="left"]
+image::zhangshuoyang.jpg[width="150", align="left"]
 {empty}[https://github.com/zhangshuoyang[github]]
 
 Role: Developer +
