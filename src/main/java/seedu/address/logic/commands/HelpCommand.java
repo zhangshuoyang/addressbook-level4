@@ -10,6 +10,7 @@ import seedu.address.logic.parser.AutoCorrectCommand;
 public class HelpCommand extends Command {
 
     public static final String COMMAND_WORD = "help";
+    public static final String AUTOCOMPLETE_FORMAT = COMMAND_WORD;
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Shows program usage instructions.\n"
             + "Example: " + COMMAND_WORD;

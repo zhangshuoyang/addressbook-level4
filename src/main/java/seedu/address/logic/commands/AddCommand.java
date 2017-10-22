@@ -22,6 +22,13 @@ public class AddCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "add";
     public static final String COMMAND_WORD_ALIAS = "a";
+    public static final String AUTOCOMPLETE_FORMAT =
+            COMMAND_WORD + " "
+            + PREFIX_NAME + "name "
+            + PREFIX_PHONE + "phone_number "
+            + PREFIX_EMAIL + "email_address "
+            + PREFIX_ADDRESS + "residential_address "
+            + PREFIX_TAG + "tag_1 tag_2 more_tags";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. "
             + "Parameters: "

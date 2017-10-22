@@ -10,6 +10,7 @@ public class SearchCommand extends Command {
 
     public static final String COMMAND_WORD = "search";
     public static final String COMMAND_WORD_ALIAS = "st";
+    public static final String AUTOCOMPLETE_FORMAT = COMMAND_WORD + " tag_name";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Search a group of Persons identified by the tag entered by users.\n"

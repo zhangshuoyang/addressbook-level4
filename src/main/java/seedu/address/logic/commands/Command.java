@@ -1,7 +1,9 @@
 package seedu.address.logic.commands;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.Messages;
@@ -15,23 +17,7 @@ import seedu.address.model.person.ReadOnlyPerson;
  * Represents a command with hidden internal logic and the ability to be executed.
  */
 public abstract class Command {
-    private static final List<String> listOfAvailableCommands = Arrays.asList (
-            AddCommand.COMMAND_WORD,
-            ClearCommand.COMMAND_WORD,
-            DeleteCommand.COMMAND_WORD,
-            DeleteTagCommand.COMMAND_WORD,
-            EditCommand.COMMAND_WORD,
-            ExitCommand.COMMAND_WORD,
-            FindCommand.COMMAND_WORD,
-            HelpCommand.COMMAND_WORD,
-            HistoryCommand.COMMAND_WORD,
-            ListCommand.COMMAND_WORD,
-            MultiFilterCommand.COMMAND_WORD,
-            RedoCommand.COMMAND_WORD,
-            SearchCommand.COMMAND_WORD,
-            SelectCommand.COMMAND_WORD,
-            UndoCommand.COMMAND_WORD
-    );
+    private static final HashMap<String, String> mapOfAvailableCommands = new HashMap<>();
 
     private static final List<String> listOfAvailableCommandAliases = Arrays.asList (
             AddCommand.COMMAND_WORD_ALIAS,
@@ -82,8 +68,12 @@ public abstract class Command {
         return  builder.toString();
     }
 
-    public static List<String> getListOfAvailableCommands() {
-        return listOfAvailableCommands;
+    public static Map<String, String> getMapOfAvailableCommands() {
+        // Initialize map of available commands the first time autocomplete is used
+        if (mapOfAvailableCommands.isEmpty()) {
+            intializeCommandMap();
+        }
+        return mapOfAvailableCommands;
     }
 
     public static List<String> getListOfAvailableCommandAliases() {
@@ -105,5 +95,29 @@ public abstract class Command {
      */
     public void setData(Model model, CommandHistory history, UndoRedoStack undoRedoStack) {
         this.model = model;
+    }
+
+    /**
+     *
+     * Initialises the mapOfAvailableCommands when it is being used for the first time
+     * (i.e. this method is called only once throughout the program execution)
+     *
+     */
+    private static void intializeCommandMap() {
+        mapOfAvailableCommands.put(AddCommand.COMMAND_WORD, AddCommand.AUTOCOMPLETE_FORMAT);
+        mapOfAvailableCommands.put(ClearCommand.COMMAND_WORD, ClearCommand.AUTOCOMPLETE_FORMAT);
+        mapOfAvailableCommands.put(DeleteCommand.COMMAND_WORD, DeleteCommand.AUTOCOMPLETE_FORMAT);
+        mapOfAvailableCommands.put(DeleteTagCommand.COMMAND_WORD, DeleteTagCommand.AUTOCOMPLETE_FORMAT);
+        mapOfAvailableCommands.put(EditCommand.COMMAND_WORD, EditCommand.AUTOCOMPLETE_FORMAT);
+        mapOfAvailableCommands.put(ExitCommand.COMMAND_WORD, ExitCommand.AUTOCOMPLETE_FORMAT);
+        mapOfAvailableCommands.put(FindCommand.COMMAND_WORD, FindCommand.AUTOCOMPLETE_FORMAT);
+        mapOfAvailableCommands.put(HelpCommand.COMMAND_WORD, HelpCommand.AUTOCOMPLETE_FORMAT);
+        mapOfAvailableCommands.put(HistoryCommand.COMMAND_WORD, HistoryCommand.AUTOCOMPLETE_FORMAT);
+        mapOfAvailableCommands.put(ListCommand.COMMAND_WORD, ListCommand.AUTOCOMPLETE_FORMAT);
+        mapOfAvailableCommands.put(MultiFilterCommand.COMMAND_WORD, MultiFilterCommand.AUTOCOMPLETE_FORMAT);
+        mapOfAvailableCommands.put(RedoCommand.COMMAND_WORD, RedoCommand.AUTOCOMPLETE_FORMAT);
+        mapOfAvailableCommands.put(SearchCommand.COMMAND_WORD, SearchCommand.AUTOCOMPLETE_FORMAT);
+        mapOfAvailableCommands.put(SelectCommand.COMMAND_WORD, SelectCommand.AUTOCOMPLETE_FORMAT);
+        mapOfAvailableCommands.put(UndoCommand.COMMAND_WORD, UndoCommand.AUTOCOMPLETE_FORMAT);
     }
 }
