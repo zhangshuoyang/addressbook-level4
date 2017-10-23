@@ -5,10 +5,12 @@ import static seedu.address.testutil.EventsUtil.postNow;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_INITIAL;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_UPDATED;
 
+import java.io.IOException;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.util.Date;
+import javax.xml.bind.JAXBException;
 
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -45,7 +47,7 @@ public class StatusBarFooterTest extends GuiUnitTest {
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws JAXBException, IOException {
         StatusBarFooter statusBarFooter = new StatusBarFooter(STUB_SAVE_LOCATION, STUB_PERSON_SIZE);
         uiPartRule.setUiPart(statusBarFooter);
 
