@@ -421,7 +421,7 @@ return conditionStringParser(channel.getItem().getCondition().toString());
 
 The overview of the weather displyed on the application is as follows:
 
-image::WeatherDisplay.png[width="200" height="30"]
+image::WeatherDisplay.png[width="200"]
 
 ==== Prerequisites/Dependencies
 
