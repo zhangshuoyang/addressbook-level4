@@ -400,9 +400,16 @@ as it is a good practice to reused what is already defined and extend its usage 
 
 === Yahoo Weather Display Mechanism
 The Yahoo weather information display is aided by the external library "yahoo-weather-java-api:2.0.2". This library queries data from Yahoo Weather API, and the application display the information returned by calling the library functions with
-a simple string parser method to format the data return. The formatted data is displayed on the `StatusFooterBar`.
+a simple string parser method to format the data return. The formatted data is displayed on the `StatusFooterBar`. +
 
-The API method is called, and data retuned as follows:
+The query of weather information is closely related to the location. The location is specified by WOEID, so in this application we take the WOEID of Singapore by default. +
+
+[source,java]
+----
+private final String woeid = "1062617";
+----
+
+The API method is called, and data returned as follows:
 
 [source,java]
 ----
@@ -411,6 +418,15 @@ Channel channel = service.getForecast(woeid, DegreeUnit.CELSIUS);
 
 return conditionStringParser(channel.getItem().getCondition().toString());
 ----
+
+The overview of the weather displyed on the application is as follows:
+
+image::WeatherDisplay.png[width="200"]
+
+==== Prerequisites/Dependencies
+
+* This feature has a strong dependency on Yahoo Weather Server. Some exceptions or assertions should be implemented to prevent the failure of the application
+due to the failure of Yahoo Weather Server. +
 
 
 === Autocomplete [[autocomplete-feature]] mechanism
