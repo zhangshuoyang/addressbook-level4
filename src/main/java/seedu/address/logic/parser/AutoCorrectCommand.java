@@ -2,21 +2,7 @@ package seedu.address.logic.parser;
 
 import java.util.ArrayList;
 
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.DeleteTagCommand;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindCommand;
-import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.HistoryCommand;
-import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.MultiFilterCommand;
-import seedu.address.logic.commands.RedoCommand;
-import seedu.address.logic.commands.SearchCommand;
-import seedu.address.logic.commands.SelectCommand;
-import seedu.address.logic.commands.UndoCommand;
+import seedu.address.logic.commands.*;
 
 /**
  * Auto-correct user input command.
@@ -165,6 +151,7 @@ public class AutoCorrectCommand {
         commandPool.add(RedoCommand.COMMAND_WORD);
         commandPool.add(SelectCommand.COMMAND_WORD);
         commandPool.add(UndoCommand.COMMAND_WORD);
+        commandPool.add(AddTaskCommand.COMMAND_WORD);
 
         return commandPool;
     }

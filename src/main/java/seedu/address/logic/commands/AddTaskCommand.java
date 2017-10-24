@@ -1,25 +1,32 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCIPTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DUEDATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
+
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.AutoCorrectCommand;
-import seedu.address.model.task.*;
+import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.model.task.Task;
 import seedu.address.model.task.exceptions.DuplicateTaskException;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
 
 /**
  * Adds a task to the address book.
  */
 public class AddTaskCommand extends UndoableCommand {
 
-    public static final String COMMAND_WORD = "addtask";
-    public static final String COMAND_WORD_ALIAS = "at";
+    public static final String COMMAND_WORD = "task";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to the address book."
             + "Parameters: "
-            + "Name "
-            + PREFIX_PRIORITY + "priority(0/1/2)";
+            + PREFIX_DESCIPTION + "DESCRIPTION "
+            + PREFIX_PRIORITY + "PRIORITY(0/1/2) "
+            + PREFIX_DUEDATE + "DUE DATE(dd/MM/yyyy) \n"
+            + "EXAMPLE: " + COMMAND_WORD + " "
+            + PREFIX_DESCIPTION + "CS ASSIGNMENT "
+            + PREFIX_PRIORITY + "2 "
+            + PREFIX_DUEDATE + "25/10/2017";
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the address book.";
@@ -30,7 +37,7 @@ public class AddTaskCommand extends UndoableCommand {
      * Creates an AddTaskCommand to add the specified {@code ReadOnlyTask}
      */
     public AddTaskCommand(ReadOnlyTask task) {
-        toAdd = new Task(task.getName(), task.getDate(), task.getDescription(), task.getPriority());
+        toAdd = new Task(task);
     }
 
     @Override
