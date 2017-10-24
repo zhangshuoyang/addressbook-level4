@@ -400,20 +400,24 @@ Edit distance 2 does not cover many other mis-spelt commands. +
 **Cons:** It would not be able to utilise `COMMAND_WORD` defined in each command class
 as it is a good practice to reused what is already defined and extend its usage (Close to modification and Open to extension Principle). +
 
-=== Auto-Complete
+=== Autocomplete [[autocomplete-feature]]
 
-The `Auto-complete` feature enables commands to be automatically suggested and
+The `autocomplete` feature enables commands to be automatically suggested and
 completed for users. It is invoked in the `LogicManager` class.
 
-==== Prerequisites/Dependencies
+==== Prerequisites/Dependencies [[autocomplete-dependencies]]
 
-* The hotkey for launching `Autocomplete` is indicated in the `CommandBox` class.
+* The hotkey for launching `autocomplete` is indicated in the `CommandBox` class.
 Currently, the hotkey is `TAB`.
+* The `COMMAND_WORD` field must exist in the class file representing each command.
+* The `COMMAND_WORD` field in each command class is defined as the string that is used to invoke
+that command.
+For example, "add" is the `COMMAND_WORD` in the `AddCommand` class and is used to invoke the `add` operation.
 * The `COMMAND_WORD` for every command must be added to
-the `listOfAvaliableCommands` list in the  `Command` class.
+the `mapOfAvailableCommands` map in the  `Command` class.
 If the developer forgets to perform this step, `AddressBook` will work
 normally but there will be no hints for those commands.
-* Although `Autocomplete` currently does not support autocompletion
+* Although `autocomplete` currently does not support autocompletion
 for aliases. The `COMMAND_WORD_ALIAS` alias for every command, that has an alias,
 should be added to the `listOfCommandAliases` list in the `Command` class
 for completeness and testing purposes.
@@ -424,11 +428,11 @@ another method should be implemented in the `AutoCompleteUtil` class.
 
 ==== Design Considerations
 
-**Aspect:** Implementation of `Autocomplete` +
+**Aspect:** Implementation of `autocomplete` +
 
 **Alternative 1 (current choice):** Add a list of names of available commands to `Command` class. +
-**Pros:** We do not need to care about how `Autocomplete` works when adding new commands. We simply need to add the
- `COMMAND_WORD` of new commands to the Command class and `Autocomplete` will automatically use them for hints.
+**Pros:** We do not need to care about how `autocomplete` works when adding new commands. We simply need to add the
+ `COMMAND_WORD` of new commands to the Command class and `autocomplete` will automatically use them for hints.
  Furthermore, command names can be dynamically obtained via the `COMMAND_WORD` field for every command. +
 **Cons:** Additional level of dependency as the developer has to consistently update the `Command` class whenever
  a new type of command is created. +
@@ -440,9 +444,49 @@ another method should be implemented in the `AutoCompleteUtil` class.
  Furthermore, there is repeated work (and higher risk of error) as the developer must take care to ensure that the text file's entry corresponds with the
 `COMMAND WORD` field.
 
+=== Extended Autocomplete [[extended-autocomplete-feature]]
 
-=== Delete Multiple Contact
-The `Delete` multiple contact feature enables user to delete more than one contact in a single command. It is
+The `extended autocomplete` feature is an add-on to the `autocomplete` feature
+and enables the full format of commands to be automatically filled into the command bar.
+It is invoked in the `LogicManager` class.
+
+==== Prerequisites/Dependencies
+
+* The hotkey for launching `extended autocomplete` is indicated in the `CommandBox` class.
+Currently, the hotkey is `Ctrl`.
+* The `COMMAND_WORD` and `AUTOCOMPLETE_FORMAT` fields must exist in all class files that represent commands.
+* For definition of `COMMAND_WORD`, see <<autocomplete-dependencies, section 4.5.1>>
+* The `AUTOCOMPLETE_FORMAT` field is defined as a string that contains the format of the command that is represented by the enclosing class.
+For example, if `test` command has the format of `test positive_integer` then `AUTOCOMPLETE_FORMAT` must be defined as
+`test positive_integer` in the `TestCommand` class.
+* The `mapOfAvailableCommands` map in the `Command` class must contain `<command_class.COMMAND_WORD, command_class.AUTCOMPLETE_FORMAT>`
+as `<key, value>` pairs. An example of such a pair is `<AddCommand.COMMAND_WORD, AddCommand.AUTOCOMPLETE_FORMAT>`.
+* If the developer forgets to perform the above step, `AddressBook` will work
+normally but there will be no completion for those commands.
+* `extended autocomplete` currently does not support autocompletion
+for aliases.
+
+==== Design Considerations
+
+**Aspect:** Implementation of `extended autocomplete` +
+
+**Alternative 1 (current choice):** Use a shortcut key to launch `extended autocomplete` when a valid `COMMAND NAME`
+has been typed into the command bar. +
+**Pros:** It is easy to implement as we simply need to return a string based on the immediate user input. Furthermore, the `autocomplete` feature
+complements this by enabling users to easily input a correct `COMMAND_NAME`. +
+**Cons:** The user cannot choose from the list of suggestions by `Autocomplete`. He still has to type/autofill a
+single command name first before being able to use the shortcut for `extended autocomplete`. +
+
+**Alternative 2:** Allocate shortcut keys to select non-negative integers 0, 1, 2, 3 ... Each integer will be used as an
+index to select a specific command from the `autocomplete` list of suggestions. +
+Pros: Convenient for user to input any command as he only has to type its prefix partially before using `autocomplete` and
+select the desired command using the shortcut for `extended autocomplete`. +
+Cons: Finite number of keys on the keyboard make it impossible to do a one-to-one mapping of shortcut keys to commands.
+ Furthermore, it is quite tricky to implement as using keys with printable characters will result in extra characters
+ being printed together with the string returned by `extended autocomplete`.
+
+=== Delete Multiple Contacts
+The `Delete` multiple contacts feature enables user to delete more than one contact in a single command. It is
 invoked in the `DeleteCommand` class.
 
 ==== Prerequisites/Dependencies
@@ -1169,7 +1213,7 @@ Use case ends.
 
 *MSS*
 
-1.  User types a command halfway and presses the autocomplete hotkey.
+1.  User types a command halfway and presses the <<autocomplete-feature, autocomplete>> hotkey.
 2.  AddressBook prints suggested commands, whose prefixes match the
  text (case-insenstive) entered by user, in the result pane of the GUI.
 3. User enters one of the suggested commands to perform
@@ -1188,7 +1232,11 @@ Use case ends.
 ** 3c1. AddressBook replaces the text entered by user, in
 the command box, with the name of the matching command.
 ** 3c2. User types additional flags and options for the
-completed command name (if any).
+completed command name (if any). +
+* 3d. The user enters a valid `COMMAND_WORD` (i.e. case and spelling matches) and presses
+the <<extended-autocomplete-feature, extended autocomplete>> hotkey.
+** 3d1. AddressBook autofills the command bar with the full syntax of the matching command.
+** 3d2. User replaces the placeholders in the syntax string with his own text.
 +
 Use case ends.
 
