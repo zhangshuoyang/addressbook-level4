@@ -120,6 +120,136 @@ Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
 
+=== Deleting a person : `delete`
+
+Deletes the specified person from the address book. +
+Format: `delete INDEX`
+
+****
+* Deletes the person at the specified `INDEX`.
+* The index refers to the index number shown in the most recent listing.
+* The index *must be a positive integer* 1, 2, 3, ...
+****
+
+Examples:
+
+* `list` +
+`delete 2` +
+Deletes the 2nd person in the address book.
+* `find Betsy` +
+`delete 1` +
+Deletes the 1st person in the results of the `find` command.
+
+=== Selecting a person : `select`
+
+Selects the person identified by the index number used in the last person listing. +
+Format: `select INDEX`
+
+****
+* Selects the person and loads the Google search page the person at the specified `INDEX`.
+* The index refers to the index number shown in the most recent listing.
+* The index *must be a positive integer* `1, 2, 3, ...`
+****
+
+Examples:
+
+* `list` +
+`select 2` +
+Selects the 2nd person in the address book.
+* `find Betsy` +
+`select 1` +
+Selects the 1st person in the results of the `find` command.
+
+=== Listing entered commands : `history`
+
+Lists all the commands that you have entered in reverse chronological order. +
+Format: `history`
+
+[NOTE]
+====
+Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and next input respectively in the command box.
+====
+
+// tag::undoredo[]
+=== Undoing previous command : `undo`
+
+Restores the address book to the state before the previous _undoable_ command was executed. +
+Format: `undo`
+
+[NOTE]
+====
+Undoable commands: those commands that modify the address book's content (`add`, `delete`, `edit` and `clear`).
+====
+
+Examples:
+
+* `delete 1` +
+`list` +
+`undo` (reverses the `delete 1` command) +
+
+* `select 1` +
+`list` +
+`undo` +
+The `undo` command fails as there are no undoable commands executed previously.
+
+* `delete 1` +
+`clear` +
+`undo` (reverses the `clear` command) +
+`undo` (reverses the `delete 1` command) +
+
+=== Redoing the previously undone command : `redo`
+
+Reverses the most recent `undo` command. +
+Format: `redo`
+
+Examples:
+
+* `delete 1` +
+`undo` (reverses the `delete 1` command) +
+`redo` (reapplies the `delete 1` command) +
+
+* `delete 1` +
+`redo` +
+The `redo` command fails as there are no `undo` commands executed previously.
+
+* `delete 1` +
+`clear` +
+`undo` (reverses the `clear` command) +
+`undo` (reverses the `delete 1` command) +
+`redo` (reapplies the `delete 1` command) +
+`redo` (reapplies the `clear` command) +
+// end::undoredo[]
+
+=== Clearing all entries : `clear`
+
+Clears all entries from the address book. +
+Format: `clear`
+
+=== Exiting the program : `exit`
+
+Exits the program. +
+Format: `exit`
+
+=== Deleting a tag : `deletetag` [since v1.0]
+
+Deletes the specified tag from the address book. +
+Format: `delete tag_name`
+
+****
+* The alias for this command is `dt`. That means that you can type +
+`dt` instead of `deletetag`.
+* Deletes the tag with the specified `tag_name` from all records in the
+address book.
+* `tag_name` is case-sensitive (i.e. `Friends` is not the
+same as `friends`).
+* The result of this command is not undoable.
+****
+
+Examples:
+
+* `deletetag friends` +
+Deletes the tag `friends` from all records in the address book.
+
 === Locating persons by tag: `search` [since v1.1]
 
 Searches persons whose tag names contain any of the given keywords. +
@@ -227,6 +357,48 @@ Examples:
 * `df` does not match with any command name. Hence, nothing is returned by address book.
 * `d` returns various command suggestions in the result pane. e.g.`delete` and `deletetag`
 
+=== AutoCorrect command names [Since v1.2]
+
+Finds command whose names start with the command entered from the user.
+Application will notify the user that the command entered is corrected and perform the corrected commmand. +
+Format: [mis-spelt command]
+
+****
+* The auto-correct function will only work on the mis-spelt words within edit distance of 2.
+* The match is case-insensitive, e.g. "sEarhC" is equals to "search".
+* If no match is found, the application will display "Unknown command".
+****
+
+Examples:
+
+* `deleet` will match to `delete`.
+* `del` will not match to any command, application will display "Unkown command"
+* `d` will be matched to `delete` still as it is an alias.
+
+=== Deleting multiple person : `delete index/another index/...` [since v1.2]
+
+Deletes multiple person from the address book. +
+Format: `delete INDEX/INDEX`
+
+Example:
+
+1) Enter `list` into the Command Box +
+
+image::DeleteMultiple/delete_image_1.png[width="500"]
+_Figure 3.13.1 : All the contacts are listed_
+
+2) `delete 2/3` deletes the 2nd and 3rd person from the address book. +
+
+image::DeleteMultiple/delete_image_2.png[width="500"]
+_Figure 3.13.2 : Contacts with index 2 & 3 are deleted_
+
+=== Viewing Weather Forecast [Since v1.3]
+
+Viewing weather forecast on Yahoo Weather page.
+Accessible from `File` dropdown list, `Weather Forecast` menu item.
+
+image::WeatherForecast.png[width="500"]
+
 === Extended autocomplete for commands [Since v1.3]
 
 Autofills the full syntax of the command whose name matches the user-entered text exactly.
@@ -252,172 +424,6 @@ Format: [CONTROL] + [COMMAND_WORD_ALIAS]
 * The keyborad shortcuts are created only for commands with heavy text input.
 * The commands with keyboard shortcuts are: `add`, `multifilter`, `edit`, `search`, `delete`, `clear`.
 ****
-
-=== AutoCorrect command names [Since v1.2]
-
-Finds command whose names start with the command entered from the user.
-Application will notify the user that the command entered is corrected and perform the corrected commmand. +
-Format: [mis-spelt command]
-
-****
-* The auto-correct function will only work on the mis-spelt words within edit distance of 2.
-* The match is case-insensitive, e.g. "sEarhC" is equals to "search".
-* If no match is found, the application will display "Unknown command".
-****
-
-Examples:
-
-* `deleet` will match to `delete`.
-* `del` will not match to any command, application will display "Unkown command"
-* `d` will be matched to `delete` still as it is an alias.
-
-=== Deleting a person : `delete`
-
-Deletes the specified person from the address book. +
-Format: `delete INDEX`
-
-****
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the most recent listing.
-* The index *must be a positive integer* 1, 2, 3, ...
-****
-
-Examples:
-
-* `list` +
-`delete 2` +
-Deletes the 2nd person in the address book.
-* `find Betsy` +
-`delete 1` +
-Deletes the 1st person in the results of the `find` command.
-
-=== Deleting multiple person : `delete index/another index/...` [since v1.2]
-
-Deletes multiple person from the address book. +
-Format: `delete INDEX/INDEX`
-
-Example:
-
-1) Enter `list` into the Command Box +
-
-image::DeleteMultiple/delete_image_1.png[width="500"]
-_Figure 3.13.1 : All the contacts are listed_
-
-2) `delete 2/3` deletes the 2nd and 3rd person from the address book. +
-
-image::DeleteMultiple/delete_image_2.png[width="500"]
-_Figure 3.13.2 : Contacts with index 2 & 3 are deleted_
-
-
-=== Deleting a tag : `deletetag` [since v1.0]
-
-Deletes the specified tag from the address book. +
-Format: `delete tag_name`
-
-****
-* The alias for this command is `dt`. That means that you can type +
-`dt` instead of `deletetag`.
-* Deletes the tag with the specified `tag_name` from all records in the
-address book.
-* `tag_name` is case-sensitive (i.e. `Friends` is not the
-same as `friends`).
-* The result of this command is not undoable.
-****
-
-Examples:
-
-* `deletetag friends` +
-Deletes the tag `friends` from all records in the address book.
-
-=== Selecting a person : `select`
-
-Selects the person identified by the index number used in the last person listing. +
-Format: `select INDEX`
-
-****
-* Selects the person and loads the Google search page the person at the specified `INDEX`.
-* The index refers to the index number shown in the most recent listing.
-* The index *must be a positive integer* `1, 2, 3, ...`
-****
-
-Examples:
-
-* `list` +
-`select 2` +
-Selects the 2nd person in the address book.
-* `find Betsy` +
-`select 1` +
-Selects the 1st person in the results of the `find` command.
-
-=== Listing entered commands : `history`
-
-Lists all the commands that you have entered in reverse chronological order. +
-Format: `history`
-
-[NOTE]
-====
-Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and next input respectively in the command box.
-====
-
-// tag::undoredo[]
-=== Undoing previous command : `undo`
-
-Restores the address book to the state before the previous _undoable_ command was executed. +
-Format: `undo`
-
-[NOTE]
-====
-Undoable commands: those commands that modify the address book's content (`add`, `delete`, `edit` and `clear`).
-====
-
-Examples:
-
-* `delete 1` +
-`list` +
-`undo` (reverses the `delete 1` command) +
-
-* `select 1` +
-`list` +
-`undo` +
-The `undo` command fails as there are no undoable commands executed previously.
-
-* `delete 1` +
-`clear` +
-`undo` (reverses the `clear` command) +
-`undo` (reverses the `delete 1` command) +
-
-=== Redoing the previously undone command : `redo`
-
-Reverses the most recent `undo` command. +
-Format: `redo`
-
-Examples:
-
-* `delete 1` +
-`undo` (reverses the `delete 1` command) +
-`redo` (reapplies the `delete 1` command) +
-
-* `delete 1` +
-`redo` +
-The `redo` command fails as there are no `undo` commands executed previously.
-
-* `delete 1` +
-`clear` +
-`undo` (reverses the `clear` command) +
-`undo` (reverses the `delete 1` command) +
-`redo` (reapplies the `delete 1` command) +
-`redo` (reapplies the `clear` command) +
-// end::undoredo[]
-
-=== Clearing all entries : `clear`
-
-Clears all entries from the address book. +
-Format: `clear`
-
-=== Exiting the program : `exit`
-
-Exits the program. +
-Format: `exit`
 
 === Tag use emoji : `tag emoji` [Coming in V2.0]
 
