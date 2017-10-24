@@ -14,6 +14,13 @@ endif::[]
 
 By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
 
+== Welcome to Contact Plus
+Contact Plus is a contact-managing service through command line. We strive to provide the very comprehensive services for busy students on the campus so that they can manage their contacts efficiently. For example, the auto-correction feature allows
+our busy friend - David, a university student, to type fast on the keyboard without worrying spelling mistakes.
+
+To make Contact Plus better, there are many ways for you to contribute to this project: coding for new features, testing, integrating with third party APIs, or simply contributing to the documentations.
+This guide will not only help you get started as a Contact Plus contributor, but that you will find useful even though you are an experienced contributor.
+
 == Quick Start
 
 .  Ensure you have Java version `1.8.0_60` or later installed in your Computer.
@@ -201,7 +208,7 @@ Names of matching commands would be suggested to the user or automatically enter
 Format: [Prefix]
 
 ****
-* The hotkey for autocomplete is the `TAB` key.
+* The hotkey for `autocomplete` is the `TAB` key.
 * The match is case-insensitive, e.g. `del` and `Del` will both match the `delete`
 command.
 * The system looks for commands whose names start with the user-entered text. This means that `del` will match `delete` but `ele`
@@ -219,6 +226,22 @@ Examples:
 * `del` expands to `delete` in the command bar
 * `df` does not match with any command name. Hence, nothing is returned by address book.
 * `d` returns various command suggestions in the result pane. e.g.`delete` and `deletetag`
+
+=== Extended autocomplete for commands [since v1.3]
+
+Autofills the full syntax of the command whose name matches the user-entered text exactly.
+Format: [COMMAND_WORD]
+
+****
+* The hotkey for `extended autocomplete` is `Ctrl`.
+* This feature uses exact matching (i.e. case and spelling of `COMMAND_WORD` must match the actual command).
+* The system does not support autocompletion for command aliases.
+****
+
+Examples:
+
+* `delete` expands to `delete index_number`
+* `deletetag` exapnds to `deletetag tag_name`
 
 === AutoCorrect command names [Since v1.2]
 
