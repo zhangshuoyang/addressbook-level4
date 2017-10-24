@@ -1,13 +1,23 @@
 package seedu.address.ui;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+
 import java.net.URL;
+import java.util.Scanner;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import com.google.common.eventbus.Subscribe;
 
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.Region;
 import javafx.scene.web.WebView;
 import seedu.address.MainApp;
@@ -32,15 +42,27 @@ public class BrowserPanel extends UiPart<Region> {
     @FXML
     private WebView browser;
 
+    @FXML
+    private TextArea taskDisplayed;
+
+
     public BrowserPanel() {
         super(FXML);
 
         // To prevent triggering events for typing inside the loaded Web page.
         getRoot().setOnKeyPressed(Event::consume);
-
+        displayTask();
         loadDefaultPage();
+        displayOnTextArea();
         registerAsAnEventHandler(this);
     }
+
+    private void displayTask() {
+        //taskDisplayed.textProperty().bind(displayed);
+        taskDisplayed.setStyle("-fx-font-family: monospace; -fx-background-color: #f8ecc2; -fx-font-size: 22px;");
+
+    }
+
 
     private void loadPersonPage(ReadOnlyPerson person) {
         loadPage(GOOGLE_MAPS_SEARCH_URL_PREFIX + person.getAddress().toString()
@@ -64,6 +86,32 @@ public class BrowserPanel extends UiPart<Region> {
      */
     public void freeResources() {
         browser = null;
+    }
+
+    /**
+     *  Read and Display the task on the Text Area
+     */
+    public void displayOnTextArea() {
+        try {
+            Writer output;
+            String curr = System.getProperty("user.dir");
+            output = new BufferedWriter(new FileWriter(curr + "/data/Hello.txt", true));
+            output.append("\r\n");
+            Scanner s = new Scanner(new File(curr + "/src/main/java/seedu/address/ui/Dummy.txt")).useDelimiter
+                    (Pattern.compile("\\r\\n"));
+
+            while (s.hasNext()) {
+
+                taskDisplayed.appendText(s.next() + "\n");
+
+            }
+
+
+        } catch (FileNotFoundException ex) {
+            System.err.println(ex);
+        } catch (IOException e) {
+            System.err.println(e);
+        }
     }
 
     @Subscribe
