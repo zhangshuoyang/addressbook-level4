@@ -80,6 +80,8 @@ public abstract class Command {
         return listOfAvailableCommandAliases;
     }
 
+
+
     /**
      * Executes the command and returns the result message.
      *

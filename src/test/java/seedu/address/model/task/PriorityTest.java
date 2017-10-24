@@ -9,12 +9,12 @@ public class PriorityTest {
     @Test
     public void isValidPriority() {
         // invalid description
-        assertFalse(Priority.isValidPriority(5)); // number < 0
-        assertFalse(Priority.isValidPriority(-5)); // number > 2
+        assertFalse(Priority.isValidPriority("5")); // number < 0
+        assertFalse(Priority.isValidPriority("-5")); // number > 2
 
 
         // valid description
-        assertTrue(Priority.isValidPriority(2)); // Priority 2
+        assertTrue(Priority.isValidPriority("2")); // Priority 2
 
 
     }

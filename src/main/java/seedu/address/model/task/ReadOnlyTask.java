@@ -1,10 +1,6 @@
 package seedu.address.model.task;
 
-import java.util.Date;
-
 import javafx.beans.property.ObjectProperty;
-
-
 
 
 /**
@@ -13,14 +9,12 @@ import javafx.beans.property.ObjectProperty;
  */
 public interface ReadOnlyTask {
 
-    ObjectProperty<Name> nameProperty();
-    Name getName();
-    ObjectProperty<Date> dateProperty();
-    Date getDate();
     ObjectProperty<Description> descriptionProperty();
     Description getDescription();
     ObjectProperty<Priority> priorityProperty();
     Priority getPriority();
+    ObjectProperty<DueDate> dueDateProperty();
+    DueDate getDueDate();
 
     /**
      * Returns true if both have the same state. (interfaces cannot override .equals)
@@ -28,10 +22,9 @@ public interface ReadOnlyTask {
     default boolean isSameStateAs(ReadOnlyTask other) {
         return other == this // short circuit if same object
                 || (other != null // this is first to avoid NPE below
-                && other.getName().equals(this.getName()) // state checks here onwards
-                && other.getDate().equals(this.getDate())
                 && other.getDescription().equals(this.getDescription())
-                && other.getPriority().equals(this.getPriority()));
+                && other.getPriority().equals(this.getPriority())
+                && other.getDueDate().equals(this.getDueDate()));
     }
 
     /**
@@ -39,13 +32,12 @@ public interface ReadOnlyTask {
      */
     default String getAsText() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
-                .append(" Description: ")
+        builder.append(" Description: ")
                 .append(getDescription())
-                .append(" Date: ")
-                .append(getDate())
                 .append(" Priority ")
-                .append(getPriority());
+                .append(getPriority())
+                .append(" DueDate ")
+                .append(getDueDate());
         return builder.toString();
     }
 

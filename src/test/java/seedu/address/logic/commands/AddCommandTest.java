@@ -25,6 +25,9 @@ import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.model.task.exceptions.DuplicateTaskException;
+import seedu.address.model.task.exceptions.TaskNotFoundException;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandTest {
@@ -153,7 +156,36 @@ public class AddCommandTest {
             fail("This method should not be called.");
             return null;
         }
+
+        @Override
+        public void addTask(ReadOnlyTask task) throws DuplicateTaskException {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void deleteTask(ReadOnlyTask task) throws TaskNotFoundException {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void updateTask(ReadOnlyTask target, ReadOnlyTask editedTask)
+                throws DuplicateTaskException {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<ReadOnlyTask> getFilteredTaskList() {
+            fail("This method should not be called.");
+            return null;
+        }
+
+        @Override
+        public void updateFilteredTaskList(Predicate<ReadOnlyTask> predicate) {
+            fail("This method should not be called.");
+        }
+
     }
+
 
     /**
      * A Model stub that always throw a DuplicatePersonException when trying to add a person.
