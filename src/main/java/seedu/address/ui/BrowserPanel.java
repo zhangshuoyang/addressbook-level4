@@ -94,9 +94,10 @@ public class BrowserPanel extends UiPart<Region> {
      */
     public void displayOnTextArea() {
         try {
+            Writer output;
             String curr = System.getProperty("user.dir");
-            BufferedWriter bw = new BufferedWriter(new FileWriter(curr + "/data/Hello.txt", true));
-            bw.newLine();
+            output = new BufferedWriter(new FileWriter(curr + "/data/Hello.txt", true));
+            output.append("\r\n");
             Scanner s = new Scanner(new File(curr + "/data/Hello.txt")).useDelimiter
                     (Pattern.compile("\\r\\n"));
 
