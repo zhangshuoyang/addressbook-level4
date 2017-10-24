@@ -18,8 +18,7 @@ By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
 Contact Plus is a contact-managing service through command line. We strive to provide the very comprehensive services for busy students on the campus so that they can manage their contacts efficiently. For example, the auto-correction feature allows
 our busy friend - David, a university student, to type fast on the keyboard without worrying spelling mistakes.
 
-To make Contact Plus better, there are many ways for you to contribute to this project: coding for new features, testing, integrating with third party APIs, or simply contributing to the documentations.
-This guide will not only help you get started as a Contact Plus contributor, but that you will find useful even though you are an experienced contributor.
+This guide will help you get familiar with the features of Contact Plus application.
 
 == Quick Start
 
@@ -33,7 +32,7 @@ This app will not work with earlier versions of Java 8.
 .  Copy the file to the folder you want to use as the home folder for your Address Book.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
-image::UI-V1.2.png[width="790"]
+image::Ui.png[width="790"]
 +
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
@@ -60,6 +59,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 === Viewing help : `help`
 
 Format: `help`
+Keyboard shortcut: `F1`
 
 === Adding a person: `add`
 
@@ -227,7 +227,7 @@ Examples:
 * `df` does not match with any command name. Hence, nothing is returned by address book.
 * `d` returns various command suggestions in the result pane. e.g.`delete` and `deletetag`
 
-=== Extended autocomplete for commands [since v1.3]
+=== Extended autocomplete for commands [Since v1.3]
 
 Autofills the full syntax of the command whose name matches the user-entered text exactly.
 Format: [COMMAND_WORD]
@@ -242,6 +242,16 @@ Examples:
 
 * `delete` expands to `delete index_number`
 * `deletetag` exapnds to `deletetag tag_name`
+
+=== Keyboard shortcut [Since v1.3]
+
+Keyboard shortcuts enables users to quickly get the command words without memorization.
+Format: [CONTROL] + [COMMAND_WORD_ALIAS]
+
+****
+* The keyborad shortcuts are created only for commands with heavy text input.
+* The commands with keyboard shortcuts are: `add`, `multifilter`, `edit`, `search`, `delete`, `clear`.
+****
 
 === AutoCorrect command names [Since v1.2]
 
