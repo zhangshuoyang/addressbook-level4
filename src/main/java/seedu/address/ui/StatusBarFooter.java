@@ -1,8 +1,10 @@
 package seedu.address.ui;
 
+import java.io.IOException;
 import java.time.Clock;
 import java.util.Date;
 import java.util.logging.Logger;
+import javax.xml.bind.JAXBException;
 
 import org.controlsfx.control.StatusBar;
 
@@ -44,10 +46,10 @@ public class StatusBarFooter extends UiPart<Region> {
     private StatusBar totalPersons;
 
 
-    public StatusBarFooter(String saveLocation, int totalPersons) {
+    public StatusBarFooter(int totalPersons) throws JAXBException, IOException {
         super(FXML);
         setSyncStatus(SYNC_STATUS_INITIAL);
-        setSaveLocation("./" + saveLocation);
+        setSaveLocation(getWeatherCondition());
         setTotalPersons(totalPersons);
         registerAsAnEventHandler(this);
     }
@@ -77,6 +79,11 @@ public class StatusBarFooter extends UiPart<Region> {
 
     private void setSyncStatus(String status) {
         Platform.runLater(() -> this.syncStatus.setText(status));
+    }
+
+    private String getWeatherCondition() throws JAXBException, IOException {
+        YahooWeatherRequest request = new YahooWeatherRequest();
+        return request.getYahooWeatherConditionSg();
     }
 
     @Subscribe
