@@ -384,15 +384,15 @@ Example:
 
 1) Enter `list` into the Command Box +
 
-image::DeleteMultiple/delete_image_1.png[width="500"]
+image::deleteMultiplePerson1.png[width="500"]
 
 2) `delete 2/3` deletes the 2nd and 3rd person from the address book. +
 
-image::DeleteMultiple/delete_image_2.png[width="500"]
+image::deleteMultiplePerson2.png[width="500"]
 
 3) Display the confirmation for deletion
 
-image::DeleteMultiple/delete_image_3.png[width="500"]
+image::deleteMultiplePerson3.png[width="500"]
 
 === Viewing Weather Forecast [Since v1.3]
 
