@@ -57,20 +57,18 @@ public class StatusBarFooterTest extends GuiUnitTest {
     @Test
     public void display() {
         // initial state
-        assertStatusBarContent(RELATIVE_PATH + STUB_SAVE_LOCATION, SYNC_STATUS_INITIAL);
+        assertStatusBarContent(SYNC_STATUS_INITIAL);
 
         // after address book is updated
         postNow(EVENT_STUB);
-        assertStatusBarContent(RELATIVE_PATH + STUB_SAVE_LOCATION,
-                String.format(SYNC_STATUS_UPDATED, new Date(injectedClock.millis()).toString()));
+        assertStatusBarContent(String.format(SYNC_STATUS_UPDATED, new Date(injectedClock.millis()).toString()));
     }
 
     /**
      * Asserts that the save location matches that of {@code expectedSaveLocation}, and the
      * sync status matches that of {@code expectedSyncStatus}.
      */
-    private void assertStatusBarContent(String expectedSaveLocation, String expectedSyncStatus) {
-        assertEquals(expectedSaveLocation, statusBarFooterHandle.getSaveLocation());
+    private void assertStatusBarContent(String expectedSyncStatus) {
         assertEquals(expectedSyncStatus, statusBarFooterHandle.getSyncStatus());
         guiRobot.pauseForHuman();
     }

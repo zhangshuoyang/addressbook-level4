@@ -19,10 +19,7 @@ public class YahooWeatherRequest {
         YahooWeatherService service = new YahooWeatherService();
         Channel channel = service.getForecast(woeid, DegreeUnit.CELSIUS);
 
-        channel.getItem().getForecasts().stream().forEach(e -> System.out.println(e.toString()));
-
         return conditionStringParser(channel.getItem().getCondition().toString());
-
     }
 
     /**
@@ -45,7 +42,6 @@ public class YahooWeatherRequest {
         }
 
         String removedOverHeadString = rawString.substring(startIndex, endIndex);
-        System.out.println(removedOverHeadString);
         ArrayList<String> splitStrings = new ArrayList<String>();
         for (String piece : removedOverHeadString.split(",")) {
             splitStrings.add(piece);
