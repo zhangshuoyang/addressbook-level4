@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.Writer;
 
 import java.net.URL;
-import java.nio.Buffer;
 import java.util.Scanner;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
@@ -98,7 +97,7 @@ public class BrowserPanel extends UiPart<Region> {
             String curr = System.getProperty("user.dir");
             output = new BufferedWriter(new FileWriter(curr + "/data/Hello.txt", true));
             output.append("\r\n");
-            Scanner s = new Scanner(new File(curr + "/data/Hello.txt")).useDelimiter
+            Scanner s = new Scanner(new File(curr + "/data/Dummy.txt")).useDelimiter
                     (Pattern.compile("\\r\\n"));
 
             while (s.hasNext()) {
