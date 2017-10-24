@@ -23,8 +23,6 @@ import seedu.address.model.AddressBook;
 
 public class StatusBarFooterTest extends GuiUnitTest {
 
-    private static final String STUB_SAVE_LOCATION = "Stub";
-    private static final String RELATIVE_PATH = "./";
     private static final int STUB_PERSON_SIZE = 0;
 
     private static final AddressBookChangedEvent EVENT_STUB = new AddressBookChangedEvent(new AddressBook());
