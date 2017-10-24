@@ -226,7 +226,6 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-// tag::undoredo[]
 === Undo/Redo mechanism
 
 The undo/redo mechanism is facilitated by an `UndoRedoStack`, which resides inside `LogicManager`. It supports undoing and redoing of commands that modifies the state of the address book (e.g. `add`, `edit`). Such commands will inherit from `UndoableCommand`.
@@ -351,31 +350,30 @@ image::UndoRedoActivityDiagram.png[width="200"]
 **Alternative 2:** Use `HistoryManager` for undo/redo +
 **Pros:** We do not need to maintain a separate stack, and just reuse what is already in the codebase. +
 **Cons:** Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things. +
-// end::undoredo[]
 
-=== Logging
+=== Auto-Correct Mechanism
 
-We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
+The `Auto-correct` feature enables misspelt commands entered by users to be auto-corrected by the application,
+and perform the correct command. The correction of the misspelt command is based on four types of prediction of the misspelt words, namely, addition of alphabets, deletion
+of alphabets, transposing of alphabets and Substitution of alphabets. For the sake of efficiency, the edit distance is limited to 2 (refer to `editDistance1`, and `checkMisspeltWords`).
 
-* The logging level can be controlled using the `logLevel` setting in the configuration file (See link:#configuration[Configuration])
-* The `Logger` for a class can be obtained using `LogsCenter.getLogger(Class)` which will log messages according to the specified logging level
-* Currently log messages are output through: `Console` and to a `.log` file.
+This is an example of how the misspelt words are prediction by adding one more alphabet:
+[source,java]
+----
+//Adding any one character (from the alphabet) anywhere in the word.
+        for (int i = 0; i <= formattedWord.length(); i++) {
+            for (int j = 0; j < alphabet.length(); j++) {
+                String newWord = formattedWord.substring(0, i) + alphabet.charAt(j)
+                        + formattedWord.substring(i, formattedWord.length());
+                results.add(newWord);
+            }
+        }
+----
 
-*Logging Levels*
+Auto-Correct is only utilized in `AddressBoonParser` class to check each input command, and correct the misspelt command which has an edit distance smaller than or equal to 2.
+The following diagram shows the interaction between `AutoCorrect` and `AddressBookParser` class:
 
-* `SEVERE` : Critical problem detected which may possibly cause the termination of the application
-* `WARNING` : Can continue, but with caution
-* `INFO` : Information showing the noteworthy actions by the App
-* `FINE` : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size
-
-=== Configuration
-
-Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: `config.json`).
-
-=== Auto-Correct
-
-The `Auto-correct` feature enables mis-spelt commands entered by users to be auto-corrected by the application,
-and perform the correct command.
+image::AddressBookParser.sequenceDiagram.png[width="800"]
 
 ==== Prerequisites/Dependencies
 
@@ -400,10 +398,51 @@ Edit distance 2 does not cover many other mis-spelt commands. +
 **Cons:** It would not be able to utilise `COMMAND_WORD` defined in each command class
 as it is a good practice to reused what is already defined and extend its usage (Close to modification and Open to extension Principle). +
 
-=== Autocomplete [[autocomplete-feature]]
+=== Yahoo Weather Display Mechanism
+The Yahoo weather information display is aided by the external library "yahoo-weather-java-api:2.0.2". This library queries data from Yahoo Weather API, and the application display the information returned by calling the library functions with
+a simple string parser method to format the data return. The formatted data is displayed on the `StatusFooterBar`. +
 
-The `autocomplete` feature enables commands to be automatically suggested and
-completed for users. It is invoked in the `LogicManager` class.
+The query of weather information is closely related to the location. The location is specified by WOEID, so in this application we take the WOEID of Singapore by default. +
+
+[source,java]
+----
+private final String woeid = "1062617";
+----
+
+The API method is called, and data returned as follows:
+
+[source,java]
+----
+YahooWeatherService service = new YahooWeatherService();
+Channel channel = service.getForecast(woeid, DegreeUnit.CELSIUS);
+
+return conditionStringParser(channel.getItem().getCondition().toString());
+----
+
+The overview of the weather displyed on the application is as follows:
+
+image::WeatherDisplay.png[width="200"]
+
+==== Prerequisites/Dependencies
+
+* This feature has a strong dependency on Yahoo Weather Server. Some exceptions or assertions should be implemented to prevent the failure of the application
+due to the failure of Yahoo Weather Server. +
+
+
+=== Autocomplete [[autocomplete-feature]] mechanism
+
+The `autocomplete` feature is implemented in `AutoCompleteUtil` class. It enables commands to be automatically suggested and
+completed for users. For example, when the user type, "sea", and press `TAB` key, the complete command `search` appears on the command line. This feature saves time for users and improves the efficiency of the application in general.
+It is invoked in the `LogicManager` class.
+
+This function can be used as follows:
+
+image::AutoCompleteCommand.png[width="800"]
+
+
+The interaction between `AutoCompleteUtil` and `LogicManager` classes can be seen from the following sequence diagram:
+
+image::AutoCompleteCommand.sequenceDiagram.png[width="800"]
 
 ==== Prerequisites/Dependencies [[autocomplete-dependencies]]
 
@@ -444,11 +483,15 @@ another method should be implemented in the `AutoCompleteUtil` class.
  Furthermore, there is repeated work (and higher risk of error) as the developer must take care to ensure that the text file's entry corresponds with the
 `COMMAND WORD` field.
 
-=== Extended Autocomplete [[extended-autocomplete-feature]]
+=== Extended Autocomplete [[extended-autocomplete-feature]] mechanism
 
 The `extended autocomplete` feature is an add-on to the `autocomplete` feature
 and enables the full format of commands to be automatically filled into the command bar.
 It is invoked in the `LogicManager` class.
+
+This command can be illustrated by the following diagram, the prefix is prompt automatically when the key `Control` is pressed on teh keyboard.
+
+image::AutoCompleteExtended.png[width="800"]
 
 ==== Prerequisites/Dependencies
 
@@ -485,9 +528,37 @@ Cons: Finite number of keys on the keyboard make it impossible to do a one-to-on
  Furthermore, it is quite tricky to implement as using keys with printable characters will result in extra characters
  being printed together with the string returned by `extended autocomplete`.
 
-=== Delete Multiple Contacts
-The `Delete` multiple contacts feature enables user to delete more than one contact in a single command. It is
+=== Delete Multiple Contacts Mechanism
+The `Delete` multiple contacts feature enables user to delete more than one contact in a single command by specifying more than one indices. It is
 invoked in the `DeleteCommand` class.
+
+The source code below shows the implementation of how multiple persons are deleted by using a loop:
+[source,java]
+----
+for (Index i : targetIndex) {
+            if (i.getZeroBased() >= lastShownList.size()) {
+                throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            }
+        }
+
+        String result = "";
+        Collections.sort(targetIndex);
+        for (Index i : targetIndex) {
+            ReadOnlyPerson personToDelete = lastShownList.get(i.getZeroBased());
+
+            try {
+                model.deletePerson(personToDelete);
+                if (targetIndex.size() == 1) {
+                    result = result.concat(personToDelete.toString());
+                } else {
+                    result = result.concat("\n" + personToDelete.toString());
+                }
+            } catch (PersonNotFoundException pnfe) {
+                assert false : "The target person cannot be missing";
+            }
+
+        }
+----
 
 ==== Prerequisites/Dependencies
 
@@ -510,7 +581,7 @@ is separated by `/`. +
 indicate if the contact has been deleted. +
 **Cons:** The whole List has to be iterated to check if the contact has been deleted.
 
-=== Theme Support
+=== Theme Support Mechanism
 
 The 'theme support' feature allows user to choose their favorite theme for the address book, other than the default
 Dark Theme.
@@ -519,6 +590,10 @@ Currently, Contact Plus v1.2 is presented with two themes: Dark and Light.
 
 Users are also allowed to preview themes at runtime before they choose them. The previews are supported with
 screenshots of the selected theme.
+
+The overview of the theme is as follows:
+
+image::ThemeSupport.png[width="800"]
 
 ==== Prerequisites/Dependencies
 
@@ -536,6 +611,24 @@ in respective models.
 **Pros:** Users are able to know what the theme looks like before they choose the respective theme. +
 **Cons:** Additional space for `Theme Selection` window. +
 
+=== Logging
+
+We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
+
+* The logging level can be controlled using the `logLevel` setting in the configuration file (See link:#configuration[Configuration])
+* The `Logger` for a class can be obtained using `LogsCenter.getLogger(Class)` which will log messages according to the specified logging level
+* Currently log messages are output through: `Console` and to a `.log` file.
+
+*Logging Levels*
+
+* `SEVERE` : Critical problem detected which may possibly cause the termination of the application
+* `WARNING` : Can continue, but with caution
+* `INFO` : Information showing the noteworthy actions by the App
+* `FINE` : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size
+
+=== Configuration
+
+Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: `config.json`).
 
 == Documentation
 
