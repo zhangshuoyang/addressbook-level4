@@ -286,11 +286,18 @@ Deletes the 1st person in the results of the `find` command.
 Deletes multiple person from the address book. +
 Format: `delete INDEX/INDEX`
 
-Examples:
+Example:
 
-* `list` +
-`delete 2/3` +
-Deletes the 2nd and 3rd person in the address book.
+1) Enter `list` into the Command Box +
+
+image::DeleteMultiple/delete_image_1.png[width="500"]
+_Figure 3.13.1 : All the contacts are listed_
+
+2) `delete 2/3` deletes the 2nd and 3rd person from the address book. +
+
+image::DeleteMultiple/delete_image_2.png[width="500"]
+_Figure 3.13.2 : Contacts with index 2 & 3 are deleted_
+
 
 === Deleting a tag : `deletetag` [since v1.0]
 
