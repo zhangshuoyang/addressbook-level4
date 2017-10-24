@@ -1,7 +1,12 @@
 package seedu.address.ui;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+
 import java.net.URL;
 import java.util.Scanner;
 import java.util.logging.Logger;
@@ -89,6 +94,9 @@ public class BrowserPanel extends UiPart<Region> {
     public void displayOnTextArea() {
         try {
             String curr = System.getProperty("user.dir");
+            Writer output;
+            output = new BufferedWriter(new FileWriter(curr + "/data/Hello.txt", true));
+            output.append('\n');
             Scanner s = new Scanner(new File(curr + "/data/Hello.txt")).useDelimiter
                     (Pattern.compile("\\r\\n"));
 
@@ -101,6 +109,8 @@ public class BrowserPanel extends UiPart<Region> {
 
         } catch (FileNotFoundException ex) {
             System.err.println(ex);
+        } catch (IOException e) {
+            System.err.println(e);
         }
     }
 
