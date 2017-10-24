@@ -57,6 +57,9 @@ public class MainWindow extends UiPart<Region> {
     private MenuItem helpMenuItem;
 
     @FXML
+    private MenuItem weaherForecast;
+
+    @FXML
     private StackPane personListPanelPlaceholder;
 
     @FXML
@@ -194,6 +197,16 @@ public class MainWindow extends UiPart<Region> {
         HelpWindow helpWindow = new HelpWindow();
         helpWindow.show();
     }
+
+    /**
+     * Opens the weather forecast window.
+     */
+    @FXML
+    public void handleWeather() throws JAXBException, IOException {
+        WeatherWindow weatherWindow = new WeatherWindow();
+        weatherWindow.show();
+    }
+
 
     void show() {
         primaryStage.show();
