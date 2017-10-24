@@ -57,9 +57,6 @@ public class MainWindow extends UiPart<Region> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private MenuItem weaherForecast;
-
-    @FXML
     private StackPane personListPanelPlaceholder;
 
     @FXML

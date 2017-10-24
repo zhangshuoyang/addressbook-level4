@@ -46,7 +46,7 @@ public class StatusBarFooter extends UiPart<Region> {
     private StatusBar totalPersons;
 
 
-    public StatusBarFooter(String saveLocation, int totalPersons) throws JAXBException, IOException {
+    public StatusBarFooter(int totalPersons) throws JAXBException, IOException {
         super(FXML);
         setSyncStatus(SYNC_STATUS_INITIAL);
         setSaveLocation(getWeatherCondition());
