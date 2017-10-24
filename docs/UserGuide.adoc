@@ -230,7 +230,7 @@ Format: `clear`
 Exits the program. +
 Format: `exit`
 
-=== Deleting a tag : `deletetag` [since v1.0]
+=== Deleting a tag : `deletetag` [Since v1.0]
 
 Deletes the specified tag from the address book. +
 Format: `delete tag_name`
@@ -250,7 +250,7 @@ Examples:
 * `deletetag friends` +
 Deletes the tag `friends` from all records in the address book.
 
-=== Locating persons by tag: `search` [since v1.1]
+=== Locating persons by tag: `search` [Since v1.1]
 
 Searches persons whose tag names contain any of the given keywords. +
 Format: `search KEYWORD [MORE_KEYWORDS]`
@@ -271,7 +271,7 @@ Returns `John Alice`
 * `search fri` +
 Returns `Unknown tag`
 
-=== Add second phone number for a person [since v1.1]
+=== Add second phone number for a person [Since v1.1]
 
 Add the second phone number for a person by using prefix "p2/" +
 Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS`
@@ -285,7 +285,7 @@ Examples:
 * `add n/John Doe p/98765432 p2/73624789 e/johnd@example.com a/John street, block 123, #01-01` +
 * `edit 1 p/91234567 p2/73624789 e/johndoe@example.com` +
 
-=== Locating persons by multiple criteria: `multifilter` [since v1.1]
+=== Locating persons by multiple criteria: `multifilter` [Since v1.1]
 
 Finds persons whose names, phone no., emails and addresses, +
 match a set of specified criteria. +
@@ -330,7 +330,7 @@ Returns contacts who match ALL of the following criteria: +
 An example of a matching contact for this command would be +
 `Ivan` that has phone no. `999`, email `g@y.com` and address `123 geylang road`
 
-=== Autocomplete command names [since v1.2]
+=== Autocomplete command names [Since v1.2]
 
 Finds commands whose names start with the user-entered text.
 Names of matching commands would be suggested to the user or automatically entered
@@ -375,7 +375,7 @@ Examples:
 * `del` will not match to any command, application will display "Unkown command"
 * `d` will be matched to `delete` still as it is an alias.
 
-=== Deleting multiple person : `delete index/another index/...` [since v1.2]
+=== Deleting multiple person : `delete index/another index/...` [Since v1.2]
 
 Deletes multiple person from the address book. +
 Format: `delete INDEX/INDEX`
@@ -385,12 +385,14 @@ Example:
 1) Enter `list` into the Command Box +
 
 image::DeleteMultiple/delete_image_1.png[width="500"]
-_Figure 3.13.1 : All the contacts are listed_
 
 2) `delete 2/3` deletes the 2nd and 3rd person from the address book. +
 
 image::DeleteMultiple/delete_image_2.png[width="500"]
-_Figure 3.13.2 : Contacts with index 2 & 3 are deleted_
+
+3) Display the confirmation for deletion
+
+image::DeleteMultiple/delete_image_3.png[width="500"]
 
 === Viewing Weather Forecast [Since v1.3]
 
