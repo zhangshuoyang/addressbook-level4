@@ -351,7 +351,7 @@ image::UndoRedoActivityDiagram.png[width="200"]
 **Pros:** We do not need to maintain a separate stack, and just reuse what is already in the codebase. +
 **Cons:** Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things. +
 
-=== Auto-Correct mechanism
+=== Auto-Correct Mechanism
 
 The `Auto-correct` feature enables misspelt commands entered by users to be auto-corrected by the application,
 and perform the correct command. The correction of the misspelt command is based on four types of prediction of the misspelt words, namely, addition of alphabets, deletion
@@ -398,7 +398,22 @@ Edit distance 2 does not cover many other mis-spelt commands. +
 **Cons:** It would not be able to utilise `COMMAND_WORD` defined in each command class
 as it is a good practice to reused what is already defined and extend its usage (Close to modification and Open to extension Principle). +
 
-=== Autocomplete [[autocomplete-feature]]
+=== Yahoo Weather Display Mechanism
+The Yahoo weather information display is aided by the external library "yahoo-weather-java-api:2.0.2". This library queries data from Yahoo Weather API, and the application display the information returned by calling the library functions with
+a simple string parser method to format the data return. The formatted data is displayed on the `StatusFooterBar`.
+
+The API method is called, and data retuned as follows:
+
+[source,java]
+----
+YahooWeatherService service = new YahooWeatherService();
+Channel channel = service.getForecast(woeid, DegreeUnit.CELSIUS);
+
+return conditionStringParser(channel.getItem().getCondition().toString());
+----
+
+
+=== Autocomplete [[autocomplete-feature]] mechanism
 
 The `autocomplete` feature is implemented in `AutoCompleteUtil` class. It enables commands to be automatically suggested and
 completed for users. For example, when the user type, "sea", and press `TAB` key, the complete command `search` appears on the command line. This feature saves time for users and improves the efficiency of the application in general.
@@ -452,7 +467,7 @@ another method should be implemented in the `AutoCompleteUtil` class.
  Furthermore, there is repeated work (and higher risk of error) as the developer must take care to ensure that the text file's entry corresponds with the
 `COMMAND WORD` field.
 
-=== Extended Autocomplete [[extended-autocomplete-feature]]
+=== Extended Autocomplete [[extended-autocomplete-feature]] mechanism
 
 The `extended autocomplete` feature is an add-on to the `autocomplete` feature
 and enables the full format of commands to be automatically filled into the command bar.
@@ -497,7 +512,7 @@ Cons: Finite number of keys on the keyboard make it impossible to do a one-to-on
  Furthermore, it is quite tricky to implement as using keys with printable characters will result in extra characters
  being printed together with the string returned by `extended autocomplete`.
 
-=== Delete Multiple Contacts
+=== Delete Multiple Contacts Mechanism
 The `Delete` multiple contacts feature enables user to delete more than one contact in a single command by specifying more than one indices. It is
 invoked in the `DeleteCommand` class.
 
@@ -550,7 +565,7 @@ is separated by `/`. +
 indicate if the contact has been deleted. +
 **Cons:** The whole List has to be iterated to check if the contact has been deleted.
 
-=== Theme Support
+=== Theme Support Mechanism
 
 The 'theme support' feature allows user to choose their favorite theme for the address book, other than the default
 Dark Theme.
