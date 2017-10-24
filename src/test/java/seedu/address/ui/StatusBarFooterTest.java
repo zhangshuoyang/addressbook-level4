@@ -48,7 +48,7 @@ public class StatusBarFooterTest extends GuiUnitTest {
 
     @Before
     public void setUp() throws JAXBException, IOException {
-        StatusBarFooter statusBarFooter = new StatusBarFooter(STUB_SAVE_LOCATION, STUB_PERSON_SIZE);
+        StatusBarFooter statusBarFooter = new StatusBarFooter(STUB_PERSON_SIZE);
         uiPartRule.setUiPart(statusBarFooter);
 
         statusBarFooterHandle = new StatusBarFooterHandle(statusBarFooter.getRoot());
