@@ -1,7 +1,11 @@
 package seedu.address.testutil;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.task.*;
+import seedu.address.model.task.Description;
+import seedu.address.model.task.DueDate;
+import seedu.address.model.task.Priority;
+import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.model.task.Task;
 
 /**
  * A utility class to help with buidling Task objects.
@@ -28,7 +32,9 @@ public class TaskBuilder {
     /**
      * Initializes the TaskBuider with the data of {@code taskToCopy}.
      */
-    public TaskBuilder(ReadOnlyTask taskToCopy) { this.task = new Task(taskToCopy); }
+    public TaskBuilder(ReadOnlyTask taskToCopy) {
+        this.task = new Task(taskToCopy);
+    }
 
     /**
      * Sets the {@code Description} of the {@code Task} that we are buidling.
