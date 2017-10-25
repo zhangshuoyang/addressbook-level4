@@ -26,6 +26,7 @@ public class AddCommand extends UndoableCommand {
             COMMAND_WORD + " "
             + PREFIX_NAME + "name "
             + PREFIX_PHONE + "phone_number "
+            + PREFIX_PHONE_2 + "second_phone_number "
             + PREFIX_EMAIL + "email_address "
             + PREFIX_ADDRESS + "residential_address "
             + PREFIX_TAG + "tag_1 tag_2 more_tags";

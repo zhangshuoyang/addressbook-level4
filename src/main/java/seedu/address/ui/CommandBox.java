@@ -1,9 +1,12 @@
 package seedu.address.ui;
 
-import java.net.MalformedURLException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -218,6 +221,8 @@ public class CommandBox extends UiPart<Region> {
      */
     @FXML
     private void handleCommandInputChanged() {
+        AudioUtil audio = new AudioUtil();
+
         try {
             CommandResult commandResult = logic.execute(commandTextField.getText());
             initHistory();
@@ -227,7 +232,7 @@ public class CommandBox extends UiPart<Region> {
             raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
 
             // Play success sound
-            AudioUtil.playClip("command-success.wav");
+            audio.playClip("command-success.wav");
             logger.info("Result: " + commandResult.feedbackToUser);
         } catch (CommandException | ParseException e) {
             initHistory();
@@ -238,11 +243,11 @@ public class CommandBox extends UiPart<Region> {
 
             // Play failure sound
             try {
-                AudioUtil.playClip("command-failure.wav");
-            } catch (IllegalArgumentException | MalformedURLException err) {
+                audio.playClip("command-failure.wav");
+            } catch (IOException | UnsupportedAudioFileException | LineUnavailableException err) {
                 err.printStackTrace();
             }
-        } catch (IllegalArgumentException | MalformedURLException e) {
+        } catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
             e.printStackTrace();
         }
     }

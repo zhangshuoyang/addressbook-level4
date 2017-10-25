@@ -120,7 +120,7 @@ Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
 
-=== Deleting a person : `delete`
+=== Deleting a single person : `delete` [[delete-single-person]]
 
 Deletes the specified person from the address book. +
 Format: `delete INDEX`
@@ -129,6 +129,8 @@ Format: `delete INDEX`
 * Deletes the person at the specified `INDEX`.
 * The index refers to the index number shown in the most recent listing.
 * The index *must be a positive integer* 1, 2, 3, ...
+* This function deletes *ONE* person only. For deleting multple persons simultaneouly,
+see section <<delete-multiple-persons , 3.19>>.
 ****
 
 Examples:
@@ -241,7 +243,6 @@ Format: `delete tag_name`
 address book.
 * `tag_name` is case-sensitive (i.e. `Friends` is not the
 same as `friends`).
-* The result of this command is not undoable.
 ****
 
 Examples:
@@ -374,9 +375,9 @@ Examples:
 * `del` will not match to any command, application will display "Unkown command"
 * `d` will be matched to `delete` still as it is an alias.
 
-=== Deleting multiple person : `delete index/another index/...` [Since v1.2]
+=== Deleting multiple persons : `delete index/another index/...` [Since v1.2] [[delete-multiple-persons]]
 
-Deletes multiple person from the address book. +
+Deletes multiple persons from the address book. +
 Format: `delete INDEX/INDEX`
 
 Example:
