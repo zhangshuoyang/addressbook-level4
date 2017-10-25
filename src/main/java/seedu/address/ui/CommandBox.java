@@ -15,8 +15,14 @@ import seedu.address.commons.events.ui.NewResultAvailableEvent;
 import seedu.address.commons.util.AudioUtil;
 import seedu.address.logic.ListElementPointer;
 import seedu.address.logic.Logic;
+import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.MultiFilterCommand;
+import seedu.address.logic.commands.SearchCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -49,6 +55,39 @@ public class CommandBox extends UiPart<Region> {
     @FXML
     private void handleKeyPress(KeyEvent keyEvent) {
         // Handles cases where multple keys are pressed simultaneously
+        String getAlphabetPressed = keyEvent.getCode().toString();
+        if (keyEvent.getCode().isLetterKey() && keyEvent.isControlDown()) {
+            //keyboard shortcut for input text heavy command
+            switch (getAlphabetPressed) {
+            case "A":
+                keyEvent.consume();
+                commandTextField.setText(AddCommand.COMMAND_WORD);
+                break;
+            case "D":
+                keyEvent.consume();
+                commandTextField.setText(DeleteCommand.COMMAND_WORD);
+                break;
+            case "M":
+                keyEvent.consume();
+                commandTextField.setText(MultiFilterCommand.COMMAND_WORD);
+                break;
+            case "C":
+                keyEvent.consume();
+                commandTextField.setText(ClearCommand.COMMAND_WORD);
+                break;
+            case "S":
+                keyEvent.consume();
+                commandTextField.setText(SearchCommand.COMMAND_WORD);
+                break;
+            case "E":
+                keyEvent.consume();
+                commandTextField.setText(EditCommand.COMMAND_WORD);
+                break;
+            default:
+                //do nothing
+            }
+        }
+
         if (keyEvent.isControlDown()) {
             keyEvent.consume();
             launchExtendedAutocomplete();
@@ -88,7 +127,7 @@ public class CommandBox extends UiPart<Region> {
      */
     private void launchExtendedAutocomplete() {
         String userCommand = commandTextField.getText().split("\\s+")[0];
-        System.out.println("The user's command is " + userCommand);
+        //System.out.println("The user's command is " + userCommand);
         Map<String, String> commandFormatMap = Command.getMapOfAvailableCommands();
         if (commandFormatMap.containsKey(userCommand)) {
             commandTextField.setText(commandFormatMap.get(userCommand));

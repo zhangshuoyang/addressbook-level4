@@ -3,7 +3,6 @@ package seedu.address.model.task;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Date;
 import java.util.Objects;
 
 import javafx.beans.property.ObjectProperty;
@@ -16,44 +15,52 @@ import javafx.beans.property.SimpleObjectProperty;
  */
 public class Task implements ReadOnlyTask {
 
-    private ObjectProperty<Name> name;
-    private ObjectProperty<Date> date;
+    //    private ObjectProperty<Name> name;
+    //    private ObjectProperty<Date> date;
     private ObjectProperty<Description> description;
     private ObjectProperty<Priority> priority;
+    private ObjectProperty<DueDate> duedate;
 
-    public Task(Name name, Date date, Description description, Priority priority) {
-        requireAllNonNull(name, date, description, priority);
-        this.name = new SimpleObjectProperty<>(name);
-        this.date = new SimpleObjectProperty<>(date);
+    public Task(Description description, Priority priority, DueDate duedate) {
+        requireAllNonNull(description, priority, duedate);
+        //        this.name = new SimpleObjectProperty<>(name);
+        //        this.date = new SimpleObjectProperty<>(date);
         this.description = new SimpleObjectProperty<>(description);
         this.priority = new SimpleObjectProperty<>(priority);
+        this.duedate = new SimpleObjectProperty<>(duedate);
 
     }
 
-    public void setName(Name name) {
-        this.name.set(requireNonNull(name));
-    }
 
 
-    public ObjectProperty<Name> nameProperty() {
-        return name;
-    }
+    //    public void setName(Name name) {
+    //        this.name.set(requireNonNull(name));
+    //    }
 
 
-    public Name getName() {
-        return name.get();
-    }
+    //    public ObjectProperty<Name> nameProperty() {
+    //        return name;
+    //    }
 
-    public void setDate(Date date) {
-        this.date.set(requireNonNull(date));
-    }
 
-    public ObjectProperty<Date> dateProperty() {
-        return date;
-    }
+    //    public Name getName() {
+    //        return name.get();
+    //    }
 
-    public Date getDate() {
-        return date.get();
+    //    public void setDate(Date date) {
+    //        this.date.set(requireNonNull(date));
+    //    }
+
+    //    public ObjectProperty<Date> dateProperty() {
+    //        return date;
+    //    }
+
+    //    public Date getDate() {
+    //        return date.get();
+    //    }
+
+    public Task(ReadOnlyTask in) {
+        this(in.getDescription(), in.getPriority(), in.getDueDate());
     }
 
     public void setDescription(Description description) {
@@ -79,6 +86,21 @@ public class Task implements ReadOnlyTask {
     public Priority getPriority() {
         return priority.get();
     }
+
+    public void setDuedate(DueDate dueddate) {
+        this.duedate.set(dueddate);
+    }
+
+    @Override
+    public ObjectProperty<DueDate> dueDateProperty() {
+        return duedate;
+    }
+
+    @Override
+    public DueDate getDueDate() {
+        return duedate.get();
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -89,7 +111,7 @@ public class Task implements ReadOnlyTask {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, description, date, priority);
+        return Objects.hash(description, priority);
     }
 
     @Override

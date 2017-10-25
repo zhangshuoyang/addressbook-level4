@@ -14,6 +14,12 @@ endif::[]
 
 By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
 
+== Welcome to Contact Plus
+Contact Plus is a contact-managing service through command line. We strive to provide the very comprehensive services for busy students on the campus so that they can manage their contacts efficiently. For example, the auto-correction feature allows
+our busy friend - David, a university student, to type fast on the keyboard without worrying spelling mistakes.
+
+This guide will help you get familiar with the features of Contact Plus application.
+
 == Quick Start
 
 .  Ensure you have Java version `1.8.0_60` or later installed in your Computer.
@@ -26,7 +32,7 @@ This app will not work with earlier versions of Java 8.
 .  Copy the file to the folder you want to use as the home folder for your Address Book.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
-image::UI-V1.2.png[width="790"]
+image::Ui.png[width="790"]
 +
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
@@ -53,6 +59,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 === Viewing help : `help`
 
 Format: `help`
+Keyboard shortcut: `F1`
 
 === Adding a person: `add`
 
@@ -113,147 +120,6 @@ Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
 
-=== Locating persons by tag: `search` [since v1.1]
-
-Searches persons whose tag names contain any of the given keywords. +
-Format: `search KEYWORD [MORE_KEYWORDS]`
-
-****
-* The search is case sensitive. e.g `Friends` will not match `friends`
-* The order of the keywords does not matter. e.g. `friends colleague` is the same as `colleague friends`
-* Only the tag name is searched.
-* Only full tag name will be accepted e.g. `friends` will not match `fri`
-* Result displays "Unknown tag" if no person has the tag
-* Alias for "search" is "st"
-* Persons's tag names matching at least one keyword will be returned (i.e. `OR` search). e.g. `friends colleague` will return persons with `friends`, or `colleague` tag
-****
-
-Examples:
-* `search friends` +
-Returns `John Alice`
-* `search fri` +
-Returns `Unknown tag`
-
-=== Add second phone number for a person [since v1.1]
-
-Add the second phone number for a person by using prefix "p2/" +
-Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS`
-
-****
-* Input "p2/-" for add command, when no second phone number is provided.
-* The order of the parameters does not matter. e.g. `p/87435783 p2/54729635` is the same as `p2/749374658 p/97453735`
-****
-
-Examples:
-* `add n/John Doe p/98765432 p2/73624789 e/johnd@example.com a/John street, block 123, #01-01` +
-* `edit 1 p/91234567 p2/73624789 e/johndoe@example.com` +
-
-=== Locating persons by multiple criteria: `multifilter` [since v1.1]
-
-Finds persons whose names, phone no., emails and addresses, +
-match a set of specified criteria. +
-Format: `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]`
-
-****
-* The alias for this command is `mf`. That means that you can type +
-`mf` instead of `multifilter`.
-* The search is case-insensitive for all fields. e.g `mf n/hans` will +
-match `Hans`.
-* The search performs a substring match. This means that the 'mf n/a' +
-will match both `alice` and `Hans` since both contain the letter `a`,
-* The order of the fields does not matter. +
-e.g.`mf n/hans e/a@ex.com` and `mf e/a@ex.com n/hans` +
-both mean the same thing.
-* Matching is performed based on ALL the criteria. +
-i.e. `mf n/a p/9` will find the contact `matt` with a phone no. of `999`
-but it will not find the contact `alice` with a phone no. of `888`.
-* None of the fields are compulsory. i.e. you can use `mf p/999` to find +
-contacts whose phone no. contain `999` and `mf e/yahoo` to find +
-contacts whose emails contain `yahoo` without entering the rest of the fields.
-* If only `mf` is entered, all contacts will be displayed.
-* `mf p/987 e/gmail` +
-Contact `alice` with phone no. `9876` and email `a@gmail.com` +
-will be matched. Contact `Bob` with phone no. `987` and email `a@yahoo.com`
-will not be matched
-****
-
-Examples:
-
-* `mf a/gey` +
-Returns contacts whose address contain `gey`
-* `mf` +
-Returns all contacts
-* `mf n/iv p/9 e/g a/ge` +
-Returns contacts who match ALL of the following criteria: +
-1. Name contains `iv`
-2. Phone no. contains `9`
-3. Email contains `g`
-4. Address contains `ge`
-
-An example of a matching contact for this command would be +
-`Ivan` that has phone no. `999`, email `g@y.com` and address `123 geylang road`
-
-=== Autocomplete command names [since v1.2]
-
-Finds commands whose names start with the user-entered text.
-Names of matching commands would be suggested to the user or automatically entered
- depending on how many matching commands were found. +
-Format: [Prefix]
-
-****
-* The hotkey for `autocomplete` is the `TAB` key.
-* The match is case-insensitive, e.g. `del` and `Del` will both match the `delete`
-command.
-* The system looks for commands whose names start with the user-entered text. This means that `del` will match `delete` but `ele`
-will not.
-* If no text is entered before pressing the hotkey, the system displays all available commands.
-* The system does not support autocompletion for command aliases.
-* If there is more than one matching command, the names of all matching
-commands will be displayed as a suggestion in the result pane.
-* If there is only one matching command, then the full
-name for the command will be automatically filled into the command bar instead of being displayed in the result pane.
-****
-
-Examples:
-
-* `del` expands to `delete` in the command bar
-* `df` does not match with any command name. Hence, nothing is returned by address book.
-* `d` returns various command suggestions in the result pane. e.g.`delete` and `deletetag`
-
-=== Extended autocomplete for commands [since v1.3]
-
-Autofills the full syntax of the command whose name matches the user-entered text exactly.
-Format: [COMMAND_WORD]
-
-****
-* The hotkey for `extended autocomplete` is `Ctrl`.
-* This feature uses exact matching (i.e. case and spelling of `COMMAND_WORD` must match the actual command).
-* The system does not support autocompletion for command aliases.
-****
-
-Examples:
-
-* `delete` expands to `delete index_number`
-* `deletetag` exapnds to `deletetag tag_name`
-
-=== AutoCorrect command names [Since v1.2]
-
-Finds command whose names start with the command entered from the user.
-Application will notify the user that the command entered is corrected and perform the corrected commmand. +
-Format: [mis-spelt command]
-
-****
-* The auto-correct function will only work on the mis-spelt words within edit distance of 2.
-* The match is case-insensitive, e.g. "sEarhC" is equals to "search".
-* If no match is found, the application will display "Unknown command".
-****
-
-Examples:
-
-* `deleet` will match to `delete`.
-* `del` will not match to any command, application will display "Unkown command"
-* `d` will be matched to `delete` still as it is an alias.
-
 === Deleting a person : `delete`
 
 Deletes the specified person from the address book. +
@@ -273,37 +139,6 @@ Deletes the 2nd person in the address book.
 * `find Betsy` +
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
-
-=== Deleting multiple person : `delete index/another index/...` [since v1.2]
-
-Deletes multiple person from the address book. +
-Format: `delete INDEX/INDEX`
-
-Examples:
-
-* `list` +
-`delete 2/3` +
-Deletes the 2nd and 3rd person in the address book.
-
-=== Deleting a tag : `deletetag` [since v1.0]
-
-Deletes the specified tag from the address book. +
-Format: `delete tag_name`
-
-****
-* The alias for this command is `dt`. That means that you can type +
-`dt` instead of `deletetag`.
-* Deletes the tag with the specified `tag_name` from all records in the
-address book.
-* `tag_name` is case-sensitive (i.e. `Friends` is not the
-same as `friends`).
-* The result of this command is not undoable.
-****
-
-Examples:
-
-* `deletetag friends` +
-Deletes the tag `friends` from all records in the address book.
 
 === Selecting a person : `select`
 
@@ -383,7 +218,6 @@ The `redo` command fails as there are no `undo` commands executed previously.
 `undo` (reverses the `delete 1` command) +
 `redo` (reapplies the `delete 1` command) +
 `redo` (reapplies the `clear` command) +
-// end::undoredo[]
 
 === Clearing all entries : `clear`
 
@@ -394,6 +228,203 @@ Format: `clear`
 
 Exits the program. +
 Format: `exit`
+
+=== Deleting a tag : `deletetag` [Since v1.0]
+
+Deletes the specified tag from the address book. +
+Format: `delete tag_name`
+
+****
+* The alias for this command is `dt`. That means that you can type +
+`dt` instead of `deletetag`.
+* Deletes the tag with the specified `tag_name` from all records in the
+address book.
+* `tag_name` is case-sensitive (i.e. `Friends` is not the
+same as `friends`).
+* The result of this command is not undoable.
+****
+
+Examples:
+
+* `deletetag friends` +
+Deletes the tag `friends` from all records in the address book.
+
+=== Locating persons by tag: `search` [Since v1.1]
+
+Searches persons whose tag names contain any of the given keywords. +
+Format: `search KEYWORD [MORE_KEYWORDS]`
+
+****
+* The search is case sensitive. e.g `Friends` will not match `friends`
+* The order of the keywords does not matter. e.g. `friends colleague` is the same as `colleague friends`
+* Only the tag name is searched.
+* Only full tag name will be accepted e.g. `friends` will not match `fri`
+* Result displays "Unknown tag" if no person has the tag
+* Alias for "search" is "st"
+* Persons's tag names matching at least one keyword will be returned (i.e. `OR` search). e.g. `friends colleague` will return persons with `friends`, or `colleague` tag
+****
+
+Examples:
+* `search friends` +
+Returns `John Alice`
+* `search fri` +
+Returns `Unknown tag`
+
+=== Add second phone number for a person [Since v1.1]
+
+Add the second phone number for a person by using prefix "p2/" +
+Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS`
+
+****
+* Input "p2/-" for add command, when no second phone number is provided.
+* The order of the parameters does not matter. e.g. `p/87435783 p2/54729635` is the same as `p2/749374658 p/97453735`
+****
+
+Examples:
+* `add n/John Doe p/98765432 p2/73624789 e/johnd@example.com a/John street, block 123, #01-01` +
+* `edit 1 p/91234567 p2/73624789 e/johndoe@example.com` +
+
+=== Locating persons by multiple criteria: `multifilter` [Since v1.1]
+
+Finds persons whose names, phone no., emails and addresses, +
+match a set of specified criteria. +
+Format: `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]`
+
+****
+* The alias for this command is `mf`. That means that you can type +
+`mf` instead of `multifilter`.
+* The search is case-insensitive for all fields. e.g `mf n/hans` will +
+match `Hans`.
+* The search performs a substring match. This means that the 'mf n/a' +
+will match both `alice` and `Hans` since both contain the letter `a`,
+* The order of the fields does not matter. +
+e.g.`mf n/hans e/a@ex.com` and `mf e/a@ex.com n/hans` +
+both mean the same thing.
+* Matching is performed based on ALL the criteria. +
+i.e. `mf n/a p/9` will find the contact `matt` with a phone no. of `999`
+but it will not find the contact `alice` with a phone no. of `888`.
+* None of the fields are compulsory. i.e. you can use `mf p/999` to find +
+contacts whose phone no. contain `999` and `mf e/yahoo` to find +
+contacts whose emails contain `yahoo` without entering the rest of the fields.
+* If only `mf` is entered, all contacts will be displayed.
+* `mf p/987 e/gmail` +
+Contact `alice` with phone no. `9876` and email `a@gmail.com` +
+will be matched. Contact `Bob` with phone no. `987` and email `a@yahoo.com`
+will not be matched
+****
+
+Examples:
+
+* `mf a/gey` +
+Returns contacts whose address contain `gey`
+* `mf` +
+Returns all contacts
+* `mf n/iv p/9 e/g a/ge` +
+Returns contacts who match ALL of the following criteria: +
+1. Name contains `iv`
+2. Phone no. contains `9`
+3. Email contains `g`
+4. Address contains `ge`
+
+An example of a matching contact for this command would be +
+`Ivan` that has phone no. `999`, email `g@y.com` and address `123 geylang road`
+
+=== Autocomplete command names [Since v1.2]
+
+Finds commands whose names start with the user-entered text.
+Names of matching commands would be suggested to the user or automatically entered
+ depending on how many matching commands were found. +
+Format: [Prefix]
+
+****
+* The hotkey for `autocomplete` is the `TAB` key.
+* The match is case-insensitive, e.g. `del` and `Del` will both match the `delete`
+command.
+* The system looks for commands whose names start with the user-entered text. This means that `del` will match `delete` but `ele`
+will not.
+* If no text is entered before pressing the hotkey, the system displays all available commands.
+* The system does not support autocompletion for command aliases.
+* If there is more than one matching command, the names of all matching
+commands will be displayed as a suggestion in the result pane.
+* If there is only one matching command, then the full
+name for the command will be automatically filled into the command bar instead of being displayed in the result pane.
+****
+
+Examples:
+
+* `del` expands to `delete` in the command bar
+* `df` does not match with any command name. Hence, nothing is returned by address book.
+* `d` returns various command suggestions in the result pane. e.g.`delete` and `deletetag`
+
+=== AutoCorrect command names [Since v1.2]
+
+Finds command whose names start with the command entered from the user.
+Application will notify the user that the command entered is corrected and perform the corrected commmand. +
+Format: [mis-spelt command]
+
+****
+* The auto-correct function will only work on the mis-spelt words within edit distance of 2.
+* The match is case-insensitive, e.g. "sEarhC" is equals to "search".
+* If no match is found, the application will display "Unknown command".
+****
+
+Examples:
+
+* `deleet` will match to `delete`.
+* `del` will not match to any command, application will display "Unkown command"
+* `d` will be matched to `delete` still as it is an alias.
+
+=== Deleting multiple person : `delete index/another index/...` [Since v1.2]
+
+Deletes multiple person from the address book. +
+Format: `delete INDEX/INDEX`
+
+Example:
+
+1) Enter `list` into the Command Box +
+
+image::deleteMultiplePerson1.png[width="500"]
+
+2) `delete 2/3` deletes the 2nd and 3rd person from the address book. +
+
+image::deleteMultiplePerson2.png[width="500"]
+
+3) Display the confirmation for deletion
+
+image::deleteMultiplePerson3.png[width="500"]
+
+=== Viewing Weather Forecast [Since v1.3]
+
+Viewing weather forecast on Yahoo Weather page.
+Accessible from `File` dropdown list, `Weather Forecast` menu item.
+
+image::WeatherForecast.png[width="500"]
+
+=== Extended autocomplete for commands [Since v1.3]
+
+Autofills the full syntax of the command whose name matches the user-entered text exactly.
+Format: [COMMAND_WORD]
+
+****
+* The hotkey for `extended autocomplete` is `Ctrl`.
+* This feature uses exact matching (i.e. case and spelling of `COMMAND_WORD` must match the actual command).
+* The system does not support autocompletion for command aliases.
+****
+
+Examples:
+
+* `delete` expands to `delete index_number`
+* `deletetag` exapnds to `deletetag tag_name`
+
+=== Keyboard shortcut [Since v1.3]
+
+Keyboard shortcuts enables users to quickly get the command words without memorization.
+Format: [CONTROL] + [COMMAND_WORD_ALIAS]
+
+****
+* The keyborad shortcuts are created only for commands with heavy text input.
+* The commands with keyboard shortcuts are: `add`, `multifilter`, `edit`, `search`, `delete`, `clear`.
+****
 
 === Tag use emoji : `tag emoji` [Coming in V2.0]
 

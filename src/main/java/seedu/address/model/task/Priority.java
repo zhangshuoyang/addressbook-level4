@@ -1,39 +1,48 @@
 package seedu.address.model.task;
 
+import static java.util.Objects.requireNonNull;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 
 
 /**
  * Represents the priority level of a task in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidPriority(int)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidPriority(String)}
  */
 public class Priority {
 
     public static final String MESSAGE_PRIORITY_CONSTRAINTS =
             "Priority can only contain number 0, 1 or 2";
-    private int value;
+
+    public final String value;
 
     /**
      * Validates given priority level.
      *
      * @throws IllegalValueException if given priority int is invalid.
      */
-    public Priority(int priority) throws IllegalValueException {
-        if (!isValidPriority(priority)) {
+    public Priority(String  priority) throws IllegalValueException {
+        requireNonNull(priority);
+        String trimmedPriority = priority.trim();
+        if (!isValidPriority(trimmedPriority)) {
             throw new IllegalValueException(MESSAGE_PRIORITY_CONSTRAINTS);
         }
-        this.value = priority;
+        this.value = trimmedPriority;
     }
 
     /**
      * Returns true is the given integer is a valid priority level
      */
-    public static boolean isValidPriority(int test) {
-        return test <= 2 && test >= 0;
+    public static boolean isValidPriority(String test) {
+        return Integer.parseInt(test) <= 2 && Integer.parseInt(test) >= 0;
     }
 
     @Override
     public String toString() {
-        return Integer.toString(value); }
+        return value; }
 
+    @Override
+    public int hashCode() {
+        return value.hashCode();
+    }
 }
