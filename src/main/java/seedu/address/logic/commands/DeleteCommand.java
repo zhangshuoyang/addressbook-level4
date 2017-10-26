@@ -21,9 +21,10 @@ public class DeleteCommand extends UndoableCommand {
     public static final String AUTOCOMPLETE_FORMAT = COMMAND_WORD + " index_number";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the person identified by the index number used in the last person listing.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + ": Deletes the person identified by the index number(s) used in the last person listing.\n"
+            + "Parameters: INDEX (must be a positive integer) OR INDEX/INDEX/...\n"
+            + "Example 1: " + COMMAND_WORD + " 1" + " deletes the first person in the list.\n"
+            + "Example 2: " + COMMAND_WORD + " 1/2/3" + " deletes the first, second and third persons in the list\n";
 
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
 

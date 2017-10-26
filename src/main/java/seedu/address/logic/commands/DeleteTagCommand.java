@@ -9,7 +9,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Deletes a person identified using it's last displayed index from the address book.
  */
-public class DeleteTagCommand extends Command {
+public class DeleteTagCommand extends UndoableCommand {
     public static final String COMMAND_WORD = "deletetag";
     public static final String COMMAND_WORD_ALIAS = "dt";
     public static final String AUTOCOMPLETE_FORMAT = COMMAND_WORD + " tag_name";
@@ -29,7 +29,7 @@ public class DeleteTagCommand extends Command {
     }
 
     @Override
-    public CommandResult execute() throws CommandException {
+    public CommandResult executeUndoableCommand() throws CommandException {
         try {
             model.deleteTag(tagToDelete);
         } catch (PersonNotFoundException pnfe) {
