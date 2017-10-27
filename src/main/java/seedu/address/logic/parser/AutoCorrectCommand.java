@@ -138,6 +138,10 @@ public class AutoCorrectCommand {
             return command;
         }
 
+        if (getCommandAliasPool().contains(input)) {
+            return command;
+        }
+
         for (ArrayList<String> editDistance2Word : editDistance2Words) {
             if (editDistance2Word.contains(input)) {
                 messageToUser = "Your command: " + input + ", is corrected to: " + command;
@@ -169,6 +173,29 @@ public class AutoCorrectCommand {
         commandPool.add(SelectCommand.COMMAND_WORD);
         commandPool.add(UndoCommand.COMMAND_WORD);
         commandPool.add(AddTaskCommand.COMMAND_WORD);
+
+        return commandPool;
+    }
+
+    /**
+     * Generate a list of current command
+     */
+    public ArrayList<String> getCommandAliasPool () {
+
+        ArrayList<String> commandPool = new ArrayList<String>();
+        commandPool.add(FindCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(AddCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(SearchCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(DeleteCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(DeleteTagCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(ClearCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(EditCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(HistoryCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(ListCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(MultiFilterCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(RedoCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(SelectCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(UndoCommand.COMMAND_WORD_ALIAS);
 
         return commandPool;
     }
