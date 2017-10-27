@@ -3,6 +3,8 @@
 :toc-title:
 :toc-placement: preamble
 :sectnums:
+:experimental:
+:icons: font
 :imagesDir: images
 :stylesDir: stylesheets
 :experimental:
@@ -236,6 +238,8 @@ Format: `exit`
 Deletes the specified tag from the address book. +
 Format: `delete tag_name`
 
+==== Description
+
 ****
 * The alias for this command is `dt`. That means that you can type +
 `dt` instead of `deletetag`.
@@ -245,10 +249,26 @@ address book.
 same as `friends`).
 ****
 
-Examples:
+==== Examples
 
-* `deletetag friends` +
-Deletes the tag `friends` from all records in the address book.
+|===
+
+| *Your input* | *Result*
+| `deletetag friends` | Deletes the tag `friends` from all records in the address book. +
+
+No action is performed if there is no tag named `friends` in address book.
+
+|===
+
+==== How to use
+. Type `deletetag` followed by the name of the tag that you wish to delete.
+For example, we use the name "friends".
++
+image:DeleteTagCommand-step-1.png[width="250"]
+
+. After hitting kbd:[ENTER], the tag with the specified name is deleted from all contacts in the address book.
++
+image:DeleteTagCommand-step-2.png[width="250"]
 
 === Locating persons by tag: `search` [Since v1.1]
 
@@ -285,11 +305,13 @@ Examples:
 * `add n/John Doe p/98765432 p2/73624789 e/johnd@example.com a/John street, block 123, #01-01` +
 * `edit 1 p/91234567 p2/73624789 e/johndoe@example.com` +
 
-=== Locating persons by multiple criteria: `multifilter` [Since v1.1]
+=== Locating persons by multiple criteria: `multifilter` [Since v1.1] [[multifilter-format]]
 
 Finds persons whose names, phone no., emails and addresses, +
 match a set of specified criteria. +
 Format: `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]`
+
+==== Description [[multifilter-description]]
 
 ****
 * The alias for this command is `mf`. That means that you can type +
@@ -314,21 +336,39 @@ will be matched. Contact `Bob` with phone no. `987` and email `a@yahoo.com`
 will not be matched
 ****
 
-Examples:
+==== Examples
 
-* `mf a/gey` +
-Returns contacts whose address contain `gey`
-* `mf` +
-Returns all contacts
-* `mf n/iv p/9 e/g a/ge` +
-Returns contacts who match ALL of the following criteria: +
-1. Name contains `iv`
-2. Phone no. contains `9`
-3. Email contains `g`
-4. Address contains `ge`
+|===
+| *Your input* | *Result*
+| `mf a/gey`| Returns contacts whose address contain `gey`
+| `mf` | Returns all contacts
+| `mf n/iv p/9 e/g a/ge` | Returns contacts who match ALL of the following criteria: +
+
+1. Name contains `iv` +
+2. Phone no. contains `9` +
+3. Email contains `g` +
+4. Address contains `ge` +
 
 An example of a matching contact for this command would be +
 `Ivan` that has phone no. `999`, email `g@y.com` and address `123 geylang road`
+
+|===
+
+==== How to use
+
+. Enter `multifilter` into the command bar followed by one or more format fields.
+See command format <<multifilter-format, here>>.
++
+image:MultiFilterCommand-step-1.png[width="250"]
+
+. Press the kbd:[ENTER] key. The results are displayed based on the criteria that
+you have entered.
++
+image:MultiFilterCommand-step-2.png[width="250"]
+
+==============================================
+NOTE: If no filters are used, all contacts will be displayed.
+==============================================
 
 === Autocomplete command names [Since v1.2]
 
@@ -337,8 +377,10 @@ Names of matching commands would be suggested to the user or automatically enter
  depending on how many matching commands were found. +
 Format: [Prefix]
 
+==== Description [[autocomplete-description]]
+
 ****
-* The hotkey for `autocomplete` is the `TAB` key.
+* The hotkey for `autocomplete` is kbd:[TAB].
 * The match is case-insensitive, e.g. `del` and `Del` will both match the `delete`
 command.
 * The system looks for commands whose names start with the user-entered text. This means that `del` will match `delete` but `ele`
@@ -351,11 +393,24 @@ commands will be displayed as a suggestion in the result pane.
 name for the command will be automatically filled into the command bar instead of being displayed in the result pane.
 ****
 
-Examples:
+==== Examples
 
-* `del` expands to `delete` in the command bar
-* `df` does not match with any command name. Hence, nothing is returned by address book.
-* `d` returns various command suggestions in the result pane. e.g.`delete` and `deletetag`
+|===
+| *Your input* |  *Result*
+| `del` | Expands to `delete` in the command bar
+|  `df` | Nothing is returned by address book.
+| `d` | Returns various command suggestions in the result pane. e.g.`delete` and `deletetag`
+
+|===
+
+==== How to use
+
+Enter some text into the command bar (as shown below) and press kbd:[TAB].
+Commands, whose names start with the entered text, will be suggested.
+See <<autocomplete-description, description>> for more details on how
+ autocomplete works.
+
+image::AutoCompleteCommand-step-1.png[width="800"]
 
 === AutoCorrect command names [Since v1.2]
 
@@ -406,18 +461,29 @@ image::WeatherForecast.png[width="500"]
 Autofills the full syntax of the command whose name matches the user-entered text exactly.
 Format: [COMMAND_WORD]
 
+==== Description
+
 ****
 * The hotkey for `extended autocomplete` is `Ctrl`.
 * This feature uses exact matching (i.e. case and spelling of `COMMAND_WORD` must match the actual command).
 * The system does not support autocompletion for command aliases.
 ****
 
-Examples:
+==== Examples
 
-* `delete` expands to `delete index_number`
-* `deletetag` exapnds to `deletetag tag_name`
+|===
 
-=== Keyboard shortcut [Since v1.3]
+| *Your input* | *Result*
+| `delete` | expands to `delete index_number`
+| `deletetag` | exapnds to `deletetag tag_name`
+
+|===
+
+==== How to use
+
+To be filled in.
+
+=== Keyboard shortcuts [Since v1.3]
 
 Keyboard shortcuts enables users to quickly get the command words without memorization.
 Format: [CONTROL] + [COMMAND_WORD_ALIAS]
@@ -436,7 +502,29 @@ Examples:
 
 * `task d/CS2103 Assignment priority/2 on/26/10/2017`
 * `task d/Finish Teammate Feedback Session priority/0 on/01/11/2017`
+=======
+=== Sound effect for system events [Since v1.3]
 
+Different sound clips will be played according to whether a command was successful or not.
+
+==== Description
+
+*************
+* System events are classified into 2 types: command success and command failure.
+* One sound clip will be played for each of these event types.
+* Currently, there is no way to disable the sound effect.
+*************
+
+==== Example
+
+|===
+
+| *Your input* | Result
+| `delete 1` | Success sound clip is played if command is successful. +
+
+Failure sound clip is played if command is unsuccessful.
+
+|===
 
 === Tag use emoji : `tag emoji` [Coming in V2.0]
 
@@ -448,19 +536,6 @@ Format: `tag :wink:`
 Input non-English words to be saved in the application.
 Format: CommandWrd + inputText
 
-
-=== Add music [Coming in V2.0]
-
-A default music folder will store serveral sounds for different events. +
-
-***
-* The music folder should be in the same level as data folder.
-***
-
-Example:
-
-* `delete 1` +
-The application will produce a sound to notify users that the deletion is performed.
 
 === Add weather forecast [Coming in V2.0]
 

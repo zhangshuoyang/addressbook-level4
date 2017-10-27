@@ -39,6 +39,7 @@ public class CommandBox extends UiPart<Region> {
 
     private final Logger logger = LogsCenter.getLogger(CommandBox.class);
     private final Logic logic;
+    private final AudioUtil audio = new AudioUtil();
     private ListElementPointer historySnapshot;
 
     @FXML
@@ -130,7 +131,6 @@ public class CommandBox extends UiPart<Region> {
      */
     private void launchExtendedAutocomplete() {
         String userCommand = commandTextField.getText().split("\\s+")[0];
-        //System.out.println("The user's command is " + userCommand);
         Map<String, String> commandFormatMap = Command.getMapOfAvailableCommands();
         if (commandFormatMap.containsKey(userCommand)) {
             commandTextField.setText(commandFormatMap.get(userCommand));
@@ -221,8 +221,6 @@ public class CommandBox extends UiPart<Region> {
      */
     @FXML
     private void handleCommandInputChanged() {
-        AudioUtil audio = new AudioUtil();
-
         try {
             CommandResult commandResult = logic.execute(commandTextField.getText());
             initHistory();
