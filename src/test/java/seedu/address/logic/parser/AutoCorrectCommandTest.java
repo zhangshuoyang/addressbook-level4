@@ -22,7 +22,6 @@ public class AutoCorrectCommandTest {
 
     private AutoCorrectCommand autoCorrectCommand;
     private String defaultResult;
-    private String messageToUser;
 
     @Before
     public void setUp() {
