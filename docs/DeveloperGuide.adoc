@@ -357,7 +357,7 @@ The `Auto-correct` feature enables misspelt commands entered by users to be auto
 and perform the correct command. The correction of the misspelt command is based on four types of prediction of the misspelt words, namely, addition of alphabets, deletion
 of alphabets, transposing of alphabets and Substitution of alphabets. For the sake of efficiency, the edit distance is limited to 2 (refer to `editDistance1`, and `checkMisspeltWords`).
 
-This is an example of how the misspelt words are prediction by adding one more alphabet:
+This is an example of how the misspelt words are predicted by adding one more alphabet:
 [source,java]
 ----
 //Adding any one character (from the alphabet) anywhere in the word.
@@ -418,10 +418,6 @@ Channel channel = service.getForecast(woeid, DegreeUnit.CELSIUS);
 
 return conditionStringParser(channel.getItem().getCondition().toString());
 ----
-
-The overview of the weather displyed on the application is as follows:
-
-image::WeatherDisplay.png[width="200"]
 
 ==== Prerequisites/Dependencies
 
@@ -486,10 +482,6 @@ another method should be implemented in the `AutoCompleteUtil` class.
 The `extended autocomplete` feature is an add-on to the `autocomplete` feature
 and enables the full format of commands to be automatically filled into the command bar.
 It is invoked in the `LogicManager` class.
-
-This command is illustrated in the following diagram, the prefix is prompt automatically when the key `Control` is pressed on the keyboard.
-
-image::AutoCompleteExtended.png[width="800"]
 
 ==== Prerequisites/Dependencies
 
