@@ -424,6 +424,10 @@ Format: [mis-spelt command]
 * If no match is found, the application will display "Unknown command".
 ****
 
+==============================================
+NOTE: Auto-correct is not designed for alias.
+==============================================
+
 Examples:
 
 * `deleet` will match to `delete`.
@@ -453,6 +457,10 @@ image::deleteMultiplePerson3.png[width="500"]
 
 Viewing weather forecast on Yahoo Weather page.
 Accessible from `File` dropdown list, `Weather Forecast` menu item.
+
+image::WeatherForecastButton.png[width="500"]
+
+The expected page would be as follows:
 
 image::WeatherForecast.png[width="500"]
 
@@ -536,27 +544,9 @@ Format: `tag :wink:`
 Input non-English words to be saved in the application.
 Format: CommandWrd + inputText
 
-
-=== Add weather forecast [Coming in V2.0]
-
-Displaying weather forecast on the application according to the location detected.
-
-***
-* Assume the location data can be gotten (depends on the specific implementation).
-***
-
 === Add push notification [Coming in V2.0]
 
 The application will prompt notifications for users on the computer for the up coming tasks.
-
-=== Add keyboard shortcuts [Coming in V2.0]
-
-Provides keyboard shortcuts for commands.
-
-Example:
-
-* Press `Command + l` on Mac or Press `Control + l` on Windows +
-The application will list all the contacts in the address book.
 
 === Saving the data
 

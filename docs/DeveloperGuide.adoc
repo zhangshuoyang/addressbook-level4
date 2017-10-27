@@ -226,7 +226,7 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-=== Undo/Redo mechanism
+=== Undo/Redo Mechanism
 
 The undo/redo mechanism is facilitated by an `UndoRedoStack`, which resides inside `LogicManager`. It supports undoing and redoing of commands that modifies the state of the address book (e.g. `add`, `edit`). Such commands will inherit from `UndoableCommand`.
 
@@ -425,7 +425,7 @@ return conditionStringParser(channel.getItem().getCondition().toString());
 due to the failure of Yahoo Weather Server. +
 
 
-=== Autocomplete [[autocomplete-feature]] mechanism
+=== Autocomplete [[autocomplete-feature]] Mechanism
 
 The `autocomplete` feature is implemented in `AutoCompleteUtil` class. It enables commands to be automatically suggested and
 completed for users. For example, when the user type, "sea", and press `TAB` key, the complete command `search` appears on the command line. This feature saves time for users and improves the efficiency of the application in general.
@@ -477,7 +477,7 @@ another method should be implemented in the `AutoCompleteUtil` class.
  Furthermore, there is repeated work (and higher risk of error) as the developer must take care to ensure that the text file's entry corresponds with the
 `COMMAND WORD` field.
 
-=== Extended Autocomplete [[extended-autocomplete-feature]] mechanism
+=== Extended Autocomplete [[extended-autocomplete-feature]] Mechanism
 
 The `extended autocomplete` feature is an add-on to the `autocomplete` feature
 and enables the full format of commands to be automatically filled into the command bar.
