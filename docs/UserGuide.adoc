@@ -1,4 +1,4 @@
-= AddressBook Level 4 - User Guide
+= Contact Plus - User Guide
 :toc:
 :toc-title:
 :toc-placement: preamble
@@ -14,7 +14,7 @@ ifdef::env-github[]
 endif::[]
 :repoURL: https://github.com/CS2103AUG2017-W11-B1/main
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `Team W11-B1`      Since: `Sep 2107`      Licence: `MIT`
 
 == Welcome to Contact Plus
 Contact Plus is a contact-managing service through command line. We strive to provide the very comprehensive services for busy students on the campus so that they can manage their contacts efficiently. For example, the auto-correction feature allows
@@ -270,7 +270,7 @@ image:DeleteTagCommand-step-1.png[width="250"]
 +
 image:DeleteTagCommand-step-2.png[width="250"]
 
-=== Locating persons by tag: `search` [Since v1.1]
+=== Locating persons by tag: `search` + TAG_NAME [Since v1.1]
 
 Searches persons whose tag names contain any of the given keywords. +
 Format: `search KEYWORD [MORE_KEYWORDS]`
@@ -416,10 +416,10 @@ image::AutoCompleteCommand-step-1.png[width="800"]
 
 Finds command whose names start with the command entered from the user.
 Application will notify the user that the command entered is corrected and perform the corrected commmand. +
-Format: [mis-spelt command]
+Format: [misspelt command]
 
 ****
-* The auto-correct function will only work on the mis-spelt words within edit distance of 2.
+* The autoCorrect function will only work on the misspelt words within edit distance of 2.
 * The match is case-insensitive, e.g. "sEarhC" is equals to "search".
 * If no match is found, the application will display "Unknown command".
 ****
@@ -494,11 +494,11 @@ To be filled in.
 === Keyboard shortcuts [Since v1.3]
 
 Keyboard shortcuts enables users to quickly get the command words without memorization.
-Format: [CONTROL] + [COMMAND_WORD_ALIAS]
+Format: kbd:[CONTROL] + kbd:[COMMAND_WORD_ALIAS]
 
 ****
 * The keyborad shortcuts are created only for commands with heavy text input.
-* The commands with keyboard shortcuts are: `add`, `multifilter`, `edit`, `search`, `delete`, `clear`.
+* The commands with keyboard shortcuts are: `add`, `multifilter`, `edit`, `search`, `delete`, and `clear`.
 ****
 
 === Add tasks [Since v1.3]
