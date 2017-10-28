@@ -378,7 +378,7 @@ image::AddressBookParser.SequenceDiagram.png[width="800"]
 ==== Prerequisites/Dependencies
 
 * The `COMMAND_WORD` for every available command must be added to the `getCommandPool` method for the command to be auto-corrected.
-* AutoCorrect will only work for mis-spelt words within edit distance of 2.
+* AutoCorrect will only work for misspelt words within link:#edit-distance[edit distance] of 2.
 * AutoCorrect is based on four types of prediction of misspelt words, namely, addition, deletion, switch, and substitution.
 * Alias will not be autoCorrected as it consists only one or two alphabets.
 * The logic for autoCorrecting commands is implemented in AutoCorrectCommand class.
@@ -402,7 +402,7 @@ as it is a good practice to reused what is already defined and extend its usage 
 The Yahoo weather information display is aided by the external library "yahoo-weather-java-api:2.0.2". This library queries data from Yahoo Weather API, and the application display the information returned by calling the library functions with
 a simple string parser method to format the data return. The formatted data is displayed on the `StatusFooterBar`. +
 
-The query of weather information is closely related to the location. The location is specified by WOEID, so in this application we take the WOEID of Singapore by default. +
+The query of weather information is closely related to the location. The location is specified by WOEID, so in this application we take the link:#WOEID[WOEID] of Singapore by default. +
 
 [source,java]
 ----
@@ -1260,42 +1260,6 @@ Use case ends
 Use case ends
 
 [discrete]
-=== Use case: Search contact on Facebook
-
-*MSS*
-
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to search a person's contact on facebook
-4.  AddressBook shows the link to search result
-+
-Use case ends
-
-*Extensions*
-
-* 3a. The person is not on Facebook
-+
-Use case ends.
-
-[discrete]
-=== Use case: Show contacts by pages
-
-*MSS*
-
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to list by pages
-4.  AddressBook shows the list in pages
-+
-Use case ends.
-
-*Extensions*
-
-* 2a. The list is empty
-+
-Use case ends.
-
-[discrete]
 === Use case: Auto-complete command names
 
 *MSS*
@@ -1399,9 +1363,17 @@ It is a contract between the component and its clients.
 Edit-distance
 
 ....
-edit distance is a way of quantifying how dissimilar two strings (e.g., words)
+Edit distance is a way of quantifying how dissimilar two strings (e.g., words)
 are to one another by counting the minimum number of operations required to
 transform one string into the other.
+....
+
+[[WOEID]]
+WOEID
+
+....
+A WOEID (Where On Earth IDentifier) is a unique 32-bit reference identifier,
+originally defined by GeoPlanet and now assigned by Yahoo!, that identifies any feature on Earth.
 ....
 
 [appendix]
