@@ -72,7 +72,7 @@ public abstract class Command {
     public static Map<String, String> getMapOfCommandHelp() {
         // Initialize map the first time autocomplete is used
         if (mapOfCommandsToHelp.isEmpty()) {
-            intializeCommandHelpMap();
+            initializeCommandHelpMap();
         }
         return mapOfCommandsToHelp;
     }
@@ -80,7 +80,7 @@ public abstract class Command {
     public static Map<String, String> getMapOfCommandFormats() {
         // Initialize map the first time autocomplete is used
         if (mapOfCommandsToFormats.isEmpty()) {
-            intializeCommandFormatMap();
+            initializeCommandFormatMap();
         }
         return mapOfCommandsToFormats;
     }
@@ -114,7 +114,8 @@ public abstract class Command {
      * (i.e. this method is called only once throughout the program execution)
      *
      */
-    private static void intializeCommandFormatMap() {
+    private static void initializeCommandFormatMap() {
+        mapOfCommandsToFormats.put(AddTaskCommand.COMMAND_WORD, AddTaskCommand.AUTOCOMPLETE_FORMAT);
         mapOfCommandsToFormats.put(AddCommand.COMMAND_WORD, AddCommand.AUTOCOMPLETE_FORMAT);
         mapOfCommandsToFormats.put(ClearCommand.COMMAND_WORD, ClearCommand.AUTOCOMPLETE_FORMAT);
         mapOfCommandsToFormats.put(DeleteCommand.COMMAND_WORD, DeleteCommand.AUTOCOMPLETE_FORMAT);
@@ -138,7 +139,8 @@ public abstract class Command {
      * (i.e. this method is called only once throughout the program execution)
      *
      */
-    private static void intializeCommandHelpMap() {
+    private static void initializeCommandHelpMap() {
+        mapOfCommandsToHelp.put(AddTaskCommand.COMMAND_WORD, AddTaskCommand.MESSAGE_USAGE);
         mapOfCommandsToHelp.put(AddCommand.COMMAND_WORD, AddCommand.MESSAGE_USAGE);
         mapOfCommandsToHelp.put(ClearCommand.COMMAND_WORD, ClearCommand.MESSAGE_USAGE);
         mapOfCommandsToHelp.put(DeleteCommand.COMMAND_WORD, DeleteCommand.MESSAGE_USAGE);
