@@ -17,7 +17,8 @@ import seedu.address.model.person.ReadOnlyPerson;
  * Represents a command with hidden internal logic and the ability to be executed.
  */
 public abstract class Command {
-    private static final HashMap<String, String> mapOfAvailableCommands = new HashMap<>();
+    private static final HashMap<String, String> mapOfCommandsToFormats = new HashMap<>();
+    private static final HashMap<String, String> mapOfCommandsToHelp = new HashMap<>();
 
     private static final List<String> listOfAvailableCommandAliases = Arrays.asList (
             AddCommand.COMMAND_WORD_ALIAS,
@@ -68,12 +69,20 @@ public abstract class Command {
         return  builder.toString();
     }
 
-    public static Map<String, String> getMapOfAvailableCommands() {
-        // Initialize map of available commands the first time autocomplete is used
-        if (mapOfAvailableCommands.isEmpty()) {
-            intializeCommandMap();
+    public static Map<String, String> getMapOfCommandHelp() {
+        // Initialize map the first time autocomplete is used
+        if (mapOfCommandsToHelp.isEmpty()) {
+            intializeCommandHelpMap();
         }
-        return mapOfAvailableCommands;
+        return mapOfCommandsToHelp;
+    }
+
+    public static Map<String, String> getMapOfCommandFormats() {
+        // Initialize map the first time autocomplete is used
+        if (mapOfCommandsToFormats.isEmpty()) {
+            intializeCommandFormatMap();
+        }
+        return mapOfCommandsToFormats;
     }
 
     public static List<String> getListOfAvailableCommandAliases() {
@@ -101,25 +110,49 @@ public abstract class Command {
 
     /**
      *
-     * Initialises the mapOfAvailableCommands when it is being used for the first time
+     * Initialises the mapOfCommandsToFormats when it is being used for the first time
      * (i.e. this method is called only once throughout the program execution)
      *
      */
-    private static void intializeCommandMap() {
-        mapOfAvailableCommands.put(AddCommand.COMMAND_WORD, AddCommand.AUTOCOMPLETE_FORMAT);
-        mapOfAvailableCommands.put(ClearCommand.COMMAND_WORD, ClearCommand.AUTOCOMPLETE_FORMAT);
-        mapOfAvailableCommands.put(DeleteCommand.COMMAND_WORD, DeleteCommand.AUTOCOMPLETE_FORMAT);
-        mapOfAvailableCommands.put(DeleteTagCommand.COMMAND_WORD, DeleteTagCommand.AUTOCOMPLETE_FORMAT);
-        mapOfAvailableCommands.put(EditCommand.COMMAND_WORD, EditCommand.AUTOCOMPLETE_FORMAT);
-        mapOfAvailableCommands.put(ExitCommand.COMMAND_WORD, ExitCommand.AUTOCOMPLETE_FORMAT);
-        mapOfAvailableCommands.put(FindCommand.COMMAND_WORD, FindCommand.AUTOCOMPLETE_FORMAT);
-        mapOfAvailableCommands.put(HelpCommand.COMMAND_WORD, HelpCommand.AUTOCOMPLETE_FORMAT);
-        mapOfAvailableCommands.put(HistoryCommand.COMMAND_WORD, HistoryCommand.AUTOCOMPLETE_FORMAT);
-        mapOfAvailableCommands.put(ListCommand.COMMAND_WORD, ListCommand.AUTOCOMPLETE_FORMAT);
-        mapOfAvailableCommands.put(MultiFilterCommand.COMMAND_WORD, MultiFilterCommand.AUTOCOMPLETE_FORMAT);
-        mapOfAvailableCommands.put(RedoCommand.COMMAND_WORD, RedoCommand.AUTOCOMPLETE_FORMAT);
-        mapOfAvailableCommands.put(SearchCommand.COMMAND_WORD, SearchCommand.AUTOCOMPLETE_FORMAT);
-        mapOfAvailableCommands.put(SelectCommand.COMMAND_WORD, SelectCommand.AUTOCOMPLETE_FORMAT);
-        mapOfAvailableCommands.put(UndoCommand.COMMAND_WORD, UndoCommand.AUTOCOMPLETE_FORMAT);
+    private static void intializeCommandFormatMap() {
+        mapOfCommandsToFormats.put(AddCommand.COMMAND_WORD, AddCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(ClearCommand.COMMAND_WORD, ClearCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(DeleteCommand.COMMAND_WORD, DeleteCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(DeleteTagCommand.COMMAND_WORD, DeleteTagCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(EditCommand.COMMAND_WORD, EditCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(ExitCommand.COMMAND_WORD, ExitCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(FindCommand.COMMAND_WORD, FindCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(HelpCommand.COMMAND_WORD, HelpCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(HistoryCommand.COMMAND_WORD, HistoryCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(ListCommand.COMMAND_WORD, ListCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(MultiFilterCommand.COMMAND_WORD, MultiFilterCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(RedoCommand.COMMAND_WORD, RedoCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(SearchCommand.COMMAND_WORD, SearchCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(SelectCommand.COMMAND_WORD, SelectCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(UndoCommand.COMMAND_WORD, UndoCommand.AUTOCOMPLETE_FORMAT);
+    }
+
+    /**
+     *
+     * Initialises the mapOfCommandsToHelp when it is being used for the first time
+     * (i.e. this method is called only once throughout the program execution)
+     *
+     */
+    private static void intializeCommandHelpMap() {
+        mapOfCommandsToHelp.put(AddCommand.COMMAND_WORD, AddCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(ClearCommand.COMMAND_WORD, ClearCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(DeleteCommand.COMMAND_WORD, DeleteCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(DeleteTagCommand.COMMAND_WORD, DeleteTagCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(EditCommand.COMMAND_WORD, EditCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(ExitCommand.COMMAND_WORD, ExitCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(FindCommand.COMMAND_WORD, FindCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(HelpCommand.COMMAND_WORD, HelpCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(HistoryCommand.COMMAND_WORD, HistoryCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(ListCommand.COMMAND_WORD, ListCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(MultiFilterCommand.COMMAND_WORD, MultiFilterCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(RedoCommand.COMMAND_WORD, RedoCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(SearchCommand.COMMAND_WORD, SearchCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(SelectCommand.COMMAND_WORD, SelectCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(UndoCommand.COMMAND_WORD, UndoCommand.MESSAGE_USAGE);
     }
 }

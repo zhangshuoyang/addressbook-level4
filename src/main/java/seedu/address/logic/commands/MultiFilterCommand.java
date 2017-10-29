@@ -23,10 +23,10 @@ public class MultiFilterCommand extends Command {
     public static final String COMMAND_WORD_ALIAS = "mf";
     public static final String AUTOCOMPLETE_FORMAT =
             COMMAND_WORD + " "
-            + PREFIX_NAME + "name "
-            + PREFIX_PHONE + "phone_number "
-            + PREFIX_EMAIL + "email_address "
-            + PREFIX_ADDRESS + "residential_address";
+            + PREFIX_NAME + " "
+            + PREFIX_PHONE + " "
+            + PREFIX_EMAIL + " "
+            + PREFIX_ADDRESS;
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Finds all persons whose names, email, address, contact or tags contain any of "
