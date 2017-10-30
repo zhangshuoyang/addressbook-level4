@@ -472,7 +472,7 @@ Format: [COMMAND_WORD]
 ==== Description
 
 ****
-* The hotkey for `extended autocomplete` is `Ctrl`.
+* The hotkey for `extended autocomplete` is kbd:[Ctrl].
 * This feature uses exact matching (i.e. case and spelling of `COMMAND_WORD` must match the actual command).
 * The system does not support autocompletion for command aliases.
 ****
@@ -489,7 +489,23 @@ Format: [COMMAND_WORD]
 
 ==== How to use
 
-To be filled in.
+. Enter the name of the command that you wish to use. For example, `add`.
++
+image:extended-autocomplete-step-1.png[width="300"]
+
+. Press the kbd:[Ctrl] key. The command's format is automatically filled in the command bar for you.
+The help text, which explains how to use the command, is also displayed in the result pane.
++
+image:extended-autocomplete-step-2.png[width="1000"]
+
+. Add any additional information (based on the help text) should be typed into the command
+bar before pressing kbd:[ENTER].
++
+image:extended-autocomplete-step-3.png[width="1000"]
+
+. The result of the command is displayed in the result pane.
++
+image:extended-autocomplete-step-4.png[width="1000"]
 
 === Keyboard shortcuts [Since v1.3]
 
@@ -504,7 +520,7 @@ Format: kbd:[CONTROL] + kbd:[COMMAND_WORD_ALIAS]
 === Add tasks [Since v1.3]
 
 Add personal tasks into the address book.
-Format: `task d/DESCRIPTION priority/PRIORITY(0/1/2) on/DUE DATE(dd/MM/yyyy)`
+Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
 
 Examples:
 

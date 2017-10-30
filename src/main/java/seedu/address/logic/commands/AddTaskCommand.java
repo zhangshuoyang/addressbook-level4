@@ -18,6 +18,11 @@ public class AddTaskCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "task";
 
+    public static final String AUTOCOMPLETE_FORMAT = COMMAND_WORD + " "
+            + PREFIX_DESCIPTION + " "
+            + PREFIX_PRIORITY + " "
+            + PREFIX_DUEDATE;
+
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to the address book."
             + "Parameters: "
             + PREFIX_DESCIPTION + "DESCRIPTION "
