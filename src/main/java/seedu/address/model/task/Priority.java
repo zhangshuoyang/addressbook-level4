@@ -42,6 +42,13 @@ public class Priority {
         return value; }
 
     @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof Priority // instanceof handles nulls
+                && Integer.parseInt(this.value) == Integer.parseInt(((Priority) other).value));
+    }
+
+    @Override
     public int hashCode() {
         return value.hashCode();
     }

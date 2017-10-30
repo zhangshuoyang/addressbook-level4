@@ -64,7 +64,7 @@ public class LogicManagerTest {
         List<String> actualList;
         List<String> expectedList;
 
-        List<String> allCommands = new ArrayList<>(Command.getMapOfAvailableCommands().keySet());
+        List<String> allCommands = new ArrayList<>(Command.getMapOfCommandFormats().keySet());
 
         // All commands should be shown if the user types a blank prefix
         actualList = logic.getPossibleCommands("");

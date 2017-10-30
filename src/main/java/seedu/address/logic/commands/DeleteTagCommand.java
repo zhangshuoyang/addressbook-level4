@@ -12,7 +12,7 @@ import seedu.address.model.tag.Tag;
 public class DeleteTagCommand extends UndoableCommand {
     public static final String COMMAND_WORD = "deletetag";
     public static final String COMMAND_WORD_ALIAS = "dt";
-    public static final String AUTOCOMPLETE_FORMAT = COMMAND_WORD + " tag_name";
+    public static final String AUTOCOMPLETE_FORMAT = COMMAND_WORD;
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes a tag from all records.\n"

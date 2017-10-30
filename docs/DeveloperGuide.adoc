@@ -524,7 +524,10 @@ Cons: Finite number of keys on the keyboard make it impossible to do a one-to-on
 
 === Delete Multiple Contacts Mechanism
 The `Delete` multiple contacts feature enables user to delete more than one contact in a single command by specifying more than one indices. It is
-invoked in the `DeleteCommand` class.
+invoked in the `DeleteCommand` class. +
+The interaction between `Model` and `Logic` classes can be seen from the following sequence diagram:
+
+image::DeleteMultiple/DeleteMultipleUML.PNG[width="800"]
 
 The source code below shows the implementation of how multiple persons are deleted by using a loop:
 [source,java]

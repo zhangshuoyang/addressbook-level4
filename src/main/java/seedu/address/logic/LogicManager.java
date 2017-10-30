@@ -53,14 +53,14 @@ public class LogicManager extends ComponentManager implements Logic {
     public List<String> getPossibleCommands(String commandText) {
         logger.info("---------------[AUTO COMPLETE][PREFIX ENTERED:" + commandText + "]");
         List<String> listOfAvaliableCommands = new ArrayList<>();
-        listOfAvaliableCommands.addAll(Command.getMapOfAvailableCommands().keySet());
+        listOfAvaliableCommands.addAll(Command.getMapOfCommandFormats().keySet());
         return AutoCompleteUtil.autoCompleteCommand(commandText, listOfAvaliableCommands);
     }
 
     @Override
     public String getAutocompleteFormat(String commandText) {
         logger.info("---------------[AUTO COMPLETE FORMAT][commandText: :" + commandText + "]");
-        return Command.getMapOfAvailableCommands().get(commandText);
+        return Command.getMapOfCommandFormats().get(commandText);
     }
 
     @Override
