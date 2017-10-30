@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addressbook>
+    <persons>
+        <name>Joh Doe</name>
+        <phone>98765432</phone>
+        <phone2>-</phone2>
+        <email>johnd@example.com</email>
+        <address>nus school of computing</address>
+        <tagged>owesMoney</tagged>
+        <tagged>friends</tagged>
+    </persons>
+    <persons>
+        <name>Jane</name>
+        <phone>98765432</phone>
+        <phone2>61234567</phone2>
+        <email>johnd@example.com</email>
+        <address>311, Clementi Ave 2, #02-25</address>
+        <tagged>owesMoney</tagged>
+        <tagged>friends</tagged>
+    </persons>
+    <persons>
+        <name>Alan Doe</name>
+        <phone>98765432</phone>
+        <phone2>-</phone2>
+        <email>johnd@example.com</email>
+        <address>311, Clementi Ave 2, #02-25</address>
+        <tagged>owesMoney</tagged>
+        <tagged>friends</tagged>
+    </persons>
+    <persons>
+        <name>Jenny Doe</name>
+        <phone>98765432</phone>
+        <phone2>61234567</phone2>
+        <email>johnd@example.com</email>
+        <address>311, Clementi Ave 2, #02-25</address>
+        <tagged>owesMoney</tagged>
+        <tagged>friends</tagged>
+    </persons>
+    <tags>owesMoney</tags>
+    <tags>boyfriend</tags>
+    <tags>colleagues</tags>
+    <tags>friend</tags>
+    <tags>classmates</tags>
+    <tags>neighbours</tags>
+    <tags>criminal</tags>
+    <tags>family</tags>
+    <tags>friends</tags>
+</addressbook>
