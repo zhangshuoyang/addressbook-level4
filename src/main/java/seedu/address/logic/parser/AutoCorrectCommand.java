@@ -1,5 +1,22 @@
 package seedu.address.logic.parser;
 
+import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddTaskCommand;
+import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteTagCommand;
+import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.HistoryCommand;
+import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.MultiFilterCommand;
+import seedu.address.logic.commands.RedoCommand;
+import seedu.address.logic.commands.SearchCommand;
+import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.UndoCommand;
+
 import java.util.ArrayList;
 
 /**
