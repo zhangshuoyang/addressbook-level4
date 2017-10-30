@@ -60,32 +60,42 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 === Viewing help : `help`
 
-Format: `help`
-Keyboard shortcut: `F1`
+Command Format: `help` +
+Keyboard shortcut: `F1` +
+UI: Menu bar - kbd:[Help]
 
 === Adding a person: `add`
 
 Adds a person to the address book +
-Format: `add n/NAME p/PHONE_NUMBER p2/PHONE_NUMBER or '-' e/EMAIL a/ADDRESS [t/TAG]...`
+Command Format: `add n/NAME p/PHONE_NUMBER p2/PHONE_NUMBER or '-' e/EMAIL a/ADDRESS [t/TAG]...` +
+Keyboard shortcut: kbd:[control] + kbd:[a]/kbd:[A]
+
 
 [TIP]
 A person can have any number of tags (including 0) +
-A person can add the symbol '-' if a second phone number is not required for the contact
+A person can add the symbol '-' if a second phone number is not required for the contact +
+Person names should only contain alphanumeric characters and spaces, and it should not be blank +
+Person emails should be 2 alphanumeric/period strings separated by '@' +
+Phone numbers can only contain numbers, and should be at least 3 digits long +
+Tags names should be alphanumeric +
 
 Examples:
 
 * `add n/John Doe p/98765432 p2/61234567 or '-' e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
 
-=== Listing all persons : `list`
+=== Listing all persons : `list`, `l`
 
 Shows a list of all persons in the address book. +
-Format: `list`
+Command Format: `list` or `l`
 
-=== Editing a person : `edit`
+=== Editing a person : `edit`, `e`
 
 Edits an existing person in the address book. +
-Format: `edit INDEX [n/NAME] [p/PHONE] [p2/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
+Command Format: `edit INDEX [n/NAME] [p/PHONE] [p2/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`, +
+or `e INDEX [n/NAME] [p/PHONE] [p2/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
+Keyboard shortcut: kbd:[control] + kbd:[e]/kbd:[E]
+
 
 ****
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the last person listing. The index *must be a positive integer* 1, 2, 3, ...
@@ -95,6 +105,14 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [p2/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG].
 * You can remove all the person's tags by typing `t/` without specifying any tags after it.
 ****
 
+[TIP]
+A person can have any number of tags (including 0) +
+A person can add the symbol '-' if a second phone number is not required for the contact +
+Person names should only contain alphanumeric characters and spaces, and it should not be blank +
+Person emails should be 2 alphanumeric/period strings separated by '@' +
+Phone numbers can only contain numbers, and should be at least 3 digits long +
+Tags names should be alphanumeric +
+
 Examples:
 
 * `edit 1 p/91234567 e/johndoe@example.com` +
@@ -102,10 +120,12 @@ Edits the phone number and email address of the 1st person to be `91234567` and 
 * `edit 2 n/Betsy Crower t/` +
 Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-=== Locating persons by name: `find`
+=== Locating persons by name: `find`, `f`
 
 Finds persons whose names contain any of the given keywords. +
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Command Format: `find KEYWORD [MORE_KEYWORDS]`, +
+or `f KEYWORD [MORE_KEYWORDS]` +
+Keyboard shortcut: kbd:[control] + kbd:[f]/kbd:[F]
 
 ****
 * The search is case insensitive. e.g `hans` will match `Hans`
