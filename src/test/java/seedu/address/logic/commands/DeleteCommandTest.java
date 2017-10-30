@@ -32,7 +32,7 @@ public class DeleteCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void executevalidMultipleIndexUnfilteredList_success() throws Exception {
+    public void executeValidMultipleIndexUnfilteredListSuccess() throws Exception {
         ReadOnlyPerson personToDelete1 = model.getFilteredPersonList().get(INDEX_MULTIPLE_PERSON.get(0).getZeroBased());
         ReadOnlyPerson personToDelete2 = model.getFilteredPersonList().get(INDEX_MULTIPLE_PERSON.get(1).getZeroBased());
         DeleteCommand deleteCommand = prepareCommand(INDEX_MULTIPLE_PERSON);
@@ -49,7 +49,7 @@ public class DeleteCommandTest {
     }
 
     @Test
-    public void executevalidSingleIndexUnfilteredList_success() throws Exception {
+    public void executeValidSingleIndexUnfilteredListSuccess() throws Exception {
 
         ReadOnlyPerson personToDelete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.get(0).getZeroBased());
         DeleteCommand deleteCommand = prepareCommand(INDEX_FIRST_PERSON);
@@ -63,7 +63,7 @@ public class DeleteCommandTest {
     }
 
     @Test
-    public void executeinvalidIndexUnfilteredList_throwsCommandException() throws Exception {
+    public void executeInvalidIndexUnfilteredListThrowsCommandException() throws Exception {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         ArrayList<Index> outOfBound = new ArrayList<>(Arrays.asList(outOfBoundIndex));
         DeleteCommand deleteCommand = prepareCommand(outOfBound);
