@@ -24,6 +24,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.MultiFilterCommand;
 import seedu.address.logic.commands.SearchCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -87,6 +88,10 @@ public class CommandBox extends UiPart<Region> {
                 keyEvent.consume();
                 commandTextField.setText(EditCommand.COMMAND_WORD);
                 break;
+            case "F":
+                keyEvent.consume();
+                commandTextField.setText(FindCommand.COMMAND_WORD);
+                break;
             default:
                 //do nothing
             }
@@ -131,9 +136,11 @@ public class CommandBox extends UiPart<Region> {
      */
     private void launchExtendedAutocomplete() {
         String userCommand = commandTextField.getText().split("\\s+")[0];
-        Map<String, String> commandFormatMap = Command.getMapOfAvailableCommands();
+        Map<String, String> commandFormatMap = Command.getMapOfCommandFormats();
+        Map<String, String> commandHelpMap = Command.getMapOfCommandHelp();
         if (commandFormatMap.containsKey(userCommand)) {
             commandTextField.setText(commandFormatMap.get(userCommand));
+            raise(new NewResultAvailableEvent(commandHelpMap.get(userCommand)));
         }
     }
 
