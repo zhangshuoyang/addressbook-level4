@@ -113,7 +113,7 @@ public class AutoCorrectCommandTest {
         String correctCommandSearch = autoCorrectCommand.correctWord(inputCommandSearch);
         assertEquals(defaultResult, correctCommandSearch);
 
-        final String inputCommandFind = "dda";
+        final String inputCommandFind = "ddam";
         String correctCommandFind = autoCorrectCommand.correctWord(inputCommandFind);
         assertEquals(defaultResult, correctCommandFind);
     }
