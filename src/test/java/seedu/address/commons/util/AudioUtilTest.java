@@ -16,7 +16,6 @@ public class AudioUtilTest {
         boolean exceptionWasThrown = false;
         try {
             audioUtility.playClip("???????.wav");
-            assertTrue(false);
         } catch (IOException e) {
             exceptionWasThrown = true;
         } catch (Exception err) {
