@@ -6,6 +6,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showFirstPersonOnly;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_MULTIPLE_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
@@ -31,13 +32,31 @@ public class DeleteCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_validIndexUnfilteredList_success() throws Exception {
+    public void execute_validMultipleIndexUnfilteredList_success() throws Exception {
+        ReadOnlyPerson personToDelete1 = model.getFilteredPersonList().get(INDEX_MULTIPLE_PERSON.get(0).getZeroBased());
+        ReadOnlyPerson personToDelete2 = model.getFilteredPersonList().get(INDEX_MULTIPLE_PERSON.get(1).getZeroBased());
+        DeleteCommand deleteCommand = prepareCommand(INDEX_MULTIPLE_PERSON);
+        String expectedMessage = "";
+        expectedMessage =  expectedMessage.concat("\n" + personToDelete2.toString());
+        expectedMessage = expectedMessage.concat("\n" + personToDelete1.toString());
+        expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, expectedMessage);
+
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        expectedModel.deletePerson(personToDelete1);
+        expectedModel.deletePerson(personToDelete2);
+
+        assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_validSingleIndexUnfilteredList_success() throws Exception {
+
         ReadOnlyPerson personToDelete = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.get(0).getZeroBased());
         DeleteCommand deleteCommand = prepareCommand(INDEX_FIRST_PERSON);
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS, personToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.deletePerson(personToDelete);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);

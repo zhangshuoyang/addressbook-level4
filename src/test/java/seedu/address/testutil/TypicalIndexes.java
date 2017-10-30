@@ -15,5 +15,7 @@ public class TypicalIndexes {
             Arrays.asList(Index.fromOneBased(2)));
     public static final ArrayList<Index> INDEX_THIRD_PERSON = new ArrayList<Index>(
             Arrays.asList(Index.fromOneBased(3)));
+    public static final ArrayList<Index> INDEX_MULTIPLE_PERSON = new ArrayList<Index>(
+            Arrays.asList(Index.fromOneBased(1), Index.fromOneBased(2)));
 
 }
