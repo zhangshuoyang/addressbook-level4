@@ -520,7 +520,7 @@ Format: kbd:[CONTROL] + kbd:[COMMAND_WORD_ALIAS]
 === Add tasks [Since v1.3]
 
 Add personal tasks into the address book.
-Format: `task d/DESCRIPTION priority/PRIORITY(0/1/2) on/DUE DATE(dd/MM/yyyy)`
+Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
 
 Examples:
 

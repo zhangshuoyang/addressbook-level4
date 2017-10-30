@@ -444,7 +444,7 @@ Currently, the hotkey is `TAB`.
 that command.
 For example, "add" is the `COMMAND_WORD` in the `AddCommand` class and is used to invoke the `add` operation.
 * The `COMMAND_WORD` for every command must be added to
-the `mapOfCommandFormats` map in the  `Command` class.
+the `mapOfAvailableCommands` map in the  `Command` class.
 If the developer forgets to perform this step, `AddressBook` will work
 normally but there will be no hints for those commands.
 * Although `autocomplete` currently does not support autocompletion
@@ -489,18 +489,16 @@ It is invoked in the `LogicManager` class.
 Currently, the hotkey is `Ctrl`. The following excerpt briefly shows how the `autocomplete` string
 is determined based on the `Command` entered by the user.
 
-image::extended-autocomplete-snippet.png[width="800"]
+image::extended-auto-complete-snippet.png[width="800"]
 
-* The `COMMAND_WORD`, `MESSAGE_USAGE`  and `AUTOCOMPLETE_FORMAT` fields must exist in all class files that represent commands.
+* The `COMMAND_WORD` and `AUTOCOMPLETE_FORMAT` fields must exist in all class files that represent commands.
 * For definition of `COMMAND_WORD`, see <<autocomplete-dependencies, section 4.5.1>>
 * The `AUTOCOMPLETE_FORMAT` field is defined as a string that contains the format of the command that is represented by the enclosing class.
 For example, if `test` command has the format of `test positive_integer` then `AUTOCOMPLETE_FORMAT` must be defined as
 `test positive_integer` in the `TestCommand` class.
-* The `mapOfCommandFormats` map in the `Command` class must contain `<command_class.COMMAND_WORD, command_class.AUTCOMPLETE_FORMAT>`
+* The `mapOfAvailableCommands` map in the `Command` class must contain `<command_class.COMMAND_WORD, command_class.AUTCOMPLETE_FORMAT>`
 as `<key, value>` pairs. An example of such a pair is `<AddCommand.COMMAND_WORD, AddCommand.AUTOCOMPLETE_FORMAT>`.
-* The `mapOfCommandHelp` map in the `Command` class must contain `<command_class.COMMAND_WORD, command_class.MESSAGE_USAGE>`
-as `<key, value>` pairs. An example of such a pair is `<AddCommand.COMMAND_WORD, AddCommand.COMMAND_USAGE>`.
-* If the developer forgets to perform the above steps, `AddressBook` will work
+* If the developer forgets to perform the above step, `AddressBook` will work
 normally but there will be no completion for those commands.
 * `extended autocomplete` currently does not support autocompletion
 for aliases.
@@ -526,7 +524,10 @@ Cons: Finite number of keys on the keyboard make it impossible to do a one-to-on
 
 === Delete Multiple Contacts Mechanism
 The `Delete` multiple contacts feature enables user to delete more than one contact in a single command by specifying more than one indices. It is
-invoked in the `DeleteCommand` class.
+invoked in the `DeleteCommand` class. +
+The interaction between `Model` and `Logic` classes can be seen from the following sequence diagram:
+
+image::DeleteMultiple/DeleteMultipleUML.PNG[width="800"]
 
 The source code below shows the implementation of how multiple persons are deleted by using a loop:
 [source,java]
