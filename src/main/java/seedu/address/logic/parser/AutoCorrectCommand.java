@@ -2,7 +2,22 @@ package seedu.address.logic.parser;
 
 import java.util.ArrayList;
 
-import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddTaskCommand;
+import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteTagCommand;
+import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.HistoryCommand;
+import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.MultiFilterCommand;
+import seedu.address.logic.commands.RedoCommand;
+import seedu.address.logic.commands.SearchCommand;
+import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.UndoCommand;
 
 /**
  * Auto-correct user input command.
@@ -86,7 +101,7 @@ public class AutoCorrectCommand {
         }
 
         String formattedMisSpeltword = misSpeltWord.toLowerCase();
-        ArrayList<String> commandPool = new ArrayList<>(Command.getMapOfCommandFormats().keySet());
+        ArrayList<String> commandPool = getCommandPool();
         final String defaultresult = "Unknown Command";
         String result = "";
 
@@ -134,5 +149,34 @@ public class AutoCorrectCommand {
         }
 
         return defaultResult;
+    }
+
+    /**
+     * Generate a list of current command
+     */
+    public ArrayList<String> getCommandPool () {
+
+        ArrayList<String> commandPool = new ArrayList<String>();
+        commandPool.add(FindCommand.COMMAND_WORD);
+        commandPool.add(AddCommand.COMMAND_WORD);
+        commandPool.add(SearchCommand.COMMAND_WORD);
+        commandPool.add(DeleteCommand.COMMAND_WORD);
+        commandPool.add(DeleteTagCommand.COMMAND_WORD);
+        commandPool.add(ClearCommand.COMMAND_WORD);
+        commandPool.add(EditCommand.COMMAND_WORD);
+        commandPool.add(ExitCommand.COMMAND_WORD);
+        commandPool.add(HelpCommand.COMMAND_WORD);
+        commandPool.add(HistoryCommand.COMMAND_WORD);
+        commandPool.add(ListCommand.COMMAND_WORD);
+        commandPool.add(MultiFilterCommand.COMMAND_WORD);
+        commandPool.add(RedoCommand.COMMAND_WORD);
+        commandPool.add(SelectCommand.COMMAND_WORD);
+        commandPool.add(UndoCommand.COMMAND_WORD);
+        commandPool.add(AddTaskCommand.COMMAND_WORD);
+        commandPool.add(SearchCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(SelectCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(DeleteTagCommand.COMMAND_WORD_ALIAS);
+
+        return commandPool;
     }
 }

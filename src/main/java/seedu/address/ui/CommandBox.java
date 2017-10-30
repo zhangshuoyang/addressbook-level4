@@ -24,6 +24,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.MultiFilterCommand;
 import seedu.address.logic.commands.SearchCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -86,6 +87,10 @@ public class CommandBox extends UiPart<Region> {
             case "E":
                 keyEvent.consume();
                 commandTextField.setText(EditCommand.COMMAND_WORD);
+                break;
+            case "F":
+                keyEvent.consume();
+                commandTextField.setText(FindCommand.COMMAND_WORD);
                 break;
             default:
                 //do nothing
