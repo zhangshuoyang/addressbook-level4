@@ -123,8 +123,7 @@ Edits the name of the 2nd person to be `Betsy Crower` and clears all existing ta
 === Locating persons by name: `find`, `f`
 
 Finds persons whose names contain any of the given keywords. +
-Command Format: `find KEYWORD [MORE_KEYWORDS]`, +
-or `f KEYWORD [MORE_KEYWORDS]` +
+Command Format: `find KEYWORD [MORE_KEYWORDS]`, or `f KEYWORD [MORE_KEYWORDS]` +
 Keyboard shortcut: kbd:[control] + kbd:[f]/kbd:[F]
 
 ****
@@ -145,7 +144,8 @@ Returns any person having names `Betsy`, `Tim`, or `John`
 === Deleting a single person : `delete` [[delete-single-person]]
 
 Deletes the specified person from the address book. +
-Format: `delete INDEX`
+Command Format: `delete INDEX`, or `d INDEX` +
+Keyboard shortcut: kbd:[control] + kbd:[d]/kbd:[D]
 
 ****
 * Deletes the person at the specified `INDEX`.
@@ -164,10 +164,10 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
-=== Selecting a person : `select`
+=== Selecting a person : `select`, `s`
 
 Selects the person identified by the index number used in the last person listing. +
-Format: `select INDEX`
+Command Format: `select INDEX` or `s INDEX`
 
 ****
 * Selects the person and loads the Google search page the person at the specified `INDEX`.
@@ -184,21 +184,20 @@ Selects the 2nd person in the address book.
 `select 1` +
 Selects the 1st person in the results of the `find` command.
 
-=== Listing entered commands : `history`
+=== Listing entered commands : `history`, `h`
 
 Lists all the commands that you have entered in reverse chronological order. +
-Format: `history`
+Command Format: `history`
 
 [NOTE]
 ====
 Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and next input respectively in the command box.
 ====
 
-// tag::undoredo[]
-=== Undoing previous command : `undo`
+=== Undoing previous command : `undo`, `u`
 
 Restores the address book to the state before the previous _undoable_ command was executed. +
-Format: `undo`
+Command Format: `undo`, `u`
 
 [NOTE]
 ====
@@ -221,10 +220,10 @@ The `undo` command fails as there are no undoable commands executed previously.
 `undo` (reverses the `clear` command) +
 `undo` (reverses the `delete 1` command) +
 
-=== Redoing the previously undone command : `redo`
+=== Redoing the previously undone command : `redo`, `r`
 
 Reverses the most recent `undo` command. +
-Format: `redo`
+Command Format: `redo`, `r`
 
 Examples:
 
@@ -243,20 +242,20 @@ The `redo` command fails as there are no `undo` commands executed previously.
 `redo` (reapplies the `delete 1` command) +
 `redo` (reapplies the `clear` command) +
 
-=== Clearing all entries : `clear`
+=== Clearing all entries : `clear`, `c`
 
 Clears all entries from the address book. +
-Format: `clear`
+Command Format: `clear` or `c`
 
 === Exiting the program : `exit`
 
 Exits the program. +
-Format: `exit`
+Command Format: `exit`
 
 === Deleting a tag : `deletetag` [Since v1.0]
 
 Deletes the specified tag from the address book. +
-Format: `delete tag_name`
+Command Format: `deletetag tag_name`
 
 ==== Description
 
@@ -290,10 +289,39 @@ image:DeleteTagCommand-step-1.png[width="250"]
 +
 image:DeleteTagCommand-step-2.png[width="250"]
 
-=== Locating persons by tag: `search` + TAG_NAME [Since v1.1]
+=== Use alias for commands [Since v1.0]
+Alias is an alternative and easier way to perform different commands.
+
+==== Available alias
+|===
+| *Commands* | *Alias*
+| `Adds` | `a` +
+| `Edit` | `e` +
+| `Select` | `st` +
+| `Search` | `sh` +
+| `Delete` | `d` +
+| `Deletetag` | `dt`. +
+| `Clear` | `c` +
+| `Multifilter` | `mf` +
+| `List` | `l` +
+| `History` | `h` +
+| `Undo` | `u` +
+| `Redo` | `r` +
+|===
+
+==== How to use
+. The image below demonstrates the example of using `a`.
+
++image:AddCommandAlias.png[width="250"]
+
+. The image below demonstrates the result of the above alias.
+
++image:AddCommandAliasResult.png[width="250"]
+
+=== Locating persons by tag: `search + tag name` [Since v1.1]
 
 Searches persons whose tag names contain any of the given keywords. +
-Format: `search KEYWORD [MORE_KEYWORDS]`
+Command Format: `search KEYWORD [MORE_KEYWORDS]`
 
 ****
 * The search is case sensitive. e.g `Friends` will not match `friends`
@@ -305,11 +333,21 @@ Format: `search KEYWORD [MORE_KEYWORDS]`
 * Persons's tag names matching at least one keyword will be returned (i.e. `OR` search). e.g. `friends colleague` will return persons with `friends`, or `colleague` tag
 ****
 
-Examples:
-* `search friends` +
-Returns `John Alice`
-* `search fri` +
-Returns `Unknown tag`
+==== Examples
+|===
+| *Your input* | *Result*
+| `search friends` | Returns the contacts with tag "friends", e.g. `John Alice` +
+| `search fri` | No match will be returned, `Unknown tag` is displayed. +
+|===
+
+==== How to use
+. The image below demonstrates the exact usage of function: search by tag.
++
+image:SearchByTagCommand.png[width="250"]
+
+. The image below demonstrates one of the expected result returned kby Contact Plus.
++
+image:SearchByTagResult.png[width="250"]
 
 === Add second phone number for a person [Since v1.1]
 
@@ -448,11 +486,24 @@ Format: [misspelt command]
 NOTE: Auto-correct is not designed for alias.
 ==============================================
 
-Examples:
+==== Examples
 
-* `deleet` will match to `delete`.
-* `del` will not match to any command, application will display "Unkown command"
-* `d` will be matched to `delete` still as it is an alias.
+|===
+| *Your input* |  *Result*
+| `deleet` | will match to `delete`.
+|  `del` | will not match to any command, application will display "Unkown command".
+| `d` | will be matched to `delete` still as it is an alias.
+| `m` | will not match to any command, application will display "Unkown command".
+|===
+
+==== How to use
+. The image below demonstrates the usage to autoCorrect "deleet".
++
+image::AutoCorrectCommand.png[width="250"]
+
+. The image below is the result returned by Contact Plus using teh command above.
++
+image::AutoCorrectResult.png[width="250"]
 
 === Deleting multiple persons : `delete index/another index/...` [Since v1.2] [[delete-multiple-persons]]
 
@@ -478,10 +529,13 @@ image::deleteMultiplePerson3.png[width="500"]
 Viewing weather forecast on Yahoo Weather page.
 Accessible from kbd:[File] dropdown list, kbd:[Weather Forecast] menu item.
 
+==== How to use
+. The button kbd:[Weather Forecast] is located as the image shown below.
++
 image::WeatherForecastButton.png[width="500"]
 
-The expected page would be as follows:
-
+. The expected page would be as follows.
++
 image::WeatherForecast.png[width="500"]
 
 === Extended autocomplete for commands [Since v1.3]
@@ -513,13 +567,25 @@ To be filled in.
 
 === Keyboard shortcuts [Since v1.3]
 
-Keyboard shortcuts enables users to quickly get the command words without memorization.
-Format: kbd:[CONTROL] + kbd:[COMMAND_WORD_ALIAS]
+Keyboard shortcuts enables users to quickly get the command words without heavy memorization.
+Format: kbd:[CONTROL] + kbd:[KEY]
 
-****
-* The keyborad shortcuts are created only for commands with heavy text input.
-* The commands with keyboard shortcuts are: `add`, `multifilter`, `edit`, `search`, `delete`, and `clear`.
-****
+==============================================
+NOTE: The keyborad shortcuts are created only for commands with heavy text input or frequently used commands.
+==============================================
+
+==== Available Keyboard shortcuts
+
+|===
+| *Command* | *Keyboard shortcut*
+| `add` | kbd:[control] + kbd:[a]/kbd:[A]
+| `multifilter` | kbd:[control] + kbd:[m]/kbd:[M]
+| `edit` | kbd:[control] + kbd:[e]/kbd:[E]
+| `search` | kbd:[control] + kbd:[s]/kbd:[S]
+| `delete` | kbd:[control] + kbd:[d]/kbd:[D]
+| `find` | kbd:[control] + kbd:[f]/kbd:[F]
+| `clear` | kbd:[control] + kbd:[c]/kbd:[C]
+|===
 
 === Add tasks [Since v1.3]
 
@@ -610,3 +676,31 @@ e.g. `delete 2/3`
 * *AutoCompele*: `[Prefix]` +
 e.g. `del` expands to `delete` in the command bar
 
+== Keyboard shortcuts Summary
+|===
+| *Command* | *Keyboard shortcut*
+| `add` | kbd:[control] + kbd:[a]/kbd:[A]
+| `multifilter` | kbd:[control] + kbd:[m]/kbd:[M]
+| `edit` | kbd:[control] + kbd:[e]/kbd:[E]
+| `search` | kbd:[control] + kbd:[s]/kbd:[S]
+| `delete` | kbd:[control] + kbd:[d]/kbd:[D]
+| `find` | kbd:[control] + kbd:[f]/kbd:[F]
+| `clear` | kbd:[control] + kbd:[c]/kbd:[C]
+|===
+
+== Command alias Summary
+|===
+| *Commands* | *Alias*
+| `Adds` | `a` +
+| `Edit` | `e` +
+| `Select` | `st` +
+| `Search` | `sh` +
+| `Delete` | `d` +
+| `Deletetag` | `dt` +
+| `Clear` | `c` +
+| `Multifilter` | `mf` +
+| `List` | `l` +
+| `History` | `h` +
+| `Undo` | `u` +
+| `Redo` | `r` +
+|===

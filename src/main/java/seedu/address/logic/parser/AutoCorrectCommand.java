@@ -174,6 +174,9 @@ public class AutoCorrectCommand {
         commandPool.add(SelectCommand.COMMAND_WORD);
         commandPool.add(UndoCommand.COMMAND_WORD);
         commandPool.add(AddTaskCommand.COMMAND_WORD);
+        commandPool.add(SearchCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(SelectCommand.COMMAND_WORD_ALIAS);
+        commandPool.add(DeleteTagCommand.COMMAND_WORD_ALIAS);
 
         return commandPool;
     }
