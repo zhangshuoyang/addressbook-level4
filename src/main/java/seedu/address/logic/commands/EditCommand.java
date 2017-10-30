@@ -37,11 +37,10 @@ public class EditCommand extends UndoableCommand {
     public static final String COMMAND_WORD_ALIAS = "e";
     public static final String AUTOCOMPLETE_FORMAT =
             COMMAND_WORD + " "
-            + PREFIX_NAME + "name "
-            + PREFIX_PHONE + "phone "
-            + PREFIX_EMAIL + "email_address "
-            + PREFIX_ADDRESS + "residential_address "
-            + PREFIX_TAG + "tag_1 tag_2 more_tags";
+            + PREFIX_NAME + " "
+            + PREFIX_PHONE + " "
+            + PREFIX_EMAIL + " "
+            + PREFIX_ADDRESS;
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
             + "by the index number used in the last person listing. "

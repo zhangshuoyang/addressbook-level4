@@ -131,9 +131,11 @@ public class CommandBox extends UiPart<Region> {
      */
     private void launchExtendedAutocomplete() {
         String userCommand = commandTextField.getText().split("\\s+")[0];
-        Map<String, String> commandFormatMap = Command.getMapOfAvailableCommands();
+        Map<String, String> commandFormatMap = Command.getMapOfCommandFormats();
+        Map<String, String> commandHelpMap = Command.getMapOfCommandHelp();
         if (commandFormatMap.containsKey(userCommand)) {
             commandTextField.setText(commandFormatMap.get(userCommand));
+            raise(new NewResultAvailableEvent(commandHelpMap.get(userCommand)));
         }
     }
 

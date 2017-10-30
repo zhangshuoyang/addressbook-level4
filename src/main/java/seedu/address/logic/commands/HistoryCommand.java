@@ -18,6 +18,7 @@ public class HistoryCommand extends Command {
     public static final String COMMAND_WORD = "history";
     public static final String COMMAND_WORD_ALIAS = "h";
     public static final String AUTOCOMPLETE_FORMAT = COMMAND_WORD;
+    public static final String MESSAGE_USAGE = "";
     public static final String MESSAGE_SUCCESS = "Entered commands (from most recent to earliest):\n%1$s";
     public static final String MESSAGE_NO_HISTORY = "You have not yet entered any commands.";
 
