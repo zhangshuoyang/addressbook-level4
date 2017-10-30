@@ -116,6 +116,8 @@ public abstract class Command {
      */
     private static void initializeCommandFormatMap() {
         mapOfCommandsToFormats.put(AddTaskCommand.COMMAND_WORD, AddTaskCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(ListTaskCommand.COMMAND_WORD, ListTaskCommand.AUTOCOMPLETE_FORMAT);
+        mapOfCommandsToFormats.put(DeleteTaskCommand.COMMAND_WORD, DeleteTaskCommand.AUTOCOMPLETE_FORMAT);
         mapOfCommandsToFormats.put(AddCommand.COMMAND_WORD, AddCommand.AUTOCOMPLETE_FORMAT);
         mapOfCommandsToFormats.put(ClearCommand.COMMAND_WORD, ClearCommand.AUTOCOMPLETE_FORMAT);
         mapOfCommandsToFormats.put(DeleteCommand.COMMAND_WORD, DeleteCommand.AUTOCOMPLETE_FORMAT);
@@ -141,6 +143,8 @@ public abstract class Command {
      */
     private static void initializeCommandHelpMap() {
         mapOfCommandsToHelp.put(AddTaskCommand.COMMAND_WORD, AddTaskCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(ListTaskCommand.COMMAND_WORD, ListTaskCommand.MESSAGE_USAGE);
+        mapOfCommandsToHelp.put(DeleteTaskCommand.COMMAND_WORD, DeleteTaskCommand.MESSAGE_USAGE);
         mapOfCommandsToHelp.put(AddCommand.COMMAND_WORD, AddCommand.MESSAGE_USAGE);
         mapOfCommandsToHelp.put(ClearCommand.COMMAND_WORD, ClearCommand.MESSAGE_USAGE);
         mapOfCommandsToHelp.put(DeleteCommand.COMMAND_WORD, DeleteCommand.MESSAGE_USAGE);
