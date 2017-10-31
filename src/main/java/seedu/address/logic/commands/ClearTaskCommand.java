@@ -6,6 +6,7 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
 import java.util.List;
 
 import seedu.address.logic.parser.AutoCorrectCommand;
+import seedu.address.model.AddressBook;
 import seedu.address.model.task.ReadOnlyTask;
 
 /**
@@ -24,10 +25,7 @@ public class ClearTaskCommand extends UndoableCommand {
     @Override
     public CommandResult executeUndoableCommand() {
         requireNonNull(model);
-        List<ReadOnlyTask> lastShownList = model.getFilteredTaskList();
-        lastShownList.clear();
-
-        model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+        model.getFilteredTaskList().stream().forEach(e -> e = null);
 
         if (autoCorrectCommand.getMessageToUser().equals("")) {
             return new CommandResult(MESSAGE_SUCCESS);
