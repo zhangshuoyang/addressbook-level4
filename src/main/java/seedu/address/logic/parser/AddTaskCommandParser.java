@@ -13,14 +13,12 @@ import seedu.address.model.task.Priority;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
+//@@author zhangshuoyang
 /**
  * Parses input arguments and creates a new AddTaskCommand object
  */
 public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
+
 
     /**
      * Parses the given {@code String} of arguments in the context of the AddTaskCommand
@@ -42,17 +40,10 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
             Priority priority = ParserUtil.parsePriority(argumentMultimap.getValue(PREFIX_PRIORITY)).get();
             DueDate date = ParserUtil.parseDueDate(argumentMultimap.getValue(PREFIX_DUEDATE)).get();
 
-            BufferedWriter out = new BufferedWriter(new FileWriter("task1.txt"));
-            out.write(description.toString());
-            out.write(priority.toString());
-            out.write(date.toString());
-
-            ReadOnlyTask task = new Task(description, priority, date);
-            return new AddTaskCommand(task);
+                ReadOnlyTask task = new Task(description, priority, date);
+                return new AddTaskCommand(task);
         } catch (IllegalValueException ive) {
             throw new ParseException(ive.getMessage(), ive);
-        } catch (IOException ioe) {
-            throw new ParseException(ioe.getMessage(), ioe);
         }
     }
 

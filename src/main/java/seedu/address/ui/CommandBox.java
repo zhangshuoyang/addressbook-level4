@@ -1,9 +1,13 @@
 package seedu.address.ui;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.logging.Logger;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -20,7 +24,17 @@ import seedu.address.commons.events.ui.NewResultAvailableEvent;
 import seedu.address.commons.util.AudioUtil;
 import seedu.address.logic.ListElementPointer;
 import seedu.address.logic.Logic;
-import seedu.address.logic.commands.*;
+import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddTaskCommand;
+import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.ListTaskCommand;
+import seedu.address.logic.commands.MultiFilterCommand;
+import seedu.address.logic.commands.SearchCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -67,36 +81,36 @@ public class CommandBox extends UiPart<Region> {
         if (keyEvent.getCode().isLetterKey() && keyEvent.isControlDown()) {
             //keyboard shortcut for input text heavy command
             switch (getAlphabetPressed) {
-            case "A":
-                keyEvent.consume();
-                commandTextField.setText(AddCommand.COMMAND_WORD);
-                break;
-            case "D":
-                keyEvent.consume();
-                commandTextField.setText(DeleteCommand.COMMAND_WORD);
-                break;
-            case "M":
-                keyEvent.consume();
-                commandTextField.setText(MultiFilterCommand.COMMAND_WORD);
-                break;
-            case "C":
-                keyEvent.consume();
-                commandTextField.setText(ClearCommand.COMMAND_WORD);
-                break;
-            case "S":
-                keyEvent.consume();
-                commandTextField.setText(SearchCommand.COMMAND_WORD);
-                break;
-            case "E":
-                keyEvent.consume();
-                commandTextField.setText(EditCommand.COMMAND_WORD);
-                break;
-            case "F":
-                keyEvent.consume();
-                commandTextField.setText(FindCommand.COMMAND_WORD);
-                break;
-            default:
-                //do nothing
+                case "A":
+                    keyEvent.consume();
+                    commandTextField.setText(AddCommand.COMMAND_WORD);
+                    break;
+                case "D":
+                    keyEvent.consume();
+                    commandTextField.setText(DeleteCommand.COMMAND_WORD);
+                    break;
+                case "M":
+                    keyEvent.consume();
+                    commandTextField.setText(MultiFilterCommand.COMMAND_WORD);
+                    break;
+                case "C":
+                    keyEvent.consume();
+                    commandTextField.setText(ClearCommand.COMMAND_WORD);
+                    break;
+                case "S":
+                    keyEvent.consume();
+                    commandTextField.setText(SearchCommand.COMMAND_WORD);
+                    break;
+                case "E":
+                    keyEvent.consume();
+                    commandTextField.setText(EditCommand.COMMAND_WORD);
+                    break;
+                case "F":
+                    keyEvent.consume();
+                    commandTextField.setText(FindCommand.COMMAND_WORD);
+                    break;
+                default:
+                    //do nothing
             }
         }
 
@@ -110,24 +124,24 @@ public class CommandBox extends UiPart<Region> {
 
         // Handles single key press
         switch (keyEvent.getCode()) {
-        case UP:
-            // As up and down buttons will alter the position of the caret,
-            // consuming it causes the caret's position to remain unchanged
-            keyEvent.consume();
-            navigateToPreviousInput();
-            break;
-        case DOWN:
-            keyEvent.consume();
-            navigateToNextInput();
-            break;
-        case TAB:
-            keyEvent.consume();
-            launchAutoComplete();
-            commandTextField.requestFocus(); // focus the caret in the command box after autocomplete
-            commandTextField.end(); // move caret to the end of the completed command
-            break;
-        default:
-            // let JavaFx handle the keypress
+            case UP:
+                // As up and down buttons will alter the position of the caret,
+                // consuming it causes the caret's position to remain unchanged
+                keyEvent.consume();
+                navigateToPreviousInput();
+                break;
+            case DOWN:
+                keyEvent.consume();
+                navigateToNextInput();
+                break;
+            case TAB:
+                keyEvent.consume();
+                launchAutoComplete();
+                commandTextField.requestFocus(); // focus the caret in the command box after autocomplete
+                commandTextField.end(); // move caret to the end of the completed command
+                break;
+            default:
+                // let JavaFx handle the keypress
         }
     }
 
@@ -246,19 +260,27 @@ public class CommandBox extends UiPart<Region> {
                 // Process and display the most recently added task in a separate text field
                 StringBuffer lastTaskFieldOutput = new StringBuffer();
                 List<ReadOnlyTask> listOfTask = logic.getFilteredTaskList();
-                lastTaskFieldOutput.append("Task added: " + "\n");
+                lastTaskFieldOutput.append("\n");
+                lastTaskFieldOutput.append("===Task=== " + "\n");
                 lastTaskFieldOutput.append(listOfTask.get(listOfTask.size() - 1).toString());
                 lastTaskFieldOutput.append("\n");
+                PrintWriter out = new PrintWriter(new FileOutputStream(new File("taskData1.txt"), true));
+                out.println(lastTaskFieldOutput.toString());
+                out.close();
 
-                System.out.println("=====================" + lastTaskFieldOutput.toString());
+
                 try {
-                    PrintWriter out = new PrintWriter("taskData1.txt");
-                    out.println(lastTaskFieldOutput.toString());
-                    out.close();
+                    String curr = System.getProperty("user.dir");
+                    Scanner s = new Scanner(new File(curr + "/taskData1.txt"));
 
-                } catch (IOException ioe) {
-                    throw new ParseException(ioe.getMessage(), ioe);
+                    taskDisplayed.clear();
+                    while (s.hasNext()) {
+                        taskDisplayed.appendText(s.next() + "\n");
+                    }
+                } catch (FileNotFoundException fne) {
+                    throw new ParseException(fne.getMessage(), fne);
                 }
+
             }
 
             if (parser.parseCommand(userInput) instanceof ListTaskCommand) {

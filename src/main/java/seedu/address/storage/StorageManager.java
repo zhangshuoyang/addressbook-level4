@@ -13,7 +13,6 @@ import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.task.ReadOnlyTask;
 
 /**
  * Manages storage of AddressBook data in local storage.
@@ -23,7 +22,6 @@ public class StorageManager extends ComponentManager implements Storage {
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private AddressBookStorage addressBookStorage;
     private UserPrefsStorage userPrefsStorage;
-    private TaskStorage taskStorage;
 
 
     public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
@@ -98,36 +96,4 @@ public class StorageManager extends ComponentManager implements Storage {
     }
 
 
-    @Override
-    public String getTaskDataFilePath() {
-        return taskStorage.getTaskDataFilePath();
-    }
-
-    @Override
-    public Optional<ReadOnlyTask> readTaskData() throws DataConversionException, IOException {
-        return readTaskData(taskStorage.getTaskDataFilePath());
-    }
-
-    @Override
-    public Optional<ReadOnlyTask> readTaskData(String filePath) throws DataConversionException, IOException {
-        logger.fine("Attempting to read data from file: " + filePath);
-        return taskStorage.readTaskData(filePath);
-    }
-
-    @Override
-    public void saveTaskData(ReadOnlyTask taskData) throws IOException {
-        saveTaskData(taskData, taskStorage.getTaskDataFilePath());
-    }
-
-    @Override
-    public void saveTaskData(ReadOnlyTask taskData, String filePath) throws IOException {
-        logger.fine("Attempting to write to data file: " + filePath);
-        taskStorage.saveTaskData(taskData, filePath);
-
-    }
-
-    @Override
-    public void backupTaskData(ReadOnlyTask taskData) throws IOException {
-        taskStorage.backupTaskData(taskData);
-    }
 }
