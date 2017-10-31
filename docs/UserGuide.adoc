@@ -636,6 +636,60 @@ Failure sound clip is played if command is unsuccessful.
 
 |===
 
+=== Edit task [Since v1.4]
+
+To edit your tasks, first you should learn how to list task. Listing tasks is for you to get the index of the task you indent to edit.
+Then use "edittask" command with its index to edit the task. The format is as follows:
+Format: `edittask INDEX d/DESCRIPTION priority/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
+
+==== Description
+
+*************
+* Index mist be a positive number.
+* At least one field (either priority or due date) has to be specified.
+*************
+
+==== How to use
+. Enter the command, the index of the task, and the details you wish to edit with its prefix. Please refer to the image below for an example:
++
+image:EditTaskStep1.png[width="300"]
+
+. The application will give you conformation information displayed. Please refer to the image below for an example:
++
+image:EditTaskStep2.png[width="300"]
+
+==== Example
+
+|===
+| *Your input* | Result
+| `edittask 1 prioroty/1` | The application will display "Edited task: " + the details of the task you just edited. +
+|===
+
+=== Clear task [Since v1.4]
+
+To clear your task list, "cleartask" is the command to use. The format is as follows:
+Format: `cleartask`
+
+==== Description
+
+*************
+* you can perform command `undo`, if you accidentally clear your task list.
+*************
+
+==== How to use
+. Enter the command, the index of the task, and the details you wish to edit with its prefix. Please refer to the image below for an example:
++
+image:EditTaskStep1.png[width="300"]
+
+
+==== Example
+
+|===
+| *Your input* | Result
+| `edittask 1 prioroty/1` | The application will display "Edited task: " + the details of the task you just edited. +
+|===
+
+
 === Tag use emoji : `tag emoji` [Coming in V2.0]
 
 Input characters to represent an emoji as a tag. +

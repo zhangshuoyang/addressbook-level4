@@ -28,7 +28,7 @@
     <tags>friends</tags>
     <tasks>
         <description>d/CS2103T</description>
-        <priority>1</priority>
+        <priority>0</priority>
         <duedate>11/12/2100</duedate>
     </tasks>
     <tasks>
