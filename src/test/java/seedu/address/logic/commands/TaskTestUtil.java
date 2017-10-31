@@ -10,12 +10,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.CommandHistory;
+import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.task.DescContainsKeywordsPredicate;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.exceptions.TaskNotFoundException;
+import seedu.address.testutil.EditTaskDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
@@ -26,18 +30,30 @@ public class TaskTestUtil {
     public static final String VALID_DESC_BOB = "Task Bob";
     public static final int VALID_PRIORITY_AMY = 1;
     public static final int VALID_PRIORITY_BOB = 0;
+    public static final String VALID_PRIORITY_AMY_STRING = "1";
+    public static final String VALID_PRIORITY_BOB_STRING = "0";
     public static final String VALID_DUEDATE_AMY = "01/01/2001";
     public static final String VALID_DUEDATE_BOB = "12/12/2002";
 
-    public static final String NAME_DESC_AMY = " " + PREFIX_DESCIPTION + VALID_DESC_AMY;
-    public static final String NAME_DESC_BOB = " " + PREFIX_DESCIPTION + VALID_DESC_BOB;
-    public static final String NAME_PRIORITY_AMY = " " + PREFIX_PRIORITY + VALID_PRIORITY_AMY;
-    public static final String NAME_PRIORITY_BOB = " " + PREFIX_PRIORITY + VALID_PRIORITY_BOB;
-    public static final String NAME_DUEDATE_AMY = " " + PREFIX_DUEDATE + VALID_DUEDATE_AMY;
-    public static final String NAME_DUEDATE_BOB = " " + PREFIX_DUEDATE + VALID_DUEDATE_BOB;
+    public static final String DESC_AMY = " " + PREFIX_DESCIPTION + VALID_DESC_AMY;
+    public static final String DESC_BOB = " " + PREFIX_DESCIPTION + VALID_DESC_BOB;
+    public static final String PRIORITY_AMY = " " + PREFIX_PRIORITY + VALID_PRIORITY_AMY;
+    public static final String PRIORITY_BOB = " " + PREFIX_PRIORITY + VALID_PRIORITY_BOB;
+    public static final String DUEDATE_AMY = " " + PREFIX_DUEDATE + VALID_DUEDATE_AMY;
+    public static final String DUEDATE_BOB = " " + PREFIX_DUEDATE + VALID_DUEDATE_BOB;
 
     public static final String INVALID_PRIORITY_DESC = " " + PREFIX_PRIORITY + "-1"; // 'a' not allowed in phones
     public static final String INVALID_DUEDATE_DESC = " " + PREFIX_DUEDATE + "01/13/2002"; // missing '@' symbol
+
+    public static final EditTaskCommand.EditTaskDescriptor TASK_AMY;
+    public static final EditTaskCommand.EditTaskDescriptor TASK_BOB;
+
+    static {
+        TASK_AMY = new EditTaskDescriptorBuilder().withDescription(VALID_DESC_AMY)
+                .withPriority(VALID_PRIORITY_AMY_STRING).withDueDate(VALID_DUEDATE_AMY).build();
+        TASK_BOB = new EditTaskDescriptorBuilder().withDescription(VALID_DESC_BOB)
+                .withPriority(VALID_PRIORITY_BOB_STRING).withDueDate(VALID_DUEDATE_BOB).build();
+    }
 
     /**
      * Executes the given {@code command}, confirms that <br>
@@ -65,7 +81,7 @@ public class TaskTestUtil {
      * Updates {@code model}'s filtered list to show only the first task in the {@code model}'s address book.
      */
     public static void showFirstTaskOnly(Model model) {
-        ReadOnlyTask task = model.getAddressBook().getTaskList().get(0);
+        ReadOnlyTask task = model.getTaskBook().getTaskList().get(0);
         final String[] splitName = task.getDescription().descriptionName.split("\\s+");
         model.updateFilteredTaskList(new DescContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
