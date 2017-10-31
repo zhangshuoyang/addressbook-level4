@@ -1,13 +1,9 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
-
-import java.util.List;
 
 import seedu.address.logic.parser.AutoCorrectCommand;
-import seedu.address.model.AddressBook;
-import seedu.address.model.task.ReadOnlyTask;
+
 
 /**
  * Clears the task list.
