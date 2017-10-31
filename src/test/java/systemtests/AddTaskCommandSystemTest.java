@@ -57,11 +57,15 @@ public class AddTaskCommandSystemTest extends AddressBookSystemTest {
         /* Case: add a task with all fields same as another task in the address book except priority -> added */
         toAdd = new TaskBuilder().withDescription(VALID_DESCRIPTION_ASSIGNMENT).withPriority(VALID_PRIORITY_SHOPPING)
                 .withDueDate(VALID_DUEDATE_ASSIGNMENT).build();
+        command = AddTaskCommand.COMMAND_WORD + DESCRIPTION_DESC_ASSIGNMENT + PRIORITY_DESC_SHOPPING
+                + DUEDATE_DESC_ASSIGNMENT;
         assertCommandSuccess(command, toAdd);
 
         /* Case: add a task with all fields same as another task in the address book except due date -> added */
         toAdd = new TaskBuilder().withDescription(VALID_DESCRIPTION_ASSIGNMENT).withPriority(VALID_PRIORITY_ASSIGNMENT)
                 .withDueDate(VALID_DUEDATE_SHOPPING).build();
+        command = AddTaskCommand.COMMAND_WORD + DESCRIPTION_DESC_ASSIGNMENT + PRIORITY_DESC_ASSIGNMENT
+                + DUEDATE_DESC_SHOPPING;
         assertCommandSuccess(command, toAdd);
 
         /* Case: add to empty address book -> added */
@@ -77,13 +81,13 @@ public class AddTaskCommandSystemTest extends AddressBookSystemTest {
          assertCommandFailure(command, Messages.MESSAGE_UNKNOWN_COMMAND);
 
          /* Case: invalid priority -> rejected */
-         command = AddTaskCommand.COMMAND_WORD + DESCRIPTION_DESC_SHOPPING + INVALID_PRIORITY_SHOPPING
+         command = AddTaskCommand.COMMAND_WORD + DESCRIPTION_DESC_SHOPPING + INVALID_PRIORITY_DESC_SHOPPING
                  + DUEDATE_DESC_SHOPPING;
          assertCommandFailure(command, Priority.MESSAGE_PRIORITY_CONSTRAINTS);
 
          /* Case: invalid due date -> rejected */
          command = AddTaskCommand.COMMAND_WORD + DESCRIPTION_DESC_SHOPPING + PRIORITY_DESC_SHOPPING
-                 + INVALID_DUEDATE_SHOPPING;
+                 + INVALID_DUEDATE_DESC_SHOPPING;
          assertCommandFailure(command, DueDate.MESSAGE_DATE_FORMAT_CONSTRAINTS);
     }
 
@@ -99,7 +103,7 @@ public class AddTaskCommandSystemTest extends AddressBookSystemTest {
      * @see AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
      */
     private void assertCommandSuccess(ReadOnlyTask toAdd) {
-        assertCommandSuccess(TaskUtil.getAddCommand(toAdd), toAdd);
+        assertCommandSuccess(TaskUtil.getAddTaskCommand(toAdd), toAdd);
     }
 
     /**
