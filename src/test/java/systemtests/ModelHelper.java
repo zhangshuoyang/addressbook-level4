@@ -38,7 +38,7 @@ public class ModelHelper {
     /**
      * @see ModelHelper#setFilteredList(Model, List)
      */
-    public static void setFilteredPersonList(Model model, ReadOnlyPerson... toDisplayPerson) {
+    public static void setFilteredList(Model model, ReadOnlyPerson... toDisplayPerson) {
         setFilteredList(model, Arrays.asList(toDisplayPerson));
     }
 
