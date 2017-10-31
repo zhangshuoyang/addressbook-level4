@@ -28,8 +28,8 @@ import seedu.address.model.task.exceptions.TaskNotFoundException;
  */
 public class EditTaskCommand extends UndoableCommand {
 
-    public static final String COMMAND_WORD = "edit task";
-    public static final String COMMAND_WORD_ALIAS = "e task";
+    public static final String COMMAND_WORD = "edittask";
+    public static final String COMMAND_WORD_ALIAS = "etask";
     public static final String AUTOCOMPLETE_FORMAT =
             COMMAND_WORD + " "
                     + PREFIX_DESCIPTION + "task "
@@ -87,11 +87,11 @@ public class EditTaskCommand extends UndoableCommand {
         model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
 
         if (autoCorrectCommand.getMessageToUser().equals("")) {
-            return new CommandResult(String.format("MESSAGE_EDIT_TASK_SUCCESS", editedTask));
+            return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, editedTask));
         } else {
             return new CommandResult(autoCorrectCommand.getMessageToUser()
                     + "\n"
-                    + String.format("MESSAGE_EDIT_TASK_SUCCESS", editedTask));
+                    + String.format(MESSAGE_EDIT_TASK_SUCCESS, editedTask));
         }
     }
 
