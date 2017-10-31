@@ -72,7 +72,7 @@ public class DeleteTaskCommandTest {
     }
 
     @Test
-    public void execute_validIndexFilteredList_success() throws Exception {
+    public void executeValidIndexFilteredListSuccess() throws Exception {
         showFirstTaskOnly(model);
 
         ReadOnlyTask taskToDelete = model.getFilteredTaskList().get(INDEX_FIRST_TASK.get(0).getZeroBased());
@@ -88,7 +88,7 @@ public class DeleteTaskCommandTest {
     }
 
     @Test
-    public void execute_invalidIndexFilteredList_throwsCommandException() {
+    public void executeInvalidIndexFilteredListThrowsCommandException() {
         showFirstTaskOnly(model);
 
         Index outOfBoundIndex = INDEX_SECOND_TASK.get(0);
@@ -115,9 +115,6 @@ public class DeleteTaskCommandTest {
 
         // different types -> returns false
         assertFalse(deleteFirstCommand.equals(1));
-
-        // null -> returns false
-        assertFalse(deleteFirstCommand.equals(null));
 
         // different task -> returns false
         assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
