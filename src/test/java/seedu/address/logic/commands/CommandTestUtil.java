@@ -64,13 +64,13 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
-    private static final String VALID_TASK_DESC__AMY = "Task Amy";
-    private static final String VALID_TASK_PRIORITY__AMY = "1";
-    private static final String VALID_TASK_DUEDATE__AMY = "30/12/2017";
+    public static final String VALIDTASKDESCAMY = "Task Amy";
+    public static final String VALIDTASKPRIORITYAMY = "1";
+    public static final String VALIDTASKDUEDATEAMY = "30/12/2017";
 
-    public static final String DESC_TASK_AMY = " " + PREFIX_DESCIPTION + VALID_TASK_DESC__AMY;
-    public static final String PRIORITY_TASK_AMY = " " + PREFIX_PRIORITY + VALID_TASK_PRIORITY__AMY;
-    public static final String DUEDATE_TASK_AMY = " " + PREFIX_DUEDATE + VALID_TASK_DUEDATE__AMY;
+    public static final String DESC_TASK_AMY = " " + PREFIX_DESCIPTION + VALIDTASKDESCAMY;
+    public static final String PRIORITY_TASK_AMY = " " + PREFIX_PRIORITY + VALIDTASKPRIORITYAMY;
+    public static final String DUEDATE_TASK_AMY = " " + PREFIX_DUEDATE + VALIDTASKDUEDATEAMY;
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
