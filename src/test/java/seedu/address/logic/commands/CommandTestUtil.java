@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
@@ -83,6 +84,13 @@ public class CommandTestUtil {
 
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
+
+    public static final String VALIDTASKDESCAMY = "Task Amy";
+    public static final String VALIDTASKPRIORITYAMY = "1";
+    public static final String VALIDTASKDUEDATEAMY = "30/12/2017";
+    public static final String DESC_TASK_AMY = " " + PREFIX_DESCIPTION + VALIDTASKDESCAMY;
+    public static final String PRIORITY_TASK_AMY = " " + PREFIX_PRIORITY + VALIDTASKPRIORITYAMY;
+    public static final String DUEDATE_TASK_AMY = " " + PREFIX_DUEDATE + VALIDTASKDUEDATEAMY;
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
