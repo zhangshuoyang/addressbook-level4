@@ -31,4 +31,9 @@
         <priority>2</priority>
         <duedate>13/12/2008</duedate>
     </tasks>
+    <tasks>
+        <description>d/example1</description>
+        <priority>0</priority>
+        <duedate>11/11/2011</duedate>
+    </tasks>
 </addressbook>
