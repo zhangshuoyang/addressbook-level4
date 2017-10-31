@@ -636,7 +636,7 @@ to display once a task is successfully added.
 
 **Alternative 2:** Use a task list similar to the person list in the address book. +
 **Pros:** Easy to display and look through all the tasks. +
-**Cons:** Ugly. +
+**Cons:** Less attractive. +
 
 === Logging
 
