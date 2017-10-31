@@ -11,6 +11,7 @@ import org.junit.Test;
  * Tests certain fields in the Command class
  */
 public class CommandTest {
+    //@@author lancehaoh
     @Test
     /**
      * Check for duplicate command aliases.

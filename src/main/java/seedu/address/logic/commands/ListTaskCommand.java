@@ -16,6 +16,7 @@ public class ListTaskCommand extends Command {
 
     private AutoCorrectCommand autoCorrectCommand = new AutoCorrectCommand();
 
+    //@@author lancehaoh
     @Override
     public CommandResult execute() {
         model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);

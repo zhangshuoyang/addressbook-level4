@@ -11,6 +11,7 @@ import org.junit.Test;
 public class AudioUtilTest {
     private static AudioUtil audioUtility = new AudioUtil();
 
+    //@@author lancehaoh
     @Test
     public void checkFileNotFoundThrowsIoException() {
         boolean exceptionWasThrown = false;
@@ -27,6 +28,7 @@ public class AudioUtilTest {
         }
     }
 
+    //@@author lancehaoh
     @Test
     public void checkInvalidFileFormatUnsupportedAudioFileException() {
         boolean exceptionWasThrown = false;

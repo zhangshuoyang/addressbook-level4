@@ -31,11 +31,12 @@ public class DeleteTaskCommand extends UndoableCommand {
 
     private AutoCorrectCommand autoCorrectCommand = new AutoCorrectCommand();
 
+    //@@author lancehaoh
     public DeleteTaskCommand(ArrayList<Index> targetIndex) {
         this.targetIndex = targetIndex;
     }
 
-
+    //@@author lancehaoh
     @Override
     public CommandResult executeUndoableCommand() throws CommandException {
 
@@ -74,6 +75,7 @@ public class DeleteTaskCommand extends UndoableCommand {
         }
     }
 
+    //@@author lancehaoh
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

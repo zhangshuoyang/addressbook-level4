@@ -20,6 +20,7 @@ public abstract class Command {
     private static final HashMap<String, String> mapOfCommandsToFormats = new HashMap<>();
     private static final HashMap<String, String> mapOfCommandsToHelp = new HashMap<>();
 
+    //@@author lancehaoh
     private static final List<String> listOfAvailableCommandAliases = Arrays.asList (
             AddCommand.COMMAND_WORD_ALIAS,
             ClearCommand.COMMAND_WORD_ALIAS,
@@ -40,6 +41,7 @@ public abstract class Command {
     protected CommandHistory history;
     protected UndoRedoStack undoRedoStack;
 
+    //@@author lancehaoh
     /**
      * Constructs a feedback message to summarise an operation that displayed a listing of persons.
      *
@@ -50,6 +52,7 @@ public abstract class Command {
         return String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, displaySize);
     }
 
+    //@@author lancehaoh
     /**
      * Constructs a feedback message to summarise an operation that displayed a listing of names of persons.
      *
@@ -69,6 +72,7 @@ public abstract class Command {
         return  builder.toString();
     }
 
+    //@@author lancehaoh
     public static Map<String, String> getMapOfCommandHelp() {
         // Initialize map the first time autocomplete is used
         if (mapOfCommandsToHelp.isEmpty()) {
@@ -77,6 +81,7 @@ public abstract class Command {
         return mapOfCommandsToHelp;
     }
 
+    //@@author lancehaoh
     public static Map<String, String> getMapOfCommandFormats() {
         // Initialize map the first time autocomplete is used
         if (mapOfCommandsToFormats.isEmpty()) {
@@ -85,12 +90,12 @@ public abstract class Command {
         return mapOfCommandsToFormats;
     }
 
+    //@@author lancehaoh
     public static List<String> getListOfAvailableCommandAliases() {
         return listOfAvailableCommandAliases;
     }
 
-
-
+    //@@author lancehaoh
     /**
      * Executes the command and returns the result message.
      *
@@ -99,6 +104,7 @@ public abstract class Command {
      */
     public abstract CommandResult execute() throws CommandException;
 
+    //@@author lancehaoh
     /**
      * Provides any needed dependencies to the command.
      * Commands making use of any of these should override this method to gain
@@ -108,6 +114,7 @@ public abstract class Command {
         this.model = model;
     }
 
+    //@@author lancehaoh
     /**
      *
      * Initialises the mapOfCommandsToFormats when it is being used for the first time
@@ -135,6 +142,7 @@ public abstract class Command {
         mapOfCommandsToFormats.put(UndoCommand.COMMAND_WORD, UndoCommand.AUTOCOMPLETE_FORMAT);
     }
 
+    //@@author lancehaoh
     /**
      *
      * Initialises the mapOfCommandsToHelp when it is being used for the first time

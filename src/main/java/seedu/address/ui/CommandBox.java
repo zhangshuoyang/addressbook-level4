@@ -138,6 +138,7 @@ public class CommandBox extends UiPart<Region> {
         }
     }
 
+    //@@author lancehaoh
     /**
      * Launches extended auto complete mechanism in logic
      * when the special key is pressed in the Command Box
@@ -154,6 +155,7 @@ public class CommandBox extends UiPart<Region> {
         }
     }
 
+    //@@author lancehaoh
     /**
      * Launches auto complete mechanism in logic
      * when the auto complete hotkey is pressed in the Command Box
@@ -233,6 +235,7 @@ public class CommandBox extends UiPart<Region> {
         commandTextField.positionCaret(commandTextField.getText().length());
     }
 
+    //@@author lancehaoh
     /**
      * Handles the Enter button pressed event.
      */

@@ -31,6 +31,7 @@ public class DeleteTaskCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
+    //@@author lancehaoh
     @Test
     public void executeValidMultipleIndexUnfilteredListSuccess() throws Exception {
         ReadOnlyTask taskToDelete1 = model.getFilteredTaskList().get(INDEX_MULTIPLE_TASK.get(0).getZeroBased());
@@ -48,6 +49,7 @@ public class DeleteTaskCommandTest {
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }
 
+    //@@author lancehaoh
     @Test
     public void executeValidSingleIndexUnfilteredListSuccess() throws Exception {
 
@@ -62,6 +64,7 @@ public class DeleteTaskCommandTest {
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }
 
+    //@@author lancehaoh
     @Test
     public void executeInvalidIndexUnfilteredListThrowsCommandException() throws Exception {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredTaskList().size() + 1);
@@ -71,6 +74,7 @@ public class DeleteTaskCommandTest {
         assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
     }
 
+    //@@author lancehaoh
     @Test
     public void executeValidIndexFilteredListSuccess() throws Exception {
         showFirstTaskOnly(model);
@@ -87,6 +91,7 @@ public class DeleteTaskCommandTest {
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }
 
+    //@@author lancehaoh
     @Test
     public void executeInvalidIndexFilteredListThrowsCommandException() {
         showFirstTaskOnly(model);
@@ -101,6 +106,7 @@ public class DeleteTaskCommandTest {
         assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
     }
 
+    //@@author lancehaoh
     @Test
     public void equals() {
         DeleteTaskCommand deleteFirstCommand = new DeleteTaskCommand(INDEX_FIRST_TASK);
@@ -120,6 +126,7 @@ public class DeleteTaskCommandTest {
         assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
     }
 
+    //@@author lancehaoh
     /**
      * Returns a {@code DeleteTaskCommand} with the parameter {@code index}.
      */
@@ -129,6 +136,7 @@ public class DeleteTaskCommandTest {
         return deleteCommand;
     }
 
+    //@@author lancehaoh
     /**
      * Updates {@code model}'s filtered list to show no one.
      */
