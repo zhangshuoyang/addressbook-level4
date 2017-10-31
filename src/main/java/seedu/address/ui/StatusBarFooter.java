@@ -81,6 +81,7 @@ public class StatusBarFooter extends UiPart<Region> {
         Platform.runLater(() -> this.syncStatus.setText(status));
     }
 
+    //@@author JYL123
     private String getWeatherCondition() throws JAXBException, IOException {
         YahooWeatherRequest request = new YahooWeatherRequest();
         return request.getYahooWeatherConditionSg();

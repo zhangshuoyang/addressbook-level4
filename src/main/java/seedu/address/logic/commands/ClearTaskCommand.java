@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.logic.parser.AutoCorrectCommand;
 
-
+//@@author JYL123
 /**
  * Clears the task list.
  */

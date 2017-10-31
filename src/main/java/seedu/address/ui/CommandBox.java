@@ -59,6 +59,7 @@ public class CommandBox extends UiPart<Region> {
      */
     @FXML
     private void handleKeyPress(KeyEvent keyEvent) {
+        //@@author JYL123
         // Handles cases where multple keys are pressed simultaneously
         String getAlphabetPressed = keyEvent.getCode().toString();
         if (keyEvent.getCode().isLetterKey() && keyEvent.isControlDown()) {
