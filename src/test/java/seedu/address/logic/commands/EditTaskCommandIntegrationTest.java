@@ -22,7 +22,7 @@ public class EditTaskCommandIntegrationTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_allFieldsSpecifiedUnfilteredList_success() throws Exception {
+    public void executeAllFieldsSpecifiedUnfilteredListSuccess() throws Exception {
         Task editedTask = new TaskBuilder().build();
         EditTaskCommand.EditTaskDescriptor descriptor = new EditTaskDescriptorBuilder(editedTask).build();
         EditTaskCommand editTaskCommand = prepareCommand(INDEX_FIRST_TASK.get(0), descriptor);
