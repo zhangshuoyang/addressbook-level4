@@ -115,6 +115,17 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code Optional<String> desciption} into an {@code Optional<Description>} if {@code description}
+     * is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<Description> parseDescriptionOptional (Optional<String> description)
+            throws IllegalValueException {
+        requireNonNull(description);
+        return description.isPresent() ? Optional.of(new Description(description.get())) : Optional.empty();
+    }
+
+    /**
      * Parses a {@code Optional<String> priority} into an {@code Optional<Priority>} if {@code priority} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
