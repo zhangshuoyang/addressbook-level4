@@ -119,7 +119,8 @@ public class ParserUtil {
      * is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
-    public static Optional<Description> parseDescriptionOptional (Optional<String> description) throws IllegalValueException {
+    public static Optional<Description> parseDescriptionOptional (Optional<String> description)
+            throws IllegalValueException {
         requireNonNull(description);
         return description.isPresent() ? Optional.of(new Description(description.get())) : Optional.empty();
     }

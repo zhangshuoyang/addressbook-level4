@@ -29,6 +29,9 @@ import seedu.address.testutil.EditPersonDescriptorBuilder;
  */
 public class CommandTestUtil {
 
+    public static final EditCommand.EditPersonDescriptor DESC_AMY;
+    public static final EditCommand.EditPersonDescriptor DESC_BOB;
+
     public static final String VALID_NAME_AMY = "Amy Bee";
     public static final String VALID_NAME_BOB = "Bob Choo";
     public static final String VALID_PHONE_AMY = "11111111";
@@ -61,16 +64,13 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
-    public static final String VALID_TASK_DESC__AMY = "Task Amy";
-    public static final String VALID_TASK_PRIORITY__AMY = "1";
-    public static final String VALID_TASK_DUEDATE__AMY = "30/12/2017";
+    private static final String VALID_TASK_DESC__AMY = "Task Amy";
+    private static final String VALID_TASK_PRIORITY__AMY = "1";
+    private static final String VALID_TASK_DUEDATE__AMY = "30/12/2017";
 
     public static final String DESC_TASK_AMY = " " + PREFIX_DESCIPTION + VALID_TASK_DESC__AMY;
     public static final String PRIORITY_TASK_AMY = " " + PREFIX_PRIORITY + VALID_TASK_PRIORITY__AMY;
     public static final String DUEDATE_TASK_AMY = " " + PREFIX_DUEDATE + VALID_TASK_DUEDATE__AMY;
-
-    public static final EditCommand.EditPersonDescriptor DESC_AMY;
-    public static final EditCommand.EditPersonDescriptor DESC_BOB;
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)

@@ -1,16 +1,18 @@
 package seedu.address.logic.commands;
 
-import org.junit.Test;
-import seedu.address.logic.commands.EditTaskCommand.EditTaskDescriptor;
-import seedu.address.testutil.EditTaskDescriptorBuilder;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
 import static seedu.address.logic.commands.TaskTestUtil.TASK_AMY;
 import static seedu.address.logic.commands.TaskTestUtil.TASK_BOB;
 import static seedu.address.logic.commands.TaskTestUtil.VALID_DESC_BOB;
 import static seedu.address.logic.commands.TaskTestUtil.VALID_DUEDATE_BOB;
 import static seedu.address.logic.commands.TaskTestUtil.VALID_PRIORITY_BOB_STRING;
+
+import org.junit.Test;
+
+import seedu.address.logic.commands.EditTaskCommand.EditTaskDescriptor;
+import seedu.address.testutil.EditTaskDescriptorBuilder;
 
 public class EditTaskDescriptorTest {
 

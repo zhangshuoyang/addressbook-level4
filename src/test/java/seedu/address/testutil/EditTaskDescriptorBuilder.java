@@ -1,11 +1,11 @@
 package seedu.address.testutil;
 
+import java.util.Optional;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.EditTaskCommand.EditTaskDescriptor;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.model.task.ReadOnlyTask;
-
-import java.util.Optional;
 
 /**
  * A utility class to help with building EditTaskDescriptor objects.

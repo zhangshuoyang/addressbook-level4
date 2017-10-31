@@ -10,9 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.CommandHistory;
-import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
@@ -81,7 +78,7 @@ public class TaskTestUtil {
      * Updates {@code model}'s filtered list to show only the first task in the {@code model}'s address book.
      */
     public static void showFirstTaskOnly(Model model) {
-        ReadOnlyTask task = model.getTaskBook().getTaskList().get(0);
+        ReadOnlyTask task = model.getAddressBook().getTaskList().get(0);
         final String[] splitName = task.getDescription().descriptionName.split("\\s+");
         model.updateFilteredTaskList(new DescContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
