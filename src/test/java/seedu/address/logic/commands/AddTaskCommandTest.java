@@ -39,13 +39,13 @@ public class AddTaskCommandTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void constructor_nullTask_throwsNullPointerException() {
+    public void constructorNullTaskThrowsNullPointerException() {
         thrown.expect(NullPointerException.class);
         new AddTaskCommand(null);
     }
 
     @Test
-    public void execute_taskAcceptedByModel_addSuccessful() throws Exception {
+    public void executeTaskAcceptedByModelAddSuccessful() throws Exception {
         ModelStubAcceptingTaskAdded modelStub = new ModelStubAcceptingTaskAdded();
         Task validTask = new TaskBuilder().build();
 
@@ -66,7 +66,7 @@ public class AddTaskCommandTest {
 
 
     @Test
-    public void execute_duplicateTask_throwsCommandException() throws Exception {
+    public void executeDuplicateTaskThrowsCommandException() throws Exception {
         ModelStub modelStub = new ModelStubThrowingDuplicateTaskException();
         Task validTask = new TaskBuilder().build();
 
@@ -96,7 +96,7 @@ public class AddTaskCommandTest {
      * A Model stub that always accept the task being added.
      */
     private class ModelStubAcceptingTaskAdded extends AddTaskCommandTest.ModelStub {
-        final ArrayList<Task> tasksAdded = new ArrayList<>();
+        final ArrayList<Task> tasksAdded = new ArrayList<Task>();
 
         @Override
         public void addTask(ReadOnlyTask task) throws DuplicateTaskException {
