@@ -677,16 +677,20 @@ Format: `cleartask`
 *************
 
 ==== How to use
-. Enter the command, the index of the task, and the details you wish to edit with its prefix. Please refer to the image below for an example:
+. Enter the command "cleartask". Please refer to the image below for an example:
 +
-image:EditTaskStep1.png[width="300"]
+image:ClearTaskStep1.png[width="300"]
+
+. Confirmation message will be displayed. Please refer to the image below for an example:
++
+image:ClearTaskStep2.png[width="300"]
 
 
 ==== Example
 
 |===
 | *Your input* | Result
-| `edittask 1 prioroty/1` | The application will display "Edited task: " + the details of the task you just edited. +
+| `cleartask` | "Task list has been cleared." will be displayed on the window +
 |===
 
 
