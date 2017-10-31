@@ -11,7 +11,6 @@ public class UserPrefs {
 
     private GuiSettings guiSettings;
     private String addressBookFilePath = "data/addressbook.xml";
-    private String taskFilePath = "data/task.xml";
     private String addressBookName = "MyAddressBook";
 
     public UserPrefs() {

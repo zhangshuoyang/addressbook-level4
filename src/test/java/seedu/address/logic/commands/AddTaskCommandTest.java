@@ -216,7 +216,7 @@ public class AddTaskCommandTest {
         assertFalse(addAssignmentCommand.equals(1));
 
         // null -> returns false
-        assertFalse(addAssignmentCommand.equals(null));
+        assertFalse(addAssignmentCommand == (null));
 
         // different task -> returns false
         assertFalse(addAssignmentCommand.equals(addShoppingCommand));

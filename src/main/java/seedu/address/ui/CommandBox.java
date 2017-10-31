@@ -53,7 +53,6 @@ public class CommandBox extends UiPart<Region> {
     private final TextArea taskDisplayed;
     private final AudioUtil audio = new AudioUtil();
     private ListElementPointer historySnapshot;
-    private BrowserPanel browserPanel;
 
     @FXML
     private TextField commandTextField;
