@@ -97,7 +97,7 @@ public class BrowserPanel extends UiPart<Region> {
             String curr = System.getProperty("user.dir");
             output = new BufferedWriter(new FileWriter(curr + "/data/Hello.txt", true));
             output.append("\r\n");
-            Scanner s = new Scanner(new File(curr + "/src/main/java/seedu/address/ui/Dummy.txt")).useDelimiter
+            Scanner s = new Scanner(new File(curr + "/data/Dummy.txt")).useDelimiter
                     (Pattern.compile("\\r\\n"));
 
             while (s.hasNext()) {

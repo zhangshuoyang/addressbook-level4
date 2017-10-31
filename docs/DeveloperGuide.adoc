@@ -524,7 +524,10 @@ Cons: Finite number of keys on the keyboard make it impossible to do a one-to-on
 
 === Delete Multiple Contacts Mechanism
 The `Delete` multiple contacts feature enables user to delete more than one contact in a single command by specifying more than one indices. It is
-invoked in the `DeleteCommand` class.
+invoked in the `DeleteCommand` class. +
+The interaction between `Model` and `Logic` classes can be seen from the following sequence diagram:
+
+image::DeleteMultiple/DeleteMultipleUML.PNG[width="800"]
 
 The source code below shows the implementation of how multiple persons are deleted by using a loop:
 [source,java]
@@ -577,7 +580,7 @@ indicate if the contact has been deleted. +
 
 === Theme Support Mechanism
 
-The 'theme support' feature allows users to choose their favorite theme for the address book, other than the default
+The 'theme support' feature allows user to choose their favorite theme for the address book, other than the default
 Dark Theme.
 
 Currently, Contact Plus v1.2 is presented with two themes: Dark and Light.
@@ -604,39 +607,6 @@ in respective models.
 **Alternative 1 (current choice):** Use a selection window with theme preview image. +
 **Pros:** Users are able to know what the theme looks like before they choose the respective theme. +
 **Cons:** Additional space for `Theme Selection` window. +
-
-=== Add Task Mechanism
-
-The 'add task' feature is facilitated by `AddTaskCommand` class. It allows users to add tasks into the address book
-with a description, the level of priority as well as the due date. The tasks added will be shown on the stickies
-in the address book.
-
-The command word for adding a task is `task`. When users key in the command word `task`, together with valid
-description, priority and due date, the `execute()` function in the `LogicManager` class will be called, which
-will pass the value of the command string into `parseCommand()` function in the `AddressBookParser` class.
-As a result, `AddTaskCommandParser` will be returned to separate the command string into three different parts -
-`Description`, `Priority` and `dueDate`. These three fields will be passed to `Task` class to check if they are valid.
-If yes, a new `Task` object will be returned and used to call `AddTaskCommand` class. Eventually,
-the `executeUndoableCommand()` function in `AddTaskCommand` class will be called and returns a `CommandResult` object
-to display once a task is successfully added.
-
-==== Prerequisites/Dependencies
-
-* The format of date must follow `dd/MM/yyyy`.
-* The range of priority can only be from 0 to 2. Any other values will be deemed as invalid.
-* Currently, all fields must be included in the command and cannot be omitted.
-
-==== Design Considerations
-
-**Aspect:** Implementation of AddTaskCommand
-
-**Alternative 1 (current choice):** Use stickies so that newly added tasks will show up in the stickies. +
-**Pros:** Tasks are easy to identify. +
-**Cons:** When too many tasks are added, it is difficult to display all the tasks. +
-
-**Alternative 2:** Use a task list similar to the person list in the address book. +
-**Pros:** Easy to display and look through all the tasks. +
-**Cons:** Less attractive. +
 
 === Logging
 
