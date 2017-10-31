@@ -190,5 +190,4 @@ public class EditTaskCommand extends UndoableCommand {
                     && getDueDate().equals(e.getDueDate());
         }
     }
-
 }
