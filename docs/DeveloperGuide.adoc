@@ -632,13 +632,13 @@ the `executeUndoableCommand()` function in `AddTaskCommand` class will be called
 
 **Aspect:** Implementation of AddTaskCommand +
 
-**Alternative 1 (current choice):** Use stickies so that newly added tasks will show up in the stickies.
-**Pros:** Tasks are easy to identify.
-**Cons:** When too many tasks are added, it is difficult to display all the tasks.
+**Alternative 1 (current choice):** Use stickies so that newly added tasks will show up in the stickies. +
+**Pros:** Tasks are easy to identify. +
+**Cons:** When too many tasks are added, it is difficult to display all the tasks. +
 
-**Alternative 2:** Use a task list similar to the person list in the address book.
-**Pros:** Easy to display and look through all the tasks.
-**Cons:** Less attractive.
+**Alternative 2:** Use a task list similar to the person list in the address book. +
+**Pros:** Easy to display and look through all the tasks. +
+**Cons:** Less attractive. +
 
 === Logging
 

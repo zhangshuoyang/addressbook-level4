@@ -1,8 +1,28 @@
 package systemtests;
 
+import static seedu.address.logic.commands.CommandTestUtil.DESCRIPTION_DESC_ASSIGNMENT;
+import static seedu.address.logic.commands.CommandTestUtil.DESCRIPTION_DESC_SHOPPING;
+import static seedu.address.logic.commands.CommandTestUtil.DUEDATE_DESC_ASSIGNMENT;
+import static seedu.address.logic.commands.CommandTestUtil.DUEDATE_DESC_SHOPPING;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_DUEDATE_DESC_SHOPPING;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PRIORITY_DESC_SHOPPING;
+import static seedu.address.logic.commands.CommandTestUtil.PRIORITY_DESC_ASSIGNMENT;
+import static seedu.address.logic.commands.CommandTestUtil.PRIORITY_DESC_SHOPPING;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_ASSIGNMENT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_SHOPPING;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DUEDATE_ASSIGNMENT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DUEDATE_SHOPPING;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PRIORITY_ASSIGNMENT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PRIORITY_SHOPPING;
+import static seedu.address.testutil.TypicalTasks.ASSIGNMENT;
+
 import org.junit.Test;
+
 import seedu.address.commons.core.Messages;
-import seedu.address.logic.commands.*;
+import seedu.address.logic.commands.AddTaskCommand;
+import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.RedoCommand;
+import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
 import seedu.address.model.task.DueDate;
 import seedu.address.model.task.Priority;
@@ -11,8 +31,6 @@ import seedu.address.model.task.exceptions.DuplicateTaskException;
 import seedu.address.testutil.TaskBuilder;
 import seedu.address.testutil.TaskUtil;
 
-import static seedu.address.logic.commands.CommandTestUtil.*;
-import static seedu.address.testutil.TypicalTasks.ASSIGNMENT;
 
 //@@author zhangshuoyang
 public class AddTaskCommandSystemTest extends AddressBookSystemTest {
@@ -74,21 +92,21 @@ public class AddTaskCommandSystemTest extends AddressBookSystemTest {
         assertCommandSuccess(ASSIGNMENT);
 
 
-         /* Case: add a task, missing description -> added? */
+        /* Case: add a task, missing description -> added? */
 
-         /* Case: invalid keyword -> rejected */
-         command = "taks" + TaskUtil.getTaskDetails(toAdd);
-         assertCommandFailure(command, Messages.MESSAGE_UNKNOWN_COMMAND);
+        /* Case: invalid keyword -> rejected */
+        command = "taks" + TaskUtil.getTaskDetails(toAdd);
+        assertCommandFailure(command, Messages.MESSAGE_UNKNOWN_COMMAND);
 
-         /* Case: invalid priority -> rejected */
-         command = AddTaskCommand.COMMAND_WORD + DESCRIPTION_DESC_SHOPPING + INVALID_PRIORITY_DESC_SHOPPING
-                 + DUEDATE_DESC_SHOPPING;
-         assertCommandFailure(command, Priority.MESSAGE_PRIORITY_CONSTRAINTS);
+        /* Case: invalid priority -> rejected */
+        command = AddTaskCommand.COMMAND_WORD + DESCRIPTION_DESC_SHOPPING + INVALID_PRIORITY_DESC_SHOPPING
+                + DUEDATE_DESC_SHOPPING;
+        assertCommandFailure(command, Priority.MESSAGE_PRIORITY_CONSTRAINTS);
 
-         /* Case: invalid due date -> rejected */
-         command = AddTaskCommand.COMMAND_WORD + DESCRIPTION_DESC_SHOPPING + PRIORITY_DESC_SHOPPING
-                 + INVALID_DUEDATE_DESC_SHOPPING;
-         assertCommandFailure(command, DueDate.MESSAGE_DATE_FORMAT_CONSTRAINTS);
+        /* Case: invalid due date -> rejected */
+        command = AddTaskCommand.COMMAND_WORD + DESCRIPTION_DESC_SHOPPING + PRIORITY_DESC_SHOPPING
+                + INVALID_DUEDATE_DESC_SHOPPING;
+        assertCommandFailure(command, DueDate.MESSAGE_DATE_FORMAT_CONSTRAINTS);
     }
 
 

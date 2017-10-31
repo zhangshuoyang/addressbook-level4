@@ -81,36 +81,36 @@ public class CommandBox extends UiPart<Region> {
         if (keyEvent.getCode().isLetterKey() && keyEvent.isControlDown()) {
             //keyboard shortcut for input text heavy command
             switch (getAlphabetPressed) {
-                case "A":
-                    keyEvent.consume();
-                    commandTextField.setText(AddCommand.COMMAND_WORD);
-                    break;
-                case "D":
-                    keyEvent.consume();
-                    commandTextField.setText(DeleteCommand.COMMAND_WORD);
-                    break;
-                case "M":
-                    keyEvent.consume();
-                    commandTextField.setText(MultiFilterCommand.COMMAND_WORD);
-                    break;
-                case "C":
-                    keyEvent.consume();
-                    commandTextField.setText(ClearCommand.COMMAND_WORD);
-                    break;
-                case "S":
-                    keyEvent.consume();
-                    commandTextField.setText(SearchCommand.COMMAND_WORD);
-                    break;
-                case "E":
-                    keyEvent.consume();
-                    commandTextField.setText(EditCommand.COMMAND_WORD);
-                    break;
-                case "F":
-                    keyEvent.consume();
-                    commandTextField.setText(FindCommand.COMMAND_WORD);
-                    break;
-                default:
-                    //do nothing
+            case "A":
+                keyEvent.consume();
+                commandTextField.setText(AddCommand.COMMAND_WORD);
+                break;
+            case "D":
+                keyEvent.consume();
+                commandTextField.setText(DeleteCommand.COMMAND_WORD);
+                break;
+            case "M":
+                keyEvent.consume();
+                commandTextField.setText(MultiFilterCommand.COMMAND_WORD);
+                break;
+            case "C":
+                keyEvent.consume();
+                commandTextField.setText(ClearCommand.COMMAND_WORD);
+                break;
+            case "S":
+                keyEvent.consume();
+                commandTextField.setText(SearchCommand.COMMAND_WORD);
+                break;
+            case "E":
+                keyEvent.consume();
+                commandTextField.setText(EditCommand.COMMAND_WORD);
+                break;
+            case "F":
+                keyEvent.consume();
+                commandTextField.setText(FindCommand.COMMAND_WORD);
+                break;
+            default:
+                //do nothing
             }
         }
 
@@ -124,24 +124,24 @@ public class CommandBox extends UiPart<Region> {
 
         // Handles single key press
         switch (keyEvent.getCode()) {
-            case UP:
-                // As up and down buttons will alter the position of the caret,
-                // consuming it causes the caret's position to remain unchanged
-                keyEvent.consume();
-                navigateToPreviousInput();
-                break;
-            case DOWN:
-                keyEvent.consume();
-                navigateToNextInput();
-                break;
-            case TAB:
-                keyEvent.consume();
-                launchAutoComplete();
-                commandTextField.requestFocus(); // focus the caret in the command box after autocomplete
-                commandTextField.end(); // move caret to the end of the completed command
-                break;
-            default:
-                // let JavaFx handle the keypress
+        case UP:
+            // As up and down buttons will alter the position of the caret,
+            // consuming it causes the caret's position to remain unchanged
+            keyEvent.consume();
+            navigateToPreviousInput();
+            break;
+        case DOWN:
+            keyEvent.consume();
+            navigateToNextInput();
+            break;
+        case TAB:
+            keyEvent.consume();
+            launchAutoComplete();
+            commandTextField.requestFocus(); // focus the caret in the command box after autocomplete
+            commandTextField.end(); // move caret to the end of the completed command
+            break;
+        default:
+            // let JavaFx handle the keypress
         }
     }
 

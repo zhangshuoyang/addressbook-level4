@@ -40,8 +40,8 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
             Priority priority = ParserUtil.parsePriority(argumentMultimap.getValue(PREFIX_PRIORITY)).get();
             DueDate date = ParserUtil.parseDueDate(argumentMultimap.getValue(PREFIX_DUEDATE)).get();
 
-                ReadOnlyTask task = new Task(description, priority, date);
-                return new AddTaskCommand(task);
+            ReadOnlyTask task = new Task(description, priority, date);
+            return new AddTaskCommand(task);
         } catch (IllegalValueException ive) {
             throw new ParseException(ive.getMessage(), ive);
         }
