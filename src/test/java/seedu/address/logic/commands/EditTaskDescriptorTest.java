@@ -26,7 +26,7 @@ public class EditTaskDescriptorTest {
         assertTrue(TASK_AMY.equals(TASK_AMY));
 
         // null -> returns false
-        assertFalse(TASK_AMY.equals(""));
+        assertFalse("".equals(TASK_AMY));
 
         // different types -> returns false
         assertFalse(TASK_AMY.equals(5));
