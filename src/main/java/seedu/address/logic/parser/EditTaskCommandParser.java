@@ -37,8 +37,8 @@ public class EditTaskCommandParser implements Parser<EditTaskCommand> {
 
         EditTaskDescriptor editTaskDescriptor = new EditTaskDescriptor();
         try {
-            ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCIPTION))
-                    .ifPresent(editTaskDescriptor::setDescription);
+            //ParserUtil.parseDescription(argMultimap.getPreamble());
+            ParserUtil.parseDescriptionOptional(argMultimap.getValue(PREFIX_DESCIPTION));
             ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY))
                     .ifPresent(editTaskDescriptor::setPriority);
             ParserUtil.parseDueDate(argMultimap.getValue(PREFIX_DUEDATE))
