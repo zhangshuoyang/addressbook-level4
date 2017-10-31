@@ -96,7 +96,7 @@ public class AddTaskCommandTest {
      * A Model stub that always accept the task being added.
      */
     private class ModelStubAcceptingTaskAdded extends AddTaskCommandTest.ModelStub {
-        final ArrayList<Task> tasksAdded = new ArrayList<Task>();
+        private final ArrayList<Task> tasksAdded = new ArrayList<>();
 
         @Override
         public void addTask(ReadOnlyTask task) throws DuplicateTaskException {
