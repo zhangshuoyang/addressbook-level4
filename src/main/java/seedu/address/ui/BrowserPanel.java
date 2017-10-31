@@ -73,6 +73,10 @@ public class BrowserPanel extends UiPart<Region> {
         Platform.runLater(() -> browser.getEngine().load(url));
     }
 
+    public TextArea getTaskDisplayed() {
+        return taskDisplayed;
+    }
+
     /**
      * Loads a default HTML file with a background that matches the general theme.
      */

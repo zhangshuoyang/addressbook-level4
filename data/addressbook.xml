@@ -26,4 +26,9 @@
     <tags>criminal</tags>
     <tags>family</tags>
     <tags>friends</tags>
+    <tasks>
+        <description>d/none</description>
+        <priority>2</priority>
+        <duedate>13/12/2008</duedate>
+    </tasks>
 </addressbook>

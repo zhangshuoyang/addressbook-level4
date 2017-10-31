@@ -10,6 +10,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
@@ -25,10 +26,13 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.ListTaskCommand;
 import seedu.address.logic.commands.MultiFilterCommand;
 import seedu.address.logic.commands.SearchCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.task.ReadOnlyTask;
 
 /**
  * The UI component that is responsible for receiving user command inputs.
@@ -40,6 +44,7 @@ public class CommandBox extends UiPart<Region> {
 
     private final Logger logger = LogsCenter.getLogger(CommandBox.class);
     private final Logic logic;
+    private final TextArea taskDisplayed;
     private final AudioUtil audio = new AudioUtil();
     private ListElementPointer historySnapshot;
 
@@ -47,8 +52,13 @@ public class CommandBox extends UiPart<Region> {
     private TextField commandTextField;
 
     public CommandBox(Logic logic) {
+        this(logic, null);
+    }
+
+    public CommandBox(Logic logic, TextArea taskDisplayed) {
         super(FXML);
         this.logic = logic;
+        this.taskDisplayed = taskDisplayed;
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
         historySnapshot = logic.getHistorySnapshot();
@@ -229,11 +239,29 @@ public class CommandBox extends UiPart<Region> {
     @FXML
     private void handleCommandInputChanged() {
         try {
+            // Parser for checking if the user input command is related to tasks rather than persons
+            AddressBookParser parser = new AddressBookParser();
+            String userInput = commandTextField.getText();
+
             CommandResult commandResult = logic.execute(commandTextField.getText());
             initHistory();
             historySnapshot.next();
             // process result of the command
             commandTextField.setText("");
+
+            if (parser.parseCommand(userInput) instanceof ListTaskCommand) {
+                // Process and display tasks in a separate text field
+                StringBuffer taskFieldOutput = new StringBuffer();
+
+                List<ReadOnlyTask> listOfTasks = logic.getFilteredTaskList();
+
+                for (int i = 0; i < listOfTasks.size(); i++) {
+                    taskFieldOutput.append("Task no. " + (i + 1) + "\n");
+                    taskFieldOutput.append(listOfTasks.get(i).toString());
+                    taskFieldOutput.append("\n");
+                }
+                taskDisplayed.setText(taskFieldOutput.toString());
+            }
             raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
 
             // Play success sound

@@ -29,7 +29,7 @@ public class ResultDisplay extends UiPart<Region> {
     public ResultDisplay() {
         super(FXML);
         resultDisplay.textProperty().bind(displayed);
-        resultDisplay.setStyle("-fx-font-family: monospace; -fx-font-size: 14px");
+        resultDisplay.setStyle("-fx-font-family: monospace; -fx-font-size: 16px");
         registerAsAnEventHandler(this);
     }
 
