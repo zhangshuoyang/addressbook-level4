@@ -1,16 +1,11 @@
 package seedu.address.ui;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
 
 import java.net.URL;
 import java.util.Scanner;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
 
 import com.google.common.eventbus.Subscribe;
 
@@ -73,6 +68,10 @@ public class BrowserPanel extends UiPart<Region> {
         Platform.runLater(() -> browser.getEngine().load(url));
     }
 
+    public TextArea getTaskDisplayed() {
+        return taskDisplayed;
+    }
+
     /**
      * Loads a default HTML file with a background that matches the general theme.
      */
@@ -93,24 +92,16 @@ public class BrowserPanel extends UiPart<Region> {
      */
     public void displayOnTextArea() {
         try {
-            Writer output;
             String curr = System.getProperty("user.dir");
-            output = new BufferedWriter(new FileWriter(curr + "/data/Hello.txt", true));
-            output.append("\r\n");
-            Scanner s = new Scanner(new File(curr + "/src/main/java/seedu/address/ui/Dummy.txt")).useDelimiter
-                    (Pattern.compile("\\r\\n"));
-
+            Scanner s = new Scanner(new File(curr + "/taskData1.txt"));
             while (s.hasNext()) {
 
                 taskDisplayed.appendText(s.next() + "\n");
 
             }
 
-
         } catch (FileNotFoundException ex) {
             System.err.println(ex);
-        } catch (IOException e) {
-            System.err.println(e);
         }
     }
 

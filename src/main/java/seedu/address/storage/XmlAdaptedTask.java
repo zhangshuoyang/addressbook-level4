@@ -9,6 +9,7 @@ import seedu.address.model.task.Priority;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 
+//@@author zhangshuoyang
 /**
  * JAXB-friendly version of the Task.
  */
@@ -44,7 +45,7 @@ public class XmlAdaptedTask {
     /**
      * Converts this jaxb-friendly adapted task object into the model's task object.
      *
-     * @throws IllegalValueException if there were any data contraints violated in the adapted task.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted task.
      */
     public Task toModelType() throws IllegalValueException {
         final Description description = new Description(this.description);

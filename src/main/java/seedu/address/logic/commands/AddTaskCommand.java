@@ -10,7 +10,7 @@ import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.exceptions.DuplicateTaskException;
 
-
+//@@author zhangshuoyang
 /**
  * Adds a task to the address book.
  */
@@ -50,6 +50,8 @@ public class AddTaskCommand extends UndoableCommand {
         requireNonNull(model);
         try {
             model.addTask(toAdd);
+            String str = System.getProperty("user.dir");
+            System.out.println(str);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
