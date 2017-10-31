@@ -29,6 +29,9 @@ import seedu.address.testutil.EditPersonDescriptorBuilder;
  */
 public class CommandTestUtil {
 
+    public static final EditCommand.EditPersonDescriptor DESC_AMY;
+    public static final EditCommand.EditPersonDescriptor DESC_BOB;
+
     public static final String VALID_NAME_AMY = "Amy Bee";
     public static final String VALID_NAME_BOB = "Bob Choo";
     public static final String VALID_PHONE_AMY = "11111111";
@@ -61,6 +64,7 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
+<<<<<<< HEAD
 
     public static final String VALID_DESCRIPTION_ASSIGNMENT = "CS2103T Assignment";
     public static final String VALID_DESCRIPTION_SHOPPING = "Go shopping";
@@ -84,6 +88,15 @@ public class CommandTestUtil {
 
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
+=======
+    public static final String VALIDTASKDESCAMY = "Task Amy";
+    public static final String VALIDTASKPRIORITYAMY = "1";
+    public static final String VALIDTASKDUEDATEAMY = "30/12/2017";
+
+    public static final String DESC_TASK_AMY = " " + PREFIX_DESCIPTION + VALIDTASKDESCAMY;
+    public static final String PRIORITY_TASK_AMY = " " + PREFIX_PRIORITY + VALIDTASKPRIORITYAMY;
+    public static final String DUEDATE_TASK_AMY = " " + PREFIX_DUEDATE + VALIDTASKDUEDATEAMY;
+>>>>>>> 20ce9b53679e0174e08be24ab2df5e812587c3e1
 
     public static final String VALIDTASKDESCAMY = "Task Amy";
     public static final String VALIDTASKPRIORITYAMY = "1";

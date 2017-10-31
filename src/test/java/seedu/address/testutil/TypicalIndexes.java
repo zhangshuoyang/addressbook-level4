@@ -18,4 +18,10 @@ public class TypicalIndexes {
     public static final ArrayList<Index> INDEX_MULTIPLE_PERSON = new ArrayList<Index>(
             Arrays.asList(Index.fromOneBased(1), Index.fromOneBased(2)));
 
+    public static final ArrayList<Index> INDEX_FIRST_TASK = new ArrayList<Index>(
+            Arrays.asList(Index.fromOneBased(1)));
+    public static final ArrayList<Index> INDEX_SECOND_TASK = new ArrayList<Index>(
+            Arrays.asList(Index.fromOneBased(2)));
+    public static final ArrayList<Index> INDEX_THIRD_TASK = new ArrayList<Index>(
+            Arrays.asList(Index.fromOneBased(3)));
 }
