@@ -13,7 +13,7 @@ public class ClearTaskCommandTest {
 
 
     @Test
-    public void execute_emptyAddressBook_success() {
+    public void executeEmptyAddressBookSuccess() {
         Model model = new ModelManager();
         assertCommandSuccess(prepareCommand(model), model, ClearTaskCommand.MESSAGE_SUCCESS, model);
     }

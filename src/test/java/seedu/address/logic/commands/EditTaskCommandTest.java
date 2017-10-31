@@ -13,7 +13,7 @@ public class EditTaskCommandTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void constructor_nullPerson_throwsNullPointerException() {
+    public void constructorNullPersonThrowsNullPointerException() {
         thrown.expect(NullPointerException.class);
         new EditTaskCommand(null, new EditTaskCommand.EditTaskDescriptor());
     }
