@@ -507,20 +507,28 @@ image::AutoCorrectResult.png[width="250"]
 
 === Deleting multiple persons : `delete index/another index/...` [Since v1.2] [[delete-multiple-persons]]
 
-Deletes multiple persons from the address book. +
+This command allows you to delete multiple persons from the address book in a
+single command line. +
 Format: `delete INDEX/INDEX`
 
-Example:
+==== Example
+|===
+| *Your input* |  *Result*
+| `delete 1/2` | Deletes the first and second contact listed
+|===
 
-1) Enter `list` into the Command Box +
+==== How to use
+
+1) Enter `list` into the Command Box. You will see all the added contacts below. +
 
 image::deleteMultiplePerson1.png[width="500"]
 
-2) `delete 2/3` deletes the 2nd and 3rd person from the address book. +
+2) Enter `delete 2/3` to delete the 2nd and 3rd person from the address book. +
 
 image::deleteMultiplePerson2.png[width="500"]
 
-3) Display the confirmation for deletion
+3) You can now see that the 2nd and 3rd contact has been deleted and the +
+result is displayed to show the confirmation of deletion.
 
 image::deleteMultiplePerson3.png[width="500"]
 
