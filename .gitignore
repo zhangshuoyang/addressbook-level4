@@ -8,6 +8,10 @@ lib/*
 *.log
 *.log.*
 *.csv
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1a2af88c95eee74f98d54ee6bacdae50609b91ef
 src/test/data/sandbox/
 preferences.json
 .DS_Store

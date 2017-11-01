@@ -595,15 +595,17 @@
                 // Process and display tasks in a separate text field
                 StringBuffer taskFieldOutput = new StringBuffer();
 
-                List<ReadOnlyTask> listOfTasks = logic.getFilteredTaskList();
+                List<ReadOnlyTask> listOfTask = logic.getFilteredTaskList();
 
-                for (int i = 0; i < listOfTasks.size(); i++) {
+                for (int i = 0; i < listOfTask.size(); i++) {
                     taskFieldOutput.append("Task no. " + (i + 1) + "\n");
-                    taskFieldOutput.append(listOfTasks.get(i).toString());
+                    taskFieldOutput.append(listOfTask.get(i).toString());
                     taskFieldOutput.append("\n");
                 }
+
                 taskDisplayed.setText(taskFieldOutput.toString());
             }
+
             raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
 
             // Play success sound
