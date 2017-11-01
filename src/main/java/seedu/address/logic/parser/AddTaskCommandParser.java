@@ -34,7 +34,6 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
             // if empty
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddTaskCommand.MESSAGE_USAGE));
         }
-    
         try {
             Description description = ParserUtil.parseDescription(argumentMultimap.getPreamble());
             Priority priority = ParserUtil.parsePriority(argumentMultimap.getValue(PREFIX_PRIORITY)).get();
