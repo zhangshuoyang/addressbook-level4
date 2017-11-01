@@ -1,5 +1,6 @@
 # zhangshuoyang
-###### \java\seedu\address\logic\commands\AddTaskCommand.java
+// For Windows change all '/' to '\' for example: \java\seedu\address\logic\commands\AddTaskCommand.java
+ /java/seedu/address/logic/commands/AddTaskCommand.java
 ``` java
 /**
  * Adds a task to the address book.
@@ -62,7 +63,7 @@ public class AddTaskCommand extends UndoableCommand {
 
 
 ```
-###### \java\seedu\address\logic\parser\AddTaskCommandParser.java
+/java/seedu/address/logic/parser/AddTaskCommandParser.java
 ``` java
 /**
  * Parses input arguments and creates a new AddTaskCommand object
@@ -106,7 +107,7 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\ParserUtil.java
+/java/seedu/address/logic/parser/ParserUtil.java
 ``` java
     /**
      * Parses a {@code Optional<String> desciption} into an {@code Optional<Description>} if {@code description}
@@ -148,7 +149,7 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
     }
 }
 ```
-###### \java\seedu\address\model\AddressBook.java
+/java/seedu/address/model/AddressBook.java
 ``` java
     //// task-level operations
 
@@ -191,7 +192,7 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
     }
 
 ```
-###### \java\seedu\address\model\Model.java
+/java/seedu/address/model/Model.java
 ``` java
     /**
      * Replaces the given person {@code target} with {@code editedTask}.
@@ -216,7 +217,7 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
 
 
 ```
-###### \java\seedu\address\model\ModelManager.java
+/java/seedu/address/model/ModelManager.java
 ``` java
     /** For further implementation. */
     @Override
@@ -244,7 +245,7 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
 
 
 ```
-###### \java\seedu\address\model\ModelManager.java
+/java/seedu/address/model/ModelManager.java
 ``` java
     //=========== Filtered Task List Accessors =============================================================
 
@@ -264,7 +265,7 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
     }
 
 ```
-###### \java\seedu\address\model\task\Date.java
+/java/seedu/address/model/task/Date.java
 ``` java
 /**
  * Represents the date of a certain task in the Address Book.
@@ -303,7 +304,7 @@ public class Date {
 
 }
 ```
-###### \java\seedu\address\model\task\DescContainsKeywordsPredicate.java
+/java/seedu/address/model/task/DescContainsKeywordsPredicate.java
 ``` java
 /**
  * Tests that a {@code ReadOnlyTask}'s {@code Name} matches any of the keywords given.
@@ -329,7 +330,7 @@ public class DescContainsKeywordsPredicate implements Predicate<ReadOnlyTask> {
     }
 }
 ```
-###### \java\seedu\address\model\task\DueDate.java
+/java/seedu/address/model/task/DueDate.java
 ``` java
 /**
  * Represents the date of a certain task in the Address Book.
@@ -373,7 +374,7 @@ public class DueDate extends Date {
     }
 }
 ```
-###### \java\seedu\address\model\task\exceptions\DuplicateTaskException.java
+/java/seedu/address/model/task/exceptions/DuplicateTaskException.java
 ``` java
 /**
  * Signals that the operation will result in duplicate Task objects.
@@ -387,14 +388,14 @@ public class DuplicateTaskException extends DuplicateDataException {
 
 }
 ```
-###### \java\seedu\address\model\task\exceptions\TaskNotFoundException.java
+/java/seedu/address/model/task/exceptions/TaskNotFoundException.java
 ``` java
 /**
  * Signals that the operation is unable to find the specifed task.
  */
 public class TaskNotFoundException extends Exception{}
 ```
-###### \java\seedu\address\model\task\UniqueTaskList.java
+/java/seedu/address/model/task/UniqueTaskList.java
 ``` java
 /**
  * A list of tasks that enforces uniqueness between its elements and does not allow nulls.
@@ -504,7 +505,7 @@ public class UniqueTaskList implements  Iterable<Task> {
     }
 }
 ```
-###### \java\seedu\address\storage\XmlAdaptedTask.java
+/java/seedu/address/storage/XmlAdaptedTask.java
 ``` java
 /**
  * JAXB-friendly version of the Task.
@@ -553,7 +554,7 @@ public class XmlAdaptedTask {
 
 
 ```
-###### \java\seedu\address\storage\XmlSerializableAddressBook.java
+/java/seedu/address/storage/XmlSerializableAddressBook.java
 ``` java
     @Override
     public ObservableList<ReadOnlyTask> getTaskList() {
@@ -571,3 +572,159 @@ public class XmlAdaptedTask {
 
 }
 ```
+
+
+/resources/view/Light.css
+``` css
+
+/**
+ * Shared
+ */
+.root * {
+    midLight: derive(white, -70%);
+    -fx-font-family: "Helvetica";
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: derive(grey, -20%);
+}
+
+
+/**
+ * Background
+ */
+.background {
+    -fx-background-color: derive(grey, -20%);
+    background-color: #f2f2f2; /* Used in the default.html file */
+    background-image: url("../images/world_map_1.jpg");
+    background-size: 500px;
+    background-position: left 1px;
+    background-repeat: no-repeat;
+}
+
+
+/**
+ * Menu Bar
+ */
+.context-menu {
+    -fx-background-color: derive(grey, 90%);
+}
+
+.context-menu .label {
+    -fx-text-fill: black;
+}
+
+.menu-bar {
+    -fx-background-color: #fafafa;
+}
+
+.menu-bar .label {
+    -fx-font-size: 14pt;
+    -fx-text-fill: black;
+    -fx-opacity: 0.9;
+}
+
+
+/**
+ * Command Box
+ */
+#commandTextField {
+    -fx-font-size: 20pt;
+    -fx-font-weight: bold;
+    -fx-border-width: 1;
+}
+
+
+/**
+ * Result Display
+ */
+#resultDisplay .content {
+    -fx-background-color: #fafafa;
+    -fx-background-radius: 5;
+    /*
+    -fx-border-color: transparent transparent black transparent;
+    */
+}
+
+
+/**
+ * Person List
+ */
+#personListVBox #name, #personListVBox #id{
+    -fx-font-size: 15pt;
+}
+
+#personListVBox .scroll-bar:horizontal .thumb {
+   /*
+    -fx-background-color: transparent;
+    */
+    -fx-background-color: blue;
+}
+
+/**
+ * List Cell
+ */
+.list-cell:filled:odd {
+    -fx-background-color: #fafafa;
+}
+
+.list-cell:filled:even {
+    -fx-background-color: #f2f2f2;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: rgba(192, 192, 192, 5);
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: rgba(192, 192, 192, 10);
+}
+
+
+/**
+ * Cell
+ */
+.cell_big_label {
+    -fx-font-size: 20px;
+    -fx-text-fill: black;
+    -fx-font-weight: normal;
+}
+
+.cell_small_label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #424242;
+    -fx-font-weight: lighter;
+}
+
+
+/**
+ * Status Bar
+ */
+.status-bar {
+    -fx-background-color: #fafafa;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
+
+/**
+ * Tags
+ */
+#tags {
+    -fx-hgap: 7;
+    -fx-vgap: 3;
+ }
+
+#tags .label {
+    -fx-text-fill: black;
+    -fx-padding: 1 3 1 3;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-font-size: 11;
+    -fx-font-weight: bold;
+
+ }
+```
+

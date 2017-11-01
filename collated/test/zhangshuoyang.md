@@ -1,5 +1,9 @@
 # zhangshuoyang
-###### \java\seedu\address\logic\commands\AddCommandTest.java
+
+// For Windows change all'/' to '\', for example: \java\seedu\address\logic\commands\AddCommandTest.java
+
+/java/seedu/address/logic/commands/AddCommandTest.java
+
 ``` java
         @Override
         public void addTask(ReadOnlyTask task) throws DuplicateTaskException {
@@ -31,7 +35,7 @@
     }
 
 ```
-###### \java\seedu\address\logic\commands\AddTaskCommandIntegrationTest.java
+/java/seedu/address/logic/commands/AddTaskCommandIntegrationTest.java
 ``` java
 /**
  * Contains integraion tests (interactin with the Model) for {@code AddTaskCommand}.
@@ -72,7 +76,7 @@ public class AddTaskCommandIntegrationTest {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\AddTaskCommandTest.java
+/java/seedu/address/logic/commands/AddTaskCommandTest.java
 ``` java
 public class AddTaskCommandTest {
 
@@ -266,7 +270,29 @@ public class AddTaskCommandTest {
 }
 
 ```
-###### \java\seedu\address\testutil\AddressBookBuilder.java
+/java/seedu/address/logic/commands/CommandTestUtil.java
+``` java
+    public static final String VALID_DESCRIPTION_ASSIGNMENT = "CS2103T Assignment";
+    public static final String VALID_DESCRIPTION_SHOPPING = "Go shopping";
+    public static final String VALID_PRIORITY_ASSIGNMENT = "2";
+    public static final String VALID_PRIORITY_SHOPPING = "0";
+    public static final String VALID_DUEDATE_ASSIGNMENT = "30/10/2017";
+    public static final String VALID_DUEDATE_SHOPPING = "01/01/2018";
+
+    public static final String INVALID_PRIORITY_SHOPPING = "6";
+    public static final String INVALID_DUEDATE_SHOPPING = "40/20/100";
+
+    public static final String DESCRIPTION_DESC_ASSIGNMENT = " " +  VALID_DESCRIPTION_ASSIGNMENT;
+    public static final String DESCRIPTION_DESC_SHOPPING = " " +  VALID_DESCRIPTION_SHOPPING;
+    public static final String PRIORITY_DESC_ASSIGNMENT = " " + PREFIX_PRIORITY + VALID_PRIORITY_ASSIGNMENT;
+    public static final String PRIORITY_DESC_SHOPPING = " " + PREFIX_PRIORITY + VALID_PRIORITY_SHOPPING;
+    public static final String DUEDATE_DESC_ASSIGNMENT = " " + PREFIX_DUEDATE + VALID_DUEDATE_ASSIGNMENT;
+    public static final String DUEDATE_DESC_SHOPPING = " " + PREFIX_DUEDATE + VALID_DUEDATE_SHOPPING;
+    public static final String INVALID_PRIORITY_DESC_SHOPPING = " " + PREFIX_PRIORITY + INVALID_PRIORITY_SHOPPING;
+    public static final String INVALID_DUEDATE_DESC_SHOPPING = " " + PREFIX_DUEDATE + INVALID_DUEDATE_SHOPPING;
+
+```
+/java/seedu/address/testutil/AddressBookBuilder.java
 ``` java
     /**
      * Adds a new {@code Task} to the AddressBook that we are building.
@@ -285,7 +311,7 @@ public class AddTaskCommandTest {
     }
 }
 ```
-###### \java\seedu\address\testutil\TaskBuilder.java
+/java/seedu/address/testutil/TaskBuilder.java
 ``` java
 /**
  * A utility class to help with buidling Task objects.
@@ -357,7 +383,7 @@ public class TaskBuilder {
     }
 }
 ```
-###### \java\seedu\address\testutil\TaskUtil.java
+/java/seedu/address/testutil/TaskUtil.java
 ``` java
 /**
  * A utility class for Task.
@@ -383,7 +409,7 @@ public class TaskUtil {
     }
 }
 ```
-###### \java\seedu\address\testutil\TypicalTasks.java
+/java/seedu/address/testutil/TypicalTasks.java
 ``` java
 /**
  * A utility class containing a list of {@code Task} objects to be used in tests.
@@ -415,7 +441,7 @@ public class TypicalTasks {
 }
 
 ```
-###### \java\systemtests\AddTaskCommandSystemTest.java
+/java/systemtests/AddTaskCommandSystemTest.java
 ``` java
 public class AddTaskCommandSystemTest extends AddressBookSystemTest {
 
