@@ -14,6 +14,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * Provides sound for events
  */
 public class AudioUtil {
+    //@@author lancehaoh
     /**
      * Play a .wav format audio file that is stored in src/main/resources/images folder
      */

@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
  *
  */
 public class AutoCompleteUtil {
+    //@@author lancehaoh
     /**
      * Gets the system commands that start with a particular prefix
      *

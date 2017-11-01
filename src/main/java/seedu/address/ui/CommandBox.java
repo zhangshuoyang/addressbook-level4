@@ -145,6 +145,7 @@ public class CommandBox extends UiPart<Region> {
         }
     }
 
+    //@@author lancehaoh
     /**
      * Launches extended auto complete mechanism in logic
      * when the special key is pressed in the Command Box
@@ -161,6 +162,7 @@ public class CommandBox extends UiPart<Region> {
         }
     }
 
+    //@@author lancehaoh
     /**
      * Launches auto complete mechanism in logic
      * when the auto complete hotkey is pressed in the Command Box
@@ -240,6 +242,7 @@ public class CommandBox extends UiPart<Region> {
         commandTextField.positionCaret(commandTextField.getText().length());
     }
 
+    //@@author lancehaoh
     /**
      * Handles the Enter button pressed event.
      */
@@ -255,34 +258,7 @@ public class CommandBox extends UiPart<Region> {
             historySnapshot.next();
             // process result of the command
             commandTextField.setText("");
-
-            if (parser.parseCommand(userInput) instanceof AddTaskCommand) {
-                // Process and display the most recently added task in a separate text field
-                StringBuffer lastTaskFieldOutput = new StringBuffer();
-                List<ReadOnlyTask> listOfTask = logic.getFilteredTaskList();
-                lastTaskFieldOutput.append("\n");
-                lastTaskFieldOutput.append("===Task=== " + "\n");
-                lastTaskFieldOutput.append(listOfTask.get(listOfTask.size() - 1).toString());
-                lastTaskFieldOutput.append("\n");
-                PrintWriter out = new PrintWriter(new FileOutputStream(new File("taskData1.txt"), true));
-                out.println(lastTaskFieldOutput.toString());
-                out.close();
-
-
-                try {
-                    String curr = System.getProperty("user.dir");
-                    Scanner s = new Scanner(new File(curr + "/taskData1.txt"));
-
-                    taskDisplayed.clear();
-                    while (s.hasNext()) {
-                        taskDisplayed.appendText(s.next() + "\n");
-                    }
-                } catch (FileNotFoundException fne) {
-                    throw new ParseException(fne.getMessage(), fne);
-                }
-
-            }
-
+          
             if (parser.parseCommand(userInput) instanceof ListTaskCommand) {
                 // Process and display tasks in a separate text field
                 StringBuffer taskFieldOutput = new StringBuffer();

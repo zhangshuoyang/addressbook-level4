@@ -24,10 +24,12 @@ public class DeleteTagCommand extends UndoableCommand {
 
     private AutoCorrectCommand autoCorrectCommand = new AutoCorrectCommand();
 
+    //@@author lancehaoh
     public DeleteTagCommand(Tag tagToDelete) {
         this.tagToDelete = tagToDelete;
     }
 
+    //@@author lancehaoh
     @Override
     public CommandResult executeUndoableCommand() throws CommandException {
         try {

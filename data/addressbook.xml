@@ -27,9 +27,9 @@
     <tags>family</tags>
     <tags>friends</tags>
     <tasks>
-        <description>d/CS2103T</description>
-        <priority>0</priority>
-        <duedate>11/12/2100</duedate>
+        <description>d/none</description>
+        <priority>2</priority>
+        <duedate>13/12/2008</duedate>
     </tasks>
     <tasks>
         <description>d/example1</description>

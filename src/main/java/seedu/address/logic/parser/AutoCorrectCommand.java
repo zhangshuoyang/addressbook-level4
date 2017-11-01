@@ -21,6 +21,7 @@ import seedu.address.logic.commands.SearchCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
 
+
 //@@author JYL123
 /**
  * Auto-correct user input command.
@@ -104,7 +105,7 @@ public class AutoCorrectCommand {
         }
 
         String formattedMisSpeltword = misSpeltWord.toLowerCase();
-        ArrayList<String> commandPool = getCommandPool();
+        ArrayList<String> commandPool = getCommandPool ();
         final String defaultresult = "Unknown Command";
         String result = "";
 
@@ -123,7 +124,6 @@ public class AutoCorrectCommand {
                 return result;
             }
         }
-
         return result;
     }
 
