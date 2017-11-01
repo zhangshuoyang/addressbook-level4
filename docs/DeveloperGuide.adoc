@@ -4,6 +4,7 @@
 :toc-placement: preamble
 :sectnums:
 :imagesDir: images
+:experimental:
 :stylesDir: stylesheets
 ifdef::env-github[]
 :tip-caption: :bulb:
@@ -428,7 +429,7 @@ due to the failure of Yahoo Weather Server. +
 === Autocomplete Mechanism[[autocomplete-feature]]
 
 The `autocomplete` feature is implemented in `AutoCompleteUtil` class. It enables commands to be automatically suggested and
-completed for users. For example, when the user type, "sea", and press `TAB` key, the complete command `search` appears on the command line. This feature saves time for users and improves the efficiency of the application in general.
+completed for users. For example, when the user type, "sea", and press kbd:[TAB] key, the complete command `search` appears on the command line. This feature saves time for users and improves the efficiency of the application in general.
 It is invoked in subclasses of `Logic` (e.g. `LogicManager`).
 
 The interaction between `AutoCompleteUtil` and `Logic` classes can be seen from the following sequence diagram:
@@ -438,7 +439,7 @@ image::AutoCompleteCommand.sequenceDiagram.png[width="800"]
 ==== Prerequisites/Dependencies [[autocomplete-dependencies]]
 
 * The hotkey for launching `autocomplete` is indicated in the `CommandBox` class.
-Currently, the hotkey is `TAB`.
+Currently, the hotkey is kbd:[TAB].
 * The `COMMAND_WORD` field must exist in the class file representing each command.
 * The `COMMAND_WORD` field in each command class is defined as the string that is used to invoke
 that command.
@@ -475,7 +476,7 @@ another method should be implemented in the `AutoCompleteUtil` class.
  than obtaining them from the `COMMAND_WORD` field of each type of command. +
 **Cons:** The developer has to add the `COMMAND_WORD` of every new command to the text file.
  Furthermore, there is repeated work (and higher risk of error) as the developer must take care to ensure that the text file's entry corresponds with the
-`COMMAND WORD` field.
+`COMMAND_WORD` field.
 
 === Extended Autocomplete Mechanism[[extended-autocomplete-feature]]
 
@@ -486,10 +487,10 @@ It is invoked in the `LogicManager` class.
 ==== Prerequisites/Dependencies
 
 * The hotkey for launching `extended autocomplete` is indicated in the `CommandBox` class.
-Currently, the hotkey is `Ctrl`. The following excerpt briefly shows how the `autocomplete` string
+Currently, the hotkey is kbd:[Ctrl]. The following excerpt briefly shows how the `autocomplete` string
 is determined based on the `Command` entered by the user.
 
-image::extended-auto-complete-snippet.png[width="800"]
+image::extended-autocomplete-snippet.png[width="800"]
 
 * The `COMMAND_WORD` and `AUTOCOMPLETE_FORMAT` fields must exist in all class files that represent commands.
 * For definition of `COMMAND_WORD`, see <<autocomplete-dependencies, section 4.5.1>>
@@ -607,6 +608,38 @@ in respective models.
 **Alternative 1 (current choice):** Use a selection window with theme preview image. +
 **Pros:** Users are able to know what the theme looks like before they choose the respective theme. +
 **Cons:** Additional space for `Theme Selection` window. +
+
+=== Add Task Mechanism
+
+The 'add task' feature is facilitated by AddTaskCommand class. It allows users to add tasks into the address book
+with a description, the level of priority as well as the due date. The tasks added will be shown on the stickies
+in the address book.
+
+The command word for adding a task is `task`. When users key in the command word `task`, together with valid
+description, priority and due date, the execute() function in the LogicManager class will be called, which will
+pass the value of the command string into `parseCommand()` function in the `AddressBookParser` class.
+As a result, `AddTaskCommandParser` will be returned to separate the command string into three different parts
+- `Description`, `Priority` and `dueDate`. These three fields will be passed to `Task` class to check if they
+are valid. If yes, a new `Task` object will be returned and used to call `AddTaskCommand` class. Eventually,
+the `executeUndoableCommand()` function in `AddTaskCommand` class will be called and returns a `CommandResult` object to display once a task is successfully added.
+
+==== Prerequisites/Dependencies
+
+* The format of date must follow `dd/MM/yyyy`.
+* The range of priority can only be from 0 to 2. Any other values will be deemed as invalid.
+* Currently, all fields must be included in the command and cannot be omitted.
+
+==== Design Considerations
+
+**Aspect:** Implementation of AddTaskCommand +
+
+**Alternative 1 (current choice):** Use stickies so that newly added tasks will show up in the stickies. +
+**Pros:** Tasks are easy to identify. +
+**Cons:** When too many tasks are added, it is difficult to display all the tasks. +
+
+**Alternative 2:** Use a task list similar to the person list in the address book. +
+**Pros:** Easy to display and look through all the tasks. +
+**Cons:** Less attractive. +
 
 === Logging
 

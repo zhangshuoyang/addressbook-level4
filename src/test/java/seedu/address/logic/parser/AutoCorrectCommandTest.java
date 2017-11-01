@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.ClearTaskCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.SearchCommand;
 import seedu.address.logic.commands.UndoCommand;
@@ -81,6 +82,12 @@ public class AutoCorrectCommandTest {
         String correctCommandUndo = autoCorrectCommand.correctWord(inputCommandUndo);
         assertTrue(misspeltWordsPoolUndo.stream().anyMatch(e -> e.equals(inputCommandUndo)));
         assertEquals(UndoCommand.COMMAND_WORD, correctCommandUndo);
+
+        final String inputCommandClearTask = "cleartsak";
+        ArrayList<String> misspeltWordsPoolClearTask = autoCorrectCommand.editDistance1(ClearTaskCommand.COMMAND_WORD);
+        String correctCommandClearTask = autoCorrectCommand.correctWord(inputCommandClearTask);
+        assertTrue(misspeltWordsPoolClearTask.stream().anyMatch(e -> e.equals(inputCommandClearTask)));
+        assertEquals(ClearTaskCommand.COMMAND_WORD, correctCommandClearTask);
     }
 
     @Test
@@ -99,6 +106,10 @@ public class AutoCorrectCommandTest {
         final String inputCommandUndo = "uond";
         String correctCommandUndo = autoCorrectCommand.correctWord(inputCommandUndo);
         assertEquals(UndoCommand.COMMAND_WORD, correctCommandUndo);
+
+        final String inputCommandClearTask = "cleartsat";
+        String correctCommandClearTask = autoCorrectCommand.correctWord(inputCommandClearTask);
+        assertEquals(ClearTaskCommand.COMMAND_WORD, correctCommandClearTask);
     }
 
     @Test

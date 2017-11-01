@@ -59,7 +59,7 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate);
 
-
+    //@@author zhangshuoyang
     /**
      * Replaces the given person {@code target} with {@code editedTask}.
      *
@@ -82,6 +82,7 @@ public interface Model {
     void updateFilteredTaskList(Predicate<ReadOnlyTask> predicate);
 
 
+    //@@author
     /*
      * Clears the filters that have been applied to the filterd person list
      */

@@ -25,17 +25,18 @@ public class DeleteTaskCommand extends UndoableCommand {
             + "Example 1: " + COMMAND_WORD + " 1" + " deletes the first task in the list.\n"
             + "Example 2: " + COMMAND_WORD + " 1/2/3" + " deletes the first, second and third tasks in the list\n";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted task: %1$s";
+    public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted task: %1$s";
 
     private final ArrayList<Index> targetIndex;
 
     private AutoCorrectCommand autoCorrectCommand = new AutoCorrectCommand();
 
+    //@@author lancehaoh
     public DeleteTaskCommand(ArrayList<Index> targetIndex) {
         this.targetIndex = targetIndex;
     }
 
-
+    //@@author lancehaoh
     @Override
     public CommandResult executeUndoableCommand() throws CommandException {
 
@@ -43,7 +44,7 @@ public class DeleteTaskCommand extends UndoableCommand {
 
         for (Index i : targetIndex) {
             if (i.getZeroBased() >= lastShownList.size()) {
-                throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+                throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
             }
         }
 
@@ -66,14 +67,15 @@ public class DeleteTaskCommand extends UndoableCommand {
         }
 
         if (autoCorrectCommand.getMessageToUser().equals("")) {
-            return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, result));
+            return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, result));
         } else {
             return new CommandResult(autoCorrectCommand.getMessageToUser()
                     + "\n"
-                    + String.format(MESSAGE_DELETE_PERSON_SUCCESS, result));
+                    + String.format(MESSAGE_DELETE_TASK_SUCCESS, result));
         }
     }
 
+    //@@author lancehaoh
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
