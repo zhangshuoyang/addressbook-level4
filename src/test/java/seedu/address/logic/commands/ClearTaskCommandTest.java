@@ -11,8 +11,8 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 
+//@@author JYL123
 public class ClearTaskCommandTest {
-
 
     @Test
     public void executeEmptyAddressBookSuccess() {
