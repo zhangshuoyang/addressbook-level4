@@ -1,13 +1,6 @@
 {
-<<<<<<< HEAD
   "appTitle" : "Contact Plus",
   "logLevel" : "INFO",
   "userPrefsFilePath" : "preferences.json"
 }
-=======
-  "appTitle" : "Address App",
-  "logLevel" : "INFO",
-  "userPrefsFilePath" : "preferences.json"
-}
-
->>>>>>> 1a2af88c95eee74f98d54ee6bacdae50609b91ef
+  
