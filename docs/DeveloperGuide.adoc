@@ -493,7 +493,7 @@ is determined based on the `Command` entered by the user.
 image::extended-autocomplete-snippet.png[width="800"]
 
 * The `COMMAND_WORD` and `AUTOCOMPLETE_FORMAT` fields must exist in all class files that represent commands.
-* For definition of `COMMAND_WORD`, see <<autocomplete-dependencies, section 4.5.1>>
+* For definition of `COMMAND_WORD`, see <<autocomplete-dependencies, section 4.4.1>>
 * The `AUTOCOMPLETE_FORMAT` field is defined as a string that contains the format of the command that is represented by the enclosing class.
 For example, if `test` command has the format of `test positive_integer` then `AUTOCOMPLETE_FORMAT` must be defined as
 `test positive_integer` in the `TestCommand` class.
