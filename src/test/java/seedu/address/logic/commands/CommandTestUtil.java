@@ -62,7 +62,7 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
-
+    //@@author zhangshuoyang
     public static final String VALID_DESCRIPTION_ASSIGNMENT = "CS2103T Assignment";
     public static final String VALID_DESCRIPTION_SHOPPING = "Go shopping";
     public static final String VALID_PRIORITY_ASSIGNMENT = "2";
@@ -82,7 +82,7 @@ public class CommandTestUtil {
     public static final String INVALID_PRIORITY_DESC_SHOPPING = " " + PREFIX_PRIORITY + INVALID_PRIORITY_SHOPPING;
     public static final String INVALID_DUEDATE_DESC_SHOPPING = " " + PREFIX_DUEDATE + INVALID_DUEDATE_SHOPPING;
 
-
+    //@@author
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
 
