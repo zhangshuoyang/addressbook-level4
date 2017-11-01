@@ -610,8 +610,8 @@ Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
 
 Examples:
 
-* `task d/CS2103 Assignment priority/2 on/26/10/2017`
-* `task d/Finish Teammate Feedback Session priority/0 on/01/11/2017`
+* `task d/CS2103 Assignment pr/2 on 26/10/2017`
+* `task d/Finish Teammate Feedback Session pr/0 on 01/11/2017`
 
 === List tasks [Since v1.4] [[listtask]]
 
@@ -718,6 +718,64 @@ Different sound clips will be played according to whether a command was successf
 Failure sound clip is played if command is unsuccessful.
 
 |===
+
+=== Edit task [Since v1.4]
+
+To edit your tasks, first you should learn how to list task. Listing tasks is for you to get the index of the task you indent to edit.
+Then use "edittask" command with its index to edit the task. The format is as follows:
+Format: `edittask INDEX d/DESCRIPTION priority/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
+
+==== Description
+
+*************
+* Index mist be a positive number.
+* At least one field (either priority or due date) has to be specified.
+*************
+
+==== How to use
+. Enter the command, the index of the task, and the details you wish to edit with its prefix. Please refer to the image below for an example:
++
+image:EditTaskStep1.png[width="300"]
+
+. The application will give you conformation information displayed. Please refer to the image below for an example:
++
+image:EditTaskStep2.png[width="300"]
+
+==== Example
+
+|===
+| *Your input* | Result
+| `edittask 1 prioroty/1` | The application will display "Edited task: " + the details of the task you just edited. +
+|===
+
+=== Clear task [Since v1.4]
+
+To clear your task list, "cleartask" is the command to use. The format is as follows:
+Format: `cleartask`
+
+==== Description
+
+*************
+* you can perform command `undo`, if you accidentally clear your task list.
+*************
+
+==== How to use
+. Enter the command "cleartask". Please refer to the image below for an example:
++
+image:ClearTaskStep1.png[width="300"]
+
+. Confirmation message will be displayed. Please refer to the image below for an example:
++
+image:ClearTaskStep2.png[width="300"]
+
+
+==== Example
+
+|===
+| *Your input* | Result
+| `cleartask` | "Task list has been cleared." will be displayed on the window +
+|===
+
 
 === Tag use emoji : `tag emoji` [Coming in V2.0]
 
