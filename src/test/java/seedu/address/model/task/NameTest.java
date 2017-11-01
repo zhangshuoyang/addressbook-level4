@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class NameTest {
+    //@@author chairz
     @Test
     public void isValidName() {
         // invalid name

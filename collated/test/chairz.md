@@ -1,37 +1,6 @@
-package seedu.address.logic.commands;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showFirstPersonOnly;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_MULTIPLE_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import org.junit.Test;
-
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.CommandHistory;
-import seedu.address.logic.UndoRedoStack;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.UserPrefs;
-import seedu.address.model.person.ReadOnlyPerson;
-
-/**
- * Contains integration tests (interaction with the Model) and unit tests for {@code DeleteCommand}.
- */
-public class DeleteCommandTest {
-
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-
-    //@@author chairz
+# chairz
+###### \java\seedu\address\logic\commands\DeleteCommandTest.java
+``` java
     @Test
     public void executeValidMultipleIndexUnfilteredListSuccess() throws Exception {
         ReadOnlyPerson personToDelete1 = model.getFilteredPersonList().get(INDEX_MULTIPLE_PERSON.get(0).getZeroBased());
@@ -142,3 +111,40 @@ public class DeleteCommandTest {
         assert model.getFilteredPersonList().isEmpty();
     }
 }
+```
+###### \java\seedu\address\model\task\DescriptionTest.java
+``` java
+    @Test
+    public void isValidDescription() {
+        // invalid description
+        assertFalse(Description.isValidDescription("")); // empty string
+
+        // valid description
+        assertTrue(Description.isValidDescription(" ")); // spaces only
+        assertTrue(Description.isValidDescription("location")); // alphabets only
+        assertTrue(Description.isValidDescription("507020")); // numbers only
+        assertTrue(Description.isValidDescription("159W Jalan Loyang Besar")); // alphanumeric characters
+        assertTrue(Description.isValidDescription("Prepare a birthday cake! :)")); // with non-alphanumeric characters
+
+    }
+}
+```
+###### \java\seedu\address\model\task\NameTest.java
+``` java
+    @Test
+    public void isValidName() {
+        // invalid name
+        assertFalse(Name.isValidName("")); // empty string
+        assertFalse(Name.isValidName(" ")); // spaces only
+        assertFalse(Name.isValidName("^")); // only non-alphanumeric characters
+        assertFalse(Name.isValidName("birthday*")); // contains non-alphanumeric characters
+
+        // valid name
+        assertTrue(Name.isValidName("birthday")); // alphabets only
+        assertTrue(Name.isValidName("21")); // numbers only
+        assertTrue(Name.isValidName("21st birthday")); // alphanumeric characters
+        assertTrue(Name.isValidName("21ST Birthday")); // with capital letters
+        assertTrue(Name.isValidName("21st Birthday Party is the best party")); // long names
+    }
+}
+```
