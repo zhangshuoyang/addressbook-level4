@@ -22,7 +22,6 @@ public class XmlAddressBookStorage implements AddressBookStorage {
 
     private String filePath;
 
-
     public XmlAddressBookStorage(String filePath) {
         this.filePath = filePath;
 
@@ -31,6 +30,7 @@ public class XmlAddressBookStorage implements AddressBookStorage {
     public String getAddressBookFilePath() {
         return filePath;
     }
+
 
     @Override
     public Optional<ReadOnlyAddressBook> readAddressBook() throws DataConversionException, IOException {

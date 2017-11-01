@@ -1,8 +1,13 @@
 package seedu.address.ui;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.logging.Logger;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -20,6 +25,7 @@ import seedu.address.commons.util.AudioUtil;
 import seedu.address.logic.ListElementPointer;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -69,6 +75,7 @@ public class CommandBox extends UiPart<Region> {
      */
     @FXML
     private void handleKeyPress(KeyEvent keyEvent) {
+        //@@author JYL123
         // Handles cases where multple keys are pressed simultaneously
         String getAlphabetPressed = keyEvent.getCode().toString();
         if (keyEvent.getCode().isLetterKey() && keyEvent.isControlDown()) {
@@ -251,20 +258,22 @@ public class CommandBox extends UiPart<Region> {
             historySnapshot.next();
             // process result of the command
             commandTextField.setText("");
-
+          
             if (parser.parseCommand(userInput) instanceof ListTaskCommand) {
                 // Process and display tasks in a separate text field
                 StringBuffer taskFieldOutput = new StringBuffer();
 
-                List<ReadOnlyTask> listOfTasks = logic.getFilteredTaskList();
+                List<ReadOnlyTask> listOfTask = logic.getFilteredTaskList();
 
-                for (int i = 0; i < listOfTasks.size(); i++) {
+                for (int i = 0; i < listOfTask.size(); i++) {
                     taskFieldOutput.append("Task no. " + (i + 1) + "\n");
-                    taskFieldOutput.append(listOfTasks.get(i).toString());
+                    taskFieldOutput.append(listOfTask.get(i).toString());
                     taskFieldOutput.append("\n");
                 }
+
                 taskDisplayed.setText(taskFieldOutput.toString());
             }
+
             raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
 
             // Play success sound

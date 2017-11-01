@@ -92,6 +92,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAddressBookChanged();
     }
 
+    //@@author zhangshuoyang
     /** For further implementation. */
     @Override
     public synchronized void deleteTask(ReadOnlyTask target) throws TaskNotFoundException {
@@ -117,6 +118,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
 
+    //@@author
     @Override
     public void deleteTag(Tag t) {
         // Get all contacts in AddressBook
@@ -174,6 +176,7 @@ public class ModelManager extends ComponentManager implements Model {
 
 
 
+    //@@author zhangshuoyang
     //=========== Filtered Task List Accessors =============================================================
 
     /**
@@ -191,7 +194,7 @@ public class ModelManager extends ComponentManager implements Model {
         filteredTasks.setPredicate(predicate);
     }
 
-
+    //@@author
     @Override
     public boolean equals(Object obj) {
         // short circuit if same object
