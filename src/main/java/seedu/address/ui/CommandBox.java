@@ -278,7 +278,6 @@ public class CommandBox extends UiPart<Region> {
                 } catch (FileNotFoundException fne) {
                     throw new ParseException(fne.getMessage(), fne);
                 }
-
             }
 
             if (parser.parseCommand(userInput) instanceof ListTaskCommand) {
