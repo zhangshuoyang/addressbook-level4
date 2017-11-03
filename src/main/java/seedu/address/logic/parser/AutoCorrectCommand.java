@@ -180,11 +180,12 @@ public class AutoCorrectCommand {
         commandPool.add(SelectCommand.COMMAND_WORD);
         commandPool.add(UndoCommand.COMMAND_WORD);
         commandPool.add(AddTaskCommand.COMMAND_WORD);
+        commandPool.add(ListTaskCommand.COMMAND_WORD);
+        commandPool.add(DeleteTaskCommand.COMMAND_WORD);
         commandPool.add(SearchCommand.COMMAND_WORD_ALIAS);
         commandPool.add(SelectCommand.COMMAND_WORD_ALIAS);
         commandPool.add(DeleteTagCommand.COMMAND_WORD_ALIAS);
-        commandPool.add(ListTaskCommand.COMMAND_WORD);
-        commandPool.add(DeleteTaskCommand.COMMAND_WORD);
+        commandPool.add(MultiFilterCommand.COMMAND_WORD_ALIAS);
 
         return commandPool;
     }
