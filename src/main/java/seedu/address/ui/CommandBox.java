@@ -1,8 +1,13 @@
 package seedu.address.ui;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.logging.Logger;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -20,6 +25,7 @@ import seedu.address.commons.util.AudioUtil;
 import seedu.address.logic.ListElementPointer;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -252,6 +258,32 @@ public class CommandBox extends UiPart<Region> {
             historySnapshot.next();
             // process result of the command
             commandTextField.setText("");
+
+
+            if (parser.parseCommand(userInput) instanceof AddTaskCommand) {
+                // Process and display the most recently added task in a separate text field
+                StringBuffer lastTaskFieldOutput = new StringBuffer();
+                List<ReadOnlyTask> listOfTask = logic.getFilteredTaskList();
+                lastTaskFieldOutput.append("\n");
+                lastTaskFieldOutput.append("===Task=== " + "\n");
+                lastTaskFieldOutput.append(listOfTask.get(listOfTask.size() - 1).toString());
+                lastTaskFieldOutput.append("\n");
+                PrintWriter out = new PrintWriter(new FileOutputStream(new File("taskData1.txt"), true));
+                out.println(lastTaskFieldOutput.toString());
+                out.close();
+
+                try {
+                    String curr = System.getProperty("user.dir");
+                    Scanner s = new Scanner(new File(curr + "/taskData1.txt"));
+
+                    taskDisplayed.clear();
+                    while (s.hasNext()) {
+                        taskDisplayed.appendText(s.next() + "\n");
+                    }
+                } catch (FileNotFoundException fne) {
+                    throw new ParseException(fne.getMessage(), fne);
+                }
+            }
 
             if (parser.parseCommand(userInput) instanceof ListTaskCommand) {
                 // Process and display tasks in a separate text field
