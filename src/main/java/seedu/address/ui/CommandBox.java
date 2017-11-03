@@ -267,7 +267,6 @@ public class CommandBox extends UiPart<Region> {
                 out.println(lastTaskFieldOutput.toString());
                 out.close();
 
-
                 try {
                     String curr = System.getProperty("user.dir");
                     Scanner s = new Scanner(new File(curr + "/taskData1.txt"));
