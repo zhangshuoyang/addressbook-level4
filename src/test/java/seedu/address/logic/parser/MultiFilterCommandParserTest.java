@@ -34,6 +34,7 @@ import seedu.address.testutil.PersonBuilder;
 public class MultiFilterCommandParserTest {
     private MultiFilterCommandParser parser = new MultiFilterCommandParser();
 
+    //@@author lancehaoh
     @Test
     public void parse_allFieldsPresent_success() {
         Person expectedPerson = new PersonBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
@@ -130,6 +131,7 @@ public class MultiFilterCommandParserTest {
                 ));
     }
 
+    //@@author lancehaoh
     @Test
     /**
      * Tests if parser can handle cases where certain fields are not entered by the user
@@ -230,6 +232,7 @@ public class MultiFilterCommandParserTest {
                         null, null));
     }
 
+    //@@author lancehaoh
     @Test
     /**
      * Tests if fields can be parsed properly when they are entered in an arbitrary order

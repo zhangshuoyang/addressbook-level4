@@ -8,6 +8,7 @@ import com.github.fedy2.weather.YahooWeatherService;
 import com.github.fedy2.weather.data.Channel;
 import com.github.fedy2.weather.data.unit.DegreeUnit;
 
+//@@author JYL123
 /**
  * The class that retrieve weather information and format the string according to its unique pattern.
  */

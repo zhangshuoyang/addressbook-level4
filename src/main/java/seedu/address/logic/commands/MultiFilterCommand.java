@@ -48,6 +48,7 @@ public class MultiFilterCommand extends Command {
     private EmailContainsKeywordsSubstrPredicate emailPredicate;
     private AddressContainsKeywordsSubstrPredicate addressPredicate;
 
+    //@@author lancehaoh
     public MultiFilterCommand(
             NameContainsKeywordsSubstrPredicate namePredicate,
             PhoneContainsKeywordsSubstrPredicate phonePredicate,
@@ -59,6 +60,7 @@ public class MultiFilterCommand extends Command {
         this.addressPredicate = addressPredicate;
     }
 
+    //@@author lancehaoh
     @Override
     public CommandResult execute() {
         // Clear the filter conditions on the filtered person list
@@ -88,6 +90,7 @@ public class MultiFilterCommand extends Command {
         }
     }
 
+    //@@author lancehaoh
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof MultiFilterCommand)) {

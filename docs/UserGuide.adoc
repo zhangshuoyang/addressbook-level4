@@ -151,7 +151,7 @@ Keyboard shortcut: kbd:[control] + kbd:[d]/kbd:[D]
 * Deletes the person at the specified `INDEX`.
 * The index refers to the index number shown in the most recent listing.
 * The index *must be a positive integer* 1, 2, 3, ...
-* This function deletes *ONE* person only. For deleting multple persons simultaneouly,
+* This function deletes *ONE* person only. For deleting multple persons simultaneously,
 see section <<delete-multiple-persons , 3.19>>.
 ****
 
@@ -414,7 +414,7 @@ An example of a matching contact for this command would be +
 
 ==== How to use
 
-. Enter `multifilter` into the command bar followed by one or more format fields.
+. Enter `multifilter` into the command box followed by one or more format fields.
 See command format <<multifilter-format, here>>.
 +
 image:MultiFilterCommand-step-1.png[width="250"]
@@ -448,14 +448,14 @@ will not.
 * If there is more than one matching command, the names of all matching
 commands will be displayed as a suggestion in the result pane.
 * If there is only one matching command, then the full
-name for the command will be automatically filled into the command bar instead of being displayed in the result pane.
+name for the command will be automatically filled into the command box instead of being displayed in the result pane.
 ****
 
 ==== Examples
 
 |===
 | *Your input* |  *Result*
-| `del` | Expands to `delete` in the command bar
+| `del` | Expands to `delete` in the command box
 |  `df` | Nothing is returned by address book.
 | `d` | Returns various command suggestions in the result pane. e.g.`delete` and `deletetag`
 
@@ -463,7 +463,7 @@ name for the command will be automatically filled into the command bar instead o
 
 ==== How to use
 
-Enter some text into the command bar (as shown below) and press kbd:[TAB].
+Enter some text into the command box (as shown below) and press kbd:[TAB].
 Commands, whose names start with the entered text, will be suggested.
 See <<autocomplete-description, description>> for more details on how
  autocomplete works.
@@ -507,20 +507,28 @@ image::AutoCorrectResult.png[width="250"]
 
 === Deleting multiple persons : `delete index/another index/...` [Since v1.2] [[delete-multiple-persons]]
 
-Deletes multiple persons from the address book. +
+This command allows you to delete multiple persons from the address book in a
+single command line. +
 Format: `delete INDEX/INDEX`
 
-Example:
+==== Example
+|===
+| *Your input* |  *Result*
+| `delete 1/2` | Deletes the first and second contact listed
+|===
 
-1) Enter `list` into the Command Box +
+==== How to use
+
+1) Enter `list` into the Command Box. You will see all the added contacts below. +
 
 image::deleteMultiplePerson1.png[width="500"]
 
-2) `delete 2/3` deletes the 2nd and 3rd person from the address book. +
+2) Enter `delete 2/3` to delete the 2nd and 3rd person from the address book. +
 
 image::deleteMultiplePerson2.png[width="500"]
 
-3) Display the confirmation for deletion
+3) You can now see that the 2nd and 3rd contact has been deleted and the +
+result is displayed to show the confirmation of deletion.
 
 image::deleteMultiplePerson3.png[width="500"]
 
@@ -540,7 +548,7 @@ image::WeatherForecast.png[width="500"]
 
 === Extended autocomplete for commands [Since v1.3]
 
-Autofills the full syntax of the command whose name matches the user-entered text exactly.
+Autofills the full syntax of the command whose name matches the user-entered text exactly. +
 Format: [COMMAND_WORD]
 
 ==== Description
@@ -567,7 +575,7 @@ Format: [COMMAND_WORD]
 +
 image:extended-autocomplete-step-1.png[width="300"]
 
-. Press the kbd:[Ctrl] key. The command's format is automatically filled in the command bar for you.
+. Press the kbd:[Ctrl] key. The command's format is automatically filled in the command box for you.
 The help text, which explains how to use the command, is also displayed in the result pane.
 +
 image:extended-autocomplete-step-2.png[width="1000"]
@@ -603,7 +611,7 @@ NOTE: The keyborad shortcuts are created only for commands with heavy text input
 | `clear` | kbd:[control] + kbd:[c]/kbd:[C]
 |===
 
-=== Add tasks [Since v1.3]
+=== Add tasks [Since v1.3] [[addtask]]
 
 Add personal tasks into the address book.
 Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
@@ -612,6 +620,89 @@ Examples:
 
 * `task d/CS2103 Assignment pr/2 on 26/10/2017`
 * `task d/Finish Teammate Feedback Session pr/0 on 01/11/2017`
+
+=== List tasks [Since v1.4] [[listtask]]
+
+This command enables you to retrieve personal tasks that you have stored in
+the address book. +
+Format: `listtask`
+
+==== Description
+
+*************
+* The `listtask` command shows all tasks that you have created in the address book
+previously using the `<<addtask,task>>` command.
+* Tasks are listed in the order that you have created them.
+*************
+
+==== How to use
+
+. Click on the `Tasks` tab.
++
+image:tasks-tab-pre.png[width="800"]
+. The user interface now shows a yellow text-area.
++
+image:tasks-tab-post.png[width="800"]
+
+. Type `listtask` into the command box.
++
+image:listtask-command-pre.png[width="400"]
+
+. Hit the kbd:[ENTER] key. All your tasks will be displayed in the
+yellow text-area as shown below.
++
+image:listtask-command-post.png[width="800"]
+
+=== Delete tasks : `deletetask` [[deletetasks]]
+
+This command enables you to remove unecessary/unwanted tasks
+from the address book. +
+Command Format: `deletetask INDEX_1/INDEX_2/INDEX_3 ...` +
+
+==== Description
+
+****
+* `INDEX_1`, `INDEX_2`, etc. refer to the task numbers that
+are shown when you use the <<listtask,`listtask`>> command to show your tasks
+(See <<how-to-use-deletetasks,how to use>> for an example).
+* `INDEX_1`, `INDEX_2`, etc. must be positive integers
+(i.e. they must be whole numbers greater than 0 such as 1, 2, 3, etc.).
+* This command deletes multple tasks simultaneously (i.e. it deletes tasks with the task numbers
+that you have specified when typing the `deletetask` command).
+****
+
+==== Examples
+
+|===
+| Your input | Result
+| `deletetask` 1 | Deletes task no. 1 from the address book.
+| `deletetask` 1/2 | Deletes tasks no. 1 and 2 from the address book
+(if there are at least 2 tasks in the address book).
+Otherwise, an error message is shown.
+| `deletetask` -1 | An error message is shown as task numbers cannot be negative.
+|===
+
+==== How to use
+
+. Use the `<<listtask,listtask>>` command to display all your tasks.
+Note the number of the tasks that you wish to delete.
++
+image:deletetask-listtask.png[width="800"]
+
+. Type `deletetask INDEX_1/INDEX_2 ...` into the command box.
++
+image:deletetask-command-pre.png[width="400"]
+
+. Hit the kbd:[ENTER] key. You will see the following success
+message if the command was successful.
++
+image:deletetask-command-post.png[width="400"]
+
+. If you use the `<<listtask,listtask>>` command again, observe that
+ the tasks that you have specified in the previous step have been deleted from
+ the address book.
++
+image:deletetask-proof.png[width="800"]
 
 === Sound effect for system events [Since v1.3]
 
@@ -635,6 +726,64 @@ Different sound clips will be played according to whether a command was successf
 Failure sound clip is played if command is unsuccessful.
 
 |===
+
+=== Edit task [Since v1.4]
+
+To edit your tasks, first you should learn how to list task. Listing tasks is for you to get the index of the task you indent to edit.
+Then use "edittask" command with its index to edit the task. The format is as follows:
+Format: `edittask INDEX d/DESCRIPTION priority/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
+
+==== Description
+
+*************
+* Index mist be a positive number.
+* At least one field (either priority or due date) has to be specified.
+*************
+
+==== How to use
+. Enter the command, the index of the task, and the details you wish to edit with its prefix. Please refer to the image below for an example:
++
+image:EditTaskStep1.png[width="300"]
+
+. The application will give you conformation information displayed. Please refer to the image below for an example:
++
+image:EditTaskStep2.png[width="300"]
+
+==== Example
+
+|===
+| *Your input* | Result
+| `edittask 1 prioroty/1` | The application will display "Edited task: " + the details of the task you just edited. +
+|===
+
+=== Clear task [Since v1.4]
+
+To clear your task list, "cleartask" is the command to use. The format is as follows:
+Format: `cleartask`
+
+==== Description
+
+*************
+* you can perform command `undo`, if you accidentally clear your task list.
+*************
+
+==== How to use
+. Enter the command "cleartask". Please refer to the image below for an example:
++
+image:ClearTaskStep1.png[width="300"]
+
+. Confirmation message will be displayed. Please refer to the image below for an example:
++
+image:ClearTaskStep2.png[width="300"]
+
+
+==== Example
+
+|===
+| *Your input* | Result
+| `cleartask` | "Task list has been cleared." will be displayed on the window +
+|===
+
 
 === Tag use emoji : `tag emoji` [Coming in V2.0]
 
@@ -689,7 +838,7 @@ e.g. `mf n/iv p/9 e/g a/ge`
 * *Deleting multiple person*: `delete index/another index/...` +
 e.g. `delete 2/3`
 * *AutoCompele*: `[Prefix]` +
-e.g. `del` expands to `delete` in the command bar
+e.g. `del` expands to `delete` in the command box
 
 == Keyboard shortcuts Summary
 |===

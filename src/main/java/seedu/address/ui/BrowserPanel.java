@@ -87,6 +87,7 @@ public class BrowserPanel extends UiPart<Region> {
         browser = null;
     }
 
+    //@author chairz
     /**
      *  Read and Display the task on the Text Area
      */
