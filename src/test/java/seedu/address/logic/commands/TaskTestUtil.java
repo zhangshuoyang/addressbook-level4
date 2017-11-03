@@ -25,7 +25,6 @@ public class TaskTestUtil {
 
     public static final String VALID_DESC_AMY = "Task Amy";
     public static final String VALID_DESC_BOB = "Task Bob";
-
     public static final String VALID_PRIORITY_AMY = "1";
     public static final String VALID_PRIORITY_BOB = "0";
     public static final String VALID_PRIORITY_AMY_STRING = "1";
