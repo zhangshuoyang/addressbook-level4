@@ -31,6 +31,7 @@ public class DeleteCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
+    //@@author chairz
     @Test
     public void executeValidMultipleIndexUnfilteredListSuccess() throws Exception {
         ReadOnlyPerson personToDelete1 = model.getFilteredPersonList().get(INDEX_MULTIPLE_PERSON.get(0).getZeroBased());

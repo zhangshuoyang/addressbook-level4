@@ -24,6 +24,7 @@ public class DeleteTagCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
+    //@@author lancehaoh
     @Test
     /**
      * Ensure that after a tag is properly deleted from all contacts in the address book
@@ -49,6 +50,7 @@ public class DeleteTagCommandTest {
         }
     }
 
+    //@@author lancehaoh
     /**
      * Returns a {@code DeleteTagCommand} with the parameter {@code tag_name}.
      */

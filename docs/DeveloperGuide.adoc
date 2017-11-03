@@ -4,6 +4,7 @@
 :toc-placement: preamble
 :sectnums:
 :imagesDir: images
+:experimental:
 :stylesDir: stylesheets
 ifdef::env-github[]
 :tip-caption: :bulb:
@@ -428,7 +429,7 @@ due to the failure of Yahoo Weather Server. +
 === Autocomplete Mechanism[[autocomplete-feature]]
 
 The `autocomplete` feature is implemented in `AutoCompleteUtil` class. It enables commands to be automatically suggested and
-completed for users. For example, when the user type, "sea", and press `TAB` key, the complete command `search` appears on the command line. This feature saves time for users and improves the efficiency of the application in general.
+completed for users. For example, when the user type, "sea", and press kbd:[TAB] key, the complete command `search` appears on the command line. This feature saves time for users and improves the efficiency of the application in general.
 It is invoked in subclasses of `Logic` (e.g. `LogicManager`).
 
 The interaction between `AutoCompleteUtil` and `Logic` classes can be seen from the following sequence diagram:
@@ -438,7 +439,7 @@ image::AutoCompleteCommand.sequenceDiagram.png[width="800"]
 ==== Prerequisites/Dependencies [[autocomplete-dependencies]]
 
 * The hotkey for launching `autocomplete` is indicated in the `CommandBox` class.
-Currently, the hotkey is `TAB`.
+Currently, the hotkey is kbd:[TAB].
 * The `COMMAND_WORD` field must exist in the class file representing each command.
 * The `COMMAND_WORD` field in each command class is defined as the string that is used to invoke
 that command.
@@ -475,7 +476,7 @@ another method should be implemented in the `AutoCompleteUtil` class.
  than obtaining them from the `COMMAND_WORD` field of each type of command. +
 **Cons:** The developer has to add the `COMMAND_WORD` of every new command to the text file.
  Furthermore, there is repeated work (and higher risk of error) as the developer must take care to ensure that the text file's entry corresponds with the
-`COMMAND WORD` field.
+`COMMAND_WORD` field.
 
 === Extended Autocomplete Mechanism[[extended-autocomplete-feature]]
 
@@ -486,13 +487,13 @@ It is invoked in the `LogicManager` class.
 ==== Prerequisites/Dependencies
 
 * The hotkey for launching `extended autocomplete` is indicated in the `CommandBox` class.
-Currently, the hotkey is `Ctrl`. The following excerpt briefly shows how the `autocomplete` string
+Currently, the hotkey is kbd:[Ctrl]. The following excerpt briefly shows how the `autocomplete` string
 is determined based on the `Command` entered by the user.
 
-image::extended-auto-complete-snippet.png[width="800"]
+image::extended-autocomplete-snippet.png[width="800"]
 
 * The `COMMAND_WORD` and `AUTOCOMPLETE_FORMAT` fields must exist in all class files that represent commands.
-* For definition of `COMMAND_WORD`, see <<autocomplete-dependencies, section 4.5.1>>
+* For definition of `COMMAND_WORD`, see <<autocomplete-dependencies, section 4.4.1>>
 * The `AUTOCOMPLETE_FORMAT` field is defined as a string that contains the format of the command that is represented by the enclosing class.
 For example, if `test` command has the format of `test positive_integer` then `AUTOCOMPLETE_FORMAT` must be defined as
 `test positive_integer` in the `TestCommand` class.

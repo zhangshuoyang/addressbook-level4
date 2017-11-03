@@ -32,6 +32,7 @@ import seedu.address.model.person.ReadOnlyPerson;
 public class MultiFilterCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
+    //@@author lancehaoh
     @Test
     /**
      * Use various comparsions to verify if equals method has been properly overriden
@@ -111,6 +112,7 @@ public class MultiFilterCommandTest {
         assertFalse(firstNullableCommand.equals(secondNullableCommand));
     }
 
+    //@@author lancehaoh
     @Test
     /**
      * Verifies that multiple values in a field will be treated as a single string
@@ -128,6 +130,7 @@ public class MultiFilterCommandTest {
         assertCommandSuccess(command, expectedMessage, expectedList);
     }
 
+    //@@author lancehaoh
     @Test
     /**
      * Verifies if comparison is case-insensitive
@@ -166,6 +169,7 @@ public class MultiFilterCommandTest {
         }
     }
 
+    //@@author lancehaoh
     @Test
     /**
      * Verifies that a null predicate will not be used to filter persons
@@ -179,6 +183,7 @@ public class MultiFilterCommandTest {
                 model.getAddressBook().getPersonList());
     }
 
+    //@@author lancehaoh
     @Test
     /**
      * Checks if able to perform a substring filtering on names
@@ -195,6 +200,7 @@ public class MultiFilterCommandTest {
         assertCommandSuccess(command, expectedMessage, expectedList);
     }
 
+    //@@author lancehaoh
     @Test
     /**
      * Checks if able to perform a substring filtering on email
@@ -210,6 +216,7 @@ public class MultiFilterCommandTest {
         assertCommandSuccess(command, expectedMessage, expectedList);
     }
 
+    //@@author lancehaoh
     @Test
     /**
      * Checks if able to perform a multi-filter search (by name and email)
@@ -226,6 +233,7 @@ public class MultiFilterCommandTest {
         assertCommandSuccess(command, expectedMessage, expectedList);
     }
 
+    //@@author lancehaoh
     /**
      * Parses {@code userInput} into a {@code FindCommand}.
      */
@@ -245,6 +253,7 @@ public class MultiFilterCommandTest {
         return command;
     }
 
+    //@@author lancehaoh
     /**
      * Asserts that {@code command} is successfully executed, and<br>
      *     - the command feedback is equal to {@code expectedMessage}<br>

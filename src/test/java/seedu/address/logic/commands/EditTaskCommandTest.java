@@ -4,6 +4,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+//@@author JYL123
 /**
  * Contains integration tests (interaction with the Model) and unit tests for EditCommand.
  */

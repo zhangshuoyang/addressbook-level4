@@ -1,13 +1,8 @@
 package seedu.address.ui;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.logging.Logger;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -25,7 +20,6 @@ import seedu.address.commons.util.AudioUtil;
 import seedu.address.logic.ListElementPointer;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
@@ -75,6 +69,7 @@ public class CommandBox extends UiPart<Region> {
      */
     @FXML
     private void handleKeyPress(KeyEvent keyEvent) {
+        //@@author JYL123
         // Handles cases where multple keys are pressed simultaneously
         String getAlphabetPressed = keyEvent.getCode().toString();
         if (keyEvent.getCode().isLetterKey() && keyEvent.isControlDown()) {
@@ -144,6 +139,7 @@ public class CommandBox extends UiPart<Region> {
         }
     }
 
+    //@@author lancehaoh
     /**
      * Launches extended auto complete mechanism in logic
      * when the special key is pressed in the Command Box
@@ -160,6 +156,7 @@ public class CommandBox extends UiPart<Region> {
         }
     }
 
+    //@@author lancehaoh
     /**
      * Launches auto complete mechanism in logic
      * when the auto complete hotkey is pressed in the Command Box
@@ -239,6 +236,7 @@ public class CommandBox extends UiPart<Region> {
         commandTextField.positionCaret(commandTextField.getText().length());
     }
 
+    //@@author lancehaoh
     /**
      * Handles the Enter button pressed event.
      */
@@ -254,6 +252,7 @@ public class CommandBox extends UiPart<Region> {
             historySnapshot.next();
             // process result of the command
             commandTextField.setText("");
+
 
             if (parser.parseCommand(userInput) instanceof AddTaskCommand) {
                 // Process and display the most recently added task in a separate text field
