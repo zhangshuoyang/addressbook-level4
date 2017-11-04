@@ -24,17 +24,7 @@ import seedu.address.commons.events.ui.NewResultAvailableEvent;
 import seedu.address.commons.util.AudioUtil;
 import seedu.address.logic.ListElementPointer;
 import seedu.address.logic.Logic;
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.AddTaskCommand;
-import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.FindCommand;
-import seedu.address.logic.commands.ListTaskCommand;
-import seedu.address.logic.commands.MultiFilterCommand;
-import seedu.address.logic.commands.SearchCommand;
+import seedu.address.logic.commands.*;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -269,7 +259,6 @@ public class CommandBox extends UiPart<Region> {
                 lastTaskFieldOutput.append(listOfTask.get(listOfTask.size() - 1).toString());
                 lastTaskFieldOutput.append("\n");
                 PrintWriter out = new PrintWriter(new FileOutputStream(new File("taskData1.txt"), true));
-                out.println(lastTaskFieldOutput.toString());
                 out.close();
 
                 try {
@@ -285,7 +274,9 @@ public class CommandBox extends UiPart<Region> {
                 }
             }
 
-            if (parser.parseCommand(userInput) instanceof ListTaskCommand) {
+            Command currentCommand = parser.parseCommand(userInput);
+
+            if (currentCommand instanceof ListTaskCommand || currentCommand instanceof DeleteTaskCommand) {
                 // Process and display tasks in a separate text field
                 StringBuffer taskFieldOutput = new StringBuffer();
 
@@ -296,7 +287,6 @@ public class CommandBox extends UiPart<Region> {
                     taskFieldOutput.append(listOfTask.get(i).toString());
                     taskFieldOutput.append("\n");
                 }
-
                 taskDisplayed.setText(taskFieldOutput.toString());
             }
 
