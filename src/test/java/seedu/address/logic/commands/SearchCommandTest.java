@@ -13,6 +13,9 @@ import org.junit.Test;
 
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.AddressBookParser;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -56,6 +59,56 @@ public class SearchCommandTest {
         String expectedMessage = "Unknown tag";
         SearchCommand command = prepareCommand(" ");
         assertCommandSuccess(command, expectedMessage, Collections.emptyList());
+    }
+
+    //@@author lancehoah
+    @Test
+    /**
+     * Tests if search command can be successfully autocorrected
+     * up to maximum of 2 character substitutions
+     */
+    public void executeSearchCommandWrongSpellingCommandCorrected() {
+        Command commandWithOneSubstitution = parseWronglySpeltSearchCommand("searcf friends");
+
+        // Verify if command was parse to search command
+        assertTrue(commandWithOneSubstitution instanceof SearchCommand);
+
+        // Check if able to execute this search command
+        try {
+            commandWithOneSubstitution.setData(model, new CommandHistory(), new UndoRedoStack());
+            commandWithOneSubstitution.execute();
+        } catch (CommandException ce) {
+            ce.printStackTrace();
+        }
+
+        Command commandWithTwoSubstitution = parseWronglySpeltSearchCommand("searf friends");
+
+        // Verify if command was parse to search command
+        assertTrue(commandWithTwoSubstitution instanceof SearchCommand);
+
+        // Check if able to execute this search command
+        try {
+            commandWithTwoSubstitution.setData(model, new CommandHistory(), new UndoRedoStack());
+            commandWithTwoSubstitution.execute();
+        } catch (CommandException ce) {
+            ce.printStackTrace();
+        }
+    }
+
+    //@@author lancehaoh
+    /**
+     * Helper method to autocorrect wrongly spelt commands
+     */
+    private Command parseWronglySpeltSearchCommand(String userinput) {
+        AddressBookParser parser = new AddressBookParser();
+        Command parsedCommand = null;
+        // Parse a search command with small spelling error
+        try {
+            parsedCommand = parser.parseCommand(userinput);
+        } catch (ParseException pe) {
+            pe.printStackTrace();
+        }
+        return parsedCommand;
     }
 
     /**
