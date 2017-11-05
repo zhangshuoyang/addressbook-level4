@@ -700,7 +700,7 @@ message if the command was successful.
 +
 image:deletetask-command-post.png[width="400"]
 
-. If you use the `<<listtask,listtask>>` command again, observe that
+. Observe that
  the tasks that you have specified in the previous step have been deleted from
  the address book.
 +
