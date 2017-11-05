@@ -36,7 +36,7 @@ public class EditCommand extends UndoableCommand {
     public static final String COMMAND_WORD = "edit";
     public static final String COMMAND_WORD_ALIAS = "e";
     public static final String AUTOCOMPLETE_FORMAT =
-            COMMAND_WORD + " "
+            COMMAND_WORD + "   "
             + PREFIX_NAME + " "
             + PREFIX_PHONE + " "
             + PREFIX_EMAIL + " "
