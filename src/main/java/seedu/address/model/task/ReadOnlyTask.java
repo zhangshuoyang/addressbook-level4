@@ -2,6 +2,7 @@ package seedu.address.model.task;
 
 import javafx.beans.property.ObjectProperty;
 
+//@author chairz
 /**
  * A read-only immutable interface for a Task in the addressbook.
  * Implementations should guarantee: details are present and not null, field values are validated.

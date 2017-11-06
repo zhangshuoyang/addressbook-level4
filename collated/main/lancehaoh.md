@@ -108,6 +108,12 @@
         }
         return mapOfCommandsToFormats;
     }
+    public static Map<String, String> getMapofTaskCommandFormats() {
+        if (mapOfTaskCommandsToFormats.isEmpty()) {
+            initializeTaskCommandFormatMap();
+        }
+        return mapOfTaskCommandsToFormats;
+    }
 
 ```
 ###### \java\seedu\address\logic\commands\Command.java
@@ -149,9 +155,6 @@
      *
      */
     private static void initializeCommandFormatMap() {
-        mapOfCommandsToFormats.put(AddTaskCommand.COMMAND_WORD, AddTaskCommand.AUTOCOMPLETE_FORMAT);
-        mapOfCommandsToFormats.put(ListTaskCommand.COMMAND_WORD, ListTaskCommand.AUTOCOMPLETE_FORMAT);
-        mapOfCommandsToFormats.put(DeleteTaskCommand.COMMAND_WORD, DeleteTaskCommand.AUTOCOMPLETE_FORMAT);
         mapOfCommandsToFormats.put(AddCommand.COMMAND_WORD, AddCommand.AUTOCOMPLETE_FORMAT);
         mapOfCommandsToFormats.put(ClearCommand.COMMAND_WORD, ClearCommand.AUTOCOMPLETE_FORMAT);
         mapOfCommandsToFormats.put(DeleteCommand.COMMAND_WORD, DeleteCommand.AUTOCOMPLETE_FORMAT);
@@ -168,7 +171,6 @@
         mapOfCommandsToFormats.put(SelectCommand.COMMAND_WORD, SelectCommand.AUTOCOMPLETE_FORMAT);
         mapOfCommandsToFormats.put(UndoCommand.COMMAND_WORD, UndoCommand.AUTOCOMPLETE_FORMAT);
     }
-
 ```
 ###### \java\seedu\address\logic\commands\Command.java
 ``` java
@@ -483,9 +485,14 @@
     private void launchExtendedAutocomplete() {
         String userCommand = commandTextField.getText().split("\\s+")[0];
         Map<String, String> commandFormatMap = Command.getMapOfCommandFormats();
+        Map<String, String> commandTaskFormatMap = Command.getMapofTaskCommandFormats();
         Map<String, String> commandHelpMap = Command.getMapOfCommandHelp();
-        if (commandFormatMap.containsKey(userCommand)) {
-            commandTextField.setText(commandFormatMap.get(userCommand));
+        if (commandFormatMap.containsKey(userCommand) || commandTaskFormatMap.containsKey(userCommand)) {
+            if (commandFormatMap.containsKey(userCommand) == true) {
+                commandTextField.setText(commandFormatMap.get(userCommand));
+            } else {
+                commandTextField.setText(commandTaskFormatMap.get(userCommand));
+            }
             raise(new NewResultAvailableEvent(commandHelpMap.get(userCommand)));
         }
     }
@@ -591,7 +598,34 @@
             // process result of the command
             commandTextField.setText("");
 
-            if (parser.parseCommand(userInput) instanceof ListTaskCommand) {
+
+            if (parser.parseCommand(userInput) instanceof AddTaskCommand) {
+                // Process and display the most recently added task in a separate text field
+                StringBuffer lastTaskFieldOutput = new StringBuffer();
+                List<ReadOnlyTask> listOfTask = logic.getFilteredTaskList();
+                lastTaskFieldOutput.append("\n");
+                lastTaskFieldOutput.append("===Task=== " + "\n");
+                lastTaskFieldOutput.append(listOfTask.get(listOfTask.size() - 1).toString());
+                lastTaskFieldOutput.append("\n");
+                PrintWriter out = new PrintWriter(new FileOutputStream(new File("taskData1.txt"), true));
+                out.close();
+
+                try {
+                    String curr = System.getProperty("user.dir");
+                    Scanner s = new Scanner(new File(curr + "/taskData1.txt"));
+
+                    taskDisplayed.clear();
+                    while (s.hasNext()) {
+                        taskDisplayed.appendText(s.next() + "\n");
+                    }
+                } catch (FileNotFoundException fne) {
+                    throw new ParseException(fne.getMessage(), fne);
+                }
+            }
+
+            Command currentCommand = parser.parseCommand(userInput);
+
+            if (currentCommand instanceof ListTaskCommand || currentCommand instanceof DeleteTaskCommand) {
                 // Process and display tasks in a separate text field
                 StringBuffer taskFieldOutput = new StringBuffer();
 
@@ -602,10 +636,9 @@
                     taskFieldOutput.append(listOfTask.get(i).toString());
                     taskFieldOutput.append("\n");
                 }
-
                 taskDisplayed.setText(taskFieldOutput.toString());
             }
-
+            displayTab(userInput.split("\\s+")[0]);
             raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
 
             // Play success sound
