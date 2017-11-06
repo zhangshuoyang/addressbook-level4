@@ -1,11 +1,8 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
 import seedu.address.logic.parser.AutoCorrectCommand;
-import seedu.address.model.AddressBook;
-import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.exceptions.TaskNotFoundException;
 
 //@@author JYL123
@@ -27,7 +24,7 @@ public class ClearTaskCommand extends UndoableCommand {
         requireNonNull(model);
 
         int numberOfTasks = model.getFilteredTaskList().size();
-        for(int i = numberOfTasks - 1; i>= 0; i --) {
+        for (int i = numberOfTasks - 1; i >= 0; i--) {
             try {
                 model.deleteTask(model.getFilteredTaskList().get(i));
             } catch (TaskNotFoundException e) {
