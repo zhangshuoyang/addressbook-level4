@@ -112,6 +112,25 @@
     }
 }
 ```
+###### \java\seedu\address\model\person\Phone2Test.java
+``` java
+    public void isValidPhone() {
+        // invalid phone numbers
+        assertFalse(Phone2.isValidPhone("")); // empty string
+        assertFalse(Phone2.isValidPhone(" ")); // spaces only
+        assertFalse(Phone2.isValidPhone("91")); // less than 3 numbers
+        assertFalse(Phone2.isValidPhone("phone")); // non-numeric
+        assertFalse(Phone2.isValidPhone("9011p041")); // alphabets within digits
+        assertFalse(Phone2.isValidPhone("9312 1534")); // spaces within digits
+
+        // valid phone numbers
+        assertTrue(Phone2.isValidPhone("911")); // exactly 3 numbers
+        assertTrue(Phone2.isValidPhone("93121534"));
+        assertTrue(Phone2.isValidPhone("124293842033123")); // long phone numbers
+        assertTrue(Phone2.isValidPhone("-")); //2nd Phone number is not available
+    }
+}
+```
 ###### \java\seedu\address\model\task\DescriptionTest.java
 ``` java
     @Test
@@ -145,6 +164,22 @@
         assertTrue(Name.isValidName("21st birthday")); // alphanumeric characters
         assertTrue(Name.isValidName("21ST Birthday")); // with capital letters
         assertTrue(Name.isValidName("21st Birthday Party is the best party")); // long names
+    }
+}
+```
+###### \java\seedu\address\model\task\PriorityTest.java
+``` java
+    @Test
+    public void isValidPriority() {
+        // invalid description
+        assertFalse(Priority.isValidPriority("5")); // number < 0
+        assertFalse(Priority.isValidPriority("-5")); // number > 2
+
+
+        // valid description
+        assertTrue(Priority.isValidPriority("2")); // Priority 2
+
+
     }
 }
 ```

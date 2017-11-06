@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addressbook>
     <persons>
+        <name>Jane Doe</name>
+        <phone>98765432</phone>
+        <phone2>-</phone2>
+        <email>johnd@example.com</email>
+        <address>311, Clementi Ave 2, #02-25</address>
+    </persons>
+    <persons>
+        <name>Lily Tan</name>
+        <phone>93714282</phone>
+        <phone2>-</phone2>
+        <email>lily@gmail.com</email>
+        <address>123, Serangoon Garden</address>
+    </persons>
+    <persons>
+        <name>Daryl Chan</name>
+        <phone>94520014</phone>
+        <phone2>-</phone2>
+        <email>darlychan@gmail.com</email>
+        <address>572, Geylang Serai</address>
+    </persons>
+    <persons>
         <name>Romanov Li</name>
         <phone>81729423</phone>
         <phone2>-</phone2>
@@ -15,6 +36,7 @@
         <address>522 Punggol Street</address>
     </persons>
     <tags>owesMoney</tags>
+    <tags>Friend</tags>
     <tags>boyfriend</tags>
     <tags>colleagues</tags>
     <tags>friend</tags>
@@ -23,4 +45,39 @@
     <tags>criminal</tags>
     <tags>family</tags>
     <tags>friends</tags>
+    <tasks>
+        <description>d/CS2101</description>
+        <priority>2</priority>
+        <duedate>26/10/2017</duedate>
+    </tasks>
+    <tasks>
+        <description>d/CS2101</description>
+        <priority>1</priority>
+        <duedate>26/10/2017</duedate>
+    </tasks>
+    <tasks>
+        <description>d/I hate this mod</description>
+        <priority>2</priority>
+        <duedate>28/10/2017</duedate>
+    </tasks>
+    <tasks>
+        <description>d/Birthday</description>
+        <priority>2</priority>
+        <duedate>10/12/2017</duedate>
+    </tasks>
+    <tasks>
+        <description>d/Hello</description>
+        <priority>2</priority>
+        <duedate>29/10/2017</duedate>
+    </tasks>
+    <tasks>
+        <description>d/CS Assignment</description>
+        <priority>2</priority>
+        <duedate>29/10/2017</duedate>
+    </tasks>
+    <tasks>
+        <description>d/Test</description>
+        <priority>2</priority>
+        <duedate>29/10/2017</duedate>
+    </tasks>
 </addressbook>
