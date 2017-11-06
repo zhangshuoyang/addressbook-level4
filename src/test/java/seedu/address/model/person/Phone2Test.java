@@ -8,6 +8,7 @@ import org.junit.Test;
 public class Phone2Test {
 
     @Test
+    //@@author chairz
     public void isValidPhone() {
         // invalid phone numbers
         assertFalse(Phone2.isValidPhone("")); // empty string

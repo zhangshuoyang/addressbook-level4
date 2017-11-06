@@ -19,6 +19,7 @@ import seedu.address.model.person.ReadOnlyPerson;
 public abstract class Command {
     private static final HashMap<String, String> mapOfCommandsToFormats = new HashMap<>();
     private static final HashMap<String, String> mapOfCommandsToHelp = new HashMap<>();
+    private static final HashMap<String, String> mapOfTaskCommandsToFormats = new HashMap<>();
 
     //@@author lancehaoh
     private static final List<String> listOfAvailableCommandAliases = Arrays.asList (
@@ -89,6 +90,12 @@ public abstract class Command {
         }
         return mapOfCommandsToFormats;
     }
+    public static Map<String, String> getMapofTaskCommandFormats() {
+        if (mapOfTaskCommandsToFormats.isEmpty()) {
+            initializeTaskCommandFormatMap();
+        }
+        return mapOfTaskCommandsToFormats;
+    }
 
     //@@author lancehaoh
     public static List<String> getListOfAvailableCommandAliases() {
@@ -122,9 +129,6 @@ public abstract class Command {
      *
      */
     private static void initializeCommandFormatMap() {
-        mapOfCommandsToFormats.put(AddTaskCommand.COMMAND_WORD, AddTaskCommand.AUTOCOMPLETE_FORMAT);
-        mapOfCommandsToFormats.put(ListTaskCommand.COMMAND_WORD, ListTaskCommand.AUTOCOMPLETE_FORMAT);
-        mapOfCommandsToFormats.put(DeleteTaskCommand.COMMAND_WORD, DeleteTaskCommand.AUTOCOMPLETE_FORMAT);
         mapOfCommandsToFormats.put(AddCommand.COMMAND_WORD, AddCommand.AUTOCOMPLETE_FORMAT);
         mapOfCommandsToFormats.put(ClearCommand.COMMAND_WORD, ClearCommand.AUTOCOMPLETE_FORMAT);
         mapOfCommandsToFormats.put(DeleteCommand.COMMAND_WORD, DeleteCommand.AUTOCOMPLETE_FORMAT);
@@ -140,6 +144,18 @@ public abstract class Command {
         mapOfCommandsToFormats.put(SearchCommand.COMMAND_WORD, SearchCommand.AUTOCOMPLETE_FORMAT);
         mapOfCommandsToFormats.put(SelectCommand.COMMAND_WORD, SelectCommand.AUTOCOMPLETE_FORMAT);
         mapOfCommandsToFormats.put(UndoCommand.COMMAND_WORD, UndoCommand.AUTOCOMPLETE_FORMAT);
+    }
+    //@@author chairz
+    /**
+     *  Initialises the mapofTaskCommandsToFormat when it is being used for the first time
+     *  This method is seperated from the previous method to allow tabpane to work
+     */
+    private static void initializeTaskCommandFormatMap() {
+        mapOfTaskCommandsToFormats.put(AddTaskCommand.COMMAND_WORD, AddTaskCommand.AUTOCOMPLETE_FORMAT);
+        mapOfTaskCommandsToFormats.put(ListTaskCommand.COMMAND_WORD, ListTaskCommand.AUTOCOMPLETE_FORMAT);
+        mapOfTaskCommandsToFormats.put(DeleteTaskCommand.COMMAND_WORD, DeleteTaskCommand.AUTOCOMPLETE_FORMAT);
+        mapOfTaskCommandsToFormats.put(EditTaskCommand.COMMAND_WORD, EditTaskCommand.AUTOCOMPLETE_FORMAT);
+        mapOfTaskCommandsToFormats.put(ClearTaskCommand.COMMAND_WORD, ClearTaskCommand.AUTOCOMPLETE_FORMAT);
     }
 
     //@@author lancehaoh

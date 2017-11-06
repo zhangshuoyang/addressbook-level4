@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addressbook>
     <persons>
-        <name>John Doe</name>
-        <phone>98765432</phone>
-        <phone2>61234567</phone2>
-        <email>johnd@example.com</email>
-        <address>311, Clementi Ave 2, #02-25</address>
-        <tagged>Friend</tagged>
-    </persons>
-    <persons>
         <name>Jane Doe</name>
         <phone>98765432</phone>
         <phone2>-</phone2>
@@ -54,11 +46,6 @@
     <tags>family</tags>
     <tags>friends</tags>
     <tasks>
-        <description>d/assignment</description>
-        <priority>2</priority>
-        <duedate>01/01/2018</duedate>
-    </tasks>
-    <tasks>
         <description>d/CS2101</description>
         <priority>2</priority>
         <duedate>26/10/2017</duedate>
@@ -72,5 +59,25 @@
         <description>d/I hate this mod</description>
         <priority>2</priority>
         <duedate>28/10/2017</duedate>
+    </tasks>
+    <tasks>
+        <description>d/Birthday</description>
+        <priority>2</priority>
+        <duedate>10/12/2017</duedate>
+    </tasks>
+    <tasks>
+        <description>d/Hello</description>
+        <priority>2</priority>
+        <duedate>29/10/2017</duedate>
+    </tasks>
+    <tasks>
+        <description>d/CS Assignment</description>
+        <priority>2</priority>
+        <duedate>29/10/2017</duedate>
+    </tasks>
+    <tasks>
+        <description>d/Test</description>
+        <priority>2</priority>
+        <duedate>29/10/2017</duedate>
     </tasks>
 </addressbook>

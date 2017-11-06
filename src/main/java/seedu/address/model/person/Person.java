@@ -37,7 +37,7 @@ public class Person implements ReadOnlyPerson {
         // protect internal tags from changes in the arg list
         this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
     }
-
+    //@@author chairz
     public Person(Name name, Phone phone, Phone2 phone2, Email email, Address address, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = new SimpleObjectProperty<>(name);
@@ -71,6 +71,7 @@ public class Person implements ReadOnlyPerson {
         return name.get();
     }
 
+    //@@author chairz
     public void setPhone2(Phone2 phone2) {
         this.phone2.set(requireNonNull(phone2));
     }
@@ -80,6 +81,7 @@ public class Person implements ReadOnlyPerson {
         return phone2;
     }
 
+    //@@author chairz
     @Override
     public Phone2 getPhone2() {
         if (phone2 == null) {
