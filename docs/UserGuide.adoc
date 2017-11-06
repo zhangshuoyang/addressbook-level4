@@ -39,7 +39,7 @@ image::Ui.png[width="790"]
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 +
-.  Refer to the link:#command-summary[command-summary] section below for the complete list of commands
+.  Refer to the link:#command-summary[command-summary] section below for the complete list of commands.
 
 == Features
 
@@ -139,26 +139,37 @@ Returns any person having names `Betsy`, `Tim`, or `John`
 
 === Deleting a single person : `delete` [[delete-single-person]]
 
-Deletes the specified person from the address book. +
+Deletes the person, that you have specified, from the address book. +
 Command Format: `delete INDEX`, or `d INDEX` +
 Keyboard shortcut: kbd:[control] + kbd:[d]/kbd:[D]
+
+[TIP]
+This function deletes *ONE* person only. For deleting multple persons simultaneously,
+see section <<delete-multiple-persons , 3.19>>.
+
+==== Description
 
 ****
 * Deletes the person at the specified `INDEX`.
 * The index refers to the index number shown in the most recent listing.
 * The index *must be a positive integer* 1, 2, 3, ...
-* This function deletes *ONE* person only. For deleting multple persons simultaneously,
-see section <<delete-multiple-persons , 3.19>>.
 ****
 
-Examples:
+==== Examples
 
-* `list` +
-`delete 2` +
-Deletes the 2nd person in the address book.
-* `find Betsy` +
-`delete 1` +
+|===
+| Your input | Result
+| `list` +
+ `delete 2` +
+
+  *Note that `list` and `delete 2` are two different commands. |
+  Deletes the 2nd person in the address book.
+| `find Betsy` +
+ `delete 1` +
+
+ * Note that `find Betsy` and `delete 1` are two different commands. |
 Deletes the 1st person in the results of the `find` command.
+|===
 
 === Selecting a person : `select`, `s` [[select-command]]
 
@@ -250,8 +261,10 @@ Command Format: `exit`
 
 === Deleting a tag : `deletetag` [Since v1.0] [[deletetag-command]]
 
-Deletes the specified tag from the address book. +
-Command Format: `deletetag tag_name`
+Need to reorganize your social groups? `deletetag` enables you to delete
+tags from all your contacts in address book! +
+Command Format: `deletetag tag_name` +
+Quick demo: link:#how-to-use-deletetag-command[here]
 
 ==== Description
 
@@ -275,7 +288,7 @@ No action is performed if there is no tag named `friends` in address book.
 
 |===
 
-==== How to use
+==== How to use [[how-to-use-deletetag-command]]
 . Type `deletetag` followed by the name of the tag that you wish to delete.
 For example, we use the name "friends".
 +
@@ -285,10 +298,10 @@ image:DeleteTagCommand-step-1.png[width="250"]
 +
 image:DeleteTagCommand-step-2.png[width="250"]
 
-=== Use alias for commands [Since v1.0]
+=== Alias for commands [Since v1.0]
 Alias is an alternative and easier way to perform different commands.
 
-==== Available alias
+==== Available aliases
 |===
 | *Commands* | *Alias*
 | `Adds` | `a` +
@@ -426,10 +439,14 @@ NOTE: If no filters are used, all contacts will be displayed.
 
 === Autocomplete command names [Since v1.2] [[autocomplete-feature]]
 
-Finds commands whose names start with the user-entered text.
-Names of matching commands would be suggested to the user or automatically entered
- depending on how many matching commands were found. +
-Format: [Prefix]
+Press a shorcut key to automatically complete the command that you enter into the command box. +
+Format: [Prefix] +
+Quick demo:  link:#how-to-use-autocomplete[here]
+
+[TIP]
+This feature automatically completes/suggests names of commands.
+To automatically fill in the format of commands, see link:#extended-autocomplete-feature[`extended autocomplete`].
+
 
 ==== Description [[autocomplete-description]]
 
@@ -457,14 +474,19 @@ name for the command will be automatically filled into the command box instead o
 
 |===
 
-==== How to use
+==== How to use [[how-to-use-autocomplete]]
 
 Enter some text into the command box (as shown below) and press kbd:[TAB].
-Commands, whose names start with the entered text, will be suggested.
+Commands, whose names start with the text you typed, will be suggested in the result pane.
 See <<autocomplete-description, description>> for more details on how
  autocomplete works.
 
 image::AutoCompleteCommand-step-1.png[width="800"]
+
+[TIP]
+If there is only one command whose name starts with the text that you
+entered, then the full name of the command will be automatically filled in for you.
+For example, type `h`, then press kbd:[TAB].
 
 === AutoCorrect command names [Since v1.2]
 
@@ -503,8 +525,8 @@ image::AutoCorrectResult.png[width="500"]
 
 === Deleting multiple persons : `delete index/another index/...` [Since v1.2] [[delete-multiple-persons]]
 
-This command allows you to delete multiple persons from the address book in a
-single command line. +
+This command allows you to delete *multiple* contacts from the address book in a
+single command. +
 Format: `delete INDEX/INDEX`
 
 ==== Example
@@ -545,7 +567,12 @@ image::WeatherForecast.png[width="500"]
 === Extended autocomplete for commands [Since v1.3] [[extended-autocomplete-feature]]
 
 Autofills the full syntax of the command whose name matches the user-entered text exactly. +
-Format: [COMMAND_WORD]
+Format: [COMMAND_WORD] +
+Quick demo:  link:#how-to-use-extended-autocomplete[here]
+
+[TIP]
+This feature automatically fills in the format of a correctly
+spelt command. To automatically complete a command name, see link:#autocomplete-feature[`autocomplete`].
 
 ==== Description
 
@@ -565,7 +592,7 @@ Format: [COMMAND_WORD]
 
 |===
 
-==== How to use
+==== How to use [[how-to-use-extended-autocomplete]]
 
 . Enter the name of the command that you wish to use. For example, `add`.
 +
