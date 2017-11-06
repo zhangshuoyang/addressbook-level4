@@ -28,7 +28,7 @@ public class ClearTaskCommand extends UndoableCommand {
             try {
                 model.deleteTask(model.getFilteredTaskList().get(i));
             } catch (TaskNotFoundException e) {
-                e.printStackTrace();
+                assert false : "The target person cannot be missing";
             }
         }
 
