@@ -180,7 +180,7 @@ public class CommandBox extends UiPart<Region> {
         Map<String, String> commandTaskFormatMap = Command.getMapofTaskCommandFormats();
         Map<String, String> commandHelpMap = Command.getMapOfCommandHelp();
         if (commandFormatMap.containsKey(userCommand) || commandTaskFormatMap.containsKey(userCommand)) {
-            if (commandFormatMap.containsKey(userCommand) == true) {
+            if (commandFormatMap.containsKey(userCommand)) {
                 commandTextField.setText(commandFormatMap.get(userCommand));
             } else {
                 commandTextField.setText(commandTaskFormatMap.get(userCommand));
