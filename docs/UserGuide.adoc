@@ -80,17 +80,17 @@ Examples:
 
 === Listing all persons : `list`, `l` [[list-command]]
 
-Shows a list of all persons in the address book. +
+Shows all the contacts that you have added to address book. +
 Command Format: `list` or `l`
 
 === Editing a person : `edit`, `e` [[edit-command]]
 
-Edits an existing person in the address book. +
+If you need to update your contacts' information, you can do so with this command. +
 Command Format: `edit INDEX [n/NAME] [p/PHONE] [p2/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`, +
 or `e INDEX [n/NAME] [p/PHONE] [p2/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
 Keyboard shortcut: kbd:[control] + kbd:[e]/kbd:[E]
 
-
+==== Description
 ****
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the last person listing. The index *must be a positive integer* 1, 2, 3, ...
 * At least one of the optional fields must be provided.
@@ -109,12 +109,15 @@ Keyboard shortcut: kbd:[control] + kbd:[e]/kbd:[E]
 * Tags names should be alphanumeric +
 ****
 
-Examples:
+==== Examples
 
-* `edit 1 p/91234567 e/johndoe@example.com` +
-Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-* `edit 2 n/Betsy Crower t/` +
-Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+|===
+| Your input | Output
+| `edit 1 p/91234567 e/johndoe@example.com` |
+Updates the phone number and email address of the 1st person to `91234567` and `johndoe@example.com` respectively.
+| `edit 2 n/Betsy Crower t/` |
+Updates the name of the 2nd person to `Betsy Crower` and clears all existing tags.
+|===
 
 === Locating persons by name: `find`, `f` [[find-command]]
 
@@ -729,7 +732,8 @@ image:deletetask-proof.png[width="800"]
 
 === Sound effect for system events [Since v1.3]
 
-Different sound clips will be played according to whether a command was successful or not.
+Various sound clips are played for each system events (see 3.27.1) to
+keep you informed of the status of your actions.
 
 ==== Description
 
@@ -840,7 +844,7 @@ There is no need to save manually.
 * `link:#edit-command[edit]`: Update information for a contact of your choice.
 * `link:#find-command[find]`: Retrieve contacts of your choice.
 * `link:#list-command[list]`: Retrieve all contacts in address book.
-* `link:#help-command[help]`: Open a new window showing the user guide.
+* `link:#help-command[help]`: Open the user guide in a new window.
 * `link:#select-command[select]`: Select a contact of your choice.
 * `link:#history-command[history]`: Show the history of commands that you have typed.
 * `link:#undo-command[undo]`: Undo the last executed command (Note: not every command can be undone).
