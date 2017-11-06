@@ -15,7 +15,7 @@ public class SearchCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Search a group of Persons identified by the tag entered by users.\n"
-            + "Parameters: TAG (must be a tag exists)\n"
+            + "Parameters: TAG (must be a tag that exists)\n"
             + "Example: " + COMMAND_WORD + " friend colleague";
 
     private final NameWithTagContainsKeywordsPredicate predicate;
