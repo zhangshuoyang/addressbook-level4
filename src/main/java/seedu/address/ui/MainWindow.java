@@ -15,14 +15,20 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import seedu.address.MainApp;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.index.Index;
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
+import seedu.address.commons.events.ui.SwitchThemeRequestEvent;
 import seedu.address.commons.util.FxViewUtil;
 import seedu.address.logic.Logic;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.UserPrefs;
 
 /**
@@ -40,6 +46,8 @@ public class MainWindow extends UiPart<Region> {
 
     private Stage primaryStage;
     private Logic logic;
+
+    private static String currentTheme;
 
     // Independent Ui parts residing in this Ui container
     private BrowserPanel browserPanel;
@@ -64,6 +72,9 @@ public class MainWindow extends UiPart<Region> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private VBox mainWindow;
 
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
         super(FXML);
@@ -143,6 +154,10 @@ public class MainWindow extends UiPart<Region> {
         CommandBox commandBox = new CommandBox(logic, browserPanel.getTaskDisplayed(), browserPanel.getTabPane());
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
+        currentTheme = "/view/" + prefs.getAddressBookTheme();
+        mainWindow.getStylesheets().add(currentTheme);
+
+
     }
 
     void hide() {
@@ -205,6 +220,30 @@ public class MainWindow extends UiPart<Region> {
     }
 
 
+    /**
+     * Set theme based on user's input index
+     */
+    private void handleTheme(Index index) throws CommandException {
+        String[] themeArr = {"DarkTheme", "Light", "Ugly"};
+        String selectedTheme = themeArr[index.getZeroBased()];
+
+        String path = new String("/view/" + selectedTheme + ".css");
+        String extensionPath = new String("/view/Extensions" + selectedTheme + ".css");
+        prefs.setAddressBookTheme(themeArr[index.getZeroBased()] + ".css");
+
+        if (MainApp.class.getResource(path) == null) {
+            throw new CommandException(Messages.MESSAGE_UNKNOWN_THEME);
+        }
+
+        System.out.println(mainWindow.getStylesheets().toString() + "Have funnnnnnnnnnnnnn");
+        mainWindow.getStylesheets().clear();
+        mainWindow.getStylesheets().add(path);
+//        getRoot().getStylesheets().clear();
+//        getRoot().getStylesheets().add(path);
+
+    }
+
+
     void show() {
         primaryStage.show();
     }
@@ -229,5 +268,11 @@ public class MainWindow extends UiPart<Region> {
     private void handleShowHelpEvent(ShowHelpRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         handleHelp();
+    }
+
+    @Subscribe
+    private void handleSwitchThemeRequestEvent(SwitchThemeRequestEvent event) throws CommandException {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        handleTheme(event.index);
     }
 }
