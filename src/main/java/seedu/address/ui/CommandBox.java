@@ -299,17 +299,17 @@ public class CommandBox extends UiPart<Region> {
                 out.println(lastTaskFieldOutput.toString());
                 out.close();
 
-//                try {
-//                    String curr = System.getProperty("user.dir");
-//                    Scanner s = new Scanner(new File(curr + "/taskData1.txt"));
-//
-//                    taskDisplayed.clear();
-//                    while (s.hasNext()) {
-//                        taskDisplayed.appendText(s.next() + "\n");
-//                    }
-//                } catch (FileNotFoundException fne) {
-//                    throw new ParseException(fne.getMessage(), fne);
-//                }
+                try {
+                    String curr = System.getProperty("user.dir");
+                    Scanner s = new Scanner(new File(curr + "/taskData1.txt"));
+
+                    taskDisplayed.clear();
+                    while (s.hasNext()) {
+                        taskDisplayed.appendText(s.next() + "\n");
+                    }
+                } catch (FileNotFoundException fne) {
+                    throw new ParseException(fne.getMessage(), fne);
+                }
             }
 
             Command currentCommand = parser.parseCommand(userInput);

@@ -52,7 +52,7 @@ public class BrowserPanel extends UiPart<Region> {
         getRoot().setOnKeyPressed(Event::consume);
         displayTask();
         loadDefaultPage();
-//        displayOnTextArea();
+        displayOnTextArea();
         registerAsAnEventHandler(this);
     }
     //@@author chairz

@@ -11,7 +11,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * Parses the given {@code String} of arguments in the context of the SwitchThemeCommand
  * and returns an SwitchThemeCommand object for execution.
  */
-public class SwitchThemeCommandParser implements Parser<SwitchThemeCommand>{
+public class SwitchThemeCommandParser implements Parser<SwitchThemeCommand> {
 
     @Override
     public SwitchThemeCommand parse(String userInput) throws ParseException {
@@ -19,8 +19,8 @@ public class SwitchThemeCommandParser implements Parser<SwitchThemeCommand>{
             Index index = ParserUtil.parseIndex(userInput);
             return new SwitchThemeCommand(index);
         } catch (IllegalValueException e) {
-                throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                        SwitchThemeCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                    SwitchThemeCommand.MESSAGE_USAGE));
         }
     }
 
