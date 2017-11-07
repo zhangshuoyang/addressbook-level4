@@ -30,7 +30,7 @@ import seedu.address.logic.commands.UndoCommand;
  */
 public class AutoCorrectCommand {
     //By default, no message should be sent to user.
-    private static String messageToUser = "";
+    private String messageToUser = "";
 
     public void setMessageToUser(String messageToUser) {
         this.messageToUser = messageToUser;
