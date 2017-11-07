@@ -361,7 +361,7 @@ Examples:
 
 === Locating persons by multiple criteria: `multifilter` [Since v1.1] [[multifilter-format]]
 
-Finds persons whose names, phone no., emails and addresses, +
+Finds persons whose names, phone no., emails and addresses,
 match a set of specified criteria. +
 Format: `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]` +
 Quick demo: link:#how-to-use-multifilter[here]
@@ -474,7 +474,7 @@ image::AutoCompleteCommand-step-1.png[width="800"]
 [TIP]
 If there is only one command whose name starts with the text that you
 entered, then the full name of the command will be automatically filled in for you.
-For example, type `h`, then press kbd:[TAB].
+For example, if you type `h` and press kbd:[TAB], `help` will be filled into the command box.
 
 === AutoCorrect command names [Since v1.2]
 
@@ -586,7 +586,7 @@ spelt command. To automatically complete a command name, see link:#autocomplete-
 | `deletetag` | exapnds to `deletetag tag_name`
 | `dt` | `Contact Plus` does not respond.
 | `lisf` | `Contact Plus` does not respond.
-| LIST | `Contact Plus` des not respond.
+| LIST | `Contact Plus` does not respond.
 
 |===
 
@@ -602,11 +602,11 @@ The help text, which explains how to use the command, is also displayed in the r
 image:extended-autocomplete-step-2.png[width="1000"]
 
 . Add any additional information (based on the help text) should be typed into the command
-bar before pressing kbd:[ENTER].
+bar.
 +
 image:extended-autocomplete-step-3.png[width="1000"]
 
-. The result of the command is displayed in the result pane.
+. Press kbd:[ENTER]. The result of the command is displayed in the result pane.
 +
 image:extended-autocomplete-step-4.png[width="1000"]
 
