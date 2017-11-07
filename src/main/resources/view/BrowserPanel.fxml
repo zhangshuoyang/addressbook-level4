@@ -8,8 +8,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.web.WebView?>
 
+<!--@@chairz -->
 <StackPane prefHeight="374.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
-   <TabPane prefHeight="200.0" prefWidth="200.0" stylesheets="@TabView.css" tabClosingPolicy="UNAVAILABLE">
+   <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" stylesheets="@TabView.css" tabClosingPolicy="UNAVAILABLE">
      <tabs>
        <Tab text="Map">
          <content>

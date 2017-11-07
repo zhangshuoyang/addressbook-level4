@@ -15,6 +15,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
@@ -52,6 +53,7 @@ public class CommandBox extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(CommandBox.class);
     private final Logic logic;
     private final TextArea taskDisplayed;
+    private final TabPane tabPane;
     private final AudioUtil audio = new AudioUtil();
     private ListElementPointer historySnapshot;
 
@@ -59,17 +61,36 @@ public class CommandBox extends UiPart<Region> {
     private TextField commandTextField;
 
     public CommandBox(Logic logic) {
-        this(logic, null);
+        this(logic, null, null);
     }
 
-    public CommandBox(Logic logic, TextArea taskDisplayed) {
+    public CommandBox(Logic logic, TextArea taskDisplayed, TabPane tabPane) {
         super(FXML);
         this.logic = logic;
         this.taskDisplayed = taskDisplayed;
+        this.tabPane = tabPane;
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
         historySnapshot = logic.getHistorySnapshot();
     }
+    //@@author chairz
+    /**
+     * Change the tab based on command input, (@code keyEvent)
+     */
+    private void displayTab(String commandTyped) {
+        Map<String, String> commandFormatMap = Command.getMapOfCommandFormats();
+        List listOfAliases = Command.getListOfAvailableCommandAliases();
+        int index = tabPane.getSelectionModel().getSelectedIndex();
+        if (commandFormatMap.containsKey(commandTyped) || listOfAliases.contains(commandTyped)) {
+            if (index != 0) {
+                tabPane.getSelectionModel().selectFirst();
+            }
+        } else {
+            tabPane.getSelectionModel().selectLast();
+        }
+
+    }
+
 
     /**
      * Handles the key press event, {@code keyEvent}.
@@ -156,9 +177,14 @@ public class CommandBox extends UiPart<Region> {
     private void launchExtendedAutocomplete() {
         String userCommand = commandTextField.getText().split("\\s+")[0];
         Map<String, String> commandFormatMap = Command.getMapOfCommandFormats();
+        Map<String, String> commandTaskFormatMap = Command.getMapofTaskCommandFormats();
         Map<String, String> commandHelpMap = Command.getMapOfCommandHelp();
-        if (commandFormatMap.containsKey(userCommand)) {
-            commandTextField.setText(commandFormatMap.get(userCommand));
+        if (commandFormatMap.containsKey(userCommand) || commandTaskFormatMap.containsKey(userCommand)) {
+            if (commandFormatMap.containsKey(userCommand)) {
+                commandTextField.setText(commandFormatMap.get(userCommand));
+            } else {
+                commandTextField.setText(commandTaskFormatMap.get(userCommand));
+            }
             raise(new NewResultAvailableEvent(commandHelpMap.get(userCommand)));
         }
     }
@@ -300,7 +326,7 @@ public class CommandBox extends UiPart<Region> {
                 }
                 taskDisplayed.setText(taskFieldOutput.toString());
             }
-
+            displayTab(userInput.split("\\s+")[0]);
             raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
 
             // Play success sound

@@ -49,6 +49,23 @@
         uniqueAliases.addAll(Command.getListOfAvailableCommandAliases());
         assertEquals(Command.getListOfAvailableCommandAliases().size(), uniqueAliases.size());
     }
+
+```
+###### \java\seedu\address\logic\commands\CommandTest.java
+``` java
+    @Test
+    /**
+     * Check if every command has defined a help string
+     */
+    public void executeCheckHelpForEveryCommand() {
+        Map<String, String> mapOfCommandsToHelp = Command.getMapOfCommandHelp();
+        List<String> listOfAvailableCommands = new ArrayList<>(Command.getMapOfCommandFormats().keySet());
+
+        // Check if every command maps to a help string
+        for (String s : listOfAvailableCommands) {
+            assertTrue(mapOfCommandsToHelp.containsKey(s));
+        }
+    }
 }
 ```
 ###### \java\seedu\address\logic\commands\DeleteTagCommandTest.java
@@ -60,12 +77,11 @@
     public void executeFindDeletedTagFailure() {
         ObservableList<ReadOnlyPerson> listOfPersons = model.getFilteredPersonList();
 
-        // Delete a tag from all contacts in the address book
-        DeleteTagCommand deleteTagCommand = prepareCommand("friends");
+        // Delete a sample tag
         try {
-            deleteTagCommand.execute();
-        } catch (CommandException e) {
-            e.printStackTrace();
+            deleteTagHelper("friends");
+        } catch (CommandException ce) {
+            ce.printStackTrace();
         }
 
         // Check if the the tag is still present in anyone in the address book
@@ -76,6 +92,52 @@
                 assertNotEquals(tagName, "friends");
             }
         }
+    }
+
+```
+###### \java\seedu\address\logic\commands\DeleteTagCommandTest.java
+``` java
+    @Test
+    /**
+     * Check if a non-existent tag name can be properly handled
+     */
+    public void executeDeleteFakeTagNoActionPerformed() {
+        // Delete a tag twice to simulate a non-existent tag being deleted
+        try {
+            deleteTagHelper("friends");
+        } catch (CommandException ce) {
+            ce.printStackTrace();
+        }
+
+        List<Tag> oldListOfTags = model.getAddressBook().getTagList();
+
+        try {
+            deleteTagHelper("friends");
+        } catch (CommandException ce) {
+            ce.printStackTrace();
+        }
+
+        List<Tag> newListOfTags = model.getAddressBook().getTagList();
+
+        assertEquals(oldListOfTags, newListOfTags);
+    }
+
+```
+###### \java\seedu\address\logic\commands\DeleteTagCommandTest.java
+``` java
+    /**
+     * Helper method to autocorrect wrongly spelt commands
+     */
+    private Command parseWronglySpeltDeleteTagCommand(String userinput) {
+        AddressBookParser parser = new AddressBookParser();
+        Command parsedCommand = null;
+        // Parse a search command with small spelling error
+        try {
+            parsedCommand = parser.parseCommand(userinput);
+        } catch (ParseException pe) {
+            pe.printStackTrace();
+        }
+        return parsedCommand;
     }
 
 ```
@@ -93,6 +155,19 @@
             e.printStackTrace();
         }
         return deleteTagCommand;
+    }
+
+    /**
+     * Helper method for deleting a given tagName
+     *
+     * @param tagName An arbitrary string
+     *
+     * Executes a Delete Tag command to delete tags
+     * with matching tag name from all contacts
+     */
+    private void deleteTagHelper(String tagName) throws CommandException {
+        DeleteTagCommand deleteTagCommand = prepareCommand(tagName);
+        deleteTagCommand.execute();
     }
 }
 ```
@@ -500,6 +575,51 @@
         assertEquals(expectedList, model.getFilteredPersonList());
         assertEquals(expectedAddressBook, model.getAddressBook());
     }
+}
+```
+###### \java\seedu\address\logic\commands\SearchCommandTest.java
+``` java
+    /**
+     * Helper method to autocorrect wrongly spelt commands
+     */
+    private Command parseWronglySpeltSearchCommand(String userinput) {
+        AddressBookParser parser = new AddressBookParser();
+        Command parsedCommand = null;
+        // Parse a search command with small spelling error
+        try {
+            parsedCommand = parser.parseCommand(userinput);
+        } catch (ParseException pe) {
+            pe.printStackTrace();
+        }
+        return parsedCommand;
+    }
+
+    /**
+     * Parses {@code userInput} into a {@code SearchCommand}.
+     */
+    private SearchCommand prepareCommand(String userInput) {
+        SearchCommand command =
+                new SearchCommand(new NameWithTagContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+"))));
+        command.setData(model, new CommandHistory(), new UndoRedoStack());
+        return command;
+    }
+
+
+    /**
+     * Asserts that {@code command} is successfully executed, and<br>
+     *     - the command feedback is equal to {@code expectedMessage}<br>
+     *     - the {@code FilteredList<ReadOnlyPerson>} is equal to {@code expectedList}<br>
+     *     - the {@code AddressBook} in model remains the same after executing the {@code command}
+     */
+    private void assertCommandSuccess(SearchCommand command, String expectedMessage, List<Tag> expectedList) {
+        AddressBook expectedAddressBook = new AddressBook(model.getAddressBook());
+        CommandResult commandResult = command.execute();
+
+        assertEquals(expectedMessage, commandResult.feedbackToUser);
+        assertEquals(expectedList, model.getFilteredPersonByTagList());
+        assertEquals(expectedAddressBook, model.getAddressBook());
+    }
+
 }
 ```
 ###### \java\seedu\address\logic\parser\MultiFilterCommandParserTest.java
