@@ -12,6 +12,7 @@ import com.google.common.eventbus.Subscribe;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Region;
 import javafx.scene.web.WebView;
@@ -40,6 +41,9 @@ public class BrowserPanel extends UiPart<Region> {
     @FXML
     private TextArea taskDisplayed;
 
+    @FXML
+    private TabPane tabPane;
+
 
     public BrowserPanel() {
         super(FXML);
@@ -51,9 +55,8 @@ public class BrowserPanel extends UiPart<Region> {
         displayOnTextArea();
         registerAsAnEventHandler(this);
     }
-
+    //@@author chairz
     private void displayTask() {
-        //taskDisplayed.textProperty().bind(displayed);
         taskDisplayed.setStyle("-fx-font-family: monospace; -fx-background-color: #f8ecc2; -fx-font-size: 22px;");
 
     }
@@ -72,6 +75,10 @@ public class BrowserPanel extends UiPart<Region> {
         return taskDisplayed;
     }
 
+    public TabPane getTabPane() {
+        return tabPane;
+    }
+
     /**
      * Loads a default HTML file with a background that matches the general theme.
      */
@@ -87,7 +94,7 @@ public class BrowserPanel extends UiPart<Region> {
         browser = null;
     }
 
-    //@author chairz
+    //@@author chairz
     /**
      *  Read and Display the task on the Text Area
      */
@@ -105,6 +112,7 @@ public class BrowserPanel extends UiPart<Region> {
             System.err.println(ex);
         }
     }
+
 
     @Subscribe
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
