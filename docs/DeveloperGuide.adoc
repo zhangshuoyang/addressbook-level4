@@ -579,6 +579,7 @@ is separated by `/`. +
 indicate if the contact has been deleted. +
 **Cons:** The whole List has to be iterated to check if the contact has been deleted.
 
+
 === Tab Switching Mechanism
 The tab pane will switch between `Task` and `Map` based on the command entered by the user. If the
  Command input is related to the `person` model, it will be switched to the `Map` tab. Likewise, if the
@@ -620,43 +621,59 @@ the `Command` class.
 **Cons:** Additional space is required for two different hashmaps. +
 
 === Theme Support Mechanism
+=======
+// tag::themeselect[]
+=== Theme Selection Mechanism
+>>>>>>> 9110f366cc21e1a0b85dd915d7ebed2ff30457c4
 
 The 'theme support' feature allows user to choose their favorite theme for the address book, other than the default
-Dark Theme.
+Dark Theme. It is facilitated by `SwitchThemeCommand` class.
 
-Currently, Contact Plus v1.2 is presented with two themes: Dark and Light.
+Currently, Contact Plus is presented with three themes: **Dark**(INDEX `1`), **Light**(INDEX `2`) and
+**Colourful**(INDEX `3`).
 
-Users are also allowed to preview themes at runtime before they choose them. The previews are supported with
-screenshots of the selected theme.
+The command word for switching theme is `switch`. When the user type the command word `switch` and the **INDEX**
+ of theme, `execute()` function in the `LogicManager` class will be called. Next the command line will be passed to
+`AddressBookParser` class which then returns `SwitchThemeCommandParser` to separate the **INDEX** from command word.
+The **INDEX** will be used to select the specific theme in the array of String `themeArr`. The theme selected
+will be used to build the filepath, which allows `MainWindow` class to retrieve the respective `.css` file and update
+theme accordingly.
 
-The overview of the theme is as follows:
+The overview of the themes is as follows:
 
-image::ThemeSupport.png[width="800"]
+image::DarkTheme.png[width="500"]
+image::LightTheme.png[width="500"]
+image::ColourfulTheme.png[width="500"]
 
 ==== Prerequisites/Dependencies
 
-* The line <URL value="@ThemeName.css" /> in `fxml` files is replaced by a method call via `javafx.scene.Scene` object
-in respective models.
-* The call is set to be `scene.getStylesheet().add(Theme Name);`
-* The theme preview images are stored in `/images/theme_image/'
-* The selection window would be implemented as a pop out window.
+* The line `<URL value="@ThemeName.css" />` in `fxml` files is replaced by a method call via
+`javafx.scene.layout.VBox` object in `MainWindow` class.
+* In current version of Contact Plus, the `INDEX` must be 1, 2, or 3.
+* The `SwitchThemeCommand` is currently not undoable.
 
 ==== Design Considerations
 
-**Aspect:** Implementation of `choose theme` feature +
+**Aspect:** Implementation of `switch theme` feature +
 
-**Alternative 1 (current choice):** Use a selection window with theme preview image. +
+**Alternative 1 (current choice):** Use command line to switch theme. +
+**Pros:** Only keyboard action is required. Users do not need to use mouse to click. +
+**Cons:** Preview of theme is not available. Users will only find out after they execute the command.
+
+**Alternative 2:** Use a selection window with theme preview image. +
 **Pros:** Users are able to know what the theme looks like before they choose the respective theme. +
 **Cons:** Additional space for `Theme Selection` window. +
+// end::themeselect[]
 
+// tag::addtask[]
 === Add Task Mechanism
 
-The 'add task' feature is facilitated by AddTaskCommand class. It allows users to add tasks into the address book
+The 'add task' feature is facilitated by `AddTaskCommand` class. It allows users to add tasks into the address book
 with a description, the level of priority as well as the due date. The tasks added will be shown on the stickies
 in the address book.
 
 The command word for adding a task is `task`. When users key in the command word `task`, together with valid
-description, priority and due date, the execute() function in the LogicManager class will be called, which will
+description, priority and due date, the `execute()` function in the `LogicManager` class will be called, which will
 pass the value of the command string into `parseCommand()` function in the `AddressBookParser` class.
 As a result, `AddTaskCommandParser` will be returned to separate the command string into three different parts
 - `Description`, `Priority` and `dueDate`. These three fields will be passed to `Task` class to check if they
@@ -680,6 +697,7 @@ the `executeUndoableCommand()` function in `AddTaskCommand` class will be called
 **Alternative 2:** Use a task list similar to the person list in the address book. +
 **Pros:** Easy to display and look through all the tasks. +
 **Cons:** Less attractive. +
+// end::addtask[]
 
 === Logging
 
