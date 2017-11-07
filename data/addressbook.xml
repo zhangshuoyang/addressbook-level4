@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addressbook>
     <persons>
-        <name>Jane Doe</name>
-        <phone>98765432</phone>
-        <phone2>-</phone2>
-        <email>johnd@example.com</email>
-        <address>311, Clementi Ave 2, #02-25</address>
-    </persons>
-    <persons>
-        <name>Lily Tan</name>
-        <phone>93714282</phone>
-        <phone2>-</phone2>
-        <email>lily@gmail.com</email>
-        <address>123, Serangoon Garden</address>
-    </persons>
-    <persons>
         <name>Daryl Chan</name>
         <phone>94520014</phone>
         <phone2>-</phone2>

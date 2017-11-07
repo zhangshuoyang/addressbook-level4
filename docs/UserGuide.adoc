@@ -17,11 +17,16 @@ endif::[]
 By: `Team W11-B1`      Since: `Sep 2107`      Licence: `MIT`
 
 == Welcome to Contact Plus
-`Contact Plus` is a command-line based contact-managing service
-(i.e. you have to enter commands to list/add/delete your contacts). We strive to provide comprehensive services for busy students on the campus so that they can manage their contacts efficiently. For example, the auto-correction feature allows
-our busy friend - David, a university student, to type fast without worrying about spelling mistakes.
+`Contact Plus` is a command-line based contact-managing application. This application allows you to manage your contact list on your computer. Also, `Contact Plus` can serve as a task managing application,
+ which allows you to record your upcoming appointments, events and tasks. We strive to provide comprehensive services for busy students as well as anyone who needs a contact-managing application. +
 
-This guide will help you get familiar with the features of `Contact Plus`.
+This guide will help you get familiar with the features of `Contact Plus`. If you encounter any problems or doubts, please press kbd:[F1] or type `Help` in commmand box (refer to link:#userInterface[User Interface]) for more information.
+
+== User Interface
+This is recommended to get familiar with the names of the components on this user interface as this guide will frequently refer to these names.
+The names of the components on this user interface are shown in the following image:
+
+image::GUI.png[width="790"]
 
 == Quick Start
 
@@ -35,7 +40,9 @@ This app will not work with earlier versions of Java 8.
 .  Copy the file to the folder you want to use as the home folder for your Address Book.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
+
 image::Ui.png[width="790"]
+
 +
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
@@ -101,14 +108,13 @@ Keyboard shortcut: kbd:[control] + kbd:[e]/kbd:[E]
 ****
 
 [TIP]
-****
-* A person can have any number of tags (including 0). +
-* A person can add the symbol '-' if a second phone number is not required for the contact. +
-* Person names should only contain alphanumeric characters and spaces, and it should not be blank. +
-* Person emails should be 2 alphanumeric/period strings separated by '@'. +
-* Phone numbers can only contain numbers, and should be at least 3 digits long. +
-* Tags names should be alphanumeric +
-****
+1. A person can have any number of tags (including 0). +
+2. A person can add the symbol '-' if a second phone number is not required for the contact. +
+3. Person names should only contain alphanumeric characters and spaces, and it should not be blank. +
+4. Person emails should be 2 alphanumeric/period strings separated by '@'. +
+5. Phone numbers can only contain numbers, and should be at least 3 digits long. +
+6. Tags names should be alphanumeric +
+
 
 ==== Examples
 
@@ -483,7 +489,7 @@ Application will notify the user that the command entered is corrected and perfo
 Format: [misspelt command]
 
 ****
-* The autoCorrect function will only work on the misspelt words within edit distance of 2.
+* The autoCorrect function will only work on the misspelt words with 2 alphebets different from the correct spelling.
 * The match is case-insensitive, e.g. "sEarhC" is equals to "search".
 * If no match is found, the application will display "Unknown command".
 ****
@@ -497,7 +503,7 @@ NOTE: Auto-correct is not designed for alias.
 |===
 | *Your input* |  *Result*
 | `deleet` | will match to `delete`.
-|  `del` | will not match to any command, application will display "Unkown command".
+| `del` | will not match to any command, application will display "Unkown command".
 | `d` | will be matched to `delete` still as it is an alias.
 | `m` | will not match to any command, application will display "Unkown command".
 |===
@@ -830,11 +836,6 @@ The application will prompt notifications for users on the computer for the up c
 Address book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
-== FAQ
-
-*Q*: How do I transfer my data to another Computer? +
-*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.
-
 == Command Summary [[command-summary]]
 
 * `link:#add-command[add]`: Add a person to address book.
@@ -857,7 +858,30 @@ you have specified.
 * `link:#deletetask-command[deletetask]`: Remove tasks from address book.
 * `link:#exit-command[exit]`: Quit the `Contact Plus` application.
 
-== Keyboard shortcuts Summary
+== Command Summary
+
+|===
+| *Function* | *Input command* | *Example*
+| `Add` | `add n/NAME p/PHONE_NUMBER p2/ PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` | `add n/James Ho p/22224444 p2/33335555 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+| `AutoCorrect` | `MIS-SPELT COMMAND + correct command format` | `serach John` will be matched to `search John`
+| `AutoCompele` | `[Prefix]` + kbd:[control] | `add \n` + kbd:[control] will show result `add n/ p/ p2/ e/ a/`
+| `Clear` | `clear` | `clear`
+| `Delete` | `delete INDEX` | `delete 3`
+| `Deleting multiple contacts` | `delete index/another index/...` | `delete 2/3`
+| `Edit` | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [p2/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` | `edit 2 n/James Lee e/jameslee@example.com`
+| `Find` | `find KEYWORD [MORE_KEYWORDS]` | `find James Jake`
+| `Help` | `help` | `help`
+| `History` | `history` | `history`
+| `List` | `list` | `list`
+| `Multi-filter` | `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]` | `mf n/iv p/9 e/g a/ge`
+| `Redo` | `redo` | `redo`
+| `Search` | `search NAME` | `search John`
+| `Search Tag` | `search TAG` | `search friends`
+| `Select` | `select INDEX` | `select 2`
+| `Undo` | `undo` | `undo`
+|===
+
+== Keyboard Shortcuts Summary
 |===
 | *Command* | *Keyboard shortcut*
 | `add` | kbd:[control] + kbd:[a]/kbd:[A]
@@ -869,7 +893,7 @@ you have specified.
 | `clear` | kbd:[control] + kbd:[c]/kbd:[C]
 |===
 
-== Command alias Summary [[list-of-alias]]
+== Command Alias Summary [[list-of-alias]]
 |===
 | *Commands* | *Alias*
 | `add` | `a` +
@@ -885,4 +909,19 @@ you have specified.
 | `undo` | `u` +
 | `redo` | `r` +
 |===
+
+== FAQ
+
+*Q*: How do I transfer my data to another Computer? +
+*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.
+
+*Q*: How do I view Contact Plus application? +
+*A*: Download the jar file link:{repoURL}/releases[here] from our github page, and run the jar file to get our application started.
+Also you can refer to the link:#quickstart[Quick Start] session.
+
+*Q*: How many contacts I can save in Contact Plus? +
+*A*: Currently we do not set a limit on the number of contacts that you can save on out application.
+
+*Q*: How do I view tasks in Contact Plus? +
+*A*: Simply click kbd:[Task] at the center of the application window, and input command `listtask` in the command window. You can toggle between `Map` and `Task` by clicking between kbd:[Map] and kbd:[Task].
 
