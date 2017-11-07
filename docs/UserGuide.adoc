@@ -924,3 +924,4 @@ Also you can refer to the link:#quickstart[Quick Start] session.
 
 *Q*: How do I view tasks in Contact Plus? +
 *A*: Simply click kbd:[Task] at the center of the application window, and input command `listtask` in the command window. You can toggle between `Map` and `Task` by clicking between kbd:[Map] and kbd:[Task].
+
