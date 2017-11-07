@@ -6,6 +6,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.events.ui.SwitchThemeRequestEvent;
 import seedu.address.logic.commands.exceptions.CommandException;
 
+//@@author zhangshuoyang
 /**
  * Switch the theme of the address book
  */

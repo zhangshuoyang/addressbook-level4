@@ -124,7 +124,6 @@ public class AddressBookParser {
             return new RedoCommand();
 
         default:
-            System.out.println("why here");
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }

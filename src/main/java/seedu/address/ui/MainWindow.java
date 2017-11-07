@@ -221,7 +221,7 @@ public class MainWindow extends UiPart<Region> {
         weatherWindow.show();
     }
 
-
+    //@@author zhangshuoyang
     /**
      * Set theme based on user's input index
      */
@@ -236,14 +236,13 @@ public class MainWindow extends UiPart<Region> {
             throw new CommandException(Messages.MESSAGE_UNKNOWN_THEME);
         }
 
-
         mainWindow.getStylesheets().clear();
         mainWindow.getStylesheets().add(path);
         mainWindow.getStylesheets().add("/view/Extensions.css");
 
     }
 
-
+    //@@author
     void show() {
         primaryStage.show();
     }
@@ -270,6 +269,7 @@ public class MainWindow extends UiPart<Region> {
         handleHelp();
     }
 
+    //@@author zhangshuoyang
     @Subscribe
     private void handleSwitchThemeRequestEvent(SwitchThemeRequestEvent event) throws CommandException {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
