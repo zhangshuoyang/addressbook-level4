@@ -17,10 +17,16 @@ endif::[]
 By: `Team W11-B1`      Since: `Sep 2107`      Licence: `MIT`
 
 == Welcome to Contact Plus
-Contact Plus is a contact-managing service through command line. We strive to provide the very comprehensive services for busy students on the campus so that they can manage their contacts efficiently. For example, the auto-correction feature allows
-our busy friend - David, a university student, to type fast on the keyboard without worrying spelling mistakes.
+`Contact Plus` is a command-line based contact-managing application. This application allows you to manage your contact list on your computer. Also, `Contact Plus` can serve as a task managing application,
+ which allows you to record your upcoming appointments, events and tasks. We strive to provide comprehensive services for busy students as well as anyone who needs a contact-managing application. +
 
-This guide will help you get familiar with the features of Contact Plus application.
+This guide will help you get familiar with the features of `Contact Plus`. If you encounter any problems or doubts, please press kbd:[F1] or type `Help` in commmand box (refer to link:#userInterface[User Interface]).
+
+== User Interface
+This is recommended to get familiar with the names of the components on this user interface as this guide will frequently refer to these names.
+The names of the components on this user interface are shown in the following image:
+
+image::GUI.png[width="790"]
 
 == Quick Start
 
@@ -34,7 +40,9 @@ This app will not work with earlier versions of Java 8.
 .  Copy the file to the folder you want to use as the home folder for your Address Book.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
+
 image::Ui.png[width="790"]
+
 +
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
