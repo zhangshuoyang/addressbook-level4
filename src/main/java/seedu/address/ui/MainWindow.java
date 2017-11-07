@@ -266,11 +266,4 @@ public class MainWindow extends UiPart<Region> {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         handleHelp();
     }
-
-    //@@author zhangshuoyang
-    @Subscribe
-    private void handleSwitchThemeRequestEvent(SwitchThemeRequestEvent event) throws CommandException {
-        logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        handleTheme(event.index);
-    }
 }

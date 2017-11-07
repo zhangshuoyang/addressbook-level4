@@ -15,8 +15,6 @@ import seedu.address.model.UserPrefs;
 //@@author zhangshuoyang
 public class SwitchThemeCommandTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-
     @Test
     public void equals() {
 
