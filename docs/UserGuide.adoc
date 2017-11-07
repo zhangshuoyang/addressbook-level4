@@ -17,10 +17,11 @@ endif::[]
 By: `Team W11-B1`      Since: `Sep 2107`      Licence: `MIT`
 
 == Welcome to Contact Plus
-Contact Plus is a contact-managing service through command line. We strive to provide the very comprehensive services for busy students on the campus so that they can manage their contacts efficiently. For example, the auto-correction feature allows
-our busy friend - David, a university student, to type fast on the keyboard without worrying spelling mistakes.
+`Contact Plus` is a command-line based contact-managing service
+(i.e. you have to enter commands to list/add/delete your contacts). We strive to provide comprehensive services for busy students on the campus so that they can manage their contacts efficiently. For example, the auto-correction feature allows
+our busy friend - David, a university student, to type fast without worrying about spelling mistakes.
 
-This guide will help you get familiar with the features of Contact Plus application.
+This guide will help you get familiar with the features of `Contact Plus`.
 
 == Quick Start
 
@@ -60,7 +61,7 @@ UI: Menu bar - kbd:[Help]
 
 === Adding a person: `add` [[add-command]]
 
-Adds a person to the address book +
+Adds a person to `Contact Plus` +
 Command Format: `add n/NAME p/PHONE_NUMBER p2/PHONE_NUMBER or '-' e/EMAIL a/ADDRESS [t/TAG]...` +
 Keyboard shortcut: kbd:[control] + kbd:[a]/kbd:[A]
 
@@ -80,7 +81,7 @@ Examples:
 
 === Listing all persons : `list`, `l` [[list-command]]
 
-Shows all the contacts that you have added to address book. +
+Shows all the contacts that you have added to `Contact Plus`. +
 Command Format: `list` or `l`
 
 === Editing a person : `edit`, `e` [[edit-command]]
@@ -142,13 +143,13 @@ Returns any person having names `Betsy`, `Tim`, or `John`
 
 === Deleting a single person : `delete` [[delete-single-person]]
 
-Deletes the person, that you have specified, from the address book. +
+Deletes the person, that you have specified, from `Contact Plus`. +
 Command Format: `delete INDEX`, or `d INDEX` +
 Keyboard shortcut: kbd:[control] + kbd:[d]/kbd:[D]
 
 [TIP]
 This function deletes *ONE* person only. For deleting multple persons simultaneously,
-see section <<delete-multiple-persons , 3.19>>.
+see section <<delete-multiple-persons , 3.20>>.
 
 ==== Description
 
@@ -166,7 +167,7 @@ see section <<delete-multiple-persons , 3.19>>.
  `delete 2` +
 
   *Note that `list` and `delete 2` are two different commands. |
-  Deletes the 2nd person in the address book.
+  Deletes the 2nd person in `Contact Plus`.
 | `find Betsy` +
  `delete 1` +
 
@@ -189,7 +190,7 @@ Examples:
 
 * `list` +
 `select 2` +
-Selects the 2nd person in the address book.
+Selects the 2nd person in `Contact Plus`.
 * `find Betsy` +
 `select 1` +
 Selects the 1st person in the results of the `find` command.
@@ -206,12 +207,12 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 
 === Undoing previous command : `undo`, `u` [[undo-command]]
 
-Restores the address book to the state before the previous _undoable_ command was executed. +
+Restores `Contact Plus` to the state before the previous _undoable_ command was executed. +
 Command Format: `undo`, `u`
 
 [NOTE]
 ====
-Undoable commands: those commands that modify the address book's content (`add`, `delete`, `edit` and `clear`).
+Undoable commands: commands that modify the content in `Contact Plus` (`add`, `delete`, `edit` and `clear`).
 ====
 
 Examples:
@@ -254,7 +255,7 @@ The `redo` command fails as there are no `undo` commands executed previously.
 
 === Clearing all entries : `clear`, `c` [[clear-command]]
 
-Clears all entries from the address book. +
+Clears all entries from `Contact Plus`. +
 Command Format: `clear` or `c`
 
 === Exiting the program : `exit` [[exit-command]]
@@ -265,7 +266,7 @@ Command Format: `exit`
 === Deleting a tag : `deletetag` [Since v1.0] [[deletetag-command]]
 
 Need to reorganize your social groups? `deletetag` enables you to delete
-tags from all your contacts in address book! +
+tags from all your contacts in `Contact Plus` ! +
 Command Format: `deletetag tag_name` +
 Quick demo: link:#how-to-use-deletetag-command[here]
 
@@ -274,8 +275,7 @@ Quick demo: link:#how-to-use-deletetag-command[here]
 ****
 * The alias for this command is `dt`. That means that you can type +
 `dt` instead of `deletetag`.
-* Deletes the tag with the specified `tag_name` from all records in the
-address book.
+* Deletes the tag with the specified `tag_name` from all records in `Contact Plus`.
 * `tag_name` is case-sensitive (i.e. `Friends` is not the
 same as `friends`).
 ****
@@ -285,9 +285,9 @@ same as `friends`).
 |===
 
 | *Your input* | *Result*
-| `deletetag friends` | Deletes the tag `friends` from all records in the address book. +
+| `deletetag friends` | Deletes the tag `friends` from all records in `Contact Plus`. +
 
-No action is performed if there is no tag named `friends` in address book.
+No action is performed if there is no tag named `friends` in `Contact Plus`.
 
 |===
 
@@ -297,29 +297,13 @@ For example, we use the name "friends".
 +
 image:DeleteTagCommand-step-1.png[width="250"]
 
-. After hitting kbd:[ENTER], the tag with the specified name is deleted from all contacts in the address book.
+. After hitting kbd:[ENTER], the tag with the specified name is deleted from all contacts in `Contact Plus`.
 +
 image:DeleteTagCommand-step-2.png[width="250"]
 
 === Alias for commands [Since v1.0]
-Alias is an alternative and easier way to perform different commands.
-
-==== Available aliases
-|===
-| *Commands* | *Alias*
-| `Adds` | `a` +
-| `Edit` | `e` +
-| `Select` | `st` +
-| `Search` | `sh` +
-| `Delete` | `d` +
-| `Deletetag` | `dt`. +
-| `Clear` | `c` +
-| `Multifilter` | `mf` +
-| `List` | `l` +
-| `History` | `h` +
-| `Undo` | `u` +
-| `Redo` | `r` +
-|===
+Too lazy to type the full command? The alias feature allows you to
+type a shorter version of the command name! A list of available aliases can be found  link:#list-of-alias[here].
 
 ==== How to use
 . The image below demonstrates the example of using `a`.
@@ -379,7 +363,8 @@ Examples:
 
 Finds persons whose names, phone no., emails and addresses, +
 match a set of specified criteria. +
-Format: `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]`
+Format: `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]` +
+Quick demo: link:#how-to-use-multifilter[here]
 
 ==== Description [[multifilter-description]]
 
@@ -388,7 +373,7 @@ Format: `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]`
 `mf` instead of `multifilter`.
 * The search is case-insensitive for all fields. e.g `mf n/hans` will +
 match `Hans`.
-* The search performs a substring match. This means that the 'mf n/a' +
+* The search performs a partial match. This means that `mf n/a` +
 will match both `alice` and `Hans` since both contain the letter `a`,
 * The order of the fields does not matter. +
 e.g.`mf n/hans e/a@ex.com` and `mf e/a@ex.com n/hans` +
@@ -424,7 +409,7 @@ An example of a matching contact for this command would be +
 
 |===
 
-==== How to use
+==== How to use [[how-to-use-multifilter]]
 
 . Enter `multifilter` into the command box followed by one or more format fields.
 See command format <<multifilter-format, here>>.
@@ -442,8 +427,8 @@ NOTE: If no filters are used, all contacts will be displayed.
 
 === Autocomplete command names [Since v1.2] [[autocomplete-feature]]
 
-Press a shorcut key to automatically complete the command that you enter into the command box. +
-Format: [Prefix] +
+Lazy to memorize command names? Press a shorcut key to automatically complete the text that you enter into the command box. +
+Format: [Some text] +
 Quick demo:  link:#how-to-use-autocomplete[here]
 
 [TIP]
@@ -457,7 +442,7 @@ To automatically fill in the format of commands, see link:#extended-autocomplete
 * The hotkey for `autocomplete` is kbd:[TAB].
 * The match is case-insensitive, e.g. `del` and `Del` will both match the `delete`
 command.
-* The system looks for commands whose names start with the user-entered text. This means that `del` will match `delete` but `ele`
+* The system looks for commands whose names start with the text that you entered. This means that `del` will match `delete` but `ele`
 will not.
 * If no text is entered before pressing the hotkey, the system displays all available commands.
 * The system does not support autocompletion for command aliases.
@@ -471,8 +456,8 @@ name for the command will be automatically filled into the command box instead o
 
 |===
 | *Your input* |  *Result*
-| `del` | Expands to `delete` in the command box
-|  `df` | Nothing is returned by address book.
+| `del` | Expands to `delete` in the command box.
+|  `df` | Nothing is returned by `Contact Plus`.
 | `d` | Returns various command suggestions in the result pane. e.g.`delete` and `deletetag`
 
 |===
@@ -528,14 +513,19 @@ image::AutoCorrectResult.png[width="500"]
 
 === Deleting multiple persons : `delete index/another index/...` [Since v1.2] [[delete-multiple-persons]]
 
-This command allows you to delete *multiple* contacts from the address book in a
+This command allows you to delete *multiple* contacts from `Contact Plus` in a
 single command. +
 Format: `delete INDEX/INDEX`
 
 ==== Example
 |===
 | *Your input* |  *Result*
-| `delete 1/2` | Deletes the first and second contact listed
+| `list` +
+`delete 1/2` +
+
+Note that `list` and `delete 1/2` are two different commands.
+
+| Deletes the first and second contact displayed by the `list` command.
 |===
 
 ==== How to use
@@ -544,7 +534,7 @@ Format: `delete INDEX/INDEX`
 
 image::deleteMultiplePerson1.png[width="500"]
 
-2) Enter `delete 2/3` to delete the 2nd and 3rd person from the address book. +
+2) Enter `delete 2/3` to delete the 2nd and 3rd person from `Contact Plus`. +
 
 image::deleteMultiplePerson2.png[width="500"]
 
@@ -569,9 +559,11 @@ image::WeatherForecast.png[width="500"]
 
 === Extended autocomplete for commands [Since v1.3] [[extended-autocomplete-feature]]
 
-Autofills the full syntax of the command whose name matches the user-entered text exactly. +
+Some commands such as `link:#add-command[add]` are very long and difficult to type.
+This feature enables you to automatically fill in the format of the command whose name matches
+the text that you entered. +
 Format: [COMMAND_WORD] +
-Quick demo:  link:#how-to-use-extended-autocomplete[here]
+Quick demo: link:#how-to-use-extended-autocomplete[here]
 
 [TIP]
 This feature automatically fills in the format of a correctly
@@ -592,12 +584,15 @@ spelt command. To automatically complete a command name, see link:#autocomplete-
 | *Your input* | *Result*
 | `delete` | expands to `delete index_number`
 | `deletetag` | exapnds to `deletetag tag_name`
+| `dt` | `Contact Plus` does not respond.
+| `lisf` | `Contact Plus` does not respond.
+| LIST | `Contact Plus` des not respond.
 
 |===
 
 ==== How to use [[how-to-use-extended-autocomplete]]
 
-. Enter the name of the command that you wish to use. For example, `add`.
+. Enter the *full name* of the command that you wish to use. For example, `add`.
 +
 image:extended-autocomplete-step-1.png[width="300"]
 
@@ -614,6 +609,9 @@ image:extended-autocomplete-step-3.png[width="1000"]
 . The result of the command is displayed in the result pane.
 +
 image:extended-autocomplete-step-4.png[width="1000"]
+
+[CAUTION]
+If you type the name of the command wrongly, `extended autocomplete` will not work.
 
 === Keyboard shortcuts [Since v1.3]
 
@@ -639,7 +637,7 @@ NOTE: The keyborad shortcuts are created only for commands with heavy text input
 
 === Add tasks [Since v1.3] [[addtask]] [[addtask-command]]
 
-Add personal tasks into the address book.
+Add personal tasks into `Contact Plus`.
 Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
 
 Examples:
@@ -650,18 +648,19 @@ Examples:
 === List tasks [Since v1.4] [[listtask]] [[listtask-command]]
 
 This command enables you to retrieve personal tasks that you have stored in
-the address book. +
-Format: `listtask`
+`Contact Plus`. +
+Format: `listtask` +
+Quick demo: link:#how-to-use-listtask[here]
 
 ==== Description
 
 *************
-* The `listtask` command shows all tasks that you have created in the address book
+* The `listtask` command shows all tasks that you have created in `Contact Plus`
 previously using the `<<addtask,task>>` command.
 * Tasks are listed in the order that you have created them.
 *************
 
-==== How to use
+==== How to use [[how-to-use-listtask]]
 
 . Click on the `Tasks` tab.
 +
@@ -681,15 +680,15 @@ image:listtask-command-post.png[width="800"]
 
 === Delete tasks : `deletetask` [[deletetasks]] [[deletetask-command]]
 
-This command enables you to remove unecessary/unwanted tasks
-from the address book. +
+This command enables you to remove unnecessary/unwanted tasks
+from `Contact Plus`. +
 Command Format: `deletetask INDEX_1/INDEX_2/INDEX_3 ...` +
 
 ==== Description
 
 ****
 * `INDEX_1`, `INDEX_2`, etc. refer to the task numbers that
-are shown when you use the <<listtask,`listtask`>> command to show your tasks
+are shown when you use the link:#listtask[`listtask`] command to show your tasks
 (See <<how-to-use-deletetasks,how to use>> for an example).
 * `INDEX_1`, `INDEX_2`, etc. must be positive integers
 (i.e. they must be whole numbers greater than 0 such as 1, 2, 3, etc.).
@@ -701,9 +700,9 @@ that you have specified when typing the `deletetask` command).
 
 |===
 | Your input | Result
-| `deletetask` 1 | Deletes task no. 1 from the address book.
-| `deletetask` 1/2 | Deletes tasks no. 1 and 2 from the address book
-(if there are at least 2 tasks in the address book).
+| `deletetask` 1 | Deletes task no. 1 from `Contact Plus`.
+| `deletetask` 1/2 | Deletes tasks no. 1 and 2 from `Contact Plus`
+(if there are at least 2 tasks in `Contact Plus`).
 Otherwise, an error message is shown.
 | `deletetask` -1 | An error message is shown as task numbers cannot be negative.
 |===
@@ -726,7 +725,7 @@ image:deletetask-command-post.png[width="400"]
 
 . Observe that
  the tasks that you have specified in the previous step have been deleted from
- the address book.
+ `Contact Plus`.
 +
 image:deletetask-proof.png[width="800"]
 
@@ -840,7 +839,7 @@ There is no need to save manually.
 
 * `link:#add-command[add]`: Add a person to address book.
 * `link:#clear-command[clear]`: Remove all contacts from address book.
-* `link:#delete-command[delete]`: Remove contacts from the address book.
+* `link:#delete-command[delete]`: Remove contacts from address book.
 * `link:#edit-command[edit]`: Update information for a contact of your choice.
 * `link:#find-command[find]`: Retrieve contacts of your choice.
 * `link:#list-command[list]`: Retrieve all contacts in address book.
@@ -870,7 +869,7 @@ you have specified.
 | `clear` | kbd:[control] + kbd:[c]/kbd:[C]
 |===
 
-== Command alias Summary
+== Command alias Summary [[list-of-alias]]
 |===
 | *Commands* | *Alias*
 | `add` | `a` +

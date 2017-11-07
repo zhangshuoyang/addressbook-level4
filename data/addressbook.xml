@@ -45,6 +45,20 @@
         <email>lanceh@hotmail.com</email>
         <address>522 Punggol Street</address>
     </persons>
+    <persons>
+        <name>Lance li</name>
+        <phone>914373013</phone>
+        <phone2>-</phone2>
+        <email>lance@gmail.com</email>
+        <address>Blk 123 Serangoon Garden</address>
+    </persons>
+    <persons>
+        <name>James Bond</name>
+        <phone>914373013</phone>
+        <phone2>-</phone2>
+        <email>lance@gmail.com</email>
+        <address>Blk 123 Yishun Ring Road</address>
+    </persons>
     <tags>owesMoney</tags>
     <tags>boyfriend</tags>
     <tags>colleagues</tags>
@@ -54,9 +68,4 @@
     <tags>criminal</tags>
     <tags>family</tags>
     <tags>friends</tags>
-    <tasks>
-        <description>d/assignment</description>
-        <priority>2</priority>
-        <duedate>01/01/2018</duedate>
-    </tasks>
 </addressbook>
