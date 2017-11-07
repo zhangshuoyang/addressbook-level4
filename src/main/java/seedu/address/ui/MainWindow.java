@@ -48,6 +48,7 @@ public class MainWindow extends UiPart<Region> {
     private Logic logic;
 
     private static String currentTheme;
+    private static String currentExtension;
 
     // Independent Ui parts residing in this Ui container
     private BrowserPanel browserPanel;
@@ -156,6 +157,7 @@ public class MainWindow extends UiPart<Region> {
 
         currentTheme = "/view/" + prefs.getAddressBookTheme();
         mainWindow.getStylesheets().add(currentTheme);
+        mainWindow.getStylesheets().add("/view/Extensions.css");
 
 
     }
@@ -228,18 +230,16 @@ public class MainWindow extends UiPart<Region> {
         String selectedTheme = themeArr[index.getZeroBased()];
 
         String path = new String("/view/" + selectedTheme + ".css");
-        String extensionPath = new String("/view/Extensions" + selectedTheme + ".css");
         prefs.setAddressBookTheme(themeArr[index.getZeroBased()] + ".css");
 
         if (MainApp.class.getResource(path) == null) {
             throw new CommandException(Messages.MESSAGE_UNKNOWN_THEME);
         }
 
-        System.out.println(mainWindow.getStylesheets().toString() + "Have funnnnnnnnnnnnnn");
+
         mainWindow.getStylesheets().clear();
         mainWindow.getStylesheets().add(path);
-//        getRoot().getStylesheets().clear();
-//        getRoot().getStylesheets().add(path);
+        mainWindow.getStylesheets().add("/view/Extensions.css");
 
     }
 
