@@ -641,6 +641,7 @@ NOTE: The keyborad shortcuts are created only for commands with heavy text input
 | `clear` | kbd:[control] + kbd:[c]/kbd:[C]
 |===
 
+// tag::addtask[]
 === Add tasks [Since v1.3] [[addtask]] [[addtask-command]]
 
 Add personal tasks into `Contact Plus`.
@@ -650,6 +651,7 @@ Examples:
 
 * `task d/CS2103 Assignment pr/2 on 26/10/2017`
 * `task d/Finish Teammate Feedback Session pr/0 on 01/11/2017`
+// end::addtask[]
 
 === List tasks [Since v1.4] [[listtask]] [[listtask-command]]
 
@@ -768,7 +770,7 @@ Format: `edittask INDEX d/DESCRIPTION priority/PRIORITY(0/1/2) on DUE DATE(dd/MM
 ==== Description
 
 *************
-* Index mist be a positive number.
+* Index must be a positive number.
 * At least one field (either priority or due date) has to be specified.
 *************
 
@@ -816,6 +818,37 @@ image:ClearTaskStep2.png[width="500"]
 | `cleartask` | "Task list has been cleared." will be displayed on the window +
 |===
 
+// tag::themeselect[]
+=== Switch theme [Since v1.5]
+If you are not happy with the current theme and want to select a new theme, use `switch` command with the index to
+switch to the theme you like. +
+Format: `switch INDEX`
+
+==== Description
+*************
+* Index must be 1, 2 or 3 only. Other values are deemed as invalid.
+* The command is not undoable. But you can switch back to the original theme by performing the command again.
+* Once you update the theme, your preference will be saved. The next time you open Contact Plus, it will not
+set back to default theme.
+* Default themes in Contact Plus are Dark, Light and Colourful. Below are the preview of 3 themes: +
+image:DarkTheme.png[width="500"] +
+image:LightTheme.png[width="500"] +
+image:ColourfulTheme.png[width="500"]
+*************
+
+==== How to use
+. Enter the command `switch`, together with index of the theme. (`1` stands for DarkTheme, `2` stands for
+LightTheme and `3` stands for ColourfulTheme) +
+. Once the command is successfully executed, the theme of Contact Plus will be updated immediately.
+
+==== Example
+|===
+| *Your input* | Result
+| `switch 2` | `Theme updated: Light` will be displayed. The theme will be set to the Light Theme. (refer to
+the diagram below) +
+image:LightTheme.png[width="500"]
+|===
+// end::themeselect[]
 
 === Tag use emoji : `tag emoji` [Coming in V2.0]
 
@@ -856,6 +889,7 @@ There is no need to save manually.
 | `Search` | `search NAME` | `search John`
 | `Search Tag` | `search TAG` | `search friends`
 | `Select` | `select INDEX` | `select 2`
+| `Switch` | `switch INDEX` | `switch 3`
 | `Undo` | `undo` | `undo`
 |===
 
