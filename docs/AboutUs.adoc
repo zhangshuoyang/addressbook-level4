@@ -32,6 +32,7 @@ Responsibilities: Model
 === Li Jiayao
 image::jyl123.jpg[width="150", align="left"]
 {empty}[https://github.com/JYL123[github]]
+{empty}[link:/team/JiayaoLi.html[portfolio]]
 
 Role: Team Lead +
 Responsibilities: Logic
