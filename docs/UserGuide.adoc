@@ -308,8 +308,9 @@ image:DeleteTagCommand-step-1.png[width="250"]
 image:DeleteTagCommand-step-2.png[width="250"]
 
 === Alias for commands [Since v1.0]
-Too lazy to type the full command? The alias feature allows you to
-type a shorter version of the command name! A list of available aliases can be found  link:#list-of-alias[here].
+Too lazy to type the full command? The alias feature allows you to type a shorter version of the command name.
+
+A list of available aliases can be found  link:#list-of-alias[here].
 
 ==== How to use
 . The image below demonstrates the example of using `a`.
@@ -343,13 +344,14 @@ Command Format: `search KEYWORD [MORE_KEYWORDS]`
 |===
 
 ==== How to use
-. The image below demonstrates the exact usage of function: search by tag.
+. Input the command to search contact of the same tag, e.g. friends.
 +
-image:SearchByTagCommand.png[width="500"]
+image:SearchTagCommand.png[width="500"]
 
-. The image below demonstrates one of the expected result returned kby Contact Plus.
+. The image below demonstrates the result of the above searching.
 +
-image:SearchByTagResult.png[width="500"]
+image:SearchTagResult.png[width="500"]
+---
 
 === Add second phone number for a person [Since v1.1]
 
@@ -482,9 +484,9 @@ If there is only one command whose name starts with the text that you
 entered, then the full name of the command will be automatically filled in for you.
 For example, type `h`, then press kbd:[TAB].
 
-=== AutoCorrect command names [Since v1.2]
+=== AutoCorrect command [Since v1.2]
 
-Finds command whose names start with the command entered from the user.
+Corrects misspelt command whose names start with the command entered from the user.
 Application will notify the user that the command entered is corrected and perform the corrected commmand. +
 Format: [misspelt command]
 
@@ -523,17 +525,6 @@ This command allows you to delete *multiple* contacts from `Contact Plus` in a
 single command. +
 Format: `delete INDEX/INDEX`
 
-==== Example
-|===
-| *Your input* |  *Result*
-| `list` +
-`delete 1/2` +
-
-Note that `list` and `delete 1/2` are two different commands.
-
-| Deletes the first and second contact displayed by the `list` command.
-|===
-
 ==== How to use
 
 1) Enter `list` into the Command Box. You will see all the added contacts below. +
@@ -548,6 +539,17 @@ image::deleteMultiplePerson2.png[width="500"]
 result is displayed to show the confirmation of deletion.
 
 image::deleteMultiplePerson3.png[width="500"]
+
+==== Example
+|===
+| *Your input* |  *Result*
+| `list` +
+`delete 1/2` +
+
+Note that `list` and `delete 1/2` are two different commands.
+
+| Deletes the first and second contact displayed by the `list` command.
+|===
 
 === Viewing Weather Forecast [Since v1.3]
 
@@ -770,22 +772,24 @@ Format: `edittask INDEX d/DESCRIPTION priority/PRIORITY(0/1/2) on DUE DATE(dd/MM
 *************
 * Index mist be a positive number.
 * At least one field (either priority or due date) has to be specified.
+* Description field is not editable. The only way to edit the description is to create a new task.
 *************
 
 ==== How to use
 . Enter the command, the index of the task, and the details you wish to edit with its prefix. Please refer to the image below for an example:
 +
-image:EditTaskStep1.png[width="500"]
+image:EditTaskStep1.png[width="800"]
 
 . The application will give you conformation information displayed. Please refer to the image below for an example:
 +
-image:EditTaskStep2.png[width="500"]
+image:EditTaskStep2.png[width="800"]
 
 ==== Example
 
 |===
 | *Your input* | Result
 | `edittask 1 prioroty/1` | The application will display "Edited task: " + the details of the task you just edited. +
+| `edittask 1 on 12/11/2019` | The application will display "Edited task: " + the details of the task you just edited. +
 |===
 
 === Clear task [Since v1.4] [[cleartask-command]]
@@ -802,11 +806,11 @@ Format: `cleartask`
 ==== How to use
 . Enter the command "cleartask". Please refer to the image below for an example:
 +
-image:ClearTaskStep1.png[width="500"]
+image:ClearTaskStep1.png[width="800"]
 
 . Confirmation message will be displayed. Please refer to the image below for an example:
 +
-image:ClearTaskStep2.png[width="500"]
+image:ClearTaskStep2.png[width="800"]
 
 
 ==== Example
