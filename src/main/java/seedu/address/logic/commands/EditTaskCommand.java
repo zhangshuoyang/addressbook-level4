@@ -130,7 +130,7 @@ public class EditTaskCommand extends UndoableCommand {
     }
 
     /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
+     * Stores the details to edit the task with. Each non-empty field value will replace the
      * corresponding field value of the person.
      */
     public static class EditTaskDescriptor {
