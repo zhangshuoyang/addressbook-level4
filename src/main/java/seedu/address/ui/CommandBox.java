@@ -98,8 +98,10 @@ public class CommandBox extends UiPart<Region> {
     @FXML
     private void handleKeyPress(KeyEvent keyEvent) {
         //@@author JYL123
-        // Handles cases where multple keys are pressed simultaneously
+        // Handles cases where multiple keys are pressed simultaneously
         String getAlphabetPressed = keyEvent.getCode().toString();
+        logger.info(getAlphabetPressed);
+
         if (keyEvent.getCode().isLetterKey() && keyEvent.isControlDown()) {
             //keyboard shortcut for input text heavy command
             switch (getAlphabetPressed) {
@@ -296,6 +298,7 @@ public class CommandBox extends UiPart<Region> {
                 lastTaskFieldOutput.append(listOfTask.get(listOfTask.size() - 1).toString());
                 lastTaskFieldOutput.append("\n");
                 PrintWriter out = new PrintWriter(new FileOutputStream(new File("taskData1.txt"), true));
+                out.println(lastTaskFieldOutput.toString());
                 out.close();
 
                 try {
