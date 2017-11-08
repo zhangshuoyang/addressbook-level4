@@ -17,8 +17,12 @@ endif::[]
 By: `Team W11-B1`      Since: `Sep 2107`      Licence: `MIT`
 
 == Welcome to Contact Plus
+// tag::welcome[]
+
 `Contact Plus` is a command-line based contact-managing application. This application allows you to manage your contact list on your computer. Also, `Contact Plus` can serve as a task managing application,
  which allows you to record your upcoming appointments, events and tasks. We strive to provide comprehensive services for busy students as well as anyone who needs a contact-managing application. +
+
+// end::welcome[]
 
 This guide will help you get familiar with the features of `Contact Plus`. If you encounter any problems or doubts, please press kbd:[F1] or type `Help` in commmand box (refer to link:#userInterface[User Interface]) for more information.
 
@@ -27,6 +31,8 @@ This is recommended to get familiar with the names of the components on this use
 The names of the components on this user interface are shown in the following image:
 
 image::GUI.png[width="790"]
+
+// tag::quick-start[]
 
 == Quick Start
 
@@ -40,14 +46,12 @@ This app will not work with earlier versions of Java 8.
 .  Copy the file to the folder you want to use as the home folder for your Address Book.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
-
-image::Ui.png[width="790"]
-
-+
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 +
 .  Refer to the link:#command-summary[command-summary] section below for the complete list of commands.
+
+// end::quick-start[]
 
 == Features
 
@@ -271,6 +275,8 @@ Command Format: `exit`
 
 === Deleting a tag : `deletetag` [Since v1.0] [[deletetag-command]]
 
+//tag::deletetag-command[]
+
 Need to reorganize your social groups? `deletetag` enables you to delete
 tags from all your contacts in `Contact Plus` ! +
 Command Format: `deletetag tag_name` +
@@ -307,9 +313,12 @@ image:DeleteTagCommand-step-1.png[width="250"]
 +
 image:DeleteTagCommand-step-2.png[width="250"]
 
+// end::deletetag-command[]
+
 === Alias for commands [Since v1.0]
-Too lazy to type the full command? The alias feature allows you to
-type a shorter version of the command name! A list of available aliases can be found  link:#list-of-alias[here].
+Too lazy to type the full command? The alias feature allows you to type a shorter version of the command name.
+
+A list of available aliases can be found  link:#list-of-alias[here].
 
 ==== How to use
 . The image below demonstrates the example of using `a`.
@@ -343,13 +352,14 @@ Command Format: `search KEYWORD [MORE_KEYWORDS]`
 |===
 
 ==== How to use
-. The image below demonstrates the exact usage of function: search by tag.
+. Input the command to search contact of the same tag, e.g. friends.
 +
-image:SearchByTagCommand.png[width="500"]
+image:SearchTagCommand.png[width="500"]
 
-. The image below demonstrates one of the expected result returned kby Contact Plus.
+. The image below demonstrates the result of the above searching.
 +
-image:SearchByTagResult.png[width="500"]
+image:SearchTagResult.png[width="500"]
+---
 
 === Add second phone number for a person [Since v1.1]
 
@@ -367,7 +377,9 @@ Examples:
 
 === Locating persons by multiple criteria: `multifilter` [Since v1.1] [[multifilter-format]]
 
-Finds persons whose names, phone no., emails and addresses, +
+//tag::multifilter-feature[]
+
+Finds persons whose names, phone no., emails and addresses,
 match a set of specified criteria. +
 Format: `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]` +
 Quick demo: link:#how-to-use-multifilter[here]
@@ -431,7 +443,11 @@ image:MultiFilterCommand-step-2.png[width="250"]
 NOTE: If no filters are used, all contacts will be displayed.
 ==============================================
 
+//end::multifilter-feature[]
+
 === Autocomplete command names [Since v1.2] [[autocomplete-feature]]
+
+//tag::autocomplete-feature[]
 
 Lazy to memorize command names? Press a shorcut key to automatically complete the text that you enter into the command box. +
 Format: [Some text] +
@@ -480,11 +496,13 @@ image::AutoCompleteCommand-step-1.png[width="800"]
 [TIP]
 If there is only one command whose name starts with the text that you
 entered, then the full name of the command will be automatically filled in for you.
-For example, type `h`, then press kbd:[TAB].
+For example, if you type `h` and press kbd:[TAB], `help` will be filled into the command box.
 
-=== AutoCorrect command names [Since v1.2]
+// end::autocomplete-feature[]
 
-Finds command whose names start with the command entered from the user.
+=== AutoCorrect command [Since v1.2]
+
+Corrects misspelt command whose names start with the command entered from the user.
 Application will notify the user that the command entered is corrected and perform the corrected commmand. +
 Format: [misspelt command]
 
@@ -523,17 +541,6 @@ This command allows you to delete *multiple* contacts from `Contact Plus` in a
 single command. +
 Format: `delete INDEX/INDEX`
 
-==== Example
-|===
-| *Your input* |  *Result*
-| `list` +
-`delete 1/2` +
-
-Note that `list` and `delete 1/2` are two different commands.
-
-| Deletes the first and second contact displayed by the `list` command.
-|===
-
 ==== How to use
 
 1) Enter `list` into the Command Box. You will see all the added contacts below. +
@@ -548,6 +555,17 @@ image::deleteMultiplePerson2.png[width="500"]
 result is displayed to show the confirmation of deletion.
 
 image::deleteMultiplePerson3.png[width="500"]
+
+==== Example
+|===
+| *Your input* |  *Result*
+| `list` +
+`delete 1/2` +
+
+Note that `list` and `delete 1/2` are two different commands.
+
+| Deletes the first and second contact displayed by the `list` command.
+|===
 
 === Viewing Weather Forecast [Since v1.3]
 
@@ -564,6 +582,8 @@ image::WeatherForecastButton.png[width="500"]
 image::WeatherForecast.png[width="500"]
 
 === Extended autocomplete for commands [Since v1.3] [[extended-autocomplete-feature]]
+
+//tag::extended-autocomplete-feature[]
 
 Some commands such as `link:#add-command[add]` are very long and difficult to type.
 This feature enables you to automatically fill in the format of the command whose name matches
@@ -592,7 +612,7 @@ spelt command. To automatically complete a command name, see link:#autocomplete-
 | `deletetag` | exapnds to `deletetag tag_name`
 | `dt` | `Contact Plus` does not respond.
 | `lisf` | `Contact Plus` does not respond.
-| LIST | `Contact Plus` des not respond.
+| LIST | `Contact Plus` does not respond.
 
 |===
 
@@ -608,16 +628,18 @@ The help text, which explains how to use the command, is also displayed in the r
 image:extended-autocomplete-step-2.png[width="1000"]
 
 . Add any additional information (based on the help text) should be typed into the command
-bar before pressing kbd:[ENTER].
+bar.
 +
 image:extended-autocomplete-step-3.png[width="1000"]
 
-. The result of the command is displayed in the result pane.
+. Press kbd:[ENTER]. The result of the command is displayed in the result pane.
 +
 image:extended-autocomplete-step-4.png[width="1000"]
 
 [CAUTION]
 If you type the name of the command wrongly, `extended autocomplete` will not work.
+
+//end::extended-autocomplete-feature[]
 
 === Keyboard shortcuts [Since v1.3]
 
@@ -655,6 +677,8 @@ Examples:
 
 === List tasks [Since v1.4] [[listtask]] [[listtask-command]]
 
+//tag::listtask-command[]
+
 This command enables you to retrieve personal tasks that you have stored in
 `Contact Plus`. +
 Format: `listtask` +
@@ -686,7 +710,11 @@ yellow text-area as shown below.
 +
 image:listtask-command-post.png[width="800"]
 
+//end::listtask-command[]
+
 === Delete tasks : `deletetask` [[deletetasks]] [[deletetask-command]]
+
+//tag::deletetask-command[]
 
 This command enables you to remove unnecessary/unwanted tasks
 from `Contact Plus`. +
@@ -737,7 +765,11 @@ image:deletetask-command-post.png[width="400"]
 +
 image:deletetask-proof.png[width="800"]
 
+//end::deletetask-command[]
+
 === Sound effect for system events [Since v1.3]
+
+//tag::music-feature[]
 
 Various sound clips are played for each system events (see 3.27.1) to
 keep you informed of the status of your actions.
@@ -761,6 +793,8 @@ Failure sound clip is played if command is unsuccessful.
 
 |===
 
+//end::music-feature[]
+
 === Edit task [Since v1.4] [[edittask-command]]
 
 To edit your tasks, first you should learn how to list task. Listing tasks is for you to get the index of the task you indent to edit.
@@ -772,22 +806,24 @@ Format: `edittask INDEX d/DESCRIPTION priority/PRIORITY(0/1/2) on DUE DATE(dd/MM
 *************
 * Index must be a positive number.
 * At least one field (either priority or due date) has to be specified.
+* Description field is not editable. The only way to edit the description is to create a new task.
 *************
 
 ==== How to use
 . Enter the command, the index of the task, and the details you wish to edit with its prefix. Please refer to the image below for an example:
 +
-image:EditTaskStep1.png[width="500"]
+image:EditTaskStep1.png[width="800"]
 
 . The application will give you conformation information displayed. Please refer to the image below for an example:
 +
-image:EditTaskStep2.png[width="500"]
+image:EditTaskStep2.png[width="800"]
 
 ==== Example
 
 |===
 | *Your input* | Result
 | `edittask 1 prioroty/1` | The application will display "Edited task: " + the details of the task you just edited. +
+| `edittask 1 on 12/11/2019` | The application will display "Edited task: " + the details of the task you just edited. +
 |===
 
 === Clear task [Since v1.4] [[cleartask-command]]
@@ -804,11 +840,11 @@ Format: `cleartask`
 ==== How to use
 . Enter the command "cleartask". Please refer to the image below for an example:
 +
-image:ClearTaskStep1.png[width="500"]
+image:ClearTaskStep1.png[width="800"]
 
 . Confirmation message will be displayed. Please refer to the image below for an example:
 +
-image:ClearTaskStep2.png[width="500"]
+image:ClearTaskStep2.png[width="800"]
 
 
 ==== Example

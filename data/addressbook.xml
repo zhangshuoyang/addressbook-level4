@@ -35,6 +35,23 @@
         <email>lance@gmail.com</email>
         <address>Blk 123 Yishun Ring Road</address>
     </persons>
+    <persons>
+        <name>John Doe</name>
+        <phone>98765432</phone>
+        <phone2>61234567</phone2>
+        <email>johnd@example.com</email>
+        <address>311, Clementi Ave 2, #02-25</address>
+        <tagged>owesMoney</tagged>
+        <tagged>friends</tagged>
+    </persons>
+    <persons>
+        <name>Alice Tan</name>
+        <phone>98765672</phone>
+        <phone2>-</phone2>
+        <email>johnd@example.com</email>
+        <address>311, Clementi Ave 2, #02-25</address>
+        <tagged>friends</tagged>
+    </persons>
     <tags>owesMoney</tags>
     <tags>Friend</tags>
     <tags>boyfriend</tags>
@@ -45,39 +62,4 @@
     <tags>criminal</tags>
     <tags>family</tags>
     <tags>friends</tags>
-    <tasks>
-        <description>d/CS2101</description>
-        <priority>2</priority>
-        <duedate>26/10/2017</duedate>
-    </tasks>
-    <tasks>
-        <description>d/CS2101</description>
-        <priority>1</priority>
-        <duedate>26/10/2017</duedate>
-    </tasks>
-    <tasks>
-        <description>d/I hate this mod</description>
-        <priority>2</priority>
-        <duedate>28/10/2017</duedate>
-    </tasks>
-    <tasks>
-        <description>d/Birthday</description>
-        <priority>2</priority>
-        <duedate>10/12/2017</duedate>
-    </tasks>
-    <tasks>
-        <description>d/Hello</description>
-        <priority>2</priority>
-        <duedate>29/10/2017</duedate>
-    </tasks>
-    <tasks>
-        <description>d/CS Assignment</description>
-        <priority>2</priority>
-        <duedate>29/10/2017</duedate>
-    </tasks>
-    <tasks>
-        <description>d/Test</description>
-        <priority>2</priority>
-        <duedate>29/10/2017</duedate>
-    </tasks>
 </addressbook>

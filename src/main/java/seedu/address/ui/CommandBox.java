@@ -75,7 +75,7 @@ public class CommandBox extends UiPart<Region> {
     }
     //@@author chairz
     /**
-     * Change the tab based on command input, (@code keyEvent)
+     * Change the tab based on command input
      */
     private void displayTab(String commandTyped) {
         Map<String, String> commandFormatMap = Command.getMapOfCommandFormats();
@@ -98,8 +98,10 @@ public class CommandBox extends UiPart<Region> {
     @FXML
     private void handleKeyPress(KeyEvent keyEvent) {
         //@@author JYL123
-        // Handles cases where multple keys are pressed simultaneously
+        // Handles cases where multiple keys are pressed simultaneously
         String getAlphabetPressed = keyEvent.getCode().toString();
+        logger.info(getAlphabetPressed);
+
         if (keyEvent.getCode().isLetterKey() && keyEvent.isControlDown()) {
             //keyboard shortcut for input text heavy command
             switch (getAlphabetPressed) {

@@ -14,6 +14,7 @@ Contact Plus is built based on AddressBook - Level 4. The team is as follows:
 === Chai Rui Zhong
 image::chairz.jpg[width="150", align="left"]
 {empty}[https://github.com/chairz[github]]
+{empty}[https://github.com/chairz[portfolio]]
 
 Role: Developer +
 Responsibilities: Storage
@@ -23,6 +24,8 @@ Responsibilities: Storage
 === Li Hong Sheng Gabriel
 image::gabriellhs.jpg[width="150", align="left"]
 {empty}[http://github.com/lancehaoh[github]]
+{empty}[link:/docs/team/gabriellhs.adoc[portfolio]]
+<a href="https://cs2103aug2017-w11-b1.github.io/main/team/gabriellhs.html" title="gabriellhs">Li Hong Sheng Gabriel</a>
 
 Role: Developer +
 Responsibilities: Model
@@ -32,6 +35,8 @@ Responsibilities: Model
 === Li Jiayao
 image::jyl123.jpg[width="150", align="left"]
 {empty}[https://github.com/JYL123[github]]
+{empty}[link:/docs/team/JiayaoLi.adoc[portfolio]]
+<a href="https://cs2103aug2017-w11-b1.github.io/main/team/JiayaoLi.html" title="Jiayao Li">Jiayao Li</a>
 
 Role: Team Lead +
 Responsibilities: Logic
