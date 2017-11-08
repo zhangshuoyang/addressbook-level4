@@ -24,7 +24,7 @@ Responsibilities: Storage
 image::gabriellhs.jpg[width="150", align="left"]
 {empty}[http://github.com/lancehaoh[github]]
 {empty}[link:/docs/team/gabriellhs.adoc[portfolio]]
-<a href="https://github.com/CS2103AUG2017-W11-B1/main/blob/master/docs/team/gabriellhs.html" title="gabriellhs">Li Hong Sheng Gabriel</a>
+<a href="https://github.com/CS2103AUG2017-W11-B1/main/blob/master/docs/team/gabriellhs.adoc" title="gabriellhs">Li Hong Sheng Gabriel</a>
 
 Role: Developer +
 Responsibilities: Model

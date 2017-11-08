@@ -13,7 +13,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 include::../UserGuide.adoc[tag=welcome]
 
 link:https://github.com/CS2103AUG2017-W11-B1/main/blob/master/collated/main/lancehaoh.md[[Functional code]]
-link:https://github.com/CS2103AUG2017-W11-B1/main/blob/master/collated/main/JYL123.md[[Test code]] {give links to collated code files}
+link:https://github.com/CS2103AUG2017-W11-B1/main/blob/master/collated/main/lancehaoh.md[[Test code]] {give links to collated code files}
 
 === Enhancement Added: Delete Tag
 
