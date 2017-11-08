@@ -428,6 +428,8 @@ due to the failure of Yahoo Weather Server. +
 
 === Autocomplete Mechanism[[autocomplete-feature]]
 
+//tag::autocomplete-mechanism[]
+
 The `autocomplete` feature is implemented in `AutoCompleteUtil` class. It enables commands to be automatically suggested and
 completed for users. For example, when the user type, "sea", and press kbd:[TAB] key, the complete command `search` appears on the command line. This feature saves time for users and improves the efficiency of the application in general.
 It is invoked in subclasses of `Logic` (e.g. `LogicManager`).
@@ -478,7 +480,11 @@ another method should be implemented in the `AutoCompleteUtil` class.
  Furthermore, there is repeated work (and higher risk of error) as the developer must take care to ensure that the text file's entry corresponds with the
 `COMMAND_WORD` field.
 
+//end::autocomplete-mechanism[]
+
 === Extended Autocomplete Mechanism[[extended-autocomplete-feature]]
+
+//tag::extended-autocomplete-mechanism[]
 
 The `extended autocomplete` feature is an add-on to the `autocomplete` feature
 and enables the full format of commands to be automatically filled into the command bar.
@@ -522,6 +528,79 @@ select the desired command using the shortcut for `extended autocomplete`. +
 Cons: Finite number of keys on the keyboard make it impossible to do a one-to-one mapping of shortcut keys to commands.
  Furthermore, it is quite tricky to implement as using keys with printable characters will result in extra characters
  being printed together with the string returned by `extended autocomplete`.
+
+//end::extended-autocomplete-mechanism[]
+
+=== Delete Tag Mechanism
+
+//tag::deletetag-mechanism[]
+
+This mechanism is modelled by the `DeleteTagCommand` class. An instance of
+`DeleteTagCommand` is instantiated by the `AddressBookParser` class when the
+user attempts to delete tasks. The following sequence diagram shows the process from the
+moment the user enters the `deletetag` command until the remaining tags
+are displayed in the interface of `Contact Plus`.
+
+image::DeleteTagCommand-sequence-diagram.png[width="800"]
+
+==== Prerequisites/Dependencies
+
+* The `deleteTag()` method in model must be able to accept a `Tag` as input and
+delete it from the address book.
+
+==== Design Considerations
+
+**Aspect:** Implementation of DeleteTagCommand +
+
+**Alternative 1 (current choice):** Delete the specified tag from all contacts in the address book. +
+**Pros:** Easy to implement. +
+**Cons:** If the user wishes to only remove that tag from one particular person. He has to re-add the tag
+to every person who had that tag previously (except the one from which he wanted to remove the tag).
+
+**Alternative 2:** Enable the user to choose several contacts from which he/she wishes to delete the tag. +
+**Pros:** User has more control over which users to remove the tag from. Hence, this implementation removes
+ the problem from alternative 1. +
+**Cons:** Implementation is more complex as contacts have to validated before handling the tag names.
+
+//end::deletetag-mechanism[]
+
+=== Multiple Filter Mechanism
+
+//tag::multifilter-mechanism[]
+
+This mechanism is modelled by the `MultiFilterCommand` class. An instance of
+`MultiFilterCommand` is instantiated by the `AddressBookParser` class when the
+user attempts to delete tasks. The following sequence diagram shows the process from the
+moment the user enters the `multifilter` command until the results
+are displayed in the interface of `Contact Plus`.
+
+image::MultiFilterCommand-sequence-diagram.png[width="800"]
+
+==== Prerequisites/Dependencies
+
+* The `clearFiltersOnPersonList()` method in the `Model` class must clear all filters
+in the filtered list of persons (i.e. show all elements in the list).
+* The `updateFilteredPersonList()` method in the `Model` class must accept a `Predicate` as
+input and apply it on the filtered list of persons (i.e. the list will only show
+elements that match the condition specified by the given `Predicate`).
+
+
+==== Design Considerations
+
+**Aspect:** Implementation of MultiFilterCommand +
+
+**Alternative 1 (current choice):** Allow the user to enter any number of filter fields (e.g. name, email, address, etc.) in any order. +
+**Pros:** The user does not have to type unnecessary information (e.g. he/she does not have to specify a blank email if he/she just wants
+to find a contact with a particular name). +
+**Cons:** Technically difficult to implement as missing filter fields have to be detected and handled appropriately.
+
+**Alternative 2:** Only allow the user to filter by one criteria in a single command. E.g.
+If the user wishes to filter by name and address, he/she has to filter by name then
+by address (using 2 commands). +
+**Pros:** Very easy to implement as there is only one filter field to handle. +
+**Cons:** Requires multiple steps, which could be irritating and non-intuitive to the user.
+
+//end::multifilter-mechanism[]
 
 === Delete Multiple Contacts Mechanism
 The `Delete` multiple contacts feature enables user to delete more than one contact in a single command by specifying more than one indices. It is
@@ -654,6 +733,77 @@ the `executeUndoableCommand()` function in `AddTaskCommand` class will be called
 **Pros:** Easy to display and look through all the tasks. +
 **Cons:** Less attractive. +
 // end::addtask[]
+
+=== List Task Mechanism
+
+//tag::listtask-mechanism[]
+
+This mechanism is modelled by the `ListTaskCommand` class. An instance of
+`ListTaskCommand` is instantiated by the `AddressBookParser` class when the
+user attempts to list tasks. The following sequence diagram shows the process from the
+moment the user enters the `listtask` command until the tasks
+are displayed in the interface of `Contact Plus`.
+
+image::ListTaskCommand-sequence-diagram.png[width="800"]
+
+==== Prerequisites/Dependencies
+
+* The `taskDisplayed` variable in `CommandBox` must be set to the instance of the `BrowserPanel`
+that contains the sticky where the tasks are to be displayed.
+* The `getFilteredTaskList()` method in `Logic` class must return a list of `ReadOnlyTasks` containing
+the tasks in the address book.
+
+==== Design Considerations
+
+**Aspect:** Implementation of ListTaskCommand +
+
+**Alternative 1 (current choice):** List all the tasks in one sticky note. +
+**Cons:** When too many tasks are added, the tasks will look very clutterd when displayed. +
+
+**Alternative 2:** Use one sticky note to display each task. +
+**Pros:** Interface will look much neater. +
+**Cons:** Not scalable as it is not practical to generate a large number of sticky notes. +
+
+//end::listtask-mechanism[]
+
+=== Delete Task Mechanism
+
+//tag::deletetask-mechanism[]
+
+This mechanism is modelled by the `DeleteTaskCommand` class. An instance of
+`DeleteTaskCommand` is instantiated by the `AddressBookParser` class when the
+user attempts to delete tasks. The following sequence diagram shows the process from the
+moment the user enters the `deletetask` command until the remaining tasks
+are displayed in the interface of `Contact Plus`.
+
+image::DeleteTaskCommand-sequence-diagram.png[width="800"]
+
+==== Prerequisites/Dependencies
+
+* The `taskDisplayed` variable in `CommandBox` must be set to the instance of the `BrowserPanel`
+that contains the sticky where the tasks are to be displayed.
+* The `getFilteredTaskList()` method in `Logic` class must return a list of `ReadOnlyTasks` containing
+the tasks in the address book.
+* The `deleteTask()` method in model must be able to accept a `ReadOnlyTask` as input and
+delete it from the address book.
+
+==== Design Considerations
+
+**Aspect:** Implementation of DeleteTaskCommand +
+
+**Alternative 1 (current choice):** Delete tasks from the address book every time the user executes the command to
+delete task. +
+**Pros:** Don't have to keep track of which tasks are no longer valid. +
+**Cons:** Causes overhead if the user repeatedly executes a command to delete tasks.
+
+**Alternative 2:** Use lazy deletion (i.e. use a boolean array to mark which tasks are no longer valid) without
+ automatically displaying the remaining tasks. Only delete tasks when
+  the user chooses to list tasks. +
+**Pros:** Less overhead as deletion only has to be done when user chooses to list tasks. +
+**Cons:** Difficult to implement and causes a lot of technical issues such as updating the
+list of tasks when the user closes the address book after deletion.
+
+//end::deletetask-mechanism[]
 
 === Logging
 

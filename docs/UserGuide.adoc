@@ -17,8 +17,12 @@ endif::[]
 By: `Team W11-B1`      Since: `Sep 2107`      Licence: `MIT`
 
 == Welcome to Contact Plus
+// tag::welcome[]
+
 `Contact Plus` is a command-line based contact-managing application. This application allows you to manage your contact list on your computer. Also, `Contact Plus` can serve as a task managing application,
  which allows you to record your upcoming appointments, events and tasks. We strive to provide comprehensive services for busy students as well as anyone who needs a contact-managing application. +
+
+// end::welcome[]
 
 This guide will help you get familiar with the features of `Contact Plus`. If you encounter any problems or doubts, please press kbd:[F1] or type `Help` in commmand box (refer to link:#userInterface[User Interface]) for more information.
 
@@ -27,6 +31,8 @@ This is recommended to get familiar with the names of the components on this use
 The names of the components on this user interface are shown in the following image:
 
 image::GUI.png[width="790"]
+
+// tag::quick-start[]
 
 == Quick Start
 
@@ -40,14 +46,12 @@ This app will not work with earlier versions of Java 8.
 .  Copy the file to the folder you want to use as the home folder for your Address Book.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
 +
-
-image::Ui.png[width="790"]
-
-+
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 +
 .  Refer to the link:#command-summary[command-summary] section below for the complete list of commands.
+
+// end::quick-start[]
 
 == Features
 
@@ -271,6 +275,8 @@ Command Format: `exit`
 
 === Deleting a tag : `deletetag` [Since v1.0] [[deletetag-command]]
 
+//tag::deletetag-command[]
+
 Need to reorganize your social groups? `deletetag` enables you to delete
 tags from all your contacts in `Contact Plus` ! +
 Command Format: `deletetag tag_name` +
@@ -306,6 +312,8 @@ image:DeleteTagCommand-step-1.png[width="250"]
 . After hitting kbd:[ENTER], the tag with the specified name is deleted from all contacts in `Contact Plus`.
 +
 image:DeleteTagCommand-step-2.png[width="250"]
+
+// end::deletetag-command[]
 
 === Alias for commands [Since v1.0]
 Too lazy to type the full command? The alias feature allows you to type a shorter version of the command name.
@@ -369,7 +377,9 @@ Examples:
 
 === Locating persons by multiple criteria: `multifilter` [Since v1.1] [[multifilter-format]]
 
-Finds persons whose names, phone no., emails and addresses, +
+//tag::multifilter-feature[]
+
+Finds persons whose names, phone no., emails and addresses,
 match a set of specified criteria. +
 Format: `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]` +
 Quick demo: link:#how-to-use-multifilter[here]
@@ -433,7 +443,11 @@ image:MultiFilterCommand-step-2.png[width="250"]
 NOTE: If no filters are used, all contacts will be displayed.
 ==============================================
 
+//end::multifilter-feature[]
+
 === Autocomplete command names [Since v1.2] [[autocomplete-feature]]
+
+//tag::autocomplete-feature[]
 
 Lazy to memorize command names? Press a shorcut key to automatically complete the text that you enter into the command box. +
 Format: [Some text] +
@@ -482,7 +496,9 @@ image::AutoCompleteCommand-step-1.png[width="800"]
 [TIP]
 If there is only one command whose name starts with the text that you
 entered, then the full name of the command will be automatically filled in for you.
-For example, type `h`, then press kbd:[TAB].
+For example, if you type `h` and press kbd:[TAB], `help` will be filled into the command box.
+
+// end::autocomplete-feature[]
 
 === AutoCorrect command [Since v1.2]
 
@@ -567,6 +583,8 @@ image::WeatherForecast.png[width="500"]
 
 === Extended autocomplete for commands [Since v1.3] [[extended-autocomplete-feature]]
 
+//tag::extended-autocomplete-feature[]
+
 Some commands such as `link:#add-command[add]` are very long and difficult to type.
 This feature enables you to automatically fill in the format of the command whose name matches
 the text that you entered. +
@@ -594,7 +612,7 @@ spelt command. To automatically complete a command name, see link:#autocomplete-
 | `deletetag` | exapnds to `deletetag tag_name`
 | `dt` | `Contact Plus` does not respond.
 | `lisf` | `Contact Plus` does not respond.
-| LIST | `Contact Plus` des not respond.
+| LIST | `Contact Plus` does not respond.
 
 |===
 
@@ -610,16 +628,18 @@ The help text, which explains how to use the command, is also displayed in the r
 image:extended-autocomplete-step-2.png[width="1000"]
 
 . Add any additional information (based on the help text) should be typed into the command
-bar before pressing kbd:[ENTER].
+bar.
 +
 image:extended-autocomplete-step-3.png[width="1000"]
 
-. The result of the command is displayed in the result pane.
+. Press kbd:[ENTER]. The result of the command is displayed in the result pane.
 +
 image:extended-autocomplete-step-4.png[width="1000"]
 
 [CAUTION]
 If you type the name of the command wrongly, `extended autocomplete` will not work.
+
+//end::extended-autocomplete-feature[]
 
 === Keyboard shortcuts [Since v1.3]
 
@@ -657,6 +677,8 @@ Examples:
 
 === List tasks [Since v1.4] [[listtask]] [[listtask-command]]
 
+//tag::listtask-command[]
+
 This command enables you to retrieve personal tasks that you have stored in
 `Contact Plus`. +
 Format: `listtask` +
@@ -688,7 +710,11 @@ yellow text-area as shown below.
 +
 image:listtask-command-post.png[width="800"]
 
+//end::listtask-command[]
+
 === Delete tasks : `deletetask` [[deletetasks]] [[deletetask-command]]
+
+//tag::deletetask-command[]
 
 This command enables you to remove unnecessary/unwanted tasks
 from `Contact Plus`. +
@@ -739,7 +765,11 @@ image:deletetask-command-post.png[width="400"]
 +
 image:deletetask-proof.png[width="800"]
 
+//end::deletetask-command[]
+
 === Sound effect for system events [Since v1.3]
+
+//tag::music-feature[]
 
 Various sound clips are played for each system events (see 3.27.1) to
 keep you informed of the status of your actions.
@@ -762,6 +792,8 @@ keep you informed of the status of your actions.
 Failure sound clip is played if command is unsuccessful.
 
 |===
+
+//end::music-feature[]
 
 === Edit task [Since v1.4] [[edittask-command]]
 

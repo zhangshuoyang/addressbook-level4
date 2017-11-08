@@ -667,33 +667,6 @@
         return parsedCommand;
     }
 
-    /**
-     * Parses {@code userInput} into a {@code SearchCommand}.
-     */
-    private SearchCommand prepareCommand(String userInput) {
-        SearchCommand command =
-                new SearchCommand(new NameWithTagContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+"))));
-        command.setData(model, new CommandHistory(), new UndoRedoStack());
-        return command;
-    }
-
-
-    /**
-     * Asserts that {@code command} is successfully executed, and<br>
-     *     - the command feedback is equal to {@code expectedMessage}<br>
-     *     - the {@code FilteredList<ReadOnlyPerson>} is equal to {@code expectedList}<br>
-     *     - the {@code AddressBook} in model remains the same after executing the {@code command}
-     */
-    private void assertCommandSuccess(SearchCommand command, String expectedMessage, List<Tag> expectedList) {
-        AddressBook expectedAddressBook = new AddressBook(model.getAddressBook());
-        CommandResult commandResult = command.execute();
-
-        assertEquals(expectedMessage, commandResult.feedbackToUser);
-        assertEquals(expectedList, model.getFilteredPersonByTagList());
-        assertEquals(expectedAddressBook, model.getAddressBook());
-    }
-
-}
 ```
 ###### /java/seedu/address/logic/parser/MultiFilterCommandParserTest.java
 ``` java
