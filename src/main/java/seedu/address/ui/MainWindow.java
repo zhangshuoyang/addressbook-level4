@@ -201,15 +201,7 @@ public class MainWindow extends UiPart<Region> {
                 (int) primaryStage.getX(), (int) primaryStage.getY());
     }
 
-    /**
-     * Opens the help window.
-     */
-    @FXML
-    public void handleHelp() {
-        HelpWindow helpWindow = new HelpWindow();
-        helpWindow.show();
-    }
-
+    //@@author JYL123
     /**
      * Opens the weather forecast window.
      */
@@ -217,6 +209,15 @@ public class MainWindow extends UiPart<Region> {
     public void handleWeather() throws JAXBException, IOException {
         WeatherWindow weatherWindow = new WeatherWindow();
         weatherWindow.show();
+    }
+
+    /**
+     * Opens the help window.
+     */
+    @FXML
+    public void handleHelp() {
+        HelpWindow helpWindow = new HelpWindow();
+        helpWindow.show();
     }
 
     //@@author zhangshuoyang
