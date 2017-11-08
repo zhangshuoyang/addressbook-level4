@@ -46,6 +46,7 @@ Responsibilities: Logic
 === Zhang Shuoyang
 image::zhangshuoyang.jpg[width="150", align="left"]
 {empty}[https://github.com/zhangshuoyang[github]]
+{empty}[https://cs2103aug2017-w11-b1.github.io/main/team/zhangshuoyang.html[portfolio]]
 
 Role: Developer +
 Responsibilities: UI
