@@ -11,7 +11,6 @@
 <!--@@chairz -->
 
 <StackPane prefHeight="374.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
->>>>>>> 9980828c6002c44371c8d68ee22aac83bd454c6a
    <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" stylesheets="@TabView.css" tabClosingPolicy="UNAVAILABLE">
      <tabs>
        <Tab text="Map">
