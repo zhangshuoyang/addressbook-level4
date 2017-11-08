@@ -35,11 +35,11 @@ A list of available alias is as follows:
 ==== How to use
 . The image below demonstrates the example of using `a`.
 +
-image:AddCommandAlias.png[width="500"]
+image:AddCommandAlias.png[width="800"]
 
 . The image below demonstrates the result of the above alias.
 +
-image:AddCommandAliasResult.png[width="500"]
+image:AddCommandAliasResult.png[width="800"]
 
 ---
 
@@ -60,7 +60,7 @@ Alias Mechanism
 Alias in this application is a single alphabet or two alphabets. This purpose of alias is to save the labor of typing the full corresponding command words, therefore it is more efficient and easier to use.
 The alias mechanism is implemented in `AddressBookParser`, and its logic can be described by the following activity diagram:
 
-image:AliasActivityDiagram.png[width="500"]
+image:AliasActivityDiagram.png[width="800"]
 
 1. `AddressBookParser` receives the input argument from users. +
 2. If the input argument is an alias, the corresponding command instance is created and command is processed. +
@@ -83,7 +83,6 @@ case AddCommand.COMMAND_WORD: case AddCommand.COMMAND_WORD_ALIAS:
 **Alternative 2:** Use a fixed length of three alphabets for every alias.
 **Pros:** The length for each alias is unformed.
 **Cons:** Three alphabets would be too long for commands like `add`.
----
 
 === Enhancement Added:  Locating persons by tag: search + tag name [Since v1.1]
 
@@ -106,11 +105,11 @@ Command Format: `search KEYWORD [MORE_KEYWORDS]`, or `sh KEYWORD [MORE_KEYWORDS]
 
 . Input the command to search contact of the same tag, e.g. friends.
 +
-image:SearchTagCommand.png[width="500"]
+image:SearchTagCommand.png[width="800"]
 
 . The image below demonstrates the result of the above searching.
 +
-image:SearchTagResult.png[width="500"]
+image:SearchTagResult.png[width="800"]
 ---
 
 ==== Examples
@@ -132,7 +131,7 @@ Search By Tag Mechanism
 The main logic for this mechanism lies in the class `NameWithTagContainsKeywordsPredicate.java`. This class compares the lists of tags from each person, and compare the list of tag with the set of tags given by users.
 This class makes uses of the powerful function from stream. The logic follow can be demonstrated by using the following activity diagram:
 
-image:SearchTagActivityDiagram.png[width="500"]
+image:SearchTagActivityDiagram.png[width="800"]
 
 The following code snippet shows the main logic in `NameWithTagContainsKeywordsPredicate.java`:
 
@@ -160,7 +159,7 @@ The following code snippet shows the main logic in `NameWithTagContainsKeywordsP
 **Alternative 2:** Only allow users to search one tag name at a time
 **Pros:** The feature may looks simpler.
 **Cons:** Adds limitation to what users can do.
----
+
 
 === Enhancement Added:  AutoCorrect command [Since v1.2]
 
@@ -182,11 +181,11 @@ NOTE: Auto-correct is not designed for alias.
 ==== How to use
 . The image below demonstrates the usage to autoCorrect "deleet".
 +
-image::AutoCorrectCommand.png[width="500"]
+image::AutoCorrectCommand.png[width="800"]
 
 . The image below is the result returned by Contact Plus using the command above.
 +
-image::AutoCorrectResult.png[width="500"]
+image::AutoCorrectResult.png[width="800"]
 
 ==== Examples
 
@@ -211,7 +210,7 @@ of alphabets, transposing of alphabets and Substitution of alphabets. For the sa
 
 The logic flow of `AutoCorrect` can be loosely described by the following image:
 
-image:AutoCorrectFlow.png[width="500"]
+image:AutoCorrectFlow.png[width="800"]
 
 This is an example of how the misspelt words are predicted by adding one more alphabet:
 [source,java]
@@ -258,11 +257,11 @@ Accessible from kbd:[File] dropdown list, kbd:[Weather Forecast] menu item.
 ==== How to use
 . The button kbd:[Weather Forecast] is located as the image shown below.
 +
-image::WeatherForecastButton.png[width="500"]
+image::WeatherForecastButton.png[width="800"]
 
 . The expected page would be as follows:
 +
-image::WeatherForecast.png[width="500"]
+image::WeatherForecast.png[width="800"]
 
 ==== Justification
 
@@ -294,13 +293,13 @@ return conditionStringParser(channel.getItem().getCondition().toString());
 
 Yahoo Weather information can be retrieved from `statusFootBar` too, as follows:
 
-image::YahooWeatherFootBar.png[width="500"]
+image::YahooWeatherFootBar.png[width="800"]
 ---
 
 === Enhancement Added:  Keyboard shortcuts [Since v1.3]
 
 ==== External behavior
-Keyboard shortcuts enables users to quickly get the command words without heavy memorization.
+Keyboard shortcuts enables users to quickly get the command words without heavy memorization. +
 Format: kbd:[CONTROL] + kbd:[KEY]
 
 ==============================================
@@ -308,7 +307,7 @@ NOTE: The keyborad shortcuts are created only for commands with heavy text input
 ==============================================
 
 ==== How to use
-Available Keyboard shortcuts
+
 |===
 | *Command* | *Keyboard shortcut*
 | `add` | kbd:[control] + kbd:[a]/kbd:[A]
@@ -365,7 +364,6 @@ The code snippet is shown as follows:
 **Alternative 2:** Give every command its keyboard shortcuts. +
 **Pros:**  Users can use shortcut for every command freely. +
 **Cons:** It would be confusing to have to memorise many shortcuts. +
----
 
 === Enhancement Added:  Edit tasks [Since v1.4]
 
@@ -402,6 +400,7 @@ image:EditTaskStep2.png[width="800"]
 ==== Justification
 
 It is considerable to allow users to be able oto edit their tasks, and it is a common feature that every task application should have.
+
 ==== Implementation
 
 Edit Task Mechanism
@@ -413,9 +412,6 @@ The command word for editing a task is `edittask`. When users key in the command
 The basic main flow for `edittask` is as follows:
 
 image:EditTaskMainFlow.png[width="800"]
-
-
-==== Design Consideration
 
 === Enhancement Added:  Clear tasks [Since v1.4]
 
@@ -445,13 +441,7 @@ image:ClearTaskStep2.png[width="800"]
 ==== Justification
 
 It is considerable to allow users to be able oto edit their tasks, and it is a common feature that every task application should have.
-==== Implementation
-
-Edit Task Mechanism
-
-==== Design Consideration
 
 === Other contributions
 
-* Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-* Wrote additional tests to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
+* Updated the GUI statusFootBar, and icon images for email, phone number, and address. (Pull requests https://github.com[#33], https://github.com[#34])
