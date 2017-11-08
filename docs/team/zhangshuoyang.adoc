@@ -84,6 +84,7 @@ include::../DeveloperGuide.adoc[tag=themeselect]
 
 === Other contributions
 
+* Modify browser panel to display Google Map of the address of selected contact. (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/56/commits/8b4dc931ca959d47706add168ec74194fb801883[#56])
 * Create two new themes - Light and Colourful (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/56[#56], https://github.com/CS2103AUG2017-W11-B1/main/pull/174[#174])
 * Update status bar to display the total number of people (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/30[#30])
 * Wrote additional tests to increase coverage from 82% to 84% (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/142[#142])
