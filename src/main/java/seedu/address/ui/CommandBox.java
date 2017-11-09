@@ -75,7 +75,7 @@ public class CommandBox extends UiPart<Region> {
     }
     //@@author chairz
     /**
-     * Change the tab based on command input, (@code keyEvent)
+     * Change the tab based on command input
      */
     private void displayTab(String commandTyped) {
         Map<String, String> commandFormatMap = Command.getMapOfCommandFormats();

@@ -63,37 +63,7 @@
     <tags>family</tags>
     <tags>friends</tags>
     <tasks>
-        <description>d/CS2101</description>
-        <priority>2</priority>
-        <duedate>26/10/2017</duedate>
-    </tasks>
-    <tasks>
-        <description>d/CS2101</description>
-        <priority>1</priority>
-        <duedate>26/10/2017</duedate>
-    </tasks>
-    <tasks>
-        <description>d/I hate this mod</description>
-        <priority>2</priority>
-        <duedate>28/10/2017</duedate>
-    </tasks>
-    <tasks>
-        <description>d/Birthday</description>
-        <priority>2</priority>
-        <duedate>10/12/2017</duedate>
-    </tasks>
-    <tasks>
-        <description>d/Hello</description>
-        <priority>2</priority>
-        <duedate>29/10/2017</duedate>
-    </tasks>
-    <tasks>
-        <description>d/CS Assignment</description>
-        <priority>2</priority>
-        <duedate>29/10/2017</duedate>
-    </tasks>
-    <tasks>
-        <description>d/Test</description>
+        <description>d/CS2103T</description>
         <priority>2</priority>
         <duedate>29/10/2017</duedate>
     </tasks>

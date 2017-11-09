@@ -602,6 +602,7 @@ by address (using 2 commands). +
 //end::multifilter-mechanism[]
 
 === Delete Multiple Contacts Mechanism
+//tag::deletemultiple[]
 The `Delete` multiple contacts feature enables user to delete more than one contact in a single command by specifying more than one indices. It is
 invoked in the `DeleteCommand` class. +
 The interaction between `Model` and `Logic` classes can be seen from the following sequence diagram:
@@ -650,12 +651,54 @@ exception.
 **Alternative 1 (current choice):** Add the `Index` to be deleted to an ArrayList. +
 **Pros:** We do not need to care how many `Index` or the order of the `Index` being input by the user as long as it
 is separated by `/`. +
-**Cons:** Additional space if required for the ArrayList of `Index`. +
+**Cons:** Additional space is required for the ArrayList of `Index`. +
 
 **Alternative 2:** Use 'Lazy' delete by adding a boolean field to each element +
 **Pros:** We do not need to remove anything from the ArrayList. The boolean 0 or 1 will just
 indicate if the contact has been deleted. +
 **Cons:** The whole List has to be iterated to check if the contact has been deleted.
+//end::deletemultiple[]
+
+=== Tab Switching Mechanism
+//tag::tabswitch[]
+The tab pane will switch between `Task` and `Map` based on the command entered by the user. If the
+ Command input is related to the `person` model, it will be switched to the `Map` tab. Likewise, if the
+ Command input is related to the `task` model, it will be switched to the `task` tab. +
+The interaction between `Ui` and `Logic` classes can be seen from the following sequence diagram:
+
+image::SwitchTab.PNG[width="800"]
+
+The source code shows how the Command input is checked and how the tab is switched:
+[source,java]
+----
+private void displayTab(String commandTyped) {
+        Map<String, String> commandFormatMap = Command.getMapOfCommandFormats();
+        List listOfAliases = Command.getListOfAvailableCommandAliases();
+        int index = tabPane.getSelectionModel().getSelectedIndex();
+        if (commandFormatMap.containsKey(commandTyped) || listOfAliases.contains(commandTyped)) {
+            if (index != 0) {
+                tabPane.getSelectionModel().selectFirst();
+            }
+        } else {
+            tabPane.getSelectionModel().selectLast();
+        }
+
+    }
+----
+==== Prerequisites/Dependencies
+
+* The `task` Commands and `Person` Commands needs to be stored in different hashmap in
+the `Command` class.
+
+==== Design Considerations
+
+**Aspect:** Implementation of Switch Tab mechanism +
+
+**Alternative 1 (current choice):** Checks the command typed by user to the hashmap of available commands
+ in `Command` class which are classified into `task` commands and `Person` commands. +
+**Pros:** Simple if-else case as the commands are stored in two different hashmaps. +
+**Cons:** Additional space is required for two different hashmaps. +
+//end::tabswitch[]
 
 // tag::themeselect[]
 === Theme Selection Mechanism
