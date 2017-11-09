@@ -363,6 +363,8 @@ image:SearchTagResult.png[width="500"]
 
 === Add second phone number for a person [Since v1.1]
 
+//tag::secondphone[]
+
 Add the second phone number for a person by using prefix "p2/" +
 Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS`
 
@@ -374,6 +376,8 @@ Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS`
 Examples:
 * `add n/John Doe p/98765432 p2/73624789 e/johnd@example.com a/John street, block 123, #01-01` +
 * `edit 1 p/91234567 p2/73624789 e/johndoe@example.com` +
+
+//end::secondphone[]
 
 === Locating persons by multiple criteria: `multifilter` [Since v1.1] [[multifilter-format]]
 
@@ -537,6 +541,8 @@ image::AutoCorrectResult.png[width="500"]
 
 === Deleting multiple persons : `delete index/another index/...` [Since v1.2] [[delete-multiple-persons]]
 
+//tag::deletemultiple[]
+
 This command allows you to delete *multiple* contacts from `Contact Plus` in a
 single command. +
 Format: `delete INDEX/INDEX`
@@ -566,6 +572,8 @@ Note that `list` and `delete 1/2` are two different commands.
 
 | Deletes the first and second contact displayed by the `list` command.
 |===
+
+//end::deletemultiple[]
 
 === Viewing Weather Forecast [Since v1.3]
 
@@ -885,6 +893,35 @@ the diagram below) +
 image:LightTheme.png[width="500"]
 |===
 // end::themeselect[]
+
+=== Tab Switching [Since v1.5][[switchtab]]
+
+//tag::switchtab[]
+
+You can choose to switch between the `Task` tab or `Map` tab either by clicking on the user interface or
+the application will automatically switch it for you based on the command you entered.
+
+==== Description
+
+*************
+* If the command `delete 1/2` (Click on <<delete-multiple-persons,link>> to see how the command works) or any other command that is related to
+ manipulating or displaying the contacts is entered, the tab will be automatically switched to the `Map` tab.
+* If the command `listtask` (Click on <<listtask-command,link>> to see how the command works) or any other command that is related to
+   manipulating or displaying the tasks is entered, the tab will be automatically switched to the `Task` tab.
+*************
+
+==== Example
+
+1. Before entering any command, you are at the `Task` tab.
+image:switchtab1.png[width="800"]
+
+2. Enter command `delete 1/2` and press kbd:[ENTER].
+image:switchtab2.png[width="800"]
+
+3. The tab will be automatically switched to the `Map` tab.
+image:switchtab3.png[width="800"]
+
+//end::switchtab[]
 
 === Tag use emoji : `tag emoji` [Coming in V2.0]
 

@@ -603,6 +603,7 @@ by address (using 2 commands). +
 //end::multifilter-mechanism[]
 
 === Delete Multiple Contacts Mechanism
+//tag::deletemultiple[]
 The `Delete` multiple contacts feature enables user to delete more than one contact in a single command by specifying more than one indices. It is
 invoked in the `DeleteCommand` class. +
 The interaction between `Model` and `Logic` classes can be seen from the following sequence diagram:
@@ -657,9 +658,10 @@ is separated by `/`. +
 **Pros:** We do not need to remove anything from the ArrayList. The boolean 0 or 1 will just
 indicate if the contact has been deleted. +
 **Cons:** The whole List has to be iterated to check if the contact has been deleted.
-
+//end::deletemultiple[]
 
 === Tab Switching Mechanism
+//tag::tabswitch[]
 The tab pane will switch between `Task` and `Map` based on the command entered by the user. If the
  Command input is related to the `person` model, it will be switched to the `Map` tab. Likewise, if the
  Command input is related to the `task` model, it will be switched to the `task` tab. +
@@ -684,7 +686,6 @@ private void displayTab(String commandTyped) {
 
     }
 ----
-
 ==== Prerequisites/Dependencies
 
 * The `task` Commands and `Person` Commands needs to be stored in different hashmap in
@@ -698,12 +699,10 @@ the `Command` class.
  in `Command` class which are classified into `task` commands and `Person` commands. +
 **Pros:** Simple if-else case as the commands are stored in two different hashmaps. +
 **Cons:** Additional space is required for two different hashmaps. +
+//end::tabswitch[]
 
-=== Theme Support Mechanism
-=======
 // tag::themeselect[]
 === Theme Selection Mechanism
->>>>>>> 9110f366cc21e1a0b85dd915d7ebed2ff30457c4
 
 The 'theme support' feature allows user to choose their favorite theme for the address book, other than the default
 Dark Theme. It is facilitated by `SwitchThemeCommand` class.
