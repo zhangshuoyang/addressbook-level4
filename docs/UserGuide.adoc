@@ -273,11 +273,11 @@ Command Format: `clear` or `c`
 Exits the program. +
 Command Format: `exit`
 
-=== Deleting a tag : `deletetag` [Since v1.0] [[deletetag-command]]
+=== Deleting a tag : `deletetag` [Since v1.0]
 
 //tag::deletetag-command[]
 
-Need to reorganize your social groups? `deletetag` enables you to delete
+[[deletetag-command]] Need to reorganize your social groups? `deletetag` enables you to delete
 tags from all your contacts in `Contact Plus` ! +
 Command Format: `deletetag tag_name` +
 Quick demo: link:#how-to-use-deletetag-command[here]
@@ -375,11 +375,11 @@ Examples:
 * `add n/John Doe p/98765432 p2/73624789 e/johnd@example.com a/John street, block 123, #01-01` +
 * `edit 1 p/91234567 p2/73624789 e/johndoe@example.com` +
 
-=== Locating persons by multiple criteria: `multifilter` [Since v1.1] [[multifilter-format]]
+=== Locating persons by multiple criteria: `multifilter` [Since v1.1]
 
 //tag::multifilter-feature[]
 
-Finds persons whose names, phone no., emails and addresses,
+[[multifilter-format]] Finds persons whose names, phone no., emails and addresses,
 match a set of specified criteria. +
 Format: `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]` +
 Quick demo: link:#how-to-use-multifilter[here]
@@ -445,11 +445,11 @@ NOTE: If no filters are used, all contacts will be displayed.
 
 //end::multifilter-feature[]
 
-=== Autocomplete command names [Since v1.2] [[autocomplete-feature]]
+=== Autocomplete command names [Since v1.2]
 
 //tag::autocomplete-feature[]
 
-Lazy to memorize command names? Press a shorcut key to automatically complete the text that you enter into the command box. +
+[[autocomplete-feature]] Lazy to memorize command names? Press a shortcut key to automatically complete the text that you enter into the command box. +
 Format: [Some text] +
 Quick demo:  link:#how-to-use-autocomplete[here]
 
@@ -581,11 +581,11 @@ image::WeatherForecastButton.png[width="500"]
 +
 image::WeatherForecast.png[width="500"]
 
-=== Extended autocomplete for commands [Since v1.3] [[extended-autocomplete-feature]]
+=== Extended autocomplete for commands [Since v1.3]
 
 //tag::extended-autocomplete-feature[]
 
-Some commands such as `link:#add-command[add]` are very long and difficult to type.
+[[extended-autocomplete-feature]] Some commands such as `add` are very long and difficult to type.
 This feature enables you to automatically fill in the format of the command whose name matches
 the text that you entered. +
 Format: [COMMAND_WORD] +
@@ -675,11 +675,11 @@ Examples:
 * `task d/Finish Teammate Feedback Session pr/0 on 01/11/2017`
 // end::addtask[]
 
-=== List tasks [Since v1.4] [[listtask]] [[listtask-command]]
+=== List tasks [Since v1.4]
 
 //tag::listtask-command[]
 
-This command enables you to retrieve personal tasks that you have stored in
+[[listtask-command]] This command enables you to retrieve personal tasks that you have stored in
 `Contact Plus`. +
 Format: `listtask` +
 Quick demo: link:#how-to-use-listtask[here]
@@ -688,7 +688,7 @@ Quick demo: link:#how-to-use-listtask[here]
 
 *************
 * The `listtask` command shows all tasks that you have created in `Contact Plus`
-previously using the `<<addtask,task>>` command.
+previously using the `task` command.
 * Tasks are listed in the order that you have created them.
 *************
 
@@ -712,11 +712,11 @@ image:listtask-command-post.png[width="800"]
 
 //end::listtask-command[]
 
-=== Delete tasks : `deletetask` [[deletetasks]] [[deletetask-command]]
+=== Delete tasks : `deletetask`
 
 //tag::deletetask-command[]
 
-This command enables you to remove unnecessary/unwanted tasks
+[[deletetask-command]] This command enables you to remove unnecessary/unwanted tasks
 from `Contact Plus`. +
 Command Format: `deletetask INDEX_1/INDEX_2/INDEX_3 ...` +
 
@@ -724,8 +724,8 @@ Command Format: `deletetask INDEX_1/INDEX_2/INDEX_3 ...` +
 
 ****
 * `INDEX_1`, `INDEX_2`, etc. refer to the task numbers that
-are shown when you use the link:#listtask[`listtask`] command to show your tasks
-(See <<how-to-use-deletetasks,how to use>> for an example).
+are shown when you use the link:#listtask-command[`listtask`] command to show your tasks
+(See <<how-to-use-deletetask,how to use>> for an example).
 * `INDEX_1`, `INDEX_2`, etc. must be positive integers
 (i.e. they must be whole numbers greater than 0 such as 1, 2, 3, etc.).
 * This command deletes multple tasks simultaneously (i.e. it deletes tasks with the task numbers
@@ -743,9 +743,9 @@ Otherwise, an error message is shown.
 | `deletetask` -1 | An error message is shown as task numbers cannot be negative.
 |===
 
-==== How to use
+==== How to use [[how-to-use-deletetask]]
 
-. Use the `<<listtask,listtask>>` command to display all your tasks.
+. Use the `<<listtask-command,listtask>>` command to display all your tasks.
 Note the number of the tasks that you wish to delete.
 +
 image:deletetask-listtask.png[width="800"]
