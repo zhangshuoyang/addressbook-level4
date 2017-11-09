@@ -4,7 +4,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :stylesDir: ../stylesheets
 
 == Project: Contact Plus
-Contact Plus is a contact-managing service through command line. We strive to provide the very comprehensive services for busy students on the campus so that they can manage their contacts efficiently.
+Contact Plus is a contact-managing service through command line. We strive to provide the very comprehensive services for busy students on the campus so that they can manage their contacts efficiently. In addition to contact-managing, Contact Plus also allows users to manage task all in a single application.
 Contact Plus is an extension of AddressBook - Level 4 which is a desktop address book application used for teaching Software Engineering principles.The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
 
 *Code contributed*: [https://github.com/CS2103AUG2017-W11-B1/main/blob/master/collated/main/chairz.md[Functional code]] [https://github.com/CS2103AUG2017-W11-B1/main/blob/master/collated/test/chairz.md[Test code]] {give links to collated code files}
@@ -16,7 +16,7 @@ Contact Plus is an extension of AddressBook - Level 4 which is a desktop address
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=undoredo]
+include::../UserGuide.adoc[tag=deletemultiple]
 
 #End of Extract#
 
@@ -24,14 +24,15 @@ include::../UserGuide.adoc[tag=undoredo]
 
 ==== Justification
 
-{Justify the need for, and the current design (i.e. external behavior) of, the feature}
+It is troublesome to retype the command delete if you are looking to delete multiple person from the contact list.
+As `Contact Plus` aims to achieve efficiency and speed, having this function adds on to it.
 
 ==== Implementation
 
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=undoredo]
+include::../DeveloperGuide.adoc[tag=deletemultiple]
 
 #End of Extract#
 
@@ -43,7 +44,7 @@ include::../DeveloperGuide.adoc[tag=undoredo]
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=undoredo]
+include::../UserGuide.adoc[tag=secondphone]
 
 #End of Extract#
 
@@ -51,27 +52,41 @@ include::../UserGuide.adoc[tag=undoredo]
 
 ==== Justification
 
-{Justify the need for, and the current design (i.e. external behavior) of, the feature}
+Some contacts may have multiple phone numbers and it is inefficient to create another entry in the addressbook
+to just add a second phone number.
+
+=== Enhancement Added: Switching Tab
+
+==== External behavior
+
+---
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=switchtab]
+
+#End of Extract#
+
+---
+
+==== Justification
+
+User does not have to do extra work by clicking on the UI to switch tab if they are executing commands that are
+related to the tab.
 
 ==== Implementation
 
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=undoredo]
+include::../DeveloperGuide.adoc[tag=tabswitch]
 
 #End of Extract#
 
 ---
-=== Enhancement Proposed: Add command `remark`
-
-{Explain similar to the Undo/Redo feature above.}
 
 === Other contributions
 
-* Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-* Wrote additional tests to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
+* Updated the GUI to display tasks (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/111/commits/7ca7ec4e3160938add788b3852eedf7101a17491[#111], https://github.com/CS2103AUG2017-W11-B1/main/pull/137/commits/1e836c1ea43c61986cc51c8363ec929592f07f7c[#137])
+* Created Task Model (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/51/commits/75e5e18b153d2e0287b31e6f1a3b2724795b3068[#51])
 
-== Project: PowerPointLabs
 
-{Optionally (not graded), you may include other projects in your portfolio.}

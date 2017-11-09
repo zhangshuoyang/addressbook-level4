@@ -62,4 +62,9 @@
     <tags>criminal</tags>
     <tags>family</tags>
     <tags>friends</tags>
+    <tasks>
+        <description>d/CS2103T</description>
+        <priority>2</priority>
+        <duedate>29/10/2017</duedate>
+    </tasks>
 </addressbook>
