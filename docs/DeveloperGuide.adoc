@@ -847,6 +847,45 @@ list of tasks when the user closes the address book after deletion.
 
 //end::deletetask-mechanism[]
 
+=== Sound Effect for Commands
+
+This mechanism is supported by the `AudioUtil` class. The static method
+`playClip()`, which plays a specified .wav format sound clip, is invoked on `AudioUtil` class when a command is issued by
+the user. Distinct sound clips will be played based on whether the command
+was successfully executed or it failed to execute (due to various reasons such
+as parse error). A visualization of this is shown in the following sequence diagram:
+
+image::SoundEffect-sequence-diagram.png[width="800"]
+
+The implementation of the `playClip()` method in the `AudioUtil` class is shown below:
+
+image::playClipMethod.png[width="800"]
+
+==== Prerequisites/Dependencies
+
+* The audio file whose name is specified to the `playClip()` method must exist
+in the src/resources/audio/ folder.
+* The name of a .wav format audio clip should be provided to the `playClip()` method as
+only this format has been tried and tested. Other audio file formats may/may not work.
+
+==== Design Considerations
+
+**Aspect:** Implementation of sound effects. +
+
+**Alternative 1 (current choice):** Play preset clips on command success or failure. +
+**Pros:** Easy to implement as the clips to be played are always the same and are only played
+during two events. +
+**Cons:** The sound clips are limited to two types - success or failure.
+
+**Alternative 2:** Allow the user to select the command success and failure audio clips from
+a predefined list. +
+**Pros:** User is able to have more personalized settings. +
+**Cons:** Technically challenging as additional commands have to be implemented to list
+the available audio clips and select the desired ones.
+
+
+
+
 === Logging
 
 We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.

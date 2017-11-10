@@ -638,7 +638,7 @@ public class Task implements ReadOnlyTask {
 ###### /java/seedu/address/ui/CommandBox.java
 ``` java
     /**
-     * Change the tab based on command input, (@code keyEvent)
+     * Change the tab based on command input
      */
     private void displayTab(String commandTyped) {
         Map<String, String> commandFormatMap = Command.getMapOfCommandFormats();
