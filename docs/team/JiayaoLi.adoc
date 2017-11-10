@@ -151,7 +151,7 @@ The following code snippet shows the main logic in `NameWithTagContainsKeywordsP
 
 ==== Design Consideration
 
-**Aspect:** Number of tags allowed to be specified by users
+**Aspect:** Number of tags allowed to be specified by users. +
 **Alternative 1 (current choice):** Allow multiple tags to be entered by users
 **Pros:** Increases the flexibility of this search by tag feature. There would be no restriction on the number of tags to be entered. Users can specify as many valid tags as they want to.
 **Cons:** May not be obvious to users that they can enter multiple tag names.
@@ -405,13 +405,24 @@ It is considerable to allow users to be able oto edit their tasks, and it is a c
 
 Edit Task Mechanism
 
-The `edit task` is facilitated by EditTaskCommand class. It allows users to edit tasks into the address book with a description, the level of priority as well as the due date. The tasks added will be shown on the stickies in the address book.
+The `edit task` is facilitated by EditTaskCommand class. It allows users to edit tasks in the address book with a description, the level of priority as well as the due date. The tasks added will be shown on the stickies in the address book.
 
-The command word for editing a task is `edittask`. When users key in the command word task, together with valid description, priority and due date, the values will be passed  into parseCommand() function in the AddressBookParser class.
+The command word for editing a task is `edittask`. When users key in the command word, together with valid description, priority and due date, the values will be passed into parseCommand() function in the AddressBookParser class.
 
 The basic main flow for `edittask` is as follows:
 
 image:EditTaskMainFlow.png[width="800"]
+
+==== Design Consideration
+
+**Aspect:** fields to be editable. +
+**Alternative 1 (current choice):** Allow priority and due date to be editable but not description.
+**Pros:** It is logically clear that only the priority and due date of a task can be edited. Changing the description of the task essentially means to create a new task.
+**Cons:** May be not convenient for users who want to edit description of the task as well.
+
+**Alternative 2:** Only allow users to edit all three fields, description, priority and due date.
+**Pros:** This provides larger flexibility for users to edit any part of the given task.
+**Cons:** Logically it may not make sense to be able to edit description of the task.
 
 === Enhancement Added:  Clear tasks [Since v1.4]
 
@@ -440,7 +451,20 @@ image:ClearTaskStep2.png[width="800"]
 
 ==== Justification
 
-It is considerable to allow users to be able oto edit their tasks, and it is a common feature that every task application should have.
+It is considerable to allow users to be able to clear their tasks when the stake of the task is too high. `clear task` helps users to clear their task panel.
+
+==== Implementation
+
+Clear Task Mechanism
+
+The `clear task` is facilitated by ClearTaskCommand class. It allows users to clear tasks in the address book.
+
+The command word for listing a task is `cleartask`. When users key in the command word, the command word `cleartask` is passed into AddressBookParser class, and the corresponding `ClearTaskCommand` is created and subsequently its function executeUndoableCommand() will clear the tasks from addressbook.xml.
+
+The basic main flow for `cleartask` is as follows:
+
+image:listTaskActivityDiagram.png[width="800"]
+
 
 === Other contributions
 
