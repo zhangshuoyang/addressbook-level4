@@ -464,7 +464,7 @@ another method should be implemented in the `AutoCompleteUtil` class.
 
 ==== Design Considerations
 
-**Aspect:** Implementation of `autocomplete` +
+**Aspect:** Implementation of `autocomplete`. +
 
 **Alternative 1 (current choice):** Add a list of names of available commands to `Command` class. +
 **Pros:** We do not need to care about how `autocomplete` works when adding new commands. We simply need to add the
@@ -512,7 +512,7 @@ for aliases.
 
 ==== Design Considerations
 
-**Aspect:** Implementation of `extended autocomplete` +
+**Aspect:** Implementation of `extended autocomplete`. +
 
 **Alternative 1 (current choice):** Use a shortcut key to launch `extended autocomplete` when a valid `COMMAND NAME`
 has been typed into the command bar. +
@@ -550,7 +550,7 @@ delete it from the address book.
 
 ==== Design Considerations
 
-**Aspect:** Implementation of DeleteTagCommand +
+**Aspect:** Implementation of `deletetag` command. +
 
 **Alternative 1 (current choice):** Delete the specified tag from all contacts in the address book. +
 **Pros:** Easy to implement. +
@@ -584,10 +584,9 @@ in the filtered list of persons (i.e. show all elements in the list).
 input and apply it on the filtered list of persons (i.e. the list will only show
 elements that match the condition specified by the given `Predicate`).
 
-
 ==== Design Considerations
 
-**Aspect:** Implementation of MultiFilterCommand +
+**Aspect:** Implementation of `multifilter` command. +
 
 **Alternative 1 (current choice):** Allow the user to enter any number of filter fields (e.g. name, email, address, etc.) in any order. +
 **Pros:** The user does not have to type unnecessary information (e.g. he/she does not have to specify a blank email if he/she just wants
@@ -798,7 +797,7 @@ the tasks in the address book.
 
 ==== Design Considerations
 
-**Aspect:** Implementation of ListTaskCommand +
+**Aspect:** Implementation of `listtask` command. +
 
 **Alternative 1 (current choice):** List all the tasks in one sticky note. +
 **Cons:** When too many tasks are added, the tasks will look very clutterd when displayed. +
@@ -832,7 +831,7 @@ delete it from the address book.
 
 ==== Design Considerations
 
-**Aspect:** Implementation of DeleteTaskCommand +
+**Aspect:** Implementation of DeleteTaskCommand. +
 
 **Alternative 1 (current choice):** Delete tasks from the address book every time the user executes the command to
 delete task. +
