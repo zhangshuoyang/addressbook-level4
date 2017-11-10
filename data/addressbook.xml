@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addressbook>
     <persons>
-        <name>Daryl Chan</name>
-        <phone>94520014</phone>
-        <phone2>-</phone2>
-        <email>darlychan@gmail.com</email>
-        <address>572, Geylang Serai</address>
-    </persons>
-    <persons>
-        <name>Romanov Li</name>
-        <phone>81729423</phone>
-        <phone2>-</phone2>
-        <email>romanovli@yahoo.com</email>
-        <address>210, Yishun Ring Road</address>
-    </persons>
-    <persons>
-        <name>Lance Hopkins</name>
-        <phone>94327421</phone>
-        <phone2>65301423</phone2>
-        <email>lanceh@hotmail.com</email>
-        <address>522 Punggol Street</address>
-    </persons>
-    <persons>
         <name>Lance li</name>
         <phone>914373013</phone>
         <phone2>-</phone2>
@@ -45,11 +24,11 @@
         <tagged>friends</tagged>
     </persons>
     <persons>
-        <name>Alice Tan</name>
-        <phone>98765672</phone>
+        <name>David</name>
+        <phone>46384635</phone>
         <phone2>-</phone2>
-        <email>johnd@example.com</email>
-        <address>311, Clementi Ave 2, #02-25</address>
+        <email>david@example.com</email>
+        <address>maple street</address>
         <tagged>friends</tagged>
     </persons>
     <tags>owesMoney</tags>
@@ -62,9 +41,4 @@
     <tags>criminal</tags>
     <tags>family</tags>
     <tags>friends</tags>
-    <tasks>
-        <description>d/CS2103T</description>
-        <priority>2</priority>
-        <duedate>29/10/2017</duedate>
-    </tasks>
 </addressbook>
