@@ -278,8 +278,8 @@ public class AddTaskCommandTest {
     public static final String INVALID_PRIORITY_SHOPPING = "6";
     public static final String INVALID_DUEDATE_SHOPPING = "40/20/100";
 
-    public static final String DESCRIPTION_DESC_ASSIGNMENT = " " +  VALID_DESCRIPTION_ASSIGNMENT;
-    public static final String DESCRIPTION_DESC_SHOPPING = " " +  VALID_DESCRIPTION_SHOPPING;
+    public static final String DESCRIPTION_DESC_ASSIGNMENT = " " +  PREFIX_DESCIPTION + VALID_DESCRIPTION_ASSIGNMENT;
+    public static final String DESCRIPTION_DESC_SHOPPING = " " +  PREFIX_DESCIPTION + VALID_DESCRIPTION_SHOPPING;
     public static final String PRIORITY_DESC_ASSIGNMENT = " " + PREFIX_PRIORITY + VALID_PRIORITY_ASSIGNMENT;
     public static final String PRIORITY_DESC_SHOPPING = " " + PREFIX_PRIORITY + VALID_PRIORITY_SHOPPING;
     public static final String DUEDATE_DESC_ASSIGNMENT = " " + PREFIX_DUEDATE + VALID_DUEDATE_ASSIGNMENT;
@@ -521,7 +521,7 @@ public class TaskUtil {
      */
     public static String getTaskDetails(ReadOnlyTask task) {
         StringBuilder sb = new StringBuilder();
-        sb.append(task.getDescription().descriptionName + " ");
+        sb.append(PREFIX_DESCIPTION + task.getDescription().descriptionName + " ");
         sb.append(PREFIX_PRIORITY + task.getPriority().value + " ");
         sb.append(PREFIX_DUEDATE + task.getDueDate().date + " ");
         return sb.toString();
@@ -619,9 +619,6 @@ public class AddTaskCommandSystemTest extends AddressBookSystemTest {
         executeCommand(ClearCommand.COMMAND_WORD);
         assert getModel().getAddressBook().getTaskList().size() == 0;
         assertCommandSuccess(ASSIGNMENT);
-
-
-        /* Case: add a task, missing description -> added? */
 
         /* Case: invalid keyword -> rejected */
         command = "taks" + TaskUtil.getTaskDetails(toAdd);

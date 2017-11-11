@@ -24,6 +24,9 @@ public class DueDate extends Date {
         requireNonNull(input);
         String trimmedInput = input.trim();
         if (!Date.isValidDate(trimmedInput) && !trimmedInput.isEmpty()) {
+            if (!Date.isValidDate(trimmedInput)) {
+                throw new IllegalValueException(MESSAGE_DATE_INVALID_CONSTRAINTS);
+            }
             throw new IllegalValueException(MESSAGE_DATE_FORMAT_CONSTRAINTS);
         }
         this.date = trimmedInput;

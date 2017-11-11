@@ -6,12 +6,12 @@ import seedu.address.commons.exceptions.IllegalValueException;
 
 //@@author chairz
 /**
- * Represents a Tag in the address book.
+ * Represents the description of a task.
  * Guarantees: immutable; name is valid as declared in {@link #isValidDescription(String)}
  */
 public class Description {
 
-    public static final String MESSAGE_DESCRIPTION_CONSTRAINTS = "Tags names should be alphanumeric";
+    public static final String MESSAGE_DESCRIPTION_CONSTRAINTS = "Description should be alphanumeric";
     public static final String DESCRIPTION_VALIDATION_REGEX = ".+";
 
     public final String descriptionName;

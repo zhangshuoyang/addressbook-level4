@@ -209,7 +209,7 @@ The `Model`,
 
 === Storage component
 
-image::StorageClassDiagram.png[width="800"]
+image::StorageClassDiagram2.png[width="800"]
 _Figure 2.5.1 : Structure of the Storage Component_
 
 *API* : link:{repoURL}/src/main/java/seedu/address/storage/Storage.java[`Storage.java`]
@@ -757,15 +757,18 @@ As a result, `AddTaskCommandParser` will be returned to separate the command str
 are valid. If yes, a new `Task` object will be returned and used to call `AddTaskCommand` class. Eventually,
 the `executeUndoableCommand()` function in `AddTaskCommand` class will be called and returns a `CommandResult` object to display once a task is successfully added.
 
+image::AddTaskCommand_sequence_diagram.png[width="800"]
+
 ==== Prerequisites/Dependencies
 
 * The format of date must follow `dd/MM/yyyy`.
-* The range of priority can only be from 0 to 2. Any other values will be deemed as invalid.
+* The date must also be a valid date.
+* The range of priority can only be from *0* to *2*. Any other values will be deemed as invalid, and an error message will be thrown.
 * Currently, all fields must be included in the command and cannot be omitted.
 
 ==== Design Considerations
 
-**Aspect:** Implementation of AddTaskCommand +
+**Aspect:** Implementation of `AddTaskCommand` +
 
 **Alternative 1 (current choice):** Use stickies so that newly added tasks will show up in the stickies. +
 **Pros:** Tasks are easy to identify. +

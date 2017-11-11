@@ -600,32 +600,9 @@
             // process result of the command
             commandTextField.setText("");
 
-
-            if (parser.parseCommand(userInput) instanceof AddTaskCommand) {
-                // Process and display the most recently added task in a separate text field
-                StringBuffer lastTaskFieldOutput = new StringBuffer();
-                List<ReadOnlyTask> listOfTask = logic.getFilteredTaskList();
-                lastTaskFieldOutput.append("\n");
-                lastTaskFieldOutput.append("===Task=== " + "\n");
-                lastTaskFieldOutput.append(listOfTask.get(listOfTask.size() - 1).toString());
-                lastTaskFieldOutput.append("\n");
-                PrintWriter out = new PrintWriter(new FileOutputStream(new File("taskData1.txt"), true));
-                out.println(lastTaskFieldOutput.toString());
-                out.close();
-
-                try {
-                    String curr = System.getProperty("user.dir");
-                    Scanner s = new Scanner(new File(curr + "/taskData1.txt"));
-
-                    taskDisplayed.clear();
-                    while (s.hasNext()) {
-                        taskDisplayed.appendText(s.next() + "\n");
-                    }
-                } catch (FileNotFoundException fne) {
-                    throw new ParseException(fne.getMessage(), fne);
-                }
-            }
-
+```
+###### /java/seedu/address/ui/CommandBox.java
+``` java
             Command currentCommand = parser.parseCommand(userInput);
 
             if (currentCommand instanceof ListTaskCommand || currentCommand instanceof DeleteTaskCommand) {
