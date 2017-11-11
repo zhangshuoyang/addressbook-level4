@@ -17,6 +17,8 @@ public class AudioUtil {
     //@@author lancehaoh
     /**
      * Play a .wav format audio file that is stored in src/main/resources/images folder
+     *
+     * @param clipName name of a .wav format audio file e.g. "music.wav"
      */
     public void playClip(String clipName)
             throws IOException, UnsupportedAudioFileException, LineUnavailableException {
