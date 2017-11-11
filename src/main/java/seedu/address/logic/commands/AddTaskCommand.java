@@ -50,8 +50,6 @@ public class AddTaskCommand extends UndoableCommand {
         requireNonNull(model);
         try {
             model.addTask(toAdd);
-            String str = System.getProperty("user.dir");
-            System.out.println(str);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);

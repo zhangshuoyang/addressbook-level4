@@ -76,8 +76,8 @@ public class CommandTestUtil {
     public static final String INVALID_PRIORITY_SHOPPING = "6";
     public static final String INVALID_DUEDATE_SHOPPING = "40/20/100";
 
-    public static final String DESCRIPTION_DESC_ASSIGNMENT = " " +  VALID_DESCRIPTION_ASSIGNMENT;
-    public static final String DESCRIPTION_DESC_SHOPPING = " " +  VALID_DESCRIPTION_SHOPPING;
+    public static final String DESCRIPTION_DESC_ASSIGNMENT = " " +  PREFIX_DESCIPTION + VALID_DESCRIPTION_ASSIGNMENT;
+    public static final String DESCRIPTION_DESC_SHOPPING = " " +  PREFIX_DESCIPTION + VALID_DESCRIPTION_SHOPPING;
     public static final String PRIORITY_DESC_ASSIGNMENT = " " + PREFIX_PRIORITY + VALID_PRIORITY_ASSIGNMENT;
     public static final String PRIORITY_DESC_SHOPPING = " " + PREFIX_PRIORITY + VALID_PRIORITY_SHOPPING;
     public static final String DUEDATE_DESC_ASSIGNMENT = " " + PREFIX_DUEDATE + VALID_DUEDATE_ASSIGNMENT;

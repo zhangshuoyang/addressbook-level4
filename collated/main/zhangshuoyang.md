@@ -1,5 +1,5 @@
 # zhangshuoyang
-###### \java\seedu\address\commons\events\ui\SwitchThemeRequestEvent.java
+###### /java/seedu/address/commons/events/ui/SwitchThemeRequestEvent.java
 ``` java
 /**
  * Indicate a request to switch theme by the user
@@ -18,7 +18,7 @@ public class SwitchThemeRequestEvent extends BaseEvent {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\AddTaskCommand.java
+###### /java/seedu/address/logic/commands/AddTaskCommand.java
 ``` java
 /**
  * Adds a task to the address book.
@@ -59,8 +59,6 @@ public class AddTaskCommand extends UndoableCommand {
         requireNonNull(model);
         try {
             model.addTask(toAdd);
-            String str = System.getProperty("user.dir");
-            System.out.println(str);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
@@ -81,7 +79,7 @@ public class AddTaskCommand extends UndoableCommand {
 
 
 ```
-###### \java\seedu\address\logic\commands\SwitchThemeCommand.java
+###### /java/seedu/address/logic/commands/SwitchThemeCommand.java
 ``` java
 /**
  * Switch the theme of the address book
@@ -124,7 +122,7 @@ public class SwitchThemeCommand extends Command {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\AddTaskCommandParser.java
+###### /java/seedu/address/logic/parser/AddTaskCommandParser.java
 ``` java
 /**
  * Parses input arguments and creates a new AddTaskCommand object
@@ -141,13 +139,13 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
     @Override
     public AddTaskCommand parse(String userInput) throws ParseException {
         ArgumentMultimap argumentMultimap =
-                ArgumentTokenizer.tokenize(userInput, PREFIX_PRIORITY, PREFIX_DUEDATE);
-        if (!isFieldPresent(argumentMultimap)) {
-            // if empty
+                ArgumentTokenizer.tokenize(userInput, PREFIX_DESCIPTION, PREFIX_PRIORITY, PREFIX_DUEDATE);
+        if (!arePrefixesPresent(argumentMultimap, PREFIX_DESCIPTION, PREFIX_PRIORITY, PREFIX_DUEDATE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddTaskCommand.MESSAGE_USAGE));
         }
         try {
-            Description description = ParserUtil.parseDescription(argumentMultimap.getPreamble());
+            Description description = ParserUtil.parseDescriptionOptional(argumentMultimap.getValue
+                    (PREFIX_DESCIPTION)).get();
             Priority priority = ParserUtil.parsePriority(argumentMultimap.getValue(PREFIX_PRIORITY)).get();
             DueDate date = ParserUtil.parseDueDate(argumentMultimap.getValue(PREFIX_DUEDATE)).get();
 
@@ -162,23 +160,14 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
      * {@code ArgumentMultimap}.
      */
-    private boolean isFieldPresent(ArgumentMultimap argumentMultimap) {
-        return !argumentMultimap.getPreamble().isEmpty();
-    }
-}
-```
-###### \java\seedu\address\logic\parser\ParserUtil.java
-``` java
-    /**
-     * Parses a {@code Optional<String> desciption} into an {@code Optional<Description>} if {@code description}
-     * is present.
-     * See header comment of this class regarding the use of {@code Optional} parameters.
-     */
-    public static Description parseDescription (String description) throws IllegalValueException {
-        requireNonNull(description);
-        return new Description(description);
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 
+}
+```
+###### /java/seedu/address/logic/parser/ParserUtil.java
+``` java
     /**
      * Parses a {@code Optional<String> desciption} into an {@code Optional<Description>} if {@code description}
      * is present.
@@ -209,7 +198,7 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\SwitchThemeCommandParser.java
+###### /java/seedu/address/logic/parser/SwitchThemeCommandParser.java
 ``` java
 /**
  * Parses the given {@code String} of arguments in the context of the SwitchThemeCommand
@@ -230,7 +219,7 @@ public class SwitchThemeCommandParser implements Parser<SwitchThemeCommand> {
 
 }
 ```
-###### \java\seedu\address\model\AddressBook.java
+###### /java/seedu/address/model/AddressBook.java
 ``` java
     //// task-level operations
 
@@ -273,7 +262,7 @@ public class SwitchThemeCommandParser implements Parser<SwitchThemeCommand> {
     }
 
 ```
-###### \java\seedu\address\model\Model.java
+###### /java/seedu/address/model/Model.java
 ``` java
     /**
      * Replaces the given person {@code target} with {@code editedTask}.
@@ -304,7 +293,7 @@ public class SwitchThemeCommandParser implements Parser<SwitchThemeCommand> {
     void clearFiltersOnPersonList();
 
 ```
-###### \java\seedu\address\model\ModelManager.java
+###### /java/seedu/address/model/ModelManager.java
 ``` java
     /** For further implementation. */
     @Override
@@ -332,7 +321,7 @@ public class SwitchThemeCommandParser implements Parser<SwitchThemeCommand> {
 
 
 ```
-###### \java\seedu\address\model\ModelManager.java
+###### /java/seedu/address/model/ModelManager.java
 ``` java
     //=========== Filtered Task List Accessors =============================================================
 
@@ -352,7 +341,7 @@ public class SwitchThemeCommandParser implements Parser<SwitchThemeCommand> {
     }
 
 ```
-###### \java\seedu\address\model\task\Date.java
+###### /java/seedu/address/model/task/Date.java
 ``` java
 /**
  * Represents the date of a certain task in the Address Book.
@@ -362,6 +351,8 @@ public class Date {
 
     public static final String MESSAGE_DATE_FORMAT_CONSTRAINTS =
             "The date must be in the format dd/MM/yyyy";
+    public static final String MESSAGE_DATE_INVALID_CONSTRAINTS =
+            "The input date is not valid!";
 
 
     /**
@@ -370,7 +361,7 @@ public class Date {
      * @throws java.time.format.DateTimeParseException if the date format is invalid
      */
     public static boolean isValidDate (String input) throws IllegalValueException {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
         try {
             LocalDate.parse(input, format);
             return true;
@@ -379,19 +370,9 @@ public class Date {
         }
     }
 
-    /**
-     * Format the given date
-     */
-    public static LocalDate formatDate (String input) throws IllegalValueException {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate date = LocalDate.parse(input, format);
-        return date;
-    }
-
-
 }
 ```
-###### \java\seedu\address\model\task\DescContainsKeywordsPredicate.java
+###### /java/seedu/address/model/task/DescContainsKeywordsPredicate.java
 ``` java
 /**
  * Tests that a {@code ReadOnlyTask}'s {@code Name} matches any of the keywords given.
@@ -417,7 +398,7 @@ public class DescContainsKeywordsPredicate implements Predicate<ReadOnlyTask> {
     }
 }
 ```
-###### \java\seedu\address\model\task\DueDate.java
+###### /java/seedu/address/model/task/DueDate.java
 ``` java
 /**
  * Represents the date of a certain task in the Address Book.
@@ -438,6 +419,9 @@ public class DueDate extends Date {
         requireNonNull(input);
         String trimmedInput = input.trim();
         if (!Date.isValidDate(trimmedInput) && !trimmedInput.isEmpty()) {
+            if (!Date.isValidDate(trimmedInput)) {
+                throw new IllegalValueException(MESSAGE_DATE_INVALID_CONSTRAINTS);
+            }
             throw new IllegalValueException(MESSAGE_DATE_FORMAT_CONSTRAINTS);
         }
         this.date = trimmedInput;
@@ -461,7 +445,7 @@ public class DueDate extends Date {
     }
 }
 ```
-###### \java\seedu\address\model\task\exceptions\DuplicateTaskException.java
+###### /java/seedu/address/model/task/exceptions/DuplicateTaskException.java
 ``` java
 /**
  * Signals that the operation will result in duplicate Task objects.
@@ -475,14 +459,14 @@ public class DuplicateTaskException extends DuplicateDataException {
 
 }
 ```
-###### \java\seedu\address\model\task\exceptions\TaskNotFoundException.java
+###### /java/seedu/address/model/task/exceptions/TaskNotFoundException.java
 ``` java
 /**
  * Signals that the operation is unable to find the specifed task.
  */
 public class TaskNotFoundException extends Exception{}
 ```
-###### \java\seedu\address\model\task\UniqueTaskList.java
+###### /java/seedu/address/model/task/UniqueTaskList.java
 ``` java
 /**
  * A list of tasks that enforces uniqueness between its elements and does not allow nulls.
@@ -592,7 +576,7 @@ public class UniqueTaskList implements  Iterable<Task> {
     }
 }
 ```
-###### \java\seedu\address\storage\XmlAdaptedTask.java
+###### /java/seedu/address/storage/XmlAdaptedTask.java
 ``` java
 /**
  * JAXB-friendly version of the Task.
@@ -641,7 +625,7 @@ public class XmlAdaptedTask {
 
 
 ```
-###### \java\seedu\address\storage\XmlSerializableAddressBook.java
+###### /java/seedu/address/storage/XmlSerializableAddressBook.java
 ``` java
     @Override
     public ObservableList<ReadOnlyTask> getTaskList() {
@@ -659,7 +643,41 @@ public class XmlAdaptedTask {
 
 }
 ```
-###### \java\seedu\address\ui\MainWindow.java
+###### /java/seedu/address/ui/CommandBox.java
+``` java
+            if (parser.parseCommand(userInput) instanceof AddTaskCommand) {
+                // Process and display the most recently added task in a separate text field
+                StringBuffer lastTaskFieldOutput = new StringBuffer();
+                List<ReadOnlyTask> listOfTask = logic.getFilteredTaskList();
+                lastTaskFieldOutput.append("\n");
+                lastTaskFieldOutput.append(listOfTask.get(listOfTask.size() - 1).toString());
+                lastTaskFieldOutput.append("\n");
+                PrintWriter out = new PrintWriter("taskAdded.txt");
+                out.println(lastTaskFieldOutput.toString());
+                out.close();
+
+                try {
+                    String curr = System.getProperty("user.dir");
+                    Scanner s = new Scanner(new File(curr + "/taskAdded.txt"));
+
+                    taskDisplayed.clear();
+                    taskDisplayed.appendText("===Last Task Added=== " + "\n");
+                    while (s.hasNext()) {
+                        String temp = s.next();
+                        if (("Description:").equals(temp)
+                                || ("Priority:").equals(temp)
+                                || ("DueDate:").equals(temp)) {
+                            taskDisplayed.appendText("\n");
+                        }
+                        taskDisplayed.appendText(temp + " ");
+                    }
+                } catch (FileNotFoundException fne) {
+                    throw new ParseException(fne.getMessage(), fne);
+                }
+            }
+
+```
+###### /java/seedu/address/ui/MainWindow.java
 ``` java
     /**
      * Set theme based on user's input index
@@ -682,7 +700,7 @@ public class XmlAdaptedTask {
     }
 
 ```
-###### \resources\view\Light.css
+###### /resources/view/Light.css
 ``` css
 
 /**
@@ -836,7 +854,7 @@ public class XmlAdaptedTask {
 
  }
 ```
-###### \resources\view\Ugly.css
+###### /resources/view/Ugly.css
 ``` css
 
 .background {
