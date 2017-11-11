@@ -2,7 +2,6 @@ package seedu.address.ui;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -41,10 +40,6 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.task.ReadOnlyTask;
-
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCIPTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DUEDATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 
 /**
  * The UI component that is responsible for receiving user command inputs.
@@ -314,10 +309,10 @@ public class CommandBox extends UiPart<Region> {
                     taskDisplayed.appendText("===Task=== " + "\n");
                     while (s.hasNext()) {
                         String temp = s.next();
-                        if (temp.equals("Description:") || temp.equals("Priority:") ||
-                                temp.equals("DueDate:")) {
+                        if (temp.equals("Description:")
+                                || temp.equals("Priority:")
+                                || temp.equals("DueDate:")) {
                             taskDisplayed.appendText("\n");
-                            continue;
                         }
                         taskDisplayed.appendText(temp + " ");
                     }

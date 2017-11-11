@@ -5,6 +5,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 
+import java.util.stream.Stream;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -13,8 +15,6 @@ import seedu.address.model.task.DueDate;
 import seedu.address.model.task.Priority;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
-
-import java.util.stream.Stream;
 
 //@@author zhangshuoyang
 /**
@@ -37,7 +37,8 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddTaskCommand.MESSAGE_USAGE));
         }
         try {
-            Description description = ParserUtil.parseDescriptionOptional(argumentMultimap.getValue(PREFIX_DESCIPTION)).get();
+            Description description = ParserUtil.parseDescriptionOptional(argumentMultimap.getValue
+                    (PREFIX_DESCIPTION)).get();
             Priority priority = ParserUtil.parsePriority(argumentMultimap.getValue(PREFIX_PRIORITY)).get();
             DueDate date = ParserUtil.parseDueDate(argumentMultimap.getValue(PREFIX_DUEDATE)).get();
 
