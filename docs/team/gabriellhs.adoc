@@ -41,7 +41,7 @@ he/she could remove the tag `CS2101 groupmate` from all contacts in
 
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=deletetask-mechanism]
+include::../DeveloperGuide.adoc[tag=deletetag-mechanism]
 
 #End of Extract#
 
@@ -122,7 +122,7 @@ include::../DeveloperGuide.adoc[tag=extended-autocomplete-mechanism]
 
 
 
-=== Enhancement Added: Multiple Filter
+=== Enhancement Added: Multiple Filter for Contacts
 
 ==== External behavior
 

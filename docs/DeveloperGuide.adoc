@@ -464,7 +464,7 @@ another method should be implemented in the `AutoCompleteUtil` class.
 
 ==== Design Considerations
 
-**Aspect:** Implementation of `autocomplete` +
+**Aspect:** Implementation of `autocomplete`. +
 
 **Alternative 1 (current choice):** Add a list of names of available commands to `Command` class. +
 **Pros:** We do not need to care about how `autocomplete` works when adding new commands. We simply need to add the
@@ -512,7 +512,7 @@ for aliases.
 
 ==== Design Considerations
 
-**Aspect:** Implementation of `extended autocomplete` +
+**Aspect:** Implementation of `extended autocomplete`. +
 
 **Alternative 1 (current choice):** Use a shortcut key to launch `extended autocomplete` when a valid `COMMAND NAME`
 has been typed into the command bar. +
@@ -550,7 +550,7 @@ delete it from the address book.
 
 ==== Design Considerations
 
-**Aspect:** Implementation of DeleteTagCommand +
+**Aspect:** Implementation of `deletetag` command. +
 
 **Alternative 1 (current choice):** Delete the specified tag from all contacts in the address book. +
 **Pros:** Easy to implement. +
@@ -584,10 +584,9 @@ in the filtered list of persons (i.e. show all elements in the list).
 input and apply it on the filtered list of persons (i.e. the list will only show
 elements that match the condition specified by the given `Predicate`).
 
-
 ==== Design Considerations
 
-**Aspect:** Implementation of MultiFilterCommand +
+**Aspect:** Implementation of `multifilter` command. +
 
 **Alternative 1 (current choice):** Allow the user to enter any number of filter fields (e.g. name, email, address, etc.) in any order. +
 **Pros:** The user does not have to type unnecessary information (e.g. he/she does not have to specify a blank email if he/she just wants
@@ -798,7 +797,7 @@ the tasks in the address book.
 
 ==== Design Considerations
 
-**Aspect:** Implementation of ListTaskCommand +
+**Aspect:** Implementation of `listtask` command. +
 
 **Alternative 1 (current choice):** List all the tasks in one sticky note. +
 **Cons:** When too many tasks are added, the tasks will look very clutterd when displayed. +
@@ -832,7 +831,7 @@ delete it from the address book.
 
 ==== Design Considerations
 
-**Aspect:** Implementation of DeleteTaskCommand +
+**Aspect:** Implementation of DeleteTaskCommand. +
 
 **Alternative 1 (current choice):** Delete tasks from the address book every time the user executes the command to
 delete task. +
@@ -847,6 +846,45 @@ delete task. +
 list of tasks when the user closes the address book after deletion.
 
 //end::deletetask-mechanism[]
+
+=== Sound Effect for Commands
+
+This mechanism is supported by the `AudioUtil` class. The static method
+`playClip()`, which plays a specified .wav format sound clip, is invoked on `AudioUtil` class when a command is issued by
+the user. Distinct sound clips will be played based on whether the command
+was successfully executed or it failed to execute (due to various reasons such
+as parse error). A visualization of this is shown in the following sequence diagram:
+
+image::SoundEffect-sequence-diagram.png[width="800"]
+
+The implementation of the `playClip()` method in the `AudioUtil` class is shown below:
+
+image::playClipMethod.png[width="800"]
+
+==== Prerequisites/Dependencies
+
+* The audio file whose name is specified to the `playClip()` method must exist
+in the src/resources/audio/ folder.
+* The name of a .wav format audio clip should be provided to the `playClip()` method as
+only this format has been tried and tested. Other audio file formats may/may not work.
+
+==== Design Considerations
+
+**Aspect:** Implementation of sound effects. +
+
+**Alternative 1 (current choice):** Play preset clips on command success or failure. +
+**Pros:** Easy to implement as the clips to be played are always the same and are only played
+during two events. +
+**Cons:** The sound clips are limited to two types - success or failure.
+
+**Alternative 2:** Allow the user to select the command success and failure audio clips from
+a predefined list. +
+**Pros:** User is able to have more personalized settings. +
+**Cons:** Technically challenging as additional commands have to be implemented to list
+the available audio clips and select the desired ones.
+
+
+
 
 === Logging
 
