@@ -1,5 +1,5 @@
 # zhangshuoyang
-###### /java/seedu/address/logic/commands/AddCommandTest.java
+###### \java\seedu\address\logic\commands\AddCommandTest.java
 ``` java
         @Override
         public void addTask(ReadOnlyTask task) throws DuplicateTaskException {
@@ -31,7 +31,7 @@
     }
 
 ```
-###### /java/seedu/address/logic/commands/AddTaskCommandIntegrationTest.java
+###### \java\seedu\address\logic\commands\AddTaskCommandIntegrationTest.java
 ``` java
 /**
  * Contains integraion tests (interactin with the Model) for {@code AddTaskCommand}.
@@ -72,7 +72,7 @@ public class AddTaskCommandIntegrationTest {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/AddTaskCommandTest.java
+###### \java\seedu\address\logic\commands\AddTaskCommandTest.java
 ``` java
 public class AddTaskCommandTest {
 
@@ -266,7 +266,7 @@ public class AddTaskCommandTest {
 }
 
 ```
-###### /java/seedu/address/logic/commands/CommandTestUtil.java
+###### \java\seedu\address\logic\commands\CommandTestUtil.java
 ``` java
     public static final String VALID_DESCRIPTION_ASSIGNMENT = "CS2103T Assignment";
     public static final String VALID_DESCRIPTION_SHOPPING = "Go shopping";
@@ -362,7 +362,7 @@ public class AddTaskCommandTest {
     }
 
 ```
-###### /java/seedu/address/logic/commands/SwitchThemeCommandTest.java
+###### \java\seedu\address\logic\commands\SwitchThemeCommandTest.java
 ``` java
 public class SwitchThemeCommandTest {
 
@@ -393,7 +393,7 @@ public class SwitchThemeCommandTest {
 
 }
 ```
-###### /java/seedu/address/logic/parser/SwitchThemeCommandParserTest.java
+###### \java\seedu\address\logic\parser\SwitchThemeCommandParserTest.java
 ``` java
 public class SwitchThemeCommandParserTest {
 
@@ -411,7 +411,7 @@ public class SwitchThemeCommandParserTest {
     }
 }
 ```
-###### /java/seedu/address/testutil/AddressBookBuilder.java
+###### \java\seedu\address\testutil\AddressBookBuilder.java
 ``` java
     /**
      * Adds a new {@code Task} to the AddressBook that we are building.
@@ -430,7 +430,7 @@ public class SwitchThemeCommandParserTest {
     }
 }
 ```
-###### /java/seedu/address/testutil/TaskBuilder.java
+###### \java\seedu\address\testutil\TaskBuilder.java
 ``` java
 /**
  * A utility class to help with buidling Task objects.
@@ -502,7 +502,7 @@ public class TaskBuilder {
     }
 }
 ```
-###### /java/seedu/address/testutil/TaskUtil.java
+###### \java\seedu\address\testutil\TaskUtil.java
 ``` java
 /**
  * A utility class for Task.
@@ -528,7 +528,7 @@ public class TaskUtil {
     }
 }
 ```
-###### /java/seedu/address/testutil/TypicalTasks.java
+###### \java\seedu\address\testutil\TypicalTasks.java
 ``` java
 /**
  * A utility class containing a list of {@code Task} objects to be used in tests.
@@ -560,7 +560,7 @@ public class TypicalTasks {
 }
 
 ```
-###### /java/systemtests/AddTaskCommandSystemTest.java
+###### \java\systemtests\AddTaskCommandSystemTest.java
 ``` java
 public class AddTaskCommandSystemTest extends AddressBookSystemTest {
 

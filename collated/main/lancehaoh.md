@@ -1,5 +1,5 @@
 # lancehaoh
-###### /java/seedu/address/commons/util/AudioUtil.java
+###### \java\seedu\address\commons\util\AudioUtil.java
 ``` java
     /**
      * Play a .wav format audio file that is stored in src/main/resources/images folder
@@ -16,7 +16,7 @@
     }
 }
 ```
-###### /java/seedu/address/commons/util/AutoCompleteUtil.java
+###### \java\seedu\address\commons\util\AutoCompleteUtil.java
 ``` java
     /**
      * Gets the system commands that start with a particular prefix
@@ -32,7 +32,7 @@
     }
 }
 ```
-###### /java/seedu/address/logic/commands/Command.java
+###### \java\seedu\address\logic\commands\Command.java
 ``` java
     private static final List<String> listOfAvailableCommandAliases = Arrays.asList (
             AddCommand.COMMAND_WORD_ALIAS,
@@ -55,7 +55,7 @@
     protected UndoRedoStack undoRedoStack;
 
 ```
-###### /java/seedu/address/logic/commands/Command.java
+###### \java\seedu\address\logic\commands\Command.java
 ``` java
     /**
      * Constructs a feedback message to summarise an operation that displayed a listing of persons.
@@ -68,7 +68,7 @@
     }
 
 ```
-###### /java/seedu/address/logic/commands/Command.java
+###### \java\seedu\address\logic\commands\Command.java
 ``` java
     /**
      * Constructs a feedback message to summarise an operation that displayed a listing of names of persons.
@@ -90,7 +90,7 @@
     }
 
 ```
-###### /java/seedu/address/logic/commands/Command.java
+###### \java\seedu\address\logic\commands\Command.java
 ``` java
     public static Map<String, String> getMapOfCommandHelp() {
         // Initialize map the first time autocomplete is used
@@ -101,7 +101,7 @@
     }
 
 ```
-###### /java/seedu/address/logic/commands/Command.java
+###### \java\seedu\address\logic\commands\Command.java
 ``` java
     public static Map<String, String> getMapOfCommandFormats() {
         // Initialize map the first time autocomplete is used
@@ -118,14 +118,14 @@
     }
 
 ```
-###### /java/seedu/address/logic/commands/Command.java
+###### \java\seedu\address\logic\commands\Command.java
 ``` java
     public static List<String> getListOfAvailableCommandAliases() {
         return listOfAvailableCommandAliases;
     }
 
 ```
-###### /java/seedu/address/logic/commands/Command.java
+###### \java\seedu\address\logic\commands\Command.java
 ``` java
     /**
      * Executes the command and returns the result message.
@@ -136,7 +136,7 @@
     public abstract CommandResult execute() throws CommandException;
 
 ```
-###### /java/seedu/address/logic/commands/Command.java
+###### \java\seedu\address\logic\commands\Command.java
 ``` java
     /**
      * Provides any needed dependencies to the command.
@@ -148,7 +148,7 @@
     }
 
 ```
-###### /java/seedu/address/logic/commands/Command.java
+###### \java\seedu\address\logic\commands\Command.java
 ``` java
     /**
      *
@@ -174,7 +174,7 @@
         mapOfCommandsToFormats.put(UndoCommand.COMMAND_WORD, UndoCommand.AUTOCOMPLETE_FORMAT);
     }
 ```
-###### /java/seedu/address/logic/commands/Command.java
+###### \java\seedu\address\logic\commands\Command.java
 ``` java
     /**
      *
@@ -204,14 +204,14 @@
     }
 }
 ```
-###### /java/seedu/address/logic/commands/DeleteTagCommand.java
+###### \java\seedu\address\logic\commands\DeleteTagCommand.java
 ``` java
     public DeleteTagCommand(Tag tagToDelete) {
         this.tagToDelete = tagToDelete;
     }
 
 ```
-###### /java/seedu/address/logic/commands/DeleteTagCommand.java
+###### \java\seedu\address\logic\commands\DeleteTagCommand.java
 ``` java
     @Override
     public CommandResult executeUndoableCommand() throws CommandException {
@@ -233,14 +233,14 @@
     }
 }
 ```
-###### /java/seedu/address/logic/commands/DeleteTaskCommand.java
+###### \java\seedu\address\logic\commands\DeleteTaskCommand.java
 ``` java
     public DeleteTaskCommand(ArrayList<Index> targetIndex) {
         this.targetIndex = targetIndex;
     }
 
 ```
-###### /java/seedu/address/logic/commands/DeleteTaskCommand.java
+###### \java\seedu\address\logic\commands\DeleteTaskCommand.java
 ``` java
     @Override
     public CommandResult executeUndoableCommand() throws CommandException {
@@ -281,7 +281,7 @@
     }
 
 ```
-###### /java/seedu/address/logic/commands/DeleteTaskCommand.java
+###### \java\seedu\address\logic\commands\DeleteTaskCommand.java
 ``` java
     @Override
     public boolean equals(Object other) {
@@ -291,7 +291,7 @@
     }
 }
 ```
-###### /java/seedu/address/logic/commands/ListTaskCommand.java
+###### \java\seedu\address\logic\commands\ListTaskCommand.java
 ``` java
     @Override
     public CommandResult execute() {
@@ -307,7 +307,7 @@
     }
 }
 ```
-###### /java/seedu/address/logic/commands/MultiFilterCommand.java
+###### \java\seedu\address\logic\commands\MultiFilterCommand.java
 ``` java
     public MultiFilterCommand(
             NameContainsKeywordsSubstrPredicate namePredicate,
@@ -321,7 +321,7 @@
     }
 
 ```
-###### /java/seedu/address/logic/commands/MultiFilterCommand.java
+###### \java\seedu\address\logic\commands\MultiFilterCommand.java
 ``` java
     @Override
     public CommandResult execute() {
@@ -353,7 +353,7 @@
     }
 
 ```
-###### /java/seedu/address/logic/commands/MultiFilterCommand.java
+###### \java\seedu\address\logic\commands\MultiFilterCommand.java
 ``` java
     @Override
     public boolean equals(Object other) {
@@ -381,7 +381,7 @@
     }
 }
 ```
-###### /java/seedu/address/logic/parser/DeleteTagCommandParser.java
+###### \java\seedu\address\logic\parser\DeleteTagCommandParser.java
 ``` java
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteTagCommand
@@ -398,7 +398,7 @@
     }
 }
 ```
-###### /java/seedu/address/logic/parser/DeleteTaskCommandParser.java
+###### \java\seedu\address\logic\parser\DeleteTaskCommandParser.java
 ``` java
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteTaskCommand
@@ -423,7 +423,7 @@
 
 }
 ```
-###### /java/seedu/address/logic/parser/MultiFilterCommandParser.java
+###### \java\seedu\address\logic\parser\MultiFilterCommandParser.java
 ``` java
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
@@ -465,7 +465,7 @@
     }
 
 ```
-###### /java/seedu/address/logic/parser/MultiFilterCommandParser.java
+###### \java\seedu\address\logic\parser\MultiFilterCommandParser.java
 ``` java
     /**
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
@@ -476,7 +476,7 @@
     }
 }
 ```
-###### /java/seedu/address/ui/CommandBox.java
+###### \java\seedu\address\ui\CommandBox.java
 ``` java
     /**
      * Launches extended auto complete mechanism in logic
@@ -500,7 +500,7 @@
     }
 
 ```
-###### /java/seedu/address/ui/CommandBox.java
+###### \java\seedu\address\ui\CommandBox.java
 ``` java
     /**
      * Launches auto complete mechanism in logic
@@ -582,7 +582,7 @@
     }
 
 ```
-###### /java/seedu/address/ui/CommandBox.java
+###### \java\seedu\address\ui\CommandBox.java
 ``` java
     /**
      * Handles the Enter button pressed event.
