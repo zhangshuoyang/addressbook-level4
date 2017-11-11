@@ -22,7 +22,7 @@
      * Gets the system commands that start with a particular prefix
      *
      * @param commandText an arbitrary string
-     * @return commandList a list of system commands whose prefix is commandText
+     * @return a list of system commands whose prefix is commandText
      */
     public static List<String> autoCompleteCommand(String commandText, List<String> commandList) {
         return commandList
@@ -214,17 +214,13 @@
 ###### /java/seedu/address/logic/commands/DeleteTagCommand.java
 ``` java
     @Override
-    public CommandResult executeUndoableCommand() throws CommandException {
-        try {
-            model.deleteTag(tagToDelete);
-        } catch (PersonNotFoundException pnfe) {
-            assert false : "The target person cannot be missing";
-        } catch (DuplicatePersonException dpe) {
-            assert false : "Update will cause two contacts to be the same";
-        }
+    public CommandResult executeUndoableCommand() {
+        boolean tagWasDeleted = model.deleteTag(tagToDelete);
+
+        String messageToUser = (!tagWasDeleted ? MESSAGE_NO_SUCH_TAG : MESSAGE_DELETE_TAG_SUCCESS);
 
         if (autoCorrectCommand.getMessageToUser().equals("")) {
-            return new CommandResult(String.format(MESSAGE_DELETE_TAG_SUCCESS, tagToDelete));
+            return new CommandResult(String.format(messageToUser, tagToDelete));
         } else {
             return new CommandResult(autoCorrectCommand.getMessageToUser()
                     + "\n"
@@ -475,6 +471,20 @@
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }
+```
+###### /java/seedu/address/ui/CommandBox.java
+``` java
+        case TAB: // shortcut for autocomplete feature
+            keyEvent.consume();
+            launchAutoComplete();
+            commandTextField.requestFocus(); // focus the caret in the command box after autocomplete
+            commandTextField.end(); // move caret to the end of the completed command
+            break;
+        default:
+            // let JavaFx handle the keypress
+        }
+    }
+
 ```
 ###### /java/seedu/address/ui/CommandBox.java
 ``` java

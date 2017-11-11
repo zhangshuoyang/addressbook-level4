@@ -386,7 +386,7 @@ Command Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS` +
 //end::secondphone[]
 
 //tag::multifilter-feature[]
-=== Locating persons by multiple criteria: `multifilter` [Since v1.1] [[multifilter-format]]
+=== Locating persons by multiple criteria: `multifilter` [Since v1.1]
 
 [[multifilter-format]] Finds persons whose names, phone no., emails and addresses,
 match a set of specified criteria. +
@@ -820,13 +820,9 @@ image:deletetask-listtask.png[width="800"]
 +
 image:deletetask-command-pre.png[width="400"]
 
-. Hit the kbd:[ENTER] key. You will see the following success
-message if the command was successful.
-+
-image:deletetask-command-post.png[width="400"]
-
-. Observe that
- the tasks that you have specified in the previous step have been deleted from
+. Hit the kbd:[ENTER] key. You will see a success
+message in the result pane if the command was successful. Also, observe that
+ the tasks you have specified in the previous step have been deleted from
  `Contact Plus`.
 +
 image:deletetask-proof.png[width="800"]
