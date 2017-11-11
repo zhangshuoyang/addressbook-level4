@@ -24,9 +24,9 @@ By: `Team W11-B1`      Since: `Sep 2107`      Licence: `MIT`
 
 // end::welcome[]
 
-This guide will help you get familiar with the features of `Contact Plus`. If you encounter any problems or doubts, please press kbd:[F1] or type `Help` in commmand box (refer to link:#userInterface[User Interface]) for more information.
+This guide will help you get familiar with the features of `Contact Plus`. If you encounter any problems or doubts, please press kbd:[F1] or type `Help` in commmand box (refer to link:#user-interface[User Interface] to find command box).
 
-== User Interface
+== User Interface [[user-interface]]
 This is recommended to get familiar with the names of the components on this user interface as this guide will frequently refer to these names.
 The names of the components on this user interface are shown in the following image:
 
@@ -49,7 +49,7 @@ This app will not work with earlier versions of Java 8.
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 +
-.  Refer to the link:#command-summary[command-summary] section below for the complete list of commands.
+.  Refer to the link:#command-summary[command summary] section below for the complete list of commands.
 
 // end::quick-start[]
 
@@ -68,14 +68,13 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 Command Format: `help` +
 Keyboard shortcut: `F1` +
-UI: Menu bar - kbd:[Help]
+UI: Menu bar (refer to link:#user-interface[User Interface]) - kbd:[Help]
 
 === Adding a person: `add` [[add-command]]
 
 Adds a person to `Contact Plus` +
 Command Format: `add n/NAME p/PHONE_NUMBER p2/PHONE_NUMBER or '-' e/EMAIL a/ADDRESS [t/TAG]...` +
 Keyboard shortcut: kbd:[control] + kbd:[a]/kbd:[A]
-
 
 [TIP]
 A person can have any number of tags (including 0) +
@@ -87,8 +86,12 @@ Tags names should be alphanumeric +
 
 Examples:
 
-* `add n/John Doe p/98765432 p2/61234567 or '-' e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+|===
+| Your input | Output
+| `add n/John Doe p/98765432 p2/61234567 or '-' e/johnd@example.com a/John street, block 123, #01-01` |
+add the contact John doe with first phone number 98765432, second phone number null, email address johndoe@example.com, and address John street, block 123, #01-01 respectively.
+|===
+
 
 === Listing all persons : `list`, `l` [[list-command]]
 
@@ -111,14 +114,15 @@ Keyboard shortcut: kbd:[control] + kbd:[e]/kbd:[E]
 * You can remove all the person's tags by typing `t/` without specifying any tags after it.
 ****
 
-[TIP]
-1. A person can have any number of tags (including 0). +
-2. A person can add the symbol '-' if a second phone number is not required for the contact. +
-3. Person names should only contain alphanumeric characters and spaces, and it should not be blank. +
-4. Person emails should be 2 alphanumeric/period strings separated by '@'. +
-5. Phone numbers can only contain numbers, and should be at least 3 digits long. +
-6. Tags names should be alphanumeric +
-
+[NOTE]
+====
+- A person can have any number of tags (including 0).
+- A person can add the symbol '-' if a second phone number is not required for the contact.
+- Person names should only contain alphanumeric characters and spaces, and it should not be blank.
+- Person emails should be 2 alphanumeric/period strings separated by '@'.
+- Phone numbers can only contain numbers, and should be at least 3 digits long.
+- Tags names should be alphanumeric +
+====
 
 ==== Examples
 
@@ -146,10 +150,11 @@ Keyboard shortcut: kbd:[control] + kbd:[f]/kbd:[F]
 
 Examples:
 
-* `find John` +
-Returns `john` and `John Doe`
-* `find Betsy Tim John` +
-Returns any person having names `Betsy`, `Tim`, or `John`
+|===
+| Your input | Output
+| `find John` | Returns `john` and `John Doe`
+| `find Betsy Tim John` | Returns any person having names `Betsy`, `Tim`, or `John`
+|===
 
 === Deleting a single person : `delete` [[delete-single-person]]
 
@@ -198,12 +203,11 @@ Command Format: `select INDEX` or `s INDEX`
 
 Examples:
 
-* `list` +
-`select 2` +
-Selects the 2nd person in `Contact Plus`.
-* `find Betsy` +
-`select 1` +
-Selects the 1st person in the results of the `find` command.
+|===
+| Your input | Output +
+| `list` + `select 2` + | Selects the 2nd person in `Contact Plus`
+| `find Betsy` + `select 1` | Selects the 1st person in the results of the `find` command
+|===
 
 === Listing entered commands : `history`, `h` [[history-command]]
 
@@ -227,19 +231,13 @@ Undoable commands: commands that modify the content in `Contact Plus` (`add`, `d
 
 Examples:
 
-* `delete 1` +
-`list` +
-`undo` (reverses the `delete 1` command) +
-
-* `select 1` +
-`list` +
-`undo` +
-The `undo` command fails as there are no undoable commands executed previously.
-
-* `delete 1` +
-`clear` +
-`undo` (reverses the `clear` command) +
-`undo` (reverses the `delete 1` command) +
+|===
+| Your input | Output +
+| `delete 1` + `list` + `undo` | Reverses the `delete 1` command
+| `select 1`+ `list` + `undo` | The `undo` command fails as there are no undoable commands executed previously.
+| `delete 1` +`clear` +`undo`| Reverses the `clear` command
+| `delete 1` +`clear` +`undo` | Reverses the `delete 1` command
+|===
 
 === Redoing the previously undone command : `redo`, `r` [[redo-command]]
 
@@ -248,20 +246,12 @@ Command Format: `redo`, `r`
 
 Examples:
 
-* `delete 1` +
-`undo` (reverses the `delete 1` command) +
-`redo` (reapplies the `delete 1` command) +
-
-* `delete 1` +
-`redo` +
-The `redo` command fails as there are no `undo` commands executed previously.
-
-* `delete 1` +
-`clear` +
-`undo` (reverses the `clear` command) +
-`undo` (reverses the `delete 1` command) +
-`redo` (reapplies the `delete 1` command) +
-`redo` (reapplies the `clear` command) +
+|===
+| Your input | Output +
+| `delete 1`+ `undo` + `redo` | Reapplies the `delete 1` command
+| `delete 1` +`redo`| The `redo` command fails as there are no `undo` commands executed previously.
+| `delete 1` +`clear` +`undo` + `undo + `redo` + `redo`| Reapplies the `clear` command
+|===
 
 === Clearing all entries : `clear`, `c` [[clear-command]]
 
@@ -376,16 +366,11 @@ Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS`
 Examples:
 * `add n/John Doe p/98765432 p2/73624789 e/johnd@example.com a/John street, block 123, #01-01` +
 * `edit 1 p/91234567 p2/73624789 e/johndoe@example.com` +
-
-<<<<<<< HEAD
-=== Locating persons by multiple criteria: `multifilter` [Since v1.1]
-=======
 //end::secondphone[]
 
-=== Locating persons by multiple criteria: `multifilter` [Since v1.1] [[multifilter-format]]
->>>>>>> 6a615541cbe9d0981a7f5bb1e9292cfe1887103d
 
 //tag::multifilter-feature[]
+=== Locating persons by multiple criteria: `multifilter` [Since v1.1] [[multifilter-format]]
 
 [[multifilter-format]] Finds persons whose names, phone no., emails and addresses,
 match a set of specified criteria. +
@@ -946,7 +931,7 @@ The application will prompt notifications for users on the computer for the up c
 Address book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
-== Command Summary
+== Command Summary [[command-summary]]
 
 |===
 | *Function* | *Input command* | *Example*
