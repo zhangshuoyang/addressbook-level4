@@ -1,5 +1,5 @@
 # zhangshuoyang
-###### /java/seedu/address/commons/events/ui/SwitchThemeRequestEvent.java
+###### \java\seedu\address\commons\events\ui\SwitchThemeRequestEvent.java
 ``` java
 /**
  * Indicate a request to switch theme by the user
@@ -18,7 +18,7 @@ public class SwitchThemeRequestEvent extends BaseEvent {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/AddTaskCommand.java
+###### \java\seedu\address\logic\commands\AddTaskCommand.java
 ``` java
 /**
  * Adds a task to the address book.
@@ -81,7 +81,7 @@ public class AddTaskCommand extends UndoableCommand {
 
 
 ```
-###### /java/seedu/address/logic/commands/SwitchThemeCommand.java
+###### \java\seedu\address\logic\commands\SwitchThemeCommand.java
 ``` java
 /**
  * Switch the theme of the address book
@@ -124,7 +124,7 @@ public class SwitchThemeCommand extends Command {
     }
 }
 ```
-###### /java/seedu/address/logic/parser/AddTaskCommandParser.java
+###### \java\seedu\address\logic\parser\AddTaskCommandParser.java
 ``` java
 /**
  * Parses input arguments and creates a new AddTaskCommand object
@@ -167,7 +167,7 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
     }
 }
 ```
-###### /java/seedu/address/logic/parser/ParserUtil.java
+###### \java\seedu\address\logic\parser\ParserUtil.java
 ``` java
     /**
      * Parses a {@code Optional<String> desciption} into an {@code Optional<Description>} if {@code description}
@@ -209,7 +209,7 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
     }
 }
 ```
-###### /java/seedu/address/logic/parser/SwitchThemeCommandParser.java
+###### \java\seedu\address\logic\parser\SwitchThemeCommandParser.java
 ``` java
 /**
  * Parses the given {@code String} of arguments in the context of the SwitchThemeCommand
@@ -230,7 +230,7 @@ public class SwitchThemeCommandParser implements Parser<SwitchThemeCommand> {
 
 }
 ```
-###### /java/seedu/address/model/AddressBook.java
+###### \java\seedu\address\model\AddressBook.java
 ``` java
     //// task-level operations
 
@@ -273,7 +273,7 @@ public class SwitchThemeCommandParser implements Parser<SwitchThemeCommand> {
     }
 
 ```
-###### /java/seedu/address/model/Model.java
+###### \java\seedu\address\model\Model.java
 ``` java
     /**
      * Replaces the given person {@code target} with {@code editedTask}.
@@ -304,7 +304,7 @@ public class SwitchThemeCommandParser implements Parser<SwitchThemeCommand> {
     void clearFiltersOnPersonList();
 
 ```
-###### /java/seedu/address/model/ModelManager.java
+###### \java\seedu\address\model\ModelManager.java
 ``` java
     /** For further implementation. */
     @Override
@@ -332,7 +332,7 @@ public class SwitchThemeCommandParser implements Parser<SwitchThemeCommand> {
 
 
 ```
-###### /java/seedu/address/model/ModelManager.java
+###### \java\seedu\address\model\ModelManager.java
 ``` java
     //=========== Filtered Task List Accessors =============================================================
 
@@ -352,7 +352,7 @@ public class SwitchThemeCommandParser implements Parser<SwitchThemeCommand> {
     }
 
 ```
-###### /java/seedu/address/model/task/Date.java
+###### \java\seedu\address\model\task\Date.java
 ``` java
 /**
  * Represents the date of a certain task in the Address Book.
@@ -391,7 +391,7 @@ public class Date {
 
 }
 ```
-###### /java/seedu/address/model/task/DescContainsKeywordsPredicate.java
+###### \java\seedu\address\model\task\DescContainsKeywordsPredicate.java
 ``` java
 /**
  * Tests that a {@code ReadOnlyTask}'s {@code Name} matches any of the keywords given.
@@ -417,7 +417,7 @@ public class DescContainsKeywordsPredicate implements Predicate<ReadOnlyTask> {
     }
 }
 ```
-###### /java/seedu/address/model/task/DueDate.java
+###### \java\seedu\address\model\task\DueDate.java
 ``` java
 /**
  * Represents the date of a certain task in the Address Book.
@@ -461,7 +461,7 @@ public class DueDate extends Date {
     }
 }
 ```
-###### /java/seedu/address/model/task/exceptions/DuplicateTaskException.java
+###### \java\seedu\address\model\task\exceptions\DuplicateTaskException.java
 ``` java
 /**
  * Signals that the operation will result in duplicate Task objects.
@@ -475,14 +475,14 @@ public class DuplicateTaskException extends DuplicateDataException {
 
 }
 ```
-###### /java/seedu/address/model/task/exceptions/TaskNotFoundException.java
+###### \java\seedu\address\model\task\exceptions\TaskNotFoundException.java
 ``` java
 /**
  * Signals that the operation is unable to find the specifed task.
  */
 public class TaskNotFoundException extends Exception{}
 ```
-###### /java/seedu/address/model/task/UniqueTaskList.java
+###### \java\seedu\address\model\task\UniqueTaskList.java
 ``` java
 /**
  * A list of tasks that enforces uniqueness between its elements and does not allow nulls.
@@ -592,7 +592,7 @@ public class UniqueTaskList implements  Iterable<Task> {
     }
 }
 ```
-###### /java/seedu/address/storage/XmlAdaptedTask.java
+###### \java\seedu\address\storage\XmlAdaptedTask.java
 ``` java
 /**
  * JAXB-friendly version of the Task.
@@ -641,7 +641,7 @@ public class XmlAdaptedTask {
 
 
 ```
-###### /java/seedu/address/storage/XmlSerializableAddressBook.java
+###### \java\seedu\address\storage\XmlSerializableAddressBook.java
 ``` java
     @Override
     public ObservableList<ReadOnlyTask> getTaskList() {
@@ -659,7 +659,7 @@ public class XmlAdaptedTask {
 
 }
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
     /**
      * Set theme based on user's input index
@@ -682,7 +682,7 @@ public class XmlAdaptedTask {
     }
 
 ```
-###### /resources/view/Light.css
+###### \resources\view\Light.css
 ``` css
 
 /**
@@ -836,7 +836,7 @@ public class XmlAdaptedTask {
 
  }
 ```
-###### /resources/view/Ugly.css
+###### \resources\view\Ugly.css
 ``` css
 
 .background {
