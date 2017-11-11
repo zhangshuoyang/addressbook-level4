@@ -91,9 +91,6 @@ public class AddTaskCommandSystemTest extends AddressBookSystemTest {
         assert getModel().getAddressBook().getTaskList().size() == 0;
         assertCommandSuccess(ASSIGNMENT);
 
-
-        /* Case: add a task, missing description -> added? */
-
         /* Case: invalid keyword -> rejected */
         command = "taks" + TaskUtil.getTaskDetails(toAdd);
         assertCommandFailure(command, Messages.MESSAGE_UNKNOWN_COMMAND);
@@ -106,7 +103,7 @@ public class AddTaskCommandSystemTest extends AddressBookSystemTest {
         /* Case: invalid due date -> rejected */
         command = AddTaskCommand.COMMAND_WORD + DESCRIPTION_DESC_SHOPPING + PRIORITY_DESC_SHOPPING
                 + INVALID_DUEDATE_DESC_SHOPPING;
-        assertCommandFailure(command, DueDate.MESSAGE_DATE_FORMAT_CONSTRAINTS);
+        assertCommandFailure(command, DueDate.MESSAGE_DATE_INVALID_CONSTRAINTS);
     }
 
 

@@ -289,12 +289,12 @@ public class Phone2 {
 ###### /java/seedu/address/model/task/Description.java
 ``` java
 /**
- * Represents a Tag in the address book.
+ * Represents the description of a task.
  * Guarantees: immutable; name is valid as declared in {@link #isValidDescription(String)}
  */
 public class Description {
 
-    public static final String MESSAGE_DESCRIPTION_CONSTRAINTS = "Tags names should be alphanumeric";
+    public static final String MESSAGE_DESCRIPTION_CONSTRAINTS = "Description should be alphanumeric";
     public static final String DESCRIPTION_VALIDATION_REGEX = ".+";
 
     public final String descriptionName;
@@ -475,34 +475,6 @@ public class Task implements ReadOnlyTask {
         this.duedate = new SimpleObjectProperty<>(duedate);
 
     }
-
-
-
-    //    public void setName(Name name) {
-    //        this.name.set(requireNonNull(name));
-    //    }
-
-
-    //    public ObjectProperty<Name> nameProperty() {
-    //        return name;
-    //    }
-
-
-    //    public Name getName() {
-    //        return name.get();
-    //    }
-
-    //    public void setDate(Date date) {
-    //        this.date.set(requireNonNull(date));
-    //    }
-
-    //    public ObjectProperty<Date> dateProperty() {
-    //        return date;
-    //    }
-
-    //    public Date getDate() {
-    //        return date.get();
-    //    }
 
     public Task(ReadOnlyTask in) {
         this(in.getDescription(), in.getPriority(), in.getDueDate());

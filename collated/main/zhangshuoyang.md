@@ -59,8 +59,6 @@ public class AddTaskCommand extends UndoableCommand {
         requireNonNull(model);
         try {
             model.addTask(toAdd);
-            String str = System.getProperty("user.dir");
-            System.out.println(str);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
@@ -141,13 +139,13 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
     @Override
     public AddTaskCommand parse(String userInput) throws ParseException {
         ArgumentMultimap argumentMultimap =
-                ArgumentTokenizer.tokenize(userInput, PREFIX_PRIORITY, PREFIX_DUEDATE);
-        if (!isFieldPresent(argumentMultimap)) {
-            // if empty
+                ArgumentTokenizer.tokenize(userInput, PREFIX_DESCIPTION, PREFIX_PRIORITY, PREFIX_DUEDATE);
+        if (!arePrefixesPresent(argumentMultimap, PREFIX_DESCIPTION, PREFIX_PRIORITY, PREFIX_DUEDATE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddTaskCommand.MESSAGE_USAGE));
         }
         try {
-            Description description = ParserUtil.parseDescription(argumentMultimap.getPreamble());
+            Description description = ParserUtil.parseDescriptionOptional(argumentMultimap.getValue
+                    (PREFIX_DESCIPTION)).get();
             Priority priority = ParserUtil.parsePriority(argumentMultimap.getValue(PREFIX_PRIORITY)).get();
             DueDate date = ParserUtil.parseDueDate(argumentMultimap.getValue(PREFIX_DUEDATE)).get();
 
@@ -162,23 +160,14 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
      * {@code ArgumentMultimap}.
      */
-    private boolean isFieldPresent(ArgumentMultimap argumentMultimap) {
-        return !argumentMultimap.getPreamble().isEmpty();
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
+
 }
 ```
 ###### /java/seedu/address/logic/parser/ParserUtil.java
 ``` java
-    /**
-     * Parses a {@code Optional<String> desciption} into an {@code Optional<Description>} if {@code description}
-     * is present.
-     * See header comment of this class regarding the use of {@code Optional} parameters.
-     */
-    public static Description parseDescription (String description) throws IllegalValueException {
-        requireNonNull(description);
-        return new Description(description);
-    }
-
     /**
      * Parses a {@code Optional<String> desciption} into an {@code Optional<Description>} if {@code description}
      * is present.
@@ -362,6 +351,8 @@ public class Date {
 
     public static final String MESSAGE_DATE_FORMAT_CONSTRAINTS =
             "The date must be in the format dd/MM/yyyy";
+    public static final String MESSAGE_DATE_INVALID_CONSTRAINTS =
+            "The input date is not valid!";
 
 
     /**
@@ -370,7 +361,7 @@ public class Date {
      * @throws java.time.format.DateTimeParseException if the date format is invalid
      */
     public static boolean isValidDate (String input) throws IllegalValueException {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
         try {
             LocalDate.parse(input, format);
             return true;
@@ -378,16 +369,6 @@ public class Date {
             return false;
         }
     }
-
-    /**
-     * Format the given date
-     */
-    public static LocalDate formatDate (String input) throws IllegalValueException {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate date = LocalDate.parse(input, format);
-        return date;
-    }
-
 
 }
 ```
@@ -438,6 +419,9 @@ public class DueDate extends Date {
         requireNonNull(input);
         String trimmedInput = input.trim();
         if (!Date.isValidDate(trimmedInput) && !trimmedInput.isEmpty()) {
+            if (!Date.isValidDate(trimmedInput)) {
+                throw new IllegalValueException(MESSAGE_DATE_INVALID_CONSTRAINTS);
+            }
             throw new IllegalValueException(MESSAGE_DATE_FORMAT_CONSTRAINTS);
         }
         this.date = trimmedInput;
@@ -658,6 +642,40 @@ public class XmlAdaptedTask {
     }
 
 }
+```
+###### /java/seedu/address/ui/CommandBox.java
+``` java
+            if (parser.parseCommand(userInput) instanceof AddTaskCommand) {
+                // Process and display the most recently added task in a separate text field
+                StringBuffer lastTaskFieldOutput = new StringBuffer();
+                List<ReadOnlyTask> listOfTask = logic.getFilteredTaskList();
+                lastTaskFieldOutput.append("\n");
+                lastTaskFieldOutput.append(listOfTask.get(listOfTask.size() - 1).toString());
+                lastTaskFieldOutput.append("\n");
+                PrintWriter out = new PrintWriter("taskAdded.txt");
+                out.println(lastTaskFieldOutput.toString());
+                out.close();
+
+                try {
+                    String curr = System.getProperty("user.dir");
+                    Scanner s = new Scanner(new File(curr + "/taskAdded.txt"));
+
+                    taskDisplayed.clear();
+                    taskDisplayed.appendText("===Last Task Added=== " + "\n");
+                    while (s.hasNext()) {
+                        String temp = s.next();
+                        if (("Description:").equals(temp)
+                                || ("Priority:").equals(temp)
+                                || ("DueDate:").equals(temp)) {
+                            taskDisplayed.appendText("\n");
+                        }
+                        taskDisplayed.appendText(temp + " ");
+                    }
+                } catch (FileNotFoundException fne) {
+                    throw new ParseException(fne.getMessage(), fne);
+                }
+            }
+
 ```
 ###### /java/seedu/address/ui/MainWindow.java
 ``` java

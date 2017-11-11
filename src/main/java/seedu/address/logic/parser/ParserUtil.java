@@ -110,16 +110,6 @@ public class ParserUtil {
      * is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
-    public static Description parseDescription (String description) throws IllegalValueException {
-        requireNonNull(description);
-        return new Description(description);
-    }
-
-    /**
-     * Parses a {@code Optional<String> desciption} into an {@code Optional<Description>} if {@code description}
-     * is present.
-     * See header comment of this class regarding the use of {@code Optional} parameters.
-     */
     public static Optional<Description> parseDescriptionOptional (Optional<String> description)
             throws IllegalValueException {
         requireNonNull(description);
