@@ -306,7 +306,7 @@ public class CommandBox extends UiPart<Region> {
                     Scanner s = new Scanner(new File(curr + "/taskAdded.txt"));
 
                     taskDisplayed.clear();
-                    taskDisplayed.appendText("===Task=== " + "\n");
+                    taskDisplayed.appendText("===Last Task Added=== " + "\n");
                     while (s.hasNext()) {
                         String temp = s.next();
                         if (("Description:").equals(temp)

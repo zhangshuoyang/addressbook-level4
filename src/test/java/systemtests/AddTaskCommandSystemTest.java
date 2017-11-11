@@ -91,9 +91,6 @@ public class AddTaskCommandSystemTest extends AddressBookSystemTest {
         assert getModel().getAddressBook().getTaskList().size() == 0;
         assertCommandSuccess(ASSIGNMENT);
 
-
-        /* Case: add a task, missing description -> added? */
-
         /* Case: invalid keyword -> rejected */
         command = "taks" + TaskUtil.getTaskDetails(toAdd);
         assertCommandFailure(command, Messages.MESSAGE_UNKNOWN_COMMAND);
