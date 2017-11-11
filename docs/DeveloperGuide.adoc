@@ -209,7 +209,7 @@ The `Model`,
 
 === Storage component
 
-image::StorageClassDiagram.png[width="800"]
+image::StorageClassDiagram2.png[width="800"]
 _Figure 2.5.1 : Structure of the Storage Component_
 
 *API* : link:{repoURL}/src/main/java/seedu/address/storage/Storage.java[`Storage.java`]
