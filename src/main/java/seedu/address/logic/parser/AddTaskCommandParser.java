@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 
@@ -12,6 +13,8 @@ import seedu.address.model.task.DueDate;
 import seedu.address.model.task.Priority;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
+
+import java.util.stream.Stream;
 
 //@@author zhangshuoyang
 /**
@@ -29,13 +32,12 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
     @Override
     public AddTaskCommand parse(String userInput) throws ParseException {
         ArgumentMultimap argumentMultimap =
-                ArgumentTokenizer.tokenize(userInput, PREFIX_PRIORITY, PREFIX_DUEDATE);
-        if (!isFieldPresent(argumentMultimap)) {
-            // if empty
+                ArgumentTokenizer.tokenize(userInput, PREFIX_DESCIPTION, PREFIX_PRIORITY, PREFIX_DUEDATE);
+        if (!arePrefixesPresent(argumentMultimap, PREFIX_DESCIPTION, PREFIX_PRIORITY, PREFIX_DUEDATE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddTaskCommand.MESSAGE_USAGE));
         }
         try {
-            Description description = ParserUtil.parseDescription(argumentMultimap.getPreamble());
+            Description description = ParserUtil.parseDescriptionOptional(argumentMultimap.getValue(PREFIX_DESCIPTION)).get();
             Priority priority = ParserUtil.parsePriority(argumentMultimap.getValue(PREFIX_PRIORITY)).get();
             DueDate date = ParserUtil.parseDueDate(argumentMultimap.getValue(PREFIX_DUEDATE)).get();
 
@@ -50,7 +52,8 @@ public class AddTaskCommandParser implements  Parser<AddTaskCommand> {
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
      * {@code ArgumentMultimap}.
      */
-    private boolean isFieldPresent(ArgumentMultimap argumentMultimap) {
-        return !argumentMultimap.getPreamble().isEmpty();
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
+
 }
