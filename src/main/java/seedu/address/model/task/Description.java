@@ -6,7 +6,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 
 //@@author chairz
 /**
- * Represents a Tag in the address book.
+ * Represents the description of a task.
  * Guarantees: immutable; name is valid as declared in {@link #isValidDescription(String)}
  */
 public class Description {

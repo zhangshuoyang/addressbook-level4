@@ -31,34 +31,6 @@ public class Task implements ReadOnlyTask {
 
     }
 
-
-
-    //    public void setName(Name name) {
-    //        this.name.set(requireNonNull(name));
-    //    }
-
-
-    //    public ObjectProperty<Name> nameProperty() {
-    //        return name;
-    //    }
-
-
-    //    public Name getName() {
-    //        return name.get();
-    //    }
-
-    //    public void setDate(Date date) {
-    //        this.date.set(requireNonNull(date));
-    //    }
-
-    //    public ObjectProperty<Date> dateProperty() {
-    //        return date;
-    //    }
-
-    //    public Date getDate() {
-    //        return date.get();
-    //    }
-
     public Task(ReadOnlyTask in) {
         this(in.getDescription(), in.getPriority(), in.getDueDate());
     }
