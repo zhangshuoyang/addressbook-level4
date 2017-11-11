@@ -31,17 +31,13 @@ public class DeleteTagCommand extends UndoableCommand {
 
     //@@author lancehaoh
     @Override
-    public CommandResult executeUndoableCommand() throws CommandException {
-        try {
-            model.deleteTag(tagToDelete);
-        } catch (PersonNotFoundException pnfe) {
-            assert false : "The target person cannot be missing";
-        } catch (DuplicatePersonException dpe) {
-            assert false : "Update will cause two contacts to be the same";
-        }
+    public CommandResult executeUndoableCommand() {
+        boolean tagWasDeleted = model.deleteTag(tagToDelete);
+
+        String messageToUser = (!tagWasDeleted ? "There is no such tag." : MESSAGE_DELETE_TAG_SUCCESS);
 
         if (autoCorrectCommand.getMessageToUser().equals("")) {
-            return new CommandResult(String.format(MESSAGE_DELETE_TAG_SUCCESS, tagToDelete));
+            return new CommandResult(String.format(messageToUser, tagToDelete));
         } else {
             return new CommandResult(autoCorrectCommand.getMessageToUser()
                     + "\n"
