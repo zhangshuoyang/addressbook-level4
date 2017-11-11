@@ -291,7 +291,7 @@ Channel channel = service.getForecast(woeid, DegreeUnit.CELSIUS);
 return conditionStringParser(channel.getItem().getCondition().toString());
 ----
 
-Yahoo Weather information can be retrieved from `statusFootBar` too, as follows:
+Yahoo Weather information can be seen from `statusFootBar` too, as follows:
 
 image::YahooWeatherFootBar.png[width="800"]
 ---
