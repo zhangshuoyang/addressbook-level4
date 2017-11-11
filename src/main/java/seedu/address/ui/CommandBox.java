@@ -309,9 +309,9 @@ public class CommandBox extends UiPart<Region> {
                     taskDisplayed.appendText("===Task=== " + "\n");
                     while (s.hasNext()) {
                         String temp = s.next();
-                        if (temp.equals("Description:")
-                                || temp.equals("Priority:")
-                                || temp.equals("DueDate:")) {
+                        if (("Description:").equals(temp)
+                                || ("Priority:").equals(temp)
+                                || ("DueDate:").equals(temp)) {
                             taskDisplayed.appendText("\n");
                         }
                         taskDisplayed.appendText(temp + " ");
