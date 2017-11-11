@@ -65,14 +65,15 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 ====
 
 === Viewing help : `help` [[help-command]]
+If you want to refer to this user guide, you can do so with `help` command. You can refer to this guide for every feature that you can play with on Contact Plus application. +
 
 Command Format: `help` +
 Keyboard shortcut: `F1` +
-UI: Menu bar (refer to link:#user-interface[User Interface]) - kbd:[Help]
+UI: Menu bar (refer to link:#user-interface[User Interface] for Menu bar) - kbd:[Help]
 
 === Adding a person: `add` [[add-command]]
+If you want to add a person into your contact pane (refer to link:#user-interface[User Interface] for contact pane), you should use `add` command. The following explains the detailed steps to help you achieve adding a person into your contact list.
 
-Adds a person to `Contact Plus` +
 Command Format: `add n/NAME p/PHONE_NUMBER p2/PHONE_NUMBER or '-' e/EMAIL a/ADDRESS [t/TAG]...` +
 Keyboard shortcut: kbd:[control] + kbd:[a]/kbd:[A]
 
@@ -86,7 +87,6 @@ Keyboard shortcut: kbd:[control] + kbd:[a]/kbd:[A]
 - Tags names should be alphanumeric +
 ====
 
-
 ==== Examples
 |===
 | Your input | Output
@@ -96,15 +96,14 @@ add the contact John doe with first phone number 98765432, second phone number n
 
 
 === Listing all persons : `list`, `l` [[list-command]]
+If you want to see all the persons that you have added to `Contact Plus`, you can do so with `list` command. +
 
-Shows all the contacts that you have added to `Contact Plus`. +
 Command Format: `list` or `l`
 
 === Editing a person : `edit`, `e` [[edit-command]]
+If you need to update your contacts' information, you can do so with this `edit` command. +
 
-If you need to update your contacts' information, you can do so with this command. +
-Command Format: `edit INDEX [n/NAME] [p/PHONE] [p2/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`, +
-or `e INDEX [n/NAME] [p/PHONE] [p2/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
+Command Format: `edit INDEX [n/NAME] [p/PHONE] [p2/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`, or `e INDEX [n/NAME] [p/PHONE] [p2/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
 Keyboard shortcut: kbd:[control] + kbd:[e]/kbd:[E]
 
 ==== Description
@@ -137,8 +136,8 @@ Updates the name of the 2nd person to `Betsy Crower` and clears all existing tag
 |===
 
 === Locating persons by name: `find`, `f` [[find-command]]
+If you want to find persons whose names with certain alphabets in your mind, you can search those persons with `find` command. +
 
-Finds persons whose names contain any of the given keywords. +
 Command Format: `find KEYWORD [MORE_KEYWORDS]`, or `f KEYWORD [MORE_KEYWORDS]` +
 Keyboard shortcut: kbd:[control] + kbd:[f]/kbd:[F]
 
@@ -159,8 +158,8 @@ Keyboard shortcut: kbd:[control] + kbd:[f]/kbd:[F]
 |===
 
 === Deleting a single person : `delete` [[delete-single-person]]
+If you want to delete a person from your Contact Plus, you can do so with `delete` command. +
 
-Deletes the person, that you have specified, from `Contact Plus`. +
 Command Format: `delete INDEX`, or `d INDEX` +
 Keyboard shortcut: kbd:[control] + kbd:[d]/kbd:[D]
 
@@ -193,8 +192,8 @@ Deletes the 1st person in the results of the `find` command.
 |===
 
 === Selecting a person : `select`, `s` [[select-command]]
+If you want to select a person in your Contact Plus, you can do so by `select` command. The index used in the following steps is identified by the index number used in `list task` (refer to link:#list-command[list task]). +
 
-Selects the person identified by the index number used in the last person listing. +
 Command Format: `select INDEX` or `s INDEX`
 
 ==== Description
@@ -213,8 +212,8 @@ Command Format: `select INDEX` or `s INDEX`
 |===
 
 === Listing entered commands : `history`, `h` [[history-command]]
+If you want to list all the commands that you have entered in reverse chronological order in case you have done something wrong and you want to check out your command history , you can do so with `history` command . +
 
-Lists all the commands that you have entered in reverse chronological order. +
 Command Format: `history`
 
 [NOTE]
@@ -223,8 +222,8 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 ====
 
 === Undoing previous command : `undo`, `u` [[undo-command]]
+If you have done something wrong, you can revert your action, you can do so with `undo` command. +
 
-Restores `Contact Plus` to the state before the previous _undoable_ command was executed. +
 Command Format: `undo`, `u`
 
 [NOTE]
@@ -232,7 +231,7 @@ Command Format: `undo`, `u`
 Undoable commands: commands that modify the content in `Contact Plus` (`add`, `delete`, `edit` and `clear`).
 ====
 
-==== Examples:
+==== Examples
 
 |===
 | Your input | Output +
@@ -243,8 +242,8 @@ Undoable commands: commands that modify the content in `Contact Plus` (`add`, `d
 |===
 
 === Redoing the previously undone command : `redo`, `r` [[redo-command]]
+If you unintentionally undo your last command, you can get it back by using `redo` command. +
 
-Reverses the most recent `undo` command. +
 Command Format: `redo`, `r`
 
 ==== Examples
@@ -257,23 +256,28 @@ Command Format: `redo`, `r`
 |===
 
 === Clearing all entries : `clear`, `c` [[clear-command]]
+If you want to clear your Contact Plus application, you can do so by useing `clear` command. +
 
-Clears all entries from `Contact Plus`. +
 Command Format: `clear` or `c`
 
-=== Exiting the program : `exit` [[exit-command]]
+[WARNING]
+====
+This command will clear all persons in the contact pane.
+====
 
-Exits the program. +
+=== Exiting the program : `exit` [[exit-command]]
+If you want to exit Contact Plus application, you can do so by using `exit` command. +
+
 Command Format: `exit`
 
-== Enhancement
+== Interesting Enhancement
 
-=== Deleting a tag : `deletetag` [Since v1.0]
+=== Deleting a tag : `deletetag` [Since v1.0] [[deletetag-command]]
 
 //tag::deletetag-command[]
 
-[[deletetag-command]] Need to reorganize your social groups? `deletetag` enables you to delete
-tags from all your contacts in `Contact Plus` ! +
+Need to reorganize your social groups? `deletetag` enables you to delete tags from all your contacts in `Contact Plus` ! +
+
 Command Format: `deletetag tag_name` +
 Quick demo: link:#how-to-use-deletetag-command[here]
 
@@ -327,9 +331,10 @@ image:AddCommandAlias.png[width="500"]
 +
 image:AddCommandAliasResult.png[width="500"]
 
-=== Locating persons by tag: `search + tag name` [Since v1.1] [[searchtag-command]]
+=== Locating groups by tag: `search + tag name` [Since v1.1] [[searchtag-command]]
 
-Searches persons whose tag names contain any of the given keywords. +
+Searching a certain social group? or just search a certain group of persons? search + tag name` can help you achieve this. +
+
 Command Format: `search KEYWORD [MORE_KEYWORDS]`+
 Quick demo: link:#how-to-use-locate-person_by_tag[here]
 
@@ -364,8 +369,7 @@ image:SearchTagResult.png[width="500"]
 === Add second phone number for a person [Since v1.1]
 
 //tag::secondphone[]
-
-Add the second phone number for a person by using prefix "p2/" +
+Need to add one more phone number to your friends on Contact Plus? Add the second phone number for a person by using prefix "p2/" +
 Command Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS` +
 
 ==== Description
@@ -451,12 +455,12 @@ An example of a matching contact for this command would be +
 
 //end::multifilter-feature[]
 
-=== Autocomplete command names [Since v1.2]
+=== Autocomplete command names [Since v1.2] [[autocomplete-feature]]
 
 //tag::autocomplete-feature[]
+Lazy to memorize command names? Press a shortcut key to automatically complete the text that you enter into the command box. +
 
-[[autocomplete-feature]] Lazy to memorize command names? Press a shortcut key to automatically complete the text that you enter into the command box. +
-Format: [Some text] +
+Command Format: [Some text] +
 Quick demo:  link:#how-to-use-autocomplete[here]
 
 [TIP]
@@ -508,8 +512,9 @@ For example, if you type `h` and press kbd:[TAB], `help` will be filled into the
 
 === AutoCorrect command [Since v1.2]
 
-Corrects misspelt command whose names start with the command entered from the user.
-Application will notify the user that the command entered is corrected and perform the corrected commmand. +
+If you misspelt a command, no worries, Contact Plus will autoCorrect misspelt command whose names start with the command entered from the user.
+Application will notify you that the command entered is corrected and perform the corrected commmand. +
+
 Command Format: [misspelt command] +
 Quick demo: link:#how-to-use-autoCorrect[here]
 
@@ -547,9 +552,9 @@ image::AutoCorrectResult.png[width="500"]
 === Deleting multiple persons : `delete index/another index/...` [Since v1.2] [[delete-multiple-persons]]
 
 //tag::deletemultiple[]
+Do yu need to delete multiple persons away from your contact pane simutaneously? If so,follow the following explanation to learn how to delete multiple persons at the same time.
+This command allows you to delete *multiple* contacts from `Contact Plus` in a single command. +
 
-This command allows you to delete *multiple* contacts from `Contact Plus` in a
-single command. +
 Command Format: `delete INDEX/INDEX`
 Quick demo: link:#how-to-use-multiple-persons[here]
 
@@ -582,9 +587,9 @@ Note that `list` and `delete 1/2` are two different commands.
 //end::deletemultiple[]
 
 === Viewing Weather Forecast [Since v1.3]
+If you are too reluctant to open your Yahoo page, there is a shortcut in Contact Plus help to you to gain access to Yahoo weather forecast and news.
 
-Viewing weather forecast on Yahoo Weather page.
-Accessible from kbd:[File] dropdown list, kbd:[Weather Forecast] menu item (refer to link:#user-interface[User Interface]).
+Please go to kbd:[File] dropdown list, kbd:[Weather Forecast] menu item (refer to link:#user-interface[User Interface]).
 
 ==== How to use
 . The button kbd:[Weather Forecast] is located as the image shown below.
@@ -595,14 +600,15 @@ image::WeatherForecastButton.png[width="800"]
 +
 image::WeatherForecast.png[width="800"]
 
-=== Extended autocomplete for commands [Since v1.3]
+=== Extended autocomplete for commands [Since v1.3] [[extended-autocomplete-feature]]
 
 //tag::extended-autocomplete-feature[]
 
-[[extended-autocomplete-feature]] Some commands such as `add` are very long and difficult to type.
+Try to save some time? Autocomplete is designed for you to operate efficiently on Contact Plus.Some commands such as `add` are very long and difficult to type.
 This feature enables you to automatically fill in the format of the command whose name matches
 the text that you entered. +
-Format: [COMMAND_WORD] +
+
+Command Format: [COMMAND_WORD] +
 Quick demo: link:#how-to-use-extended-autocomplete[here]
 
 [TIP]
@@ -657,8 +663,9 @@ If you type the name of the command wrongly, `extended autocomplete` will not wo
 
 === Keyboard shortcuts [Since v1.3]
 
-Keyboard shortcuts enables users to quickly get the command words without heavy memorization.
-Format: kbd:[CONTROL] + kbd:[KEY]
+Apart from autocomplete, this is another feature to help you save your time. Keyboard shortcuts enables you to quickly get the command words without heavy memorization.
+
+Command Format: kbd:[CONTROL] + kbd:[KEY]
 
 ==============================================
 NOTE: The keyborad shortcuts are created only for commands with heavy text input or frequently used commands.
@@ -680,9 +687,10 @@ NOTE: The keyborad shortcuts are created only for commands with heavy text input
 === Sound effect for system events [Since v1.3]
 
 //tag::music-feature[]
+Sound effect is designed to help you to discern audibly whether your command is performed successfully or otherwise.
+Various sound clips are played for each system events to keep you informed of the status of your actions.
 
-Various sound clips are played for each system events (see 3.27.1) to
-keep you informed of the status of your actions.
+NOTE: This sound effect is set by Contact Plus by default.
 
 ==== Description
 
@@ -706,11 +714,10 @@ Failure sound clip is played if command is unsuccessful.
 //end::music-feature[]
 
 // tag::addtask[]
-=== Add tasks [Since v1.3] [[addtask]] [[addtask-command]]
+=== Add tasks: `task` [Since v1.3] [[addtask]] [[addtask-command]]
 
-Add personal tasks into **Contact Plus**. +
-Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)` +
-Add personal tasks into `Contact Plus`.
+This command enables you to record down your events, tasks or appointments on Contact Plus as your personal reminder. +
+
 Command Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
 
 ==== Description
@@ -737,8 +744,9 @@ image:add_task_successful.png[width="500"]
 
 //tag::listtask-command[]
 
-[[listtask-command]] This command enables you to retrieve personal tasks that you have stored in
+This command enables you to retrieve personal tasks that you have stored in
 `Contact Plus`. +
+
 Command Format: `listtask` +
 Quick demo: link:#how-to-use-listtask[here]
 
@@ -770,12 +778,11 @@ image:listtask-command-post.png[width="800"]
 
 //end::listtask-command[]
 
-=== Delete tasks [Since v1.4]
+=== Delete tasks: `deletetask`[Since v1.4] [[deletetask-command]]
 
 //tag::deletetask-command[]
 
-[[deletetask-command]] This command enables you to remove unnecessary/unwanted tasks
-from `Contact Plus`. +
+This command enables you to remove unnecessary/unwanted tasks from `Contact Plus`. +
 Command Format: `deletetask INDEX_1/INDEX_2/INDEX_3 ...` +
 Quick demo: link:#how-to-use-deletetask[here]
 
@@ -854,10 +861,11 @@ Failure sound clip is played if command is unsuccessful.
 
 //end::music-feature[]
 
-=== Edit task [Since v1.4] [[edittask-command]]
+=== Edit task: `edittask` [Since v1.4] [[edittask-command]]
 
 To edit your tasks, first you should learn how to link:#listtask[list task] . Listing tasks is for you to get the index of the task you indent to edit.
-Then use "edittask" command with its index to edit the task. The format is as follows:
+Then use "edittask" command with its index to edit the task.
+
 Command Format: `edittask INDEX d/DESCRIPTION priority/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)` +
 Quick demo: link:#how-to-use-edittask[here]
 
@@ -886,7 +894,7 @@ image:EditTaskStep2.png[width="800"]
 | `edittask 1 on 12/11/2019` | The application will display "Edited task: " + the details of the task you just edited. +
 |===
 
-=== Clear task [Since v1.4] [[cleartask-command]]
+=== Clear task: `cleartask` [Since v1.4] [[cleartask-command]]
 
 To clear your task list, "cleartask" is the command to use. The format is as follows:
 Command Format: `cleartask`+
@@ -923,6 +931,7 @@ image:ClearTaskStep3.png[width="800"]
 === Switch theme [Since v1.5]
 If you are not happy with the current theme and want to select a new theme, use `switch` command with the index to
 switch to the theme you like. +
+
 Command Format: `switch INDEX` +
 Quick demo: link:#how-to-use-switch-theme[here]
 
