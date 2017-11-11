@@ -762,7 +762,8 @@ image::AddTaskCommand_sequence_diagram.png[width="800"]
 ==== Prerequisites/Dependencies
 
 * The format of date must follow `dd/MM/yyyy`.
-* The range of priority can only be from *0* to *2*. Any other values will be deemed as invalid.
+* The date must also be a valid date.
+* The range of priority can only be from *0* to *2*. Any other values will be deemed as invalid, and an error message will be thrown.
 * Currently, all fields must be included in the command and cannot be omitted.
 
 ==== Design Considerations

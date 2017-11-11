@@ -720,11 +720,11 @@ Command Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
 * Task priority should only be number 0 (lowest priority), 1 or 2 (highest priority).
 * Prefix for task priority is `pr/`.
 * Task due date should be a valid date following the format dd/MM/yyyy.
-* Prefix for due date is `on ` (Do not forget the kbd:[SPACE]).
+* Prefix for due date is `on` (Do not forget the kbd:[SPACE] before the date).
 * If you input any invalid format, there will be a **Use Message** together with an example to guide you. +
-image:add_task_invalid.png[width="500"]
+image:add_task_invalid_format.png[width="500"]
 * Once the task is successfully added, it will be displayed on the sticky note under `Task` tab (as shown in the image below). +
-image:add_task.png[width="500"]
+image:add_task_successful.png[width="500"]
 *************
 
 ==== Examples:
