@@ -76,15 +76,17 @@ Adds a person to `Contact Plus` +
 Command Format: `add n/NAME p/PHONE_NUMBER p2/PHONE_NUMBER or '-' e/EMAIL a/ADDRESS [t/TAG]...` +
 Keyboard shortcut: kbd:[control] + kbd:[a]/kbd:[A]
 
-[TIP]
-A person can have any number of tags (including 0) +
-A person can add the symbol '-' if a second phone number is not required for the contact +
-Person names should only contain alphanumeric characters and spaces, and it should not be blank +
-Person emails should be 2 alphanumeric/period strings separated by '@' +
-Phone numbers can only contain numbers, and should be at least 3 digits long +
-Tags names should be alphanumeric +
+[NOTE]
+====
+- A person can have any number of tags (including 0).
+- A person can add the symbol '-' if a second phone number is not required for the contact.
+- Person names should only contain alphanumeric characters and spaces, and it should not be blank.
+- Person emails should be 2 alphanumeric/period strings separated by '@'.
+- Phone numbers can only contain numbers, and should be at least 3 digits long.
+- Tags names should be alphanumeric +
+====
 
-Examples:
+=== Examples:
 
 |===
 | Your input | Output
@@ -148,7 +150,7 @@ Keyboard shortcut: kbd:[control] + kbd:[f]/kbd:[F]
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 ****
 
-Examples:
+=== Examples:
 
 |===
 | Your input | Output
@@ -263,6 +265,8 @@ Command Format: `clear` or `c`
 Exits the program. +
 Command Format: `exit`
 
+== Enhancement
+
 === Deleting a tag : `deletetag` [Since v1.0]
 
 //tag::deletetag-command[]
@@ -310,7 +314,10 @@ Too lazy to type the full command? The alias feature allows you to type a shorte
 
 A list of available aliases can be found  link:#list-of-alias[here].
 
-==== How to use
+Command Format: `command_alise` +
+Quick demo: link:#how-to-use-alias-command[here]
+
+==== How to use [[how-to-use-alias-command]]
 . The image below demonstrates the example of using `a`.
 +
 image:AddCommandAlias.png[width="500"]
@@ -322,7 +329,8 @@ image:AddCommandAliasResult.png[width="500"]
 === Locating persons by tag: `search + tag name` [Since v1.1] [[searchtag-command]]
 
 Searches persons whose tag names contain any of the given keywords. +
-Command Format: `search KEYWORD [MORE_KEYWORDS]`
+Command Format: `search KEYWORD [MORE_KEYWORDS]`+
+Quick demo: link:#how-to-use-locate-person_by_tag[here]
 
 ****
 * The search is case sensitive. e.g `Friends` will not match `friends`
@@ -341,7 +349,7 @@ Command Format: `search KEYWORD [MORE_KEYWORDS]`
 | `search fri` | No match will be returned, `Unknown tag` is displayed. +
 |===
 
-==== How to use
+==== How to use [[how-to-use-locate-person_by_tag]]
 . Input the command to search contact of the same tag, e.g. friends.
 +
 image:SearchTagCommand.png[width="500"]
@@ -356,7 +364,7 @@ image:SearchTagResult.png[width="500"]
 //tag::secondphone[]
 
 Add the second phone number for a person by using prefix "p2/" +
-Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS`
+Command Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS` +
 
 ****
 * Input "p2/-" for add command, when no second phone number is provided.
@@ -402,6 +410,23 @@ will be matched. Contact `Bob` with phone no. `987` and email `a@yahoo.com`
 will not be matched
 ****
 
+==== How to use [[how-to-use-multifilter]]
+
+. Enter `multifilter` into the command box followed by one or more format fields.
+See command format <<multifilter-format, here>>.
++
+image:MultiFilterCommand-step-1.png[width="250"]
+
+. Press the kbd:[ENTER] key. The results are displayed based on the criteria that
+you have entered.
++
+image:MultiFilterCommand-step-2.png[width="250"]
+
+==============================================
+NOTE: If no filters are used, all contacts will be displayed.
+==============================================
+
+
 ==== Examples
 
 |===
@@ -419,22 +444,6 @@ An example of a matching contact for this command would be +
 `Ivan` that has phone no. `999`, email `g@y.com` and address `123 geylang road`
 
 |===
-
-==== How to use [[how-to-use-multifilter]]
-
-. Enter `multifilter` into the command box followed by one or more format fields.
-See command format <<multifilter-format, here>>.
-+
-image:MultiFilterCommand-step-1.png[width="250"]
-
-. Press the kbd:[ENTER] key. The results are displayed based on the criteria that
-you have entered.
-+
-image:MultiFilterCommand-step-2.png[width="250"]
-
-==============================================
-NOTE: If no filters are used, all contacts will be displayed.
-==============================================
 
 //end::multifilter-feature[]
 
@@ -497,7 +506,8 @@ For example, if you type `h` and press kbd:[TAB], `help` will be filled into the
 
 Corrects misspelt command whose names start with the command entered from the user.
 Application will notify the user that the command entered is corrected and perform the corrected commmand. +
-Format: [misspelt command]
+Command Format: [misspelt command] +
+Quick demo: link:#how-to-use-autoCorrect[here]
 
 ****
 * The autoCorrect function will only work on the misspelt words with 2 alphebets different from the correct spelling.
@@ -509,6 +519,16 @@ Format: [misspelt command]
 NOTE: Auto-correct is not designed for alias.
 ==============================================
 
+==== How to use [[how-to-use-autoCorrect]]
+. The image below demonstrates the usage to autoCorrect "deleet".
++
+image::AutoCorrectCommand.png[width="500"]
+
+. The image below is the result returned by Contact Plus using the command above.
++
+image::AutoCorrectResult.png[width="500"]
+
+
 ==== Examples
 
 |===
@@ -519,24 +539,16 @@ NOTE: Auto-correct is not designed for alias.
 | `m` | will not match to any command, application will display "Unkown command".
 |===
 
-==== How to use
-. The image below demonstrates the usage to autoCorrect "deleet".
-+
-image::AutoCorrectCommand.png[width="500"]
-
-. The image below is the result returned by Contact Plus using the command above.
-+
-image::AutoCorrectResult.png[width="500"]
-
 === Deleting multiple persons : `delete index/another index/...` [Since v1.2] [[delete-multiple-persons]]
 
 //tag::deletemultiple[]
 
 This command allows you to delete *multiple* contacts from `Contact Plus` in a
 single command. +
-Format: `delete INDEX/INDEX`
+Command Format: `delete INDEX/INDEX`
+Quick demo: link:#how-to-use-multiple-persons[here]
 
-==== How to use
+==== How to use [[how-to-use-multiple-persons]]
 
 1) Enter `list` into the Command Box. You will see all the added contacts below. +
 
@@ -567,16 +579,16 @@ Note that `list` and `delete 1/2` are two different commands.
 === Viewing Weather Forecast [Since v1.3]
 
 Viewing weather forecast on Yahoo Weather page.
-Accessible from kbd:[File] dropdown list, kbd:[Weather Forecast] menu item.
+Accessible from kbd:[File] dropdown list, kbd:[Weather Forecast] menu item (refer to link:#user-interface[User Interface]).
 
 ==== How to use
 . The button kbd:[Weather Forecast] is located as the image shown below.
 +
-image::WeatherForecastButton.png[width="500"]
+image::WeatherForecastButton.png[width="800"]
 
 . The expected page would be as follows:
 +
-image::WeatherForecast.png[width="500"]
+image::WeatherForecast.png[width="800"]
 
 === Extended autocomplete for commands [Since v1.3]
 
@@ -660,11 +672,38 @@ NOTE: The keyborad shortcuts are created only for commands with heavy text input
 | `clear` | kbd:[control] + kbd:[c]/kbd:[C]
 |===
 
+=== Sound effect for system events [Since v1.3]
+
+//tag::music-feature[]
+
+Various sound clips are played for each system events (see 3.27.1) to
+keep you informed of the status of your actions.
+
+==== Description
+
+*************
+* System events are classified into 2 types: command success and command failure.
+* One sound clip will be played for each of these event types.
+* Currently, there is no way to disable the sound effect.
+*************
+
+==== Example
+
+|===
+
+| *Your input* | Result
+| `delete 1` | Success sound clip is played if command is successful. +
+
+Failure sound clip is played if command is unsuccessful.
+
+|===
+
+//end::music-feature[]
 // tag::addtask[]
 === Add tasks [Since v1.3] [[addtask]] [[addtask-command]]
 
 Add personal tasks into `Contact Plus`.
-Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
+Command Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
 
 Examples:
 
@@ -672,13 +711,13 @@ Examples:
 * `task d/Finish Teammate Feedback Session pr/0 on 01/11/2017`
 // end::addtask[]
 
-=== List tasks [Since v1.4]
+=== List tasks [Since v1.4] [[listtask]]
 
 //tag::listtask-command[]
 
 [[listtask-command]] This command enables you to retrieve personal tasks that you have stored in
 `Contact Plus`. +
-Format: `listtask` +
+Command Format: `listtask` +
 Quick demo: link:#how-to-use-listtask[here]
 
 ==== Description
@@ -709,13 +748,14 @@ image:listtask-command-post.png[width="800"]
 
 //end::listtask-command[]
 
-=== Delete tasks : `deletetask`
+=== Delete tasks [Since v1.4]
 
 //tag::deletetask-command[]
 
 [[deletetask-command]] This command enables you to remove unnecessary/unwanted tasks
 from `Contact Plus`. +
 Command Format: `deletetask INDEX_1/INDEX_2/INDEX_3 ...` +
+Quick demo: link:#how-to-use-deletetask[here]
 
 ==== Description
 
@@ -764,39 +804,12 @@ image:deletetask-proof.png[width="800"]
 
 //end::deletetask-command[]
 
-=== Sound effect for system events [Since v1.3]
-
-//tag::music-feature[]
-
-Various sound clips are played for each system events (see 3.27.1) to
-keep you informed of the status of your actions.
-
-==== Description
-
-*************
-* System events are classified into 2 types: command success and command failure.
-* One sound clip will be played for each of these event types.
-* Currently, there is no way to disable the sound effect.
-*************
-
-==== Example
-
-|===
-
-| *Your input* | Result
-| `delete 1` | Success sound clip is played if command is successful. +
-
-Failure sound clip is played if command is unsuccessful.
-
-|===
-
-//end::music-feature[]
-
 === Edit task [Since v1.4] [[edittask-command]]
 
-To edit your tasks, first you should learn how to list task. Listing tasks is for you to get the index of the task you indent to edit.
+To edit your tasks, first you should learn how to link:#listtask[list task] . Listing tasks is for you to get the index of the task you indent to edit.
 Then use "edittask" command with its index to edit the task. The format is as follows:
-Format: `edittask INDEX d/DESCRIPTION priority/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
+Command Format: `edittask INDEX d/DESCRIPTION priority/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)` +
+Quick demo: link:#how-to-use-edittask[here]
 
 ==== Description
 
@@ -806,7 +819,7 @@ Format: `edittask INDEX d/DESCRIPTION priority/PRIORITY(0/1/2) on DUE DATE(dd/MM
 * Description field is not editable. The only way to edit the description is to create a new task.
 *************
 
-==== How to use
+==== How to use [[how-to-use-edittask]]
 . Enter the command, the index of the task, and the details you wish to edit with its prefix. Please refer to the image below for an example:
 +
 image:EditTaskStep1.png[width="800"]
@@ -826,7 +839,8 @@ image:EditTaskStep2.png[width="800"]
 === Clear task [Since v1.4] [[cleartask-command]]
 
 To clear your task list, "cleartask" is the command to use. The format is as follows:
-Format: `cleartask`
+Command Format: `cleartask`+
+Quick demo: link:#how-to-use-cleartask[here]
 
 ==== Description
 
@@ -834,7 +848,7 @@ Format: `cleartask`
 * you can perform command `undo`, if you accidentally clear your task list.
 *************
 
-==== How to use
+==== How to use [[how-to-use-cleartask]]
 . Enter the command "cleartask". Please refer to the image below for an example:
 +
 image:ClearTaskStep1.png[width="800"]
@@ -842,6 +856,10 @@ image:ClearTaskStep1.png[width="800"]
 . Confirmation message will be displayed. Please refer to the image below for an example:
 +
 image:ClearTaskStep2.png[width="800"]
+
+. List the tasks to check that there is no tasks listed . Please refer to the image below for an example:
++
+image:ClearTaskStep3.png[width="800"]
 
 
 ==== Example
@@ -855,7 +873,8 @@ image:ClearTaskStep2.png[width="800"]
 === Switch theme [Since v1.5]
 If you are not happy with the current theme and want to select a new theme, use `switch` command with the index to
 switch to the theme you like. +
-Format: `switch INDEX`
+Command Format: `switch INDEX` +
+Quick demo: link:#how-to-use-switch-theme[here]
 
 ==== Description
 *************
@@ -869,7 +888,7 @@ image:LightTheme.png[width="500"] +
 image:ColourfulTheme.png[width="500"]
 *************
 
-==== How to use
+==== How to use [[how-to-use-switch-theme]]
 . Enter the command `switch`, together with index of the theme. (`1` stands for DarkTheme, `2` stands for
 LightTheme and `3` stands for ColourfulTheme) +
 . Once the command is successfully executed, the theme of Contact Plus will be updated immediately.
@@ -912,21 +931,23 @@ image:switchtab3.png[width="800"]
 
 //end::switchtab[]
 
+== Coming up
+
 === Tag use emoji : `tag emoji` [Coming in V2.0]
 
 Input characters to represent an emoji as a tag. +
-Format: `tag :wink:`
+Command Format: `tag :wink:`
 
 === Add non-English words as input [Coming in V2.0]
 
 Input non-English words to be saved in the application.
-Format: CommandWrd + inputText
+Command Format: CommandWrd + inputText
 
 === Add push notification [Coming in V2.0]
 
 The application will prompt notifications for users on the computer for the up coming tasks.
 
-=== Saving the data
+== Saving the data
 
 Address book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
