@@ -3,6 +3,7 @@ package seedu.address.model.task;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 
@@ -15,6 +16,8 @@ public class Date {
 
     public static final String MESSAGE_DATE_FORMAT_CONSTRAINTS =
             "The date must be in the format dd/MM/yyyy";
+    public static final String MESSAGE_DATE_INVALID_CONSTRAINTS =
+            "The input date is not valid!";
 
 
     /**
@@ -23,7 +26,7 @@ public class Date {
      * @throws java.time.format.DateTimeParseException if the date format is invalid
      */
     public static boolean isValidDate (String input) throws IllegalValueException {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
         try {
             LocalDate.parse(input, format);
             return true;
@@ -32,14 +35,14 @@ public class Date {
         }
     }
 
-    /**
-     * Format the given date
-     */
-    public static LocalDate formatDate (String input) throws IllegalValueException {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate date = LocalDate.parse(input, format);
-        return date;
-    }
+//    /**
+//     * Format the given date
+//     */
+//    public static LocalDate formatDate (String input) throws IllegalValueException {
+//        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//        LocalDate date = LocalDate.parse(input, format);
+//        return date;
+//    }
 
 
 }
