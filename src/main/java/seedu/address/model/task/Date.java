@@ -35,14 +35,4 @@ public class Date {
         }
     }
 
-//    /**
-//     * Format the given date
-//     */
-//    public static LocalDate formatDate (String input) throws IllegalValueException {
-//        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//        LocalDate date = LocalDate.parse(input, format);
-//        return date;
-//    }
-
-
 }
