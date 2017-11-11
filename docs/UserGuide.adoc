@@ -24,9 +24,9 @@ By: `Team W11-B1`      Since: `Sep 2107`      Licence: `MIT`
 
 // end::welcome[]
 
-This guide will help you get familiar with the features of `Contact Plus`. If you encounter any problems or doubts, please press kbd:[F1] or type `Help` in commmand box (refer to link:#userInterface[User Interface]) for more information.
+This guide will help you get familiar with the features of `Contact Plus`. If you encounter any problems or doubts, please press kbd:[F1] or type `Help` in commmand box (refer to link:#user-interface[User Interface] to find command box).
 
-== User Interface
+== User Interface [[user-interface]]
 This is recommended to get familiar with the names of the components on this user interface as this guide will frequently refer to these names.
 The names of the components on this user interface are shown in the following image:
 
@@ -49,7 +49,7 @@ This app will not work with earlier versions of Java 8.
 .  Type the command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 +
-.  Refer to the link:#command-summary[command-summary] section below for the complete list of commands.
+.  Refer to the link:#command-summary[command summary] section below for the complete list of commands.
 
 // end::quick-start[]
 
@@ -68,7 +68,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 Command Format: `help` +
 Keyboard shortcut: `F1` +
-UI: Menu bar - kbd:[Help]
+UI: Menu bar (refer to link:#user-interface[User Interface]) - kbd:[Help]
 
 === Adding a person: `add` [[add-command]]
 
@@ -76,19 +76,24 @@ Adds a person to `Contact Plus` +
 Command Format: `add n/NAME p/PHONE_NUMBER p2/PHONE_NUMBER or '-' e/EMAIL a/ADDRESS [t/TAG]...` +
 Keyboard shortcut: kbd:[control] + kbd:[a]/kbd:[A]
 
+[NOTE]
+====
+- A person can have any number of tags (including 0).
+- A person can add the symbol '-' if a second phone number is not required for the contact.
+- Person names should only contain alphanumeric characters and spaces, and it should not be blank.
+- Person emails should be 2 alphanumeric/period strings separated by '@'.
+- Phone numbers can only contain numbers, and should be at least 3 digits long.
+- Tags names should be alphanumeric +
+====
 
-[TIP]
-A person can have any number of tags (including 0) +
-A person can add the symbol '-' if a second phone number is not required for the contact +
-Person names should only contain alphanumeric characters and spaces, and it should not be blank +
-Person emails should be 2 alphanumeric/period strings separated by '@' +
-Phone numbers can only contain numbers, and should be at least 3 digits long +
-Tags names should be alphanumeric +
 
 ==== Examples
+|===
+| Your input | Output
+| `add n/John Doe p/98765432 p2/61234567 or '-' e/johnd@example.com a/John street, block 123, #01-01` |
+add the contact John doe with first phone number 98765432, second phone number null, email address johndoe@example.com, and address John street, block 123, #01-01 respectively.
+|===
 
-* `add n/John Doe p/98765432 p2/61234567 or '-' e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
 
 === Listing all persons : `list`, `l` [[list-command]]
 
@@ -111,14 +116,15 @@ Keyboard shortcut: kbd:[control] + kbd:[e]/kbd:[E]
 * You can remove all the person's tags by typing `t/` without specifying any tags after it.
 ****
 
-[TIP]
-1. A person can have any number of tags (including 0). +
-2. A person can add the symbol '-' if a second phone number is not required for the contact. +
-3. Person names should only contain alphanumeric characters and spaces, and it should not be blank. +
-4. Person emails should be 2 alphanumeric/period strings separated by '@'. +
-5. Phone numbers can only contain numbers, and should be at least 3 digits long. +
-6. Tags names should be alphanumeric +
-
+[NOTE]
+====
+- A person can have any number of tags (including 0).
+- A person can add the symbol '-' if a second phone number is not required for the contact.
+- Person names should only contain alphanumeric characters and spaces, and it should not be blank.
+- Person emails should be 2 alphanumeric/period strings separated by '@'.
+- Phone numbers can only contain numbers, and should be at least 3 digits long.
+- Tags names should be alphanumeric +
+====
 
 ==== Examples
 
@@ -146,11 +152,11 @@ Keyboard shortcut: kbd:[control] + kbd:[f]/kbd:[F]
 ****
 
 ==== Examples
-
-* `find John` +
-Returns `john` and `John Doe`
-* `find Betsy Tim John` +
-Returns any person having names `Betsy`, `Tim`, or `John`
+|===
+| Your input | Output
+| `find John` | Returns `john` and `John Doe`
+| `find Betsy Tim John` | Returns any person having names `Betsy`, `Tim`, or `John`
+|===
 
 === Deleting a single person : `delete` [[delete-single-person]]
 
@@ -200,12 +206,11 @@ Command Format: `select INDEX` or `s INDEX`
 
 ==== Examples
 
-* `list` +
-`select 2` +
-Selects the 2nd person in `Contact Plus`.
-* `find Betsy` +
-`select 1` +
-Selects the 1st person in the results of the `find` command.
+|===
+| Your input | Output +
+| `list` + `select 2` + | Selects the 2nd person in `Contact Plus`
+| `find Betsy` + `select 1` | Selects the 1st person in the results of the `find` command
+|===
 
 === Listing entered commands : `history`, `h` [[history-command]]
 
@@ -229,19 +234,13 @@ Undoable commands: commands that modify the content in `Contact Plus` (`add`, `d
 
 ==== Examples:
 
-* `delete 1` +
-`list` +
-`undo` (reverses the `delete 1` command) +
-
-* `select 1` +
-`list` +
-`undo` +
-The `undo` command fails as there are no undoable commands executed previously.
-
-* `delete 1` +
-`clear` +
-`undo` (reverses the `clear` command) +
-`undo` (reverses the `delete 1` command) +
+|===
+| Your input | Output +
+| `delete 1` + `list` + `undo` | Reverses the `delete 1` command
+| `select 1`+ `list` + `undo` | The `undo` command fails as there are no undoable commands executed previously.
+| `delete 1` +`clear` +`undo`| Reverses the `clear` command
+| `delete 1` +`clear` +`undo` | Reverses the `delete 1` command
+|===
 
 === Redoing the previously undone command : `redo`, `r` [[redo-command]]
 
@@ -250,20 +249,12 @@ Command Format: `redo`, `r`
 
 ==== Examples
 
-* `delete 1` +
-`undo` (reverses the `delete 1` command) +
-`redo` (reapplies the `delete 1` command) +
-
-* `delete 1` +
-`redo` +
-The `redo` command fails as there are no `undo` commands executed previously.
-
-* `delete 1` +
-`clear` +
-`undo` (reverses the `clear` command) +
-`undo` (reverses the `delete 1` command) +
-`redo` (reapplies the `delete 1` command) +
-`redo` (reapplies the `clear` command) +
+|===
+| Your input | Output +
+| `delete 1`+ `undo` + `redo` | Reapplies the `delete 1` command
+| `delete 1` +`redo`| The `redo` command fails as there are no `undo` commands executed previously.
+| `delete 1` +`clear` +`undo` + `undo + `redo` + `redo`| Reapplies the `clear` command
+|===
 
 === Clearing all entries : `clear`, `c` [[clear-command]]
 
@@ -274,6 +265,8 @@ Command Format: `clear` or `c`
 
 Exits the program. +
 Command Format: `exit`
+
+== Enhancement
 
 === Deleting a tag : `deletetag` [Since v1.0]
 
@@ -322,7 +315,10 @@ Too lazy to type the full command? The alias feature allows you to type a shorte
 
 A list of available aliases can be found  link:#list-of-alias[here].
 
-==== How to use
+Command Format: `command_alise` +
+Quick demo: link:#how-to-use-alias-command[here]
+
+==== How to use [[how-to-use-alias-command]]
 . The image below demonstrates the example of using `a`.
 +
 image:AddCommandAlias.png[width="500"]
@@ -334,7 +330,8 @@ image:AddCommandAliasResult.png[width="500"]
 === Locating persons by tag: `search + tag name` [Since v1.1] [[searchtag-command]]
 
 Searches persons whose tag names contain any of the given keywords. +
-Command Format: `search KEYWORD [MORE_KEYWORDS]`
+Command Format: `search KEYWORD [MORE_KEYWORDS]`+
+Quick demo: link:#how-to-use-locate-person_by_tag[here]
 
 ==== Description
 ****
@@ -354,7 +351,7 @@ Command Format: `search KEYWORD [MORE_KEYWORDS]`
 | `search fri` | No match will be returned, `Unknown tag` is displayed. +
 |===
 
-==== How to use
+==== How to use [[how-to-use-locate-person_by_tag]]
 . Input the command to search contact of the same tag, e.g. friends.
 +
 image:SearchTagCommand.png[width="500"]
@@ -369,7 +366,7 @@ image:SearchTagResult.png[width="500"]
 //tag::secondphone[]
 
 Add the second phone number for a person by using prefix "p2/" +
-Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS`
+Command Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS` +
 
 ==== Description
 ****
@@ -382,11 +379,10 @@ Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS`
 * `edit 1 p/91234567 p2/73624789 e/johndoe@example.com` +
 
 
-
-
-=== Locating persons by multiple criteria: `multifilter` [Since v1.1] [[multifilter-format]]
+//end::secondphone[]
 
 //tag::multifilter-feature[]
+=== Locating persons by multiple criteria: `multifilter` [Since v1.1] [[multifilter-format]]
 
 [[multifilter-format]] Finds persons whose names, phone no., emails and addresses,
 match a set of specified criteria. +
@@ -418,6 +414,23 @@ will be matched. Contact `Bob` with phone no. `987` and email `a@yahoo.com`
 will not be matched
 ****
 
+==== How to use [[how-to-use-multifilter]]
+
+. Enter `multifilter` into the command box followed by one or more format fields.
+See command format <<multifilter-format, here>>.
++
+image:MultiFilterCommand-step-1.png[width="250"]
+
+. Press the kbd:[ENTER] key. The results are displayed based on the criteria that
+you have entered.
++
+image:MultiFilterCommand-step-2.png[width="250"]
+
+==============================================
+NOTE: If no filters are used, all contacts will be displayed.
+==============================================
+
+
 ==== Examples
 
 |===
@@ -435,22 +448,6 @@ An example of a matching contact for this command would be +
 `Ivan` that has phone no. `999`, email `g@y.com` and address `123 geylang road`
 
 |===
-
-==== How to use [[how-to-use-multifilter]]
-
-. Enter `multifilter` into the command box followed by one or more format fields.
-See command format <<multifilter-format, here>>.
-+
-image:MultiFilterCommand-step-1.png[width="250"]
-
-. Press the kbd:[ENTER] key. The results are displayed based on the criteria that
-you have entered.
-+
-image:MultiFilterCommand-step-2.png[width="250"]
-
-==============================================
-NOTE: If no filters are used, all contacts will be displayed.
-==============================================
 
 //end::multifilter-feature[]
 
@@ -513,7 +510,8 @@ For example, if you type `h` and press kbd:[TAB], `help` will be filled into the
 
 Corrects misspelt command whose names start with the command entered from the user.
 Application will notify the user that the command entered is corrected and perform the corrected commmand. +
-Format: [misspelt command]
+Command Format: [misspelt command] +
+Quick demo: link:#how-to-use-autoCorrect[here]
 
 ==== Description
 ****
@@ -526,6 +524,16 @@ Format: [misspelt command]
 NOTE: Auto-correct is not designed for alias.
 ==============================================
 
+==== How to use [[how-to-use-autoCorrect]]
+. The image below demonstrates the usage to autoCorrect "deleet".
++
+image::AutoCorrectCommand.png[width="500"]
+
+. The image below is the result returned by Contact Plus using the command above.
++
+image::AutoCorrectResult.png[width="500"]
+
+
 ==== Examples
 
 |===
@@ -536,24 +544,16 @@ NOTE: Auto-correct is not designed for alias.
 | `m` | will not match to any command, application will display "Unkown command".
 |===
 
-==== How to use
-. The image below demonstrates the usage to autoCorrect "deleet".
-+
-image::AutoCorrectCommand.png[width="500"]
-
-. The image below is the result returned by Contact Plus using the command above.
-+
-image::AutoCorrectResult.png[width="500"]
-
 === Deleting multiple persons : `delete index/another index/...` [Since v1.2] [[delete-multiple-persons]]
 
 //tag::deletemultiple[]
 
 This command allows you to delete *multiple* contacts from `Contact Plus` in a
 single command. +
-Format: `delete INDEX/INDEX`
+Command Format: `delete INDEX/INDEX`
+Quick demo: link:#how-to-use-multiple-persons[here]
 
-==== How to use
+==== How to use [[how-to-use-multiple-persons]]
 
 1) Enter `list` into the Command Box. You will see all the added contacts below. +
 
@@ -584,16 +584,16 @@ Note that `list` and `delete 1/2` are two different commands.
 === Viewing Weather Forecast [Since v1.3]
 
 Viewing weather forecast on Yahoo Weather page.
-Accessible from kbd:[File] dropdown list, kbd:[Weather Forecast] menu item.
+Accessible from kbd:[File] dropdown list, kbd:[Weather Forecast] menu item (refer to link:#user-interface[User Interface]).
 
 ==== How to use
 . The button kbd:[Weather Forecast] is located as the image shown below.
 +
-image::WeatherForecastButton.png[width="500"]
+image::WeatherForecastButton.png[width="800"]
 
 . The expected page would be as follows:
 +
-image::WeatherForecast.png[width="500"]
+image::WeatherForecast.png[width="800"]
 
 === Extended autocomplete for commands [Since v1.3]
 
@@ -677,11 +677,41 @@ NOTE: The keyborad shortcuts are created only for commands with heavy text input
 | `clear` | kbd:[control] + kbd:[c]/kbd:[C]
 |===
 
+=== Sound effect for system events [Since v1.3]
+
+//tag::music-feature[]
+
+Various sound clips are played for each system events (see 3.27.1) to
+keep you informed of the status of your actions.
+
+==== Description
+
+*************
+* System events are classified into 2 types: command success and command failure.
+* One sound clip will be played for each of these event types.
+* Currently, there is no way to disable the sound effect.
+*************
+
+==== Example
+
+|===
+
+| *Your input* | Result
+| `delete 1` | Success sound clip is played if command is successful. +
+
+Failure sound clip is played if command is unsuccessful.
+
+|===
+
+//end::music-feature[]
+
 // tag::addtask[]
 === Add tasks [Since v1.3] [[addtask]] [[addtask-command]]
 
 Add personal tasks into **Contact Plus**. +
 Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)` +
+Add personal tasks into `Contact Plus`.
+Command Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
 
 ==== Description
 *************
@@ -703,13 +733,13 @@ image:add_task.png[width="500"]
 * `task d/Finish Teammate Feedback Session pr/0 on 01/11/2017`
 // end::addtask[]
 
-=== List tasks [Since v1.4]
+=== List tasks [Since v1.4] [[listtask]]
 
 //tag::listtask-command[]
 
 [[listtask-command]] This command enables you to retrieve personal tasks that you have stored in
 `Contact Plus`. +
-Format: `listtask` +
+Command Format: `listtask` +
 Quick demo: link:#how-to-use-listtask[here]
 
 ==== Description
@@ -740,13 +770,14 @@ image:listtask-command-post.png[width="800"]
 
 //end::listtask-command[]
 
-=== Delete tasks : `deletetask`
+=== Delete tasks [Since v1.4]
 
 //tag::deletetask-command[]
 
 [[deletetask-command]] This command enables you to remove unnecessary/unwanted tasks
 from `Contact Plus`. +
 Command Format: `deletetask INDEX_1/INDEX_2/INDEX_3 ...` +
+Quick demo: link:#how-to-use-deletetask[here]
 
 ==== Description
 
@@ -825,9 +856,10 @@ Failure sound clip is played if command is unsuccessful.
 
 === Edit task [Since v1.4] [[edittask-command]]
 
-To edit your tasks, first you should learn how to list task. Listing tasks is for you to get the index of the task you indent to edit.
+To edit your tasks, first you should learn how to link:#listtask[list task] . Listing tasks is for you to get the index of the task you indent to edit.
 Then use "edittask" command with its index to edit the task. The format is as follows:
-Format: `edittask INDEX d/DESCRIPTION priority/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
+Command Format: `edittask INDEX d/DESCRIPTION priority/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)` +
+Quick demo: link:#how-to-use-edittask[here]
 
 ==== Description
 
@@ -837,7 +869,7 @@ Format: `edittask INDEX d/DESCRIPTION priority/PRIORITY(0/1/2) on DUE DATE(dd/MM
 * Description field is not editable. The only way to edit the description is to create a new task.
 *************
 
-==== How to use
+==== How to use [[how-to-use-edittask]]
 . Enter the command, the index of the task, and the details you wish to edit with its prefix. Please refer to the image below for an example:
 +
 image:EditTaskStep1.png[width="800"]
@@ -857,7 +889,8 @@ image:EditTaskStep2.png[width="800"]
 === Clear task [Since v1.4] [[cleartask-command]]
 
 To clear your task list, "cleartask" is the command to use. The format is as follows:
-Format: `cleartask`
+Command Format: `cleartask`+
+Quick demo: link:#how-to-use-cleartask[here]
 
 ==== Description
 
@@ -865,7 +898,7 @@ Format: `cleartask`
 * you can perform command `undo`, if you accidentally clear your task list.
 *************
 
-==== How to use
+==== How to use [[how-to-use-cleartask]]
 . Enter the command "cleartask". Please refer to the image below for an example:
 +
 image:ClearTaskStep1.png[width="800"]
@@ -873,6 +906,10 @@ image:ClearTaskStep1.png[width="800"]
 . Confirmation message will be displayed. Please refer to the image below for an example:
 +
 image:ClearTaskStep2.png[width="800"]
+
+. List the tasks to check that there is no tasks listed . Please refer to the image below for an example:
++
+image:ClearTaskStep3.png[width="800"]
 
 
 ==== Examples
@@ -886,7 +923,8 @@ image:ClearTaskStep2.png[width="800"]
 === Switch theme [Since v1.5]
 If you are not happy with the current theme and want to select a new theme, use `switch` command with the index to
 switch to the theme you like. +
-Format: `switch INDEX`
+Command Format: `switch INDEX` +
+Quick demo: link:#how-to-use-switch-theme[here]
 
 ==== Description
 *************
@@ -900,7 +938,7 @@ image:LightTheme.png[width="500"] +
 image:ColourfulTheme.png[width="500"]
 *************
 
-==== How to use
+==== How to use [[how-to-use-switch-theme]]
 . Enter the command `switch`, together with *INDEX* of the theme. (`1` stands for *Dark Theme*, `2` stands for
 *Light Theme* and `3` stands for *Colourful Theme*) +
 . Once the command is successfully executed, the theme of Contact Plus will be updated immediately.
@@ -943,15 +981,17 @@ image:switchtab3.png[width="800"]
 
 //end::switchtab[]
 
+== Coming up
+
 === Tag use emoji : `tag emoji` [Coming in V2.0]
 
 Input characters to represent an emoji as a tag. +
-Format: `tag :wink:`
+Command Format: `tag :wink:`
 
 === Add non-English words as input [Coming in V2.0]
 
 Input non-English words to be saved in the application.
-Format: CommandWrd + inputText
+Command Format: CommandWrd + inputText
 
 === Add push notification [Coming in V2.0]
 
@@ -965,7 +1005,7 @@ There is no need to save manually.
 === Sync to Google Contacts
 You can sync your local contact list with Google Contacts and save any changes online.
 
-== Command Summary
+== Command Summary [[command-summary]]
 
 |===
 | *Function* | *Input command* | *Example*
