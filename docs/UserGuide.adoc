@@ -85,7 +85,7 @@ Person emails should be 2 alphanumeric/period strings separated by '@' +
 Phone numbers can only contain numbers, and should be at least 3 digits long +
 Tags names should be alphanumeric +
 
-Examples:
+==== Examples
 
 * `add n/John Doe p/98765432 p2/61234567 or '-' e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
@@ -123,7 +123,7 @@ Keyboard shortcut: kbd:[control] + kbd:[e]/kbd:[E]
 ==== Examples
 
 |===
-| Your input | Output
+| *Your input* | *Result*
 | `edit 1 p/91234567 e/johndoe@example.com` |
 Updates the phone number and email address of the 1st person to `91234567` and `johndoe@example.com` respectively.
 | `edit 2 n/Betsy Crower t/` |
@@ -136,6 +136,7 @@ Finds persons whose names contain any of the given keywords. +
 Command Format: `find KEYWORD [MORE_KEYWORDS]`, or `f KEYWORD [MORE_KEYWORDS]` +
 Keyboard shortcut: kbd:[control] + kbd:[f]/kbd:[F]
 
+==== Description
 ****
 * The search is case insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
@@ -144,7 +145,7 @@ Keyboard shortcut: kbd:[control] + kbd:[f]/kbd:[F]
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 ****
 
-Examples:
+==== Examples
 
 * `find John` +
 Returns `john` and `John Doe`
@@ -172,16 +173,16 @@ see section <<delete-multiple-persons , 3.20>>.
 ==== Examples
 
 |===
-| Your input | Result
+| *Your input* | *Result*
 | `list` +
  `delete 2` +
 
-  *Note that `list` and `delete 2` are two different commands. |
+  *Note* that `list` and `delete 2` are two different commands. |
   Deletes the 2nd person in `Contact Plus`.
 | `find Betsy` +
  `delete 1` +
 
- * Note that `find Betsy` and `delete 1` are two different commands. |
+ *Note* that `find Betsy` and `delete 1` are two different commands. |
 Deletes the 1st person in the results of the `find` command.
 |===
 
@@ -190,13 +191,14 @@ Deletes the 1st person in the results of the `find` command.
 Selects the person identified by the index number used in the last person listing. +
 Command Format: `select INDEX` or `s INDEX`
 
+==== Description
 ****
 * Selects the person and loads the Google search page the person at the specified `INDEX`.
 * The index refers to the index number shown in the most recent listing.
 * The index *must be a positive integer* `1, 2, 3, ...`
 ****
 
-Examples:
+==== Examples
 
 * `list` +
 `select 2` +
@@ -225,7 +227,7 @@ Command Format: `undo`, `u`
 Undoable commands: commands that modify the content in `Contact Plus` (`add`, `delete`, `edit` and `clear`).
 ====
 
-Examples:
+==== Examples:
 
 * `delete 1` +
 `list` +
@@ -246,7 +248,7 @@ The `undo` command fails as there are no undoable commands executed previously.
 Reverses the most recent `undo` command. +
 Command Format: `redo`, `r`
 
-Examples:
+==== Examples
 
 * `delete 1` +
 `undo` (reverses the `delete 1` command) +
@@ -334,14 +336,15 @@ image:AddCommandAliasResult.png[width="500"]
 Searches persons whose tag names contain any of the given keywords. +
 Command Format: `search KEYWORD [MORE_KEYWORDS]`
 
+==== Description
 ****
 * The search is case sensitive. e.g `Friends` will not match `friends`
 * The order of the keywords does not matter. e.g. `friends colleague` is the same as `colleague friends`
 * Only the tag name is searched.
 * Only full tag name will be accepted e.g. `friends` will not match `fri`
 * Result displays "Unknown tag" if no person has the tag
-* Alias for "search" is "st"
-* Persons's tag names matching at least one keyword will be returned (i.e. `OR` search). e.g. `friends colleague` will return persons with `friends`, or `colleague` tag
+* Alias for `search` is `st`
+* Persons's tag names matching at least one keyword will be returned (i.e. *OR* search). e.g. `friends colleague` will return persons with `friends`, or with `colleague` tag
 ****
 
 ==== Examples
@@ -368,22 +371,20 @@ image:SearchTagResult.png[width="500"]
 Add the second phone number for a person by using prefix "p2/" +
 Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS`
 
+==== Description
 ****
 * Input "p2/-" for add command, when no second phone number is provided.
 * The order of the parameters does not matter. e.g. `p/87435783 p2/54729635` is the same as `p2/749374658 p/97453735`
 ****
 
-Examples:
+==== Examples
 * `add n/John Doe p/98765432 p2/73624789 e/johnd@example.com a/John street, block 123, #01-01` +
 * `edit 1 p/91234567 p2/73624789 e/johndoe@example.com` +
 
-<<<<<<< HEAD
-=== Locating persons by multiple criteria: `multifilter` [Since v1.1]
-=======
-//end::secondphone[]
+
+
 
 === Locating persons by multiple criteria: `multifilter` [Since v1.1] [[multifilter-format]]
->>>>>>> 6a615541cbe9d0981a7f5bb1e9292cfe1887103d
 
 //tag::multifilter-feature[]
 
@@ -514,6 +515,7 @@ Corrects misspelt command whose names start with the command entered from the us
 Application will notify the user that the command entered is corrected and perform the corrected commmand. +
 Format: [misspelt command]
 
+==== Description
 ****
 * The autoCorrect function will only work on the misspelt words with 2 alphebets different from the correct spelling.
 * The match is case-insensitive, e.g. "sEarhC" is equals to "search".
@@ -566,7 +568,7 @@ result is displayed to show the confirmation of deletion.
 
 image::deleteMultiplePerson3.png[width="500"]
 
-==== Example
+==== Examples
 |===
 | *Your input* |  *Result*
 | `list` +
@@ -678,10 +680,24 @@ NOTE: The keyborad shortcuts are created only for commands with heavy text input
 // tag::addtask[]
 === Add tasks [Since v1.3] [[addtask]] [[addtask-command]]
 
-Add personal tasks into `Contact Plus`.
-Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
+Add personal tasks into **Contact Plus**. +
+Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)` +
 
-Examples:
+==== Description
+*************
+* Task descriptions should only contain alphanumeric characters and spaces, and it should be not blank.
+* Prefix for task descriptions is `d/`.
+* Task priority should only be number 0 (lowest priority), 1 or 2 (highest priority).
+* Prefix for task priority is `pr/`.
+* Task due date should be a valid date following the format dd/MM/yyyy.
+* Prefix for due date is `on ` (Do not forget the kbd:[SPACE]).
+* If you input any invalid format, there will be a **Use Message** together with an example to guide you. +
+image:add_task_invalid.png[width="500"]
+* Once the task is successfully added, it will be displayed on the sticky note under `Task` tab (as shown in the image below). +
+image:add_task.png[width="500"]
+*************
+
+==== Examples:
 
 * `task d/CS2103 Assignment pr/2 on 26/10/2017`
 * `task d/Finish Teammate Feedback Session pr/0 on 01/11/2017`
@@ -706,7 +722,7 @@ previously using the `task` command.
 
 ==== How to use [[how-to-use-listtask]]
 
-. Click on the `Tasks` tab.
+. Click on the `Task` tab.
 +
 image:tasks-tab-pre.png[width="800"]
 . The user interface now shows a yellow text-area.
@@ -747,7 +763,7 @@ that you have specified when typing the `deletetask` command).
 ==== Examples
 
 |===
-| Your input | Result
+| *Your input* | *Result*
 | `deletetask` 1 | Deletes task no. 1 from `Contact Plus`.
 | `deletetask` 1/2 | Deletes tasks no. 1 and 2 from `Contact Plus`
 (if there are at least 2 tasks in `Contact Plus`).
@@ -798,7 +814,7 @@ keep you informed of the status of your actions.
 
 |===
 
-| *Your input* | Result
+| *Your input* | *Result*
 | `delete 1` | Success sound clip is played if command is successful. +
 
 Failure sound clip is played if command is unsuccessful.
@@ -830,10 +846,10 @@ image:EditTaskStep1.png[width="800"]
 +
 image:EditTaskStep2.png[width="800"]
 
-==== Example
+==== Examples
 
 |===
-| *Your input* | Result
+| *Your input* | *Result*
 | `edittask 1 prioroty/1` | The application will display "Edited task: " + the details of the task you just edited. +
 | `edittask 1 on 12/11/2019` | The application will display "Edited task: " + the details of the task you just edited. +
 |===
@@ -859,10 +875,10 @@ image:ClearTaskStep1.png[width="800"]
 image:ClearTaskStep2.png[width="800"]
 
 
-==== Example
+==== Examples
 
 |===
-| *Your input* | Result
+| *Your input* | *Result*
 | `cleartask` | "Task list has been cleared." will be displayed on the window +
 |===
 
@@ -874,25 +890,25 @@ Format: `switch INDEX`
 
 ==== Description
 *************
-* Index must be 1, 2 or 3 only. Other values are deemed as invalid.
+* *INDEX* must be 1, 2 or 3 only. Other values are deemed as invalid.
 * The command is not undoable. But you can switch back to the original theme by performing the command again.
 * Once you update the theme, your preference will be saved. The next time you open Contact Plus, it will not
 set back to default theme.
-* Default themes in Contact Plus are Dark, Light and Colourful. Below are the preview of 3 themes: +
+* Default themes in Contact Plus are *Dark*, *Light* and *Colourful*. Below are the preview of 3 themes: +
 image:DarkTheme.png[width="500"] +
 image:LightTheme.png[width="500"] +
 image:ColourfulTheme.png[width="500"]
 *************
 
 ==== How to use
-. Enter the command `switch`, together with index of the theme. (`1` stands for DarkTheme, `2` stands for
-LightTheme and `3` stands for ColourfulTheme) +
+. Enter the command `switch`, together with *INDEX* of the theme. (`1` stands for *Dark Theme*, `2` stands for
+*Light Theme* and `3` stands for *Colourful Theme*) +
 . Once the command is successfully executed, the theme of Contact Plus will be updated immediately.
 
 ==== Example
 |===
-| *Your input* | Result
-| `switch 2` | `Theme updated: Light` will be displayed. The theme will be set to the Light Theme. (refer to
+| *Your input* | *Result*
+| `switch 2` | `Theme updated: Light` will be displayed. The theme will be set to the Light Theme. (as shown in
 the diagram below) +
 image:LightTheme.png[width="500"]
 |===
@@ -914,7 +930,7 @@ the application will automatically switch it for you based on the command you en
    manipulating or displaying the tasks is entered, the tab will be automatically switched to the `Task` tab.
 *************
 
-==== Example
+==== Examples
 
 1. Before entering any command, you are at the `Task` tab.
 image:switchtab1.png[width="800"]
@@ -941,10 +957,13 @@ Format: CommandWrd + inputText
 
 The application will prompt notifications for users on the computer for the up coming tasks.
 
-=== Saving the data
+=== Save data
 
-Address book data are saved in the hard disk automatically after any command that changes the data. +
+*Contact Plus* data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
+
+=== Sync to Google Contacts
+You can sync your local contact list with Google Contacts and save any changes online.
 
 == Command Summary
 
@@ -967,6 +986,7 @@ There is no need to save manually.
 | `Search Tag` | `search TAG` | `search friends`
 | `Select` | `select INDEX` | `select 2`
 | `Switch` | `switch INDEX` | `switch 3`
+| `Task` | `task d/DESCRIPTION pr/PRIORITY on dd/MM/yyyy` | `task d/Assignment pr/2 on 01/01/2017`
 | `Undo` | `undo` | `undo`
 |===
 
