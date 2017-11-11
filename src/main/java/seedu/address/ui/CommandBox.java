@@ -2,7 +2,6 @@ package seedu.address.ui;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -57,14 +56,16 @@ public class CommandBox extends UiPart<Region> {
     private final AudioUtil audio = new AudioUtil();
     private ListElementPointer historySnapshot;
 
+
+
     @FXML
     private TextField commandTextField;
 
-    public CommandBox(Logic logic) {
+    public CommandBox(Logic logic) throws FileNotFoundException {
         this(logic, null, null);
     }
 
-    public CommandBox(Logic logic, TextArea taskDisplayed, TabPane tabPane) {
+    public CommandBox(Logic logic, TextArea taskDisplayed, TabPane tabPane) throws FileNotFoundException {
         super(FXML);
         this.logic = logic;
         this.taskDisplayed = taskDisplayed;
@@ -288,32 +289,39 @@ public class CommandBox extends UiPart<Region> {
             // process result of the command
             commandTextField.setText("");
 
-
+            //@@author zhangshuoyang
             if (parser.parseCommand(userInput) instanceof AddTaskCommand) {
                 // Process and display the most recently added task in a separate text field
                 StringBuffer lastTaskFieldOutput = new StringBuffer();
                 List<ReadOnlyTask> listOfTask = logic.getFilteredTaskList();
                 lastTaskFieldOutput.append("\n");
-                lastTaskFieldOutput.append("===Task=== " + "\n");
                 lastTaskFieldOutput.append(listOfTask.get(listOfTask.size() - 1).toString());
                 lastTaskFieldOutput.append("\n");
-                PrintWriter out = new PrintWriter(new FileOutputStream(new File("taskData1.txt"), true));
+                PrintWriter out = new PrintWriter("taskAdded.txt");
                 out.println(lastTaskFieldOutput.toString());
                 out.close();
 
                 try {
                     String curr = System.getProperty("user.dir");
-                    Scanner s = new Scanner(new File(curr + "/taskData1.txt"));
+                    Scanner s = new Scanner(new File(curr + "/taskAdded.txt"));
 
                     taskDisplayed.clear();
+                    taskDisplayed.appendText("===Last Task Added=== " + "\n");
                     while (s.hasNext()) {
-                        taskDisplayed.appendText(s.next() + "\n");
+                        String temp = s.next();
+                        if (("Description:").equals(temp)
+                                || ("Priority:").equals(temp)
+                                || ("DueDate:").equals(temp)) {
+                            taskDisplayed.appendText("\n");
+                        }
+                        taskDisplayed.appendText(temp + " ");
                     }
                 } catch (FileNotFoundException fne) {
                     throw new ParseException(fne.getMessage(), fne);
                 }
             }
 
+            //@@author lancehaoh
             Command currentCommand = parser.parseCommand(userInput);
 
             if (currentCommand instanceof ListTaskCommand || currentCommand instanceof DeleteTaskCommand) {

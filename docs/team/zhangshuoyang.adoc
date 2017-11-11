@@ -27,9 +27,9 @@ The `addtask` feature allows users to manage their tasks within the address book
 between different apps. It offers a place for the to-do list to be stored, managed and organised. This feature will
 not do your tasks for you, but it is powerful enough to get you started.
 
-Once the task is successfully added, it will be displayed on the sticky note in the task panel, as shown below:
+Once the task is successfully added, it will be displayed on the sticky note in the `Task` tab, as shown below:
 
-image:add_task.png[width:500]
+image:add_task_successful.png[width:500]
 
 
 ==== Implementation
@@ -78,17 +78,32 @@ include::../DeveloperGuide.adoc[tag=themeselect]
 ---
 
 
-=== Enhancement Proposed: Add command `remark`
+=== Enhancement Proposed: command `sync`
 
-{Explain similar to the Undo/Redo feature above.}
+`Sync` command allows users to sync their local contact lists with *Google Contacts* and save their changes online. +
+*Format*: `sync all` or `sync 1/2/3` or `sync 1` +
+*Note*: Implement in the future
+
+==== Description
+*********
+* Users must log in to Google before they can use `sync` command.
+* After logging in to Google, users can choose the list of contacts they want to synchronise.
+* For instance, `sync 1` refers to sync the contact of Index 1 in the person list, while `sync all` refers to all the contacts in the list.
+* Multiple contacts can be selected by inputting multiple Indexes, separating by `/`. For instance, `sync 1/2/3` refers to synchronising contacts of Index 1, 2 and 3.
+*********
+
+==== Implementation
+. After the command word `sync` is typed, `execute()` function in `LogicManager` will be called.
+. The command line will be passed to `AddressBookParser` which returns `SyncCommandParser`, and subsequently a `SyncCommand` object.
+. The command will post an event to the `EventCenter`, which is handled by an `OAuth` class.
+. The `OAuth` class is used to request for authorisations and interact with *Google Contacts*.
+. An instance will be created to perform relevant actions on *Google Contacts* and sync the contact list.
 
 === Other contributions
 
 * Modify browser panel to display Google Map of the address of selected contact. (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/56/commits/8b4dc931ca959d47706add168ec74194fb801883[#56])
-* Create two new themes - Light and Colourful (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/56[#56], https://github.com/CS2103AUG2017-W11-B1/main/pull/174[#174])
-* Update status bar to display the total number of people (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/30[#30])
-* Wrote additional tests to increase coverage from 82% to 84% (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/142[#142])
+* Create two new themes - Light and Colourful. (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/56[#56], https://github.com/CS2103AUG2017-W11-B1/main/pull/174[#174])
+* Update status bar to display the total number of people. (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/30[#30])
+* Wrote additional tests to increase coverage from 82% to 84%. (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/142[#142])
+* Report bugs in other team's product. (Issue https://github.com/CS2103AUG2017-T17-B4/main/issues/90[90])
 
-== Project: PowerPointLabs
-
-{Optionally (not graded), you may include other projects in your portfolio.}

@@ -1,5 +1,6 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DUEDATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 
@@ -24,7 +25,7 @@ public class TaskUtil {
      */
     public static String getTaskDetails(ReadOnlyTask task) {
         StringBuilder sb = new StringBuilder();
-        sb.append(task.getDescription().descriptionName + " ");
+        sb.append(PREFIX_DESCIPTION + task.getDescription().descriptionName + " ");
         sb.append(PREFIX_PRIORITY + task.getPriority().value + " ");
         sb.append(PREFIX_DUEDATE + task.getDueDate().date + " ");
         return sb.toString();
