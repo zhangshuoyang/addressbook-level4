@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
+import static seedu.address.logic.commands.DeleteTagCommand.MESSAGE_NO_SUCH_TAG;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.List;
@@ -70,7 +71,8 @@ public class DeleteTagCommandTest {
         List<Tag> oldListOfTags = model.getAddressBook().getTagList();
 
         try {
-            deleteTagHelper("friends");
+            CommandResult result = deleteTagHelper("friends");
+            assertEquals(result.feedbackToUser, MESSAGE_NO_SUCH_TAG);
         } catch (CommandException ce) {
             ce.printStackTrace();
         }
@@ -146,16 +148,18 @@ public class DeleteTagCommandTest {
         return deleteTagCommand;
     }
 
+    //@@author lancehaoh
     /**
      * Helper method for deleting a given tagName
      *
      * @param tagName An arbitrary string
+     * @return CommandResult object containing the response from the deleteTagCommand
      *
      * Executes a Delete Tag command to delete tags
      * with matching tag name from all contacts
      */
-    private void deleteTagHelper(String tagName) throws CommandException {
+    private CommandResult deleteTagHelper(String tagName) throws CommandException {
         DeleteTagCommand deleteTagCommand = prepareCommand(tagName);
-        deleteTagCommand.execute();
+        return deleteTagCommand.execute();
     }
 }

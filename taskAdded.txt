@@ -1,3 +1,0 @@
-
-Description: cs2103 Priority: 1 DueDate: 31/06/2017
-
