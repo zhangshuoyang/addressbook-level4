@@ -9,6 +9,7 @@ import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.After;
 import org.junit.Test;
 
 import javafx.collections.ObservableList;
@@ -16,6 +17,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
+import seedu.address.logic.parser.AutoCorrectCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -135,7 +137,8 @@ public class DeleteTagCommandTest {
 
     //@@author lancehaoh
     /**
-     * Returns a {@code DeleteTagCommand} with the parameter {@code tag_name}.
+     * @params name of a a tag
+     * @return DeleteTagCommand object
      */
     private DeleteTagCommand prepareCommand(String tagName) {
         DeleteTagCommand deleteTagCommand = null;
@@ -161,5 +164,15 @@ public class DeleteTagCommandTest {
     private CommandResult deleteTagHelper(String tagName) throws CommandException {
         DeleteTagCommand deleteTagCommand = prepareCommand(tagName);
         return deleteTagCommand.execute();
+    }
+
+    //@@author lancehaoh
+    @After
+    /**
+     * Clears the autocorrect status messages to prevent them from persisting among
+     * tests
+     */
+    public void clearAutocorrectStatusMessage() {
+        AutoCorrectCommand.clearMessageToUser();
     }
 }

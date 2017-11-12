@@ -199,7 +199,8 @@
 ###### /java/seedu/address/logic/commands/DeleteTagCommandTest.java
 ``` java
     /**
-     * Returns a {@code DeleteTagCommand} with the parameter {@code tag_name}.
+     * @params name of a a tag
+     * @return DeleteTagCommand object
      */
     private DeleteTagCommand prepareCommand(String tagName) {
         DeleteTagCommand deleteTagCommand = null;
@@ -227,6 +228,18 @@
     private CommandResult deleteTagHelper(String tagName) throws CommandException {
         DeleteTagCommand deleteTagCommand = prepareCommand(tagName);
         return deleteTagCommand.execute();
+    }
+
+```
+###### /java/seedu/address/logic/commands/DeleteTagCommandTest.java
+``` java
+    @After
+    /**
+     * Clears the autocorrect status messages to prevent them from persisting among
+     * tests
+     */
+    public void clearAutocorrectStatusMessage() {
+        AutoCorrectCommand.clearMessageToUser();
     }
 }
 ```
@@ -689,6 +702,31 @@
         return parsedCommand;
     }
 
+```
+###### /java/seedu/address/logic/commands/SearchCommandTest.java
+``` java
+    @After
+    /**
+     * Clears the autocorrect status messages to prevent them from persisting among
+     * tests
+     */
+    public void clearAutocorrectStatusMessage() {
+        AutoCorrectCommand.clearMessageToUser();
+    }
+
+}
+```
+###### /java/seedu/address/logic/parser/AutoCorrectCommandTest.java
+``` java
+    @After
+    /**
+     * Clears the autocorrect status messages to prevent them from persisting among
+     * tests
+     */
+    public void clearAutocorrectStatusMessage() {
+        AutoCorrectCommand.clearMessageToUser();
+    }
+}
 ```
 ###### /java/seedu/address/logic/parser/MultiFilterCommandParserTest.java
 ``` java

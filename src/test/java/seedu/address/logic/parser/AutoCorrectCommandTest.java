@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -142,5 +143,15 @@ public class AutoCorrectCommandTest {
         final String inputCommandUnknown = "m";
         String correctCommandUnknown = autoCorrectCommand.correctWord(inputCommandUnknown);
         assertEquals(inputCommandUnknown, correctCommandUnknown);
+    }
+
+    //@@author lancehaoh
+    @After
+    /**
+     * Clears the autocorrect status messages to prevent them from persisting among
+     * tests
+     */
+    public void clearAutocorrectStatusMessage() {
+        AutoCorrectCommand.clearMessageToUser();
     }
 }

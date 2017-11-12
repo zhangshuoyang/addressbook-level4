@@ -32,6 +32,7 @@ public class DeleteTagCommand extends UndoableCommand {
     public CommandResult executeUndoableCommand() {
         boolean tagWasDeleted = model.deleteTag(tagToDelete);
 
+        // If the specified tag does not exist, return an error message instead of a success message.
         String messageToUser = (!tagWasDeleted ? MESSAGE_NO_SUCH_TAG : MESSAGE_DELETE_TAG_SUCCESS);
 
         if (autoCorrectCommand.getMessageToUser().equals("")) {
