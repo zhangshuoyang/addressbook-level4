@@ -92,6 +92,7 @@ public class CommandBox extends UiPart<Region> {
 
     }
 
+
     /**
      * Handles the key press event, {@code keyEvent}.
      */
@@ -158,8 +159,7 @@ public class CommandBox extends UiPart<Region> {
             keyEvent.consume();
             navigateToNextInput();
             break;
-        //@@author lancehaoh
-        case TAB: // shortcut for autocomplete feature
+        case TAB:
             keyEvent.consume();
             launchAutoComplete();
             commandTextField.requestFocus(); // focus the caret in the command box after autocomplete

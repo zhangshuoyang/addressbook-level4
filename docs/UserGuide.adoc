@@ -386,9 +386,8 @@ Command Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS` +
 
 //end::secondphone[]
 
-=== Locating persons by multiple criteria: `multifilter` [Since v1.1]
-
 //tag::multifilter-feature[]
+=== Locating persons by multiple criteria: `multifilter` [Since v1.1] [[multifilter-format]]
 
 [[multifilter-format]] Finds persons whose names, phone no., emails and addresses,
 match a set of specified criteria. +
@@ -457,11 +456,10 @@ An example of a matching contact for this command would be +
 
 //end::multifilter-feature[]
 
-=== Autocomplete command names [Since v1.2]
+=== Autocomplete command names [Since v1.2] [[autocomplete-feature]]
 
 //tag::autocomplete-feature[]
-
-[[autocomplete-feature]] Lazy to memorize command names? Press a shortcut key to automatically complete the text that you enter into the command box. +
+Lazy to memorize command names? Press a shortcut key to automatically complete the text that you enter into the command box. +
 
 Command Format: [Some text] +
 Quick demo:  link:#how-to-use-autocomplete[here]
@@ -603,11 +601,11 @@ image::WeatherForecastButton.png[width="800"]
 +
 image::WeatherForecast.png[width="800"]
 
-=== Extended autocomplete for commands [Since v1.3]
+=== Extended autocomplete for commands [Since v1.3] [[extended-autocomplete-feature]]
 
 //tag::extended-autocomplete-feature[]
 
-[[extended-autocomplete-feature]] Try to save some time? Autocomplete is designed for you to operate efficiently on Contact Plus.Some commands such as `add` are very long and difficult to type.
+Try to save some time? Autocomplete is designed for you to operate efficiently on Contact Plus.Some commands such as `add` are very long and difficult to type.
 This feature enables you to automatically fill in the format of the command whose name matches
 the text that you entered. +
 
@@ -743,11 +741,11 @@ image:add_task_successful.png[width="500"]
 * `task d/Finish Teammate Feedback Session pr/0 on 01/11/2017`
 // end::addtask[]
 
-=== List tasks [Since v1.4]
+=== List tasks [Since v1.4] [[listtask]]
 
 //tag::listtask-command[]
 
-[[listtask]] This command enables you to retrieve personal tasks that you have stored in
+This command enables you to retrieve personal tasks that you have stored in
 `Contact Plus`. +
 
 Command Format: `listtask` +
@@ -793,7 +791,7 @@ Quick demo: link:#how-to-use-deletetask[here]
 
 ****
 * `INDEX_1`, `INDEX_2`, etc. refer to the task numbers that
-are shown when you use the link:#listtask[`listtask`] command to show your tasks
+are shown when you use the link:#listtask-command[`listtask`] command to show your tasks
 (See <<how-to-use-deletetask,how to use>> for an example).
 * `INDEX_1`, `INDEX_2`, etc. must be positive integers
 (i.e. they must be whole numbers greater than 0 such as 1, 2, 3, etc.).
@@ -814,7 +812,7 @@ Otherwise, an error message is shown.
 
 ==== How to use [[how-to-use-deletetask]]
 
-. Use the `<<listtask,listtask>>` command to display all your tasks.
+. Use the `<<listtask-command,listtask>>` command to display all your tasks.
 Note the number of the tasks that you wish to delete.
 +
 image:deletetask-listtask.png[width="800"]
@@ -823,9 +821,13 @@ image:deletetask-listtask.png[width="800"]
 +
 image:deletetask-command-pre.png[width="400"]
 
-. Hit the kbd:[ENTER] key. You will see a success
-message in the result pane if the command was successful. Also, observe that
- the tasks you have specified in the previous step have been deleted from
+. Hit the kbd:[ENTER] key. You will see the following success
+message if the command was successful.
++
+image:deletetask-command-post.png[width="400"]
+
+. Observe that
+ the tasks that you have specified in the previous step have been deleted from
  `Contact Plus`.
 +
 image:deletetask-proof.png[width="800"]
