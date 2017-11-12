@@ -41,9 +41,4 @@
     <tags>criminal</tags>
     <tags>family</tags>
     <tags>friends</tags>
-    <tasks>
-        <description>cs3230 assignment</description>
-        <priority>1</priority>
-        <duedate>10/11/2017</duedate>
-    </tasks>
 </addressbook>

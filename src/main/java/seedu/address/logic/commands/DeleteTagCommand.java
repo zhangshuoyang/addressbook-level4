@@ -1,6 +1,9 @@
 package seedu.address.logic.commands;
 
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AutoCorrectCommand;
+import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -16,7 +19,6 @@ public class DeleteTagCommand extends UndoableCommand {
             + "Example: " + COMMAND_WORD + " friends";
 
     public static final String MESSAGE_DELETE_TAG_SUCCESS = "Deleted Tag: %1$s";
-    public static final String MESSAGE_NO_SUCH_TAG = "There is no such tag.";
 
     private final Tag tagToDelete;
 
@@ -29,13 +31,17 @@ public class DeleteTagCommand extends UndoableCommand {
 
     //@@author lancehaoh
     @Override
-    public CommandResult executeUndoableCommand() {
-        boolean tagWasDeleted = model.deleteTag(tagToDelete);
-
-        String messageToUser = (!tagWasDeleted ? MESSAGE_NO_SUCH_TAG : MESSAGE_DELETE_TAG_SUCCESS);
+    public CommandResult executeUndoableCommand() throws CommandException {
+        try {
+            model.deleteTag(tagToDelete);
+        } catch (PersonNotFoundException pnfe) {
+            assert false : "The target person cannot be missing";
+        } catch (DuplicatePersonException dpe) {
+            assert false : "Update will cause two contacts to be the same";
+        }
 
         if (autoCorrectCommand.getMessageToUser().equals("")) {
-            return new CommandResult(String.format(messageToUser, tagToDelete));
+            return new CommandResult(String.format(MESSAGE_DELETE_TAG_SUCCESS, tagToDelete));
         } else {
             return new CommandResult(autoCorrectCommand.getMessageToUser()
                     + "\n"
