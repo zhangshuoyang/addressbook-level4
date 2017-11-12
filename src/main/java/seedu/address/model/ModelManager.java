@@ -120,25 +120,28 @@ public class ModelManager extends ComponentManager implements Model {
 
     //@@author
     @Override
-    public void deleteTag(Tag t) {
+    public boolean deleteTag(Tag t) {
         // Get all contacts in AddressBook
         ObservableList<ReadOnlyPerson> persons = addressBook.getPersonList();
+        boolean tagWasDeleted = false;
         try {
             for (ReadOnlyPerson unmodifiablePerson : persons) {
                 Person updatedPerson = new Person(unmodifiablePerson);
                 // Remove the desired tag from every person where applicable
                 Set<Tag> tags = new HashSet<>(updatedPerson.getTags());
                 if (tags.contains(t)) {
+                    tagWasDeleted = true;
                     tags.remove(t);
                     updatedPerson.setTags(tags);
                     addressBook.updatePerson(unmodifiablePerson, updatedPerson);
                 }
             }
         } catch (PersonNotFoundException pnfe) {
-            assert false : "The target person cannot be missing";
+            pnfe.printStackTrace();
         } catch (DuplicatePersonException dpe) {
-            assert false : "Update will cause two contacts to be the same";
+            dpe.printStackTrace();
         }
+        return tagWasDeleted;
     }
 
     //@@author JYL123

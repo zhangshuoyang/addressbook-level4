@@ -626,7 +626,6 @@ public class Task implements ReadOnlyTask {
 
     }
 
-
     /**
      * Handles the key press event, {@code keyEvent}.
      */

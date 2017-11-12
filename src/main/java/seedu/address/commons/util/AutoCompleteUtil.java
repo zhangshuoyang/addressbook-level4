@@ -14,7 +14,7 @@ public class AutoCompleteUtil {
      * Gets the system commands that start with a particular prefix
      *
      * @param commandText an arbitrary string
-     * @return commandList a list of system commands whose prefix is commandText
+     * @return a list of system commands whose prefix is commandText
      */
     public static List<String> autoCompleteCommand(String commandText, List<String> commandList) {
         return commandList

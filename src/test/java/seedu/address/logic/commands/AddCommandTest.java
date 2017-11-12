@@ -148,8 +148,12 @@ public class AddCommandTest {
             fail("This method should not be called.");
         }
 
+        //@@author lancehaoh
         @Override
-        public void deleteTag(Tag t) {}
+        public boolean deleteTag(Tag t) {
+            fail("This method should not be called.");
+            return false;
+        }
 
         @Override
         public ObservableList<ReadOnlyPerson> getFilteredPersonByTagList() {
