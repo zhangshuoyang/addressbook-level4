@@ -16,7 +16,7 @@ Too lazy to type the full command? The alias feature allows you to type a shorte
 ==== External behavior
 
 Alias of a command has the same effect as its corresponding command word. A list of available alias is as follows:
-
+|===
 | *Commands* | *Alias*
 | `add` | `a` +
 | `edit` | `e` +
@@ -137,7 +137,11 @@ This class makes uses of the powerful function from stream. The logic follow can
 
 image:SearchTagActivityDiagram.png[width="800"]
 
-The following code snippet shows the main logic in `NameWithTagContainsKeywordsPredicate.java`:
+In order to provide you another perspective, the following sequence diagram shows you how `SearchCommand` interacts with other objects in the Contact Plus application:
+
+image:SearchCommandSequenceDiagram.png[width="800"]
+
+The following code snippet shows the main logic in Java code in `NameWithTagContainsKeywordsPredicate.java`:
 
 [source,java]
 ----
@@ -434,9 +438,12 @@ The `edit task` is facilitated by EditTaskCommand class. It allows users to edit
 
 The command word for editing a task is `edittask`. When users key in the command word, together with valid description, priority and due date, the values will be passed into parseCommand() function in the AddressBookParser class.
 
-The basic main flow for `edittask` is as follows:
+The basic logic flow for `edittask` is displayed in the following activity diagram:
 
 image:EditTaskMainFlow.png[width="800"]
+
+To provide you another perspective, the interaction of `EditTaskCommand` with other objects in Contact Plus Application is displayed in the following sequence diagram:
+image:EditTaskSequenceDiagram.png[width="800"]
 
 ==== Prerequisites/Dependencies
 
@@ -496,6 +503,9 @@ The command word for listing a task is `cleartask`. When users key in the comman
 The basic main flow for `cleartask` is as follows:
 
 image:listTaskActivityDiagram.png[width="800"]
+
+To provide you another perspective, the following sequence diagram of `CleaTaskCommand` displays its interaction with the objects in teh Contact Plus application:
+image:ClearTaskSequenceDiagram.png[width="800"]
 
 ==== Prerequisites/Dependencies
 
