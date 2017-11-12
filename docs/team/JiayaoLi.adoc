@@ -15,9 +15,8 @@ Too lazy to type the full command? The alias feature allows you to type a shorte
 
 ==== External behavior
 
----
-A list of available alias is as follows:
-|===
+Alias of a command has the same effect as its corresponding command word. A list of available alias is as follows:
+
 | *Commands* | *Alias*
 | `add` | `a` +
 | `edit` | `e` +
@@ -35,7 +34,7 @@ A list of available alias is as follows:
 
 
 ==== How to use
-. The image below demonstrates the example of using `a`.
+. The image below demonstrates the example of using `a` as the alias for `add` to add a person in your contact pane.
 +
 image:AddCommandAlias.png[width="800"]
 
@@ -505,6 +504,25 @@ the tasks in the address book.
 * The `deleteTask()` method in model must be able to accept a `ReadOnlyTask` as input and
 delete it from the address book.
 
+=== Reference
+
+[[edit-distance]]
+Edit-distance
+
+....
+Edit distance is a way of quantifying how dissimilar two strings (e.g., words)
+are to one another by counting the minimum number of operations required to
+transform one string into the other.
+....
+
+[[WOEID]]
+WOEID
+
+....
+A WOEID (Where On Earth IDentifier) is a unique 32-bit reference identifier,
+originally defined by GeoPlanet and now assigned by Yahoo!, that identifies any feature on Earth.
+....
+
 === Other contributions
 
-* Updated the GUI statusFootBar, and icon images for email, phone number, and address. (Pull requests https://github.com[#33], https://github.com[#34])
+* Updated the GUI statusFootBar, and icon images for email, phone number, and address. (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/162/commits/19c74676b0ffaa65b9c25daba5cf606836b2e75d[##162], https://github.com/CS2103AUG2017-W11-B1/main/pull/112[#112])

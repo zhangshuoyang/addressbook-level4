@@ -980,13 +980,13 @@ Command Format: CommandWrd + inputText
 
 The application will prompt notifications for users on the computer for the up coming tasks.
 
-=== Save data
+=== Sync to Google Contacts
+You can sync your local contact list with Google Contacts and save any changes online.
+
+== Save data
 
 *Contact Plus* data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
-
-=== Sync to Google Contacts
-You can sync your local contact list with Google Contacts and save any changes online.
 
 == Command Summary [[command-summary]]
 
