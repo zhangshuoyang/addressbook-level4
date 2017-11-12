@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -135,12 +136,23 @@ public class AutoCorrectCommandTest {
      * as the auto-correct is not meant to auto-correct alias
      */
     public void executeAliasCommandTest() {
+        //One-alphabet alise
         final String inputCommandAdd = "a";
         String correctCommandAdd = autoCorrectCommand.correctWord(inputCommandAdd);
         assertEquals(AddCommand.COMMAND_WORD_ALIAS, correctCommandAdd);
 
-        final String inputCommandUnknown = "m";
+        final String inputCommandUnknown = "r";
         String correctCommandUnknown = autoCorrectCommand.correctWord(inputCommandUnknown);
         assertEquals(inputCommandUnknown, correctCommandUnknown);
+
+        //Two-alphabet alise
+        final String inputCommandMultifilter = "mf";
+        String correctCommandMultifilter = autoCorrectCommand.correctWord(inputCommandMultifilter);
+        assertEquals(inputCommandMultifilter, correctCommandMultifilter);
+
+        final String inputCommandUnknownTwoAlphabets = "yx";
+        String correctCommandUnknownTwoAlphabets = autoCorrectCommand.correctWord(inputCommandUnknownTwoAlphabets);
+        assertNotEquals(inputCommandUnknownTwoAlphabets, correctCommandUnknownTwoAlphabets);
+
     }
 }

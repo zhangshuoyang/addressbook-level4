@@ -97,13 +97,14 @@ public class AutoCorrectCommand {
         - Finally, if no good replacements are found, return "Unknown Command".
     */
     public String correctWord (String misSpeltWord) {
+        int lengthOfOneAlphabetAlias = 1;
 
         if (misSpeltWord == null || misSpeltWord.equals("")) {
             throw new IllegalArgumentException("Unknown Command");
         }
 
         //alias is not checked in auto-correct
-        if (misSpeltWord.length() == 1) {
+        if (misSpeltWord.length() == lengthOfOneAlphabetAlias) {
             return misSpeltWord;
         }
 
