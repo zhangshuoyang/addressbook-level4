@@ -323,7 +323,7 @@ Command Format: `command_alise` +
 Quick demo: link:#how-to-use-alias-command[here]
 
 ==== How to use [[how-to-use-alias-command]]
-. The image below demonstrates the example of using `a`.
+. The image below demonstrates the example of using `a` as the alias for `add` to add a person in your contact pane.
 +
 image:AddCommandAlias.png[width="500"]
 
@@ -342,7 +342,7 @@ Quick demo: link:#how-to-use-locate-person_by_tag[here]
 ****
 * The search is case sensitive. e.g `Friends` will not match `friends`
 * The order of the keywords does not matter. e.g. `friends colleague` is the same as `colleague friends`
-* Only the tag name is searched.
+* You can search more than one tags, e.g. if `friends`, `family` are two tags, you can do: `search friends family`
 * Only full tag name will be accepted e.g. `friends` will not match `fri`
 * Result displays "Unknown tag" if no person has the tag
 * Alias for `search` is `st`
@@ -353,6 +353,7 @@ Quick demo: link:#how-to-use-locate-person_by_tag[here]
 |===
 | *Your input* | *Result*
 | `search friends` | Returns the contacts with tag "friends", e.g. `John Alice` +
+| `search friend family ` | Returns the contacts with tag "friends" and "family", e.g. `John Alice David` +
 | `search fri` | No match will be returned, `Unknown tag` is displayed. +
 |===
 
@@ -835,6 +836,7 @@ image:deletetask-proof.png[width="800"]
 
 //end::deletetask-command[]
 
+<<<<<<< HEAD
 === Sound effect for system events [Since v1.3]
 
 //tag::music-feature[]
@@ -863,6 +865,8 @@ Failure sound clip is played if command is unsuccessful.
 
 //end::music-feature[]
 
+=======
+>>>>>>> acbcf8d14d2cb1fe3f3df0bf667d5a09a0cda551
 === Edit task: `edittask` [Since v1.4] [[edittask-command]]
 
 To edit your tasks, first you should learn how to link:#listtask[list task] . Listing tasks is for you to get the index of the task you indent to edit.
@@ -880,7 +884,7 @@ Quick demo: link:#how-to-use-edittask[here]
 *************
 
 ==== How to use [[how-to-use-edittask]]
-. Enter the command, the index of the task, and the details you wish to edit with its prefix. Please refer to the image below for an example:
+. Enter the command, the index of the task, and the details you wish to edit with its prefix. In this example, we wish to edit the priority of the tsk indexed as no.1 in the liast of tasks. The following image shows you the correct command format:
 +
 image:EditTaskStep1.png[width="800"]
 
@@ -892,8 +896,9 @@ image:EditTaskStep2.png[width="800"]
 
 |===
 | *Your input* | *Result*
-| `edittask 1 prioroty/1` | The application will display "Edited task: " + the details of the task you just edited. +
-| `edittask 1 on 12/11/2019` | The application will display "Edited task: " + the details of the task you just edited. +
+| `edittask 1 prioroty/1` | This command edits the priority of the task indexed no.1. The application will display the confirmation message: "Edited task: " + the details of the task you just edited. +
+| `edittask 1 on 12/11/2019` | This command edits the due date for the task indexed no.1. The application will display the confirmation message: "Edited task: " + the details of the task you just edited. +
+| `edittask 1 pr/1 on 12/11/2019` | This command edits the priority and due date for the task indexed no.1. The application will display the confirmation message: "Edited task: " + the details of the task you just edited. +
 |===
 
 === Clear task: `cleartask` [Since v1.4] [[cleartask-command]]

@@ -11,6 +11,8 @@ can be served as a task-managing application as well. The user interacts with th
 
 === Enhancement Added: Alias for commands [Since v1.0]
 
+Too lazy to type the full command? The alias feature allows you to type a shorter version of the command name.
+
 ==== External behavior
 
 ---
@@ -84,18 +86,20 @@ case AddCommand.COMMAND_WORD: case AddCommand.COMMAND_WORD_ALIAS:
 **Pros:** The length for each alias is unformed.
 **Cons:** Three alphabets would be too long for commands like `add`.
 
-=== Enhancement Added:  Locating persons by tag: search + tag name [Since v1.1]
+=== Enhancement Added:  Locating groups by tag: search + tag name [Since v1.1]
+Searching a certain social group? or just search a certain group of persons? search + tag name` can help you achieve this. +
 
 ==== External behavior
 
-Searches persons whose tag names contain any of the given keywords. +
+All persons with the same tag given by the user will be displayed on the application. +
+
 Command Format: `search KEYWORD [MORE_KEYWORDS]`, or `sh KEYWORD [MORE_KEYWORDS]`
 
 ****
-* The search is case sensitive. e.g `Friends` will not match `friends`
-* The order of the keywords does not matter. e.g. `friends colleague` is the same as `colleague friends`
-* Only the tag name is searched.
-* Only full tag name will be accepted e.g. `friends` will not match `fri`
+* The search is case sensitive, e.g `Friends` will not match `friends`
+* The order of the keywords does not matter, e.g. `friends colleague` is the same as `colleague friends`
+* You can search more than one tags, e.g. if `friends`, `family` are two tags, you can do: `search friends family`
+* Only full tag name will be accepted, e.g. `friends` will not match `fri`
 * Result displays "Unknown tag" if no person has the tag
 * Alias for "search" is "st"
 * Persons's tag names matching at least one keyword will be returned (i.e. `OR` search). e.g. `friends colleague` will return persons with `friends`, or `colleague` tag
@@ -103,11 +107,11 @@ Command Format: `search KEYWORD [MORE_KEYWORDS]`, or `sh KEYWORD [MORE_KEYWORDS]
 
 ==== How to use
 
-. Input the command to search contact of the same tag, e.g. friends.
+. Input the command to search contact of the same tag, e.g. friends.The image below gives you the correct command format:
 +
 image:SearchTagCommand.png[width="800"]
 
-. The image below demonstrates the result of the above searching.
+. The image below demonstrates the result of the above searching:
 +
 image:SearchTagResult.png[width="800"]
 ---
@@ -116,6 +120,7 @@ image:SearchTagResult.png[width="800"]
 |===
 | *Your input* | *Result*
 | `search friends` | Returns the contacts with tag "friends", e.g. `John Alice` +
+| `search friend family ` | Returns the contacts with tag "friends" and "family", e.g. `John Alice David` +
 | `search fri` | No match will be returned, `Unknown tag` is displayed. +
 |===
 
@@ -126,7 +131,7 @@ One of the property of tagging is that it categorizes contacts in the list, ther
 ==== Implementation
 
 ---
-Search By Tag Mechanism
+Search Groups By Tag Mechanism
 
 The main logic for this mechanism lies in the class `NameWithTagContainsKeywordsPredicate.java`. This class compares the lists of tags from each person, and compare the list of tag with the set of tags given by users.
 This class makes uses of the powerful function from stream. The logic follow can be demonstrated by using the following activity diagram:
@@ -149,6 +154,9 @@ The following code snippet shows the main logic in `NameWithTagContainsKeywordsP
     }
 ----
 
+==== Prerequisites/Dependencies
+* The tag name entered by users must be valid, i.e. exist in Contact Plus for the command to work successfully, else error message will be popped out.
+
 ==== Design Consideration
 
 **Aspect:** Number of tags allowed to be specified by users. +
@@ -163,13 +171,17 @@ The following code snippet shows the main logic in `NameWithTagContainsKeywordsP
 
 === Enhancement Added:  AutoCorrect command [Since v1.2]
 
+If you misspelt a command, no worries, Contact Plus will autoCorrect misspelt command whose names start with the command entered from the user.
+Application will notify you that the command entered is corrected and perform the corrected commmand. +
+
 ==== External behavior
 Corrects misspelt command whose names start with the command entered from the user.
 Application will notify the user that the command entered is corrected and perform the corrected commmand. +
-Format: [misspelt command]
+
+Command Format: [misspelt command]
 
 ****
-* The autoCorrect function will only work on the misspelt words within edit distance of 2.
+* The autoCorrect function will only work on the misspelt words with 2 alphebets different from the correct spelling.
 * The match is case-insensitive, e.g. "sEarhC" is equals to "search".
 * If no match is found, the application will display "Unknown command".
 ****
@@ -229,6 +241,14 @@ Auto-Correct is only utilized in `AddressBoonParser` class to check each input c
 The following diagram shows the interaction between `AutoCorrect` and `AddressBookParser` class:
 
 image::AddressBookParser.SequenceDiagram.png[width="800"]
+
+==== Prerequisites/Dependencies
+
+* The `COMMAND_WORD` for every available command must be added to the `getCommandPool` method for the command to be auto-corrected.
+* AutoCorrect will only work for misspelt words within link:#edit-distance[edit distance] of 2.
+* AutoCorrect is based on four types of prediction of misspelt words, namely, addition, deletion, switch, and substitution.
+* Alias will not be autoCorrected as it consists only one or two alphabets.
+* The logic for autoCorrecting commands is implemented in AutoCorrectCommand class.
 
 ==== Design Consideration
 
@@ -295,6 +315,11 @@ Yahoo Weather information can be seen from `statusFootBar` too, as follows:
 
 image::YahooWeatherFootBar.png[width="800"]
 ---
+
+==== Prerequisites/Dependencies
+
+* This feature has a strong dependency on Yahoo Weather Server. Some exceptions or assertions should be implemented to prevent the failure of the application
+due to the failure of Yahoo Weather Server. +
 
 === Enhancement Added:  Keyboard shortcuts [Since v1.3]
 
@@ -381,7 +406,7 @@ Format: `edittask INDEX d/DESCRIPTION priority/PRIORITY(0/1/2) on DUE DATE(dd/MM
 
 ==== How to use
 
-. Enter the command, the index of the task, and the details you wish to edit with its prefix. Please refer to the image below for an example:
+. Enter the command, the index of the task, and the details you wish to edit with its prefix. In this example, we wish to edit the priority of the tsk indexed as no.1 in the liast of tasks. The following image shows you the correct command format:
 +
 image:EditTaskStep1.png[width="800"]
 
@@ -395,6 +420,7 @@ image:EditTaskStep2.png[width="800"]
 | *Your input* | Result
 | `edittask 1 prioroty/1` | The application will display "Edited task: " + the details of the task you just edited. +
 | `edittask 1 on 12/11/2019` | The application will display "Edited task: " + the details of the task you just edited. +
+| `edittask 1 pr/1 on 12/11/2019` | This command edits the priority and due date for the task indexed no.1. The application will display the confirmation message: "Edited task: " + the details of the task you just edited. +
 |===
 
 ==== Justification
@@ -412,6 +438,13 @@ The command word for editing a task is `edittask`. When users key in the command
 The basic main flow for `edittask` is as follows:
 
 image:EditTaskMainFlow.png[width="800"]
+
+==== Prerequisites/Dependencies
+
+* The `getFilteredTaskList()` method in `Logic` class must return a list of `ReadOnlyTasks` containing
+the tasks in the address book.
+* The `updateTask()` method in model must be able to accept a `ReadOnlyTask` as input and
+delete it from the address book.
 
 ==== Design Consideration
 
@@ -465,6 +498,12 @@ The basic main flow for `cleartask` is as follows:
 
 image:listTaskActivityDiagram.png[width="800"]
 
+==== Prerequisites/Dependencies
+
+* The `getFilteredTaskList()` method in `Logic` class must return a list of `ReadOnlyTasks` containing
+the tasks in the address book.
+* The `deleteTask()` method in model must be able to accept a `ReadOnlyTask` as input and
+delete it from the address book.
 
 === Other contributions
 

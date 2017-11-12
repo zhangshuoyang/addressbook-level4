@@ -425,6 +425,34 @@ return conditionStringParser(channel.getItem().getCondition().toString());
 * This feature has a strong dependency on Yahoo Weather Server. Some exceptions or assertions should be implemented to prevent the failure of the application
 due to the failure of Yahoo Weather Server. +
 
+=== Alias for command Mechanism[[alias-for-command]]
+
+Alias in this application is a single alphabet or two alphabets. This purpose of alias is to save the labor of typing the full corresponding command words, therefore it is more efficient and easier to use.
+The alias mechanism is implemented in `AddressBookParser`, and its logic can be described by the following activity diagram:
+
+image:AliasActivityDiagram.png[width="800"]
+
+1. `AddressBookParser` receives the input argument from users. +
+2. If the input argument is an alias, the corresponding command instance is created and command is processed. +
+3. If the input argument is a command word, the command instance is created, and the command is processed.
+
+The code snippet is shown as follows:
+[source,java]
+----
+case AddCommand.COMMAND_WORD: case AddCommand.COMMAND_WORD_ALIAS:
+            return new AddCommandParser().parse(arguments);
+----
+
+==== Design Consideration
+
+**Aspect:** Length of an alias
+**Alternative 1 (current choice):** Use one or two alphabets to represent a command, usually it is the first alphabet of its corresponding command word.
+**Pros:** Easy to memories the alias as it is the first letter of the command word.
+**Cons:** May be confusing when some command requires two alphabets for alias. This is because there will be overlapping alias when two command words have the same first letter.
+
+**Alternative 2:** Use a fixed length of three alphabets for every alias.
+**Pros:** The length for each alias is unformed.
+**Cons:** Three alphabets would be too long for commands like `add`.
 
 === Autocomplete Mechanism[[autocomplete-feature]]
 
@@ -575,6 +603,43 @@ to every person who had that tag previously (except the one from which he wanted
 
 //end::deletetag-mechanism[]
 
+=== Locating groups by tag Mechanism
+
+The main logic for this mechanism lies in the class `NameWithTagContainsKeywordsPredicate.java`. This class compares the lists of tags from each person, and compare the list of tag with the set of tags given by users.
+This class makes uses of the powerful function from stream. The logic follow can be demonstrated by using the following activity diagram:
+
+image:SearchTagActivityDiagram.png[width="800"]
+
+The following code snippet shows the main logic in `NameWithTagContainsKeywordsPredicate.java`:
+
+[source,java]
+----
+@Override
+    public boolean test(ReadOnlyPerson person) {
+        Set<String> tagList = new HashSet<>();
+        for (Tag tag : person.getTags()) {
+            tagList.add(tag.getTagName());
+        }
+
+        return keywords.stream()
+                .anyMatch(tagList::contains);
+    }
+----
+==== Prerequisites/Dependencies
+* The tag name entered by users must be valid, i.e. exist in Contact Plus for the command to work successfully, else error message will be popped out.
+
+==== Design Consideration
+
+**Aspect:** Number of tags allowed to be specified by users. +
+**Alternative 1 (current choice):** Allow multiple tags to be entered by users
+**Pros:** Increases the flexibility of this search by tag feature. There would be no restriction on the number of tags to be entered. Users can specify as many valid tags as they want to.
+**Cons:** May not be obvious to users that they can enter multiple tag names.
+
+**Alternative 2:** Only allow users to search one tag name at a time
+**Pros:** The feature may looks simpler.
+**Cons:** Adds limitation to what users can do.
+
+
 === Multiple Filter Mechanism
 
 //tag::multifilter-mechanism[]
@@ -712,6 +777,48 @@ the `Command` class.
 //end::tabswitch[]
 
 // tag::themeselect[]
+
+=== Keyboard Shortcut Mechanism
+The detection of keyboard shortcut is detected in the `CommandBox.java` class. In the method `handleKeyPress`, multiple key press situations are listed there and to handle the correct key pressed by users.
+The code snippet is shown as follows:
+
+[source,java]
+----
+// Handles cases where multiple keys are pressed simultaneously
+        String getAlphabetPressed = keyEvent.getCode().toString();
+        logger.info(getAlphabetPressed);
+
+        if (keyEvent.getCode().isLetterKey() && keyEvent.isControlDown()) {
+            //keyboard shortcut for input text heavy command
+            switch (getAlphabetPressed) {
+            case "A":
+                keyEvent.consume();
+                commandTextField.setText(AddCommand.COMMAND_WORD);
+                break;
+            case "D":
+                keyEvent.consume();
+                commandTextField.setText(DeleteCommand.COMMAND_WORD);
+                break;
+             ....
+             //and many other cases
+             default:
+                  //do nothing
+            }
+        }
+----
+
+==== Design Consideration
+
+**Aspect:** Implementation of Keyborad shortcuts +
+
+**Alternative 1 (current choice):** Only a few commands have its keyboard shortcuts. +
+**Pros:** Allow users to complete their input command faster by directly pressing the shortcuts. +
+**Cons:** For some commands, users are not allowed to use keyboard shortcuts This is inconvenient. +
+
+**Alternative 2:** Give every command its keyboard shortcuts. +
+**Pros:**  Users can use shortcut for every command freely. +
+**Cons:** It would be confusing to have to memorise many shortcuts.
+
 === Theme Selection Mechanism
 
 The 'theme support' feature allows user to choose their favorite theme for the address book, other than the default
@@ -860,6 +967,51 @@ delete task. +
 list of tasks when the user closes the address book after deletion.
 
 //end::deletetask-mechanism[]
+
+=== Edit Task Mechanism
+The `edit task` is facilitated by EditTaskCommand class. It allows users to edit tasks in the address book with a description, the level of priority as well as the due date. The tasks added will be shown on the stickies in the address book.
+
+The command word for editing a task is `edittask`. When users key in the command word, together with valid description, priority and due date, the values will be passed into parseCommand() function in the AddressBookParser class.
+
+The basic main flow for `edittask` is as follows:
+
+image:EditTaskMainFlow.png[width="800"]
+
+==== Prerequisites/Dependencies
+
+* The `getFilteredTaskList()` method in `Logic` class must return a list of `ReadOnlyTasks` containing
+the tasks in the address book.
+* The `updateTask()` method in model must be able to accept a `ReadOnlyTask` as input and
+delete it from the address book.
+
+==== Design Consideration
+
+**Aspect:** fields to be editable. +
+**Alternative 1 (current choice):** Allow priority and due date to be editable but not description.
+**Pros:** It is logically clear that only the priority and due date of a task can be edited. Changing the description of the task essentially means to create a new task.
+**Cons:** May be not convenient for users who want to edit description of the task as well.
+
+**Alternative 2:** Only allow users to edit all three fields, description, priority and due date.
+**Pros:** This provides larger flexibility for users to edit any part of the given task.
+**Cons:** Logically it may not make sense to be able to edit description of the task.
+
+=== Clear Task Mechanism
+
+The `clear task` is facilitated by ClearTaskCommand class. It allows users to clear tasks in the address book.
+
+The command word for listing a task is `cleartask`. When users key in the command word, the command word `cleartask` is passed into AddressBookParser class, and the corresponding `ClearTaskCommand` is created and subsequently its function executeUndoableCommand() will clear the tasks from addressbook.xml.
+
+The basic main flow for `cleartask` is as follows:
+
+image:listTaskActivityDiagram.png[width="800"]
+
+==== Prerequisites/Dependencies
+
+* The `getFilteredTaskList()` method in `Logic` class must return a list of `ReadOnlyTasks` containing
+the tasks in the address book.
+* The `deleteTask()` method in model must be able to accept a `ReadOnlyTask` as input and
+delete it from the address book.
+
 
 === Sound Effect for Commands
 
