@@ -447,9 +447,8 @@ can be served as a task-managing application as well. The user interacts with th
 </div>
 <div class="sect3">
 <h4 id="_external_behavior">External behavior</h4>
-<hr>
 <div class="paragraph">
-<p>A list of available alias is as follows:</p>
+<p>Alias of a command has the same effect as its corresponding command word. A list of available alias is as follows:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -517,7 +516,7 @@ can be served as a task-managing application as well. The user interacts with th
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The image below demonstrates the example of using <code>a</code>.</p>
+<p>The image below demonstrates the example of using <code>a</code> as the alias for <code>add</code> to add a person in your contact pane.</p>
 <div class="paragraph">
 <p><span class="image"><img src="../images/AddCommandAlias.png" alt="AddCommandAlias" width="800"></span></p>
 </div>
@@ -710,7 +709,13 @@ This class makes uses of the powerful function from stream. The logic follow can
 <p><span class="image"><img src="../images/SearchTagActivityDiagram.png" alt="SearchTagActivityDiagram" width="800"></span></p>
 </div>
 <div class="paragraph">
-<p>The following code snippet shows the main logic in <code>NameWithTagContainsKeywordsPredicate.java</code>:</p>
+<p>In order to provide you another perspective, the following sequence diagram shows you how <code>SearchCommand</code> interacts with other objects in the Contact Plus application:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/SearchCommandSequenceDiagram.png" alt="SearchCommandSequenceDiagram" width="800"></span></p>
+</div>
+<div class="paragraph">
+<p>The following code snippet shows the main logic in Java code in <code>NameWithTagContainsKeywordsPredicate.java</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1250,10 +1255,14 @@ Format: <code>edittask INDEX d/DESCRIPTION priority/PRIORITY(0/1/2) on DUE DATE(
 <p>The command word for editing a task is <code>edittask</code>. When users key in the command word, together with valid description, priority and due date, the values will be passed into parseCommand() function in the AddressBookParser class.</p>
 </div>
 <div class="paragraph">
-<p>The basic main flow for <code>edittask</code> is as follows:</p>
+<p>The basic logic flow for <code>edittask</code> is displayed in the following activity diagram:</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="../images/EditTaskMainFlow.png" alt="EditTaskMainFlow" width="800"></span></p>
+</div>
+<div class="paragraph">
+<p>To provide you another perspective, the interaction of <code>EditTaskCommand</code> with other objects in Contact Plus Application is displayed in the following sequence diagram:
+<span class="image"><img src="../images/EditTaskSequenceDiagram.png" alt="EditTaskSequenceDiagram" width="800"></span></p>
 </div>
 </div>
 <div class="sect3">
@@ -1364,6 +1373,10 @@ Format: <code>cleartask</code></p>
 <div class="paragraph">
 <p><span class="image"><img src="../images/listTaskActivityDiagram.png" alt="listTaskActivityDiagram" width="800"></span></p>
 </div>
+<div class="paragraph">
+<p>To provide you another perspective, the following sequence diagram of <code>CleaTaskCommand</code> displays its interaction with the objects in teh Contact Plus application:
+<span class="image"><img src="../images/ClearTaskSequenceDiagram.png" alt="ClearTaskSequenceDiagram" width="800"></span></p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_prerequisites_dependencies_5">Prerequisites/Dependencies</h4>
@@ -1382,11 +1395,33 @@ delete it from the address book.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_reference">Reference</h3>
+<div id="edit-distance" class="paragraph">
+<p>Edit-distance</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Edit distance is a way of quantifying how dissimilar two strings (e.g., words)
+are to one another by counting the minimum number of operations required to
+transform one string into the other.</pre>
+</div>
+</div>
+<div id="WOEID" class="paragraph">
+<p>WOEID</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>A WOEID (Where On Earth IDentifier) is a unique 32-bit reference identifier,
+originally defined by GeoPlanet and now assigned by Yahoo!, that identifies any feature on Earth.</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_other_contributions">Other contributions</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI statusFootBar, and icon images for email, phone number, and address. (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Updated the GUI statusFootBar, and icon images for email, phone number, and address. (Pull requests <a href="https://github.com/CS2103AUG2017-W11-B1/main/pull/162/commits/19c74676b0ffaa65b9c25daba5cf606836b2e75d">##162</a>, <a href="https://github.com/CS2103AUG2017-W11-B1/main/pull/112">#112</a>)</p>
 </li>
 </ul>
 </div>
@@ -1396,7 +1431,7 @@ delete it from the address book.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-12 09:26:34 +08
+Last updated 2017-11-12 17:55:19 +08
 </div>
 </div>
 </body>
