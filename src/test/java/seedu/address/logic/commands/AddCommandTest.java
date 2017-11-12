@@ -149,7 +149,9 @@ public class AddCommandTest {
         }
 
         @Override
-        public void deleteTag(Tag t) {}
+        public void deleteTag(Tag t) {
+
+        }
 
         @Override
         public ObservableList<ReadOnlyPerson> getFilteredPersonByTagList() {
