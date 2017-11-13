@@ -742,7 +742,7 @@ The tab pane will switch between `Task` and `Map` based on the command entered b
  Command input is related to the `task` model, it will be switched to the `task` tab. +
 The interaction between `Ui` and `Logic` classes can be seen from the following sequence diagram:
 
-image::SwitchTab.PNG[width="800"]
+image::SwitchTab.png[width="800"]
 
 The source code shows how the Command input is checked and how the tab is switched:
 [source,java]
