@@ -275,6 +275,8 @@
     @Test
     public void executeValidIndexFilteredListSuccess() throws Exception {
         showFirstTaskOnly(model);
+        AutoCorrectCommand autoCorrectCommand = new AutoCorrectCommand();
+        autoCorrectCommand.setMessageToUser("");
 
         ReadOnlyTask taskToDelete = model.getFilteredTaskList().get(INDEX_FIRST_TASK.get(0).getZeroBased());
         DeleteTaskCommand deleteCommand = prepareCommand(INDEX_FIRST_TASK);
