@@ -192,7 +192,7 @@ Deletes the 1st person in the results of the `find` command.
 |===
 
 === Selecting a person : `select`, `s` [[select-command]]
-If you want to select a person in your Contact Plus, you can do so by `select` command. The index used in the following steps is identified by the index number used in `list task` (refer to link:#list-command[list task]). +
+If you want to select a person in your Contact Plus, you can do so by `select` command. The index used in the following steps is identified by the index number used in `list all persons` (refer to link:#list-command[list all persons]). +
 
 Command Format: `select INDEX` or `s INDEX`
 
@@ -260,7 +260,7 @@ If you want to clear your Contact Plus application, you can do so by useing `cle
 
 Command Format: `clear` or `c`
 
-[WARNING]
+[NOTE]
 ====
 This command will clear all persons in the contact pane.
 ====
@@ -323,13 +323,13 @@ Command Format: `command_alise` +
 Quick demo: link:#how-to-use-alias-command[here]
 
 ==== How to use [[how-to-use-alias-command]]
-. The image below demonstrates the example of using `a` as the alias for `add` to add a person in your contact pane.
+. The image below demonstrates the example of using `a` as the alias for `add` link:#add-command[check out add command here] to add a person in your contact pane.
 +
-image:AddCommandAlias.png[width="500"]
+image:AddCommandAlias.png[width="700"]
 
 . The image below demonstrates the result of the above alias.
 +
-image:AddCommandAliasResult.png[width="500"]
+image:AddCommandAliasResult.png[width="700"]
 
 === Locating groups by tag: `search + tag name` [Since v1.1] [[searchtag-command]]
 
@@ -360,11 +360,11 @@ Quick demo: link:#how-to-use-locate-person_by_tag[here]
 ==== How to use [[how-to-use-locate-person_by_tag]]
 . Input the command to search contact of the same tag, e.g. friends.
 +
-image:SearchTagCommand.png[width="500"]
+image:SearchTagCommand.png[width="700"]
 
 . The image below demonstrates the result of the above searching.
 +
-image:SearchTagResult.png[width="500"]
+image:SearchTagResult.png[width="700"]
 ---
 
 === Add second phone number for a person [Since v1.1]
@@ -389,8 +389,8 @@ Command Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS` +
 //tag::multifilter-feature[]
 === Locating persons by multiple criteria: `multifilter` [Since v1.1] [[multifilter-format]]
 
-[[multifilter-format]] Finds persons whose names, phone no., emails and addresses,
-match a set of specified criteria. +
+If you need to find persons whose names, phone no., emails and addresses,
+match a set of specified criteria, `multifilter` will help you to do so. +
 Format: `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]` +
 Quick demo: link:#how-to-use-multifilter[here]
 
@@ -533,11 +533,11 @@ NOTE: Auto-correct is not designed for alias.
 ==== How to use [[how-to-use-autoCorrect]]
 . The image below demonstrates the usage to autoCorrect "deleet".
 +
-image::AutoCorrectCommand.png[width="500"]
+image::AutoCorrectCommand.png[width="700"]
 
 . The image below is the result returned by Contact Plus using the command above.
 +
-image::AutoCorrectResult.png[width="500"]
+image::AutoCorrectResult.png[width="700"]
 
 
 ==== Examples
@@ -563,16 +563,16 @@ Quick demo: link:#how-to-use-multiple-persons[here]
 
 1) Enter `list` into the Command Box. You will see all the added contacts below. +
 
-image::deleteMultiplePerson1.png[width="500"]
+image::deleteMultiplePerson1.png[width="700"]
 
 2) Enter `delete 2/3` to delete the 2nd and 3rd person from `Contact Plus`. +
 
-image::deleteMultiplePerson2.png[width="500"]
+image::deleteMultiplePerson2.png[width="700"]
 
 3) You can now see that the 2nd and 3rd contact has been deleted and the +
 result is displayed to show the confirmation of deletion.
 
-image::deleteMultiplePerson3.png[width="500"]
+image::deleteMultiplePerson3.png[width="700"]
 
 ==== Examples
 |===
@@ -633,7 +633,7 @@ spelt command. To automatically complete a command name, see link:#autocomplete-
 | `deletetag` | exapnds to `deletetag tag_name`
 | `dt` | `Contact Plus` does not respond.
 | `lisf` | `Contact Plus` does not respond.
-| LIST | `Contact Plus` does not respond.
+| `LIST` | `Contact Plus` does not respond.
 
 |===
 
@@ -730,9 +730,9 @@ Command Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
 * Task due date should be a valid date following the format dd/MM/yyyy.
 * Prefix for due date is `on` (Do not forget the kbd:[SPACE] before the date).
 * If you input any invalid format, there will be a **Use Message** together with an example to guide you. +
-image:add_task_invalid_format.png[width="500"]
+image:add_task_invalid_format.png[width="700"]
 * Once the task is successfully added, it will be displayed on the sticky note under `Task` tab (as shown in the image below). +
-image:add_task_successful.png[width="500"]
+image:add_task_successful.png[width="700"]
 *************
 
 ==== Examples:
@@ -958,13 +958,13 @@ the application will automatically switch it for you based on the command you en
 
 ==== Examples
 
-1. Before entering any command, you are at the `Task` tab.
-image:switchtab1.png[width="800"]
+1. Before entering any command, you are at the `Task` tab. +
+image:switchtab1.png[width="500"]
 
-2. Enter command `delete 1/2` and press kbd:[ENTER].
+2. Enter command `delete 1/2` and press kbd:[ENTER]. +
 image:switchtab2.png[width="800"]
 
-3. The tab will be automatically switched to the `Map` tab.
+3. The tab will be automatically switched to the `Map` tab. +
 image:switchtab3.png[width="800"]
 
 //end::switchtab[]
