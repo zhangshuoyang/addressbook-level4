@@ -56,7 +56,6 @@ public class LogicManagerTest {
         logic.getFilteredPersonList().remove(0);
     }
 
-    //@author lancehaoh
     @Test
     /**
      * Test the correctness of the auto complete mechanism
@@ -65,9 +64,7 @@ public class LogicManagerTest {
         List<String> actualList;
         List<String> expectedList;
 
-        // Generate a list of all possible commands
         List<String> allCommands = new ArrayList<>(Command.getMapOfCommandFormats().keySet());
-        allCommands.addAll(Command.getMapofTaskCommandFormats().keySet());
 
         // All commands should be shown if the user types a blank prefix
         actualList = logic.getPossibleCommands("");

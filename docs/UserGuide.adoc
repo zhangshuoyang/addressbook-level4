@@ -192,7 +192,7 @@ Deletes the 1st person in the results of the `find` command.
 |===
 
 === Selecting a person : `select`, `s` [[select-command]]
-If you want to select a person in your Contact Plus, you can do so by `select` command. The index used in the following steps is identified by the index number used in `list task` (refer to link:#list-command[list task]). +
+If you want to select a person in your Contact Plus, you can do so by `select` command. The index used in the following steps is identified by the index number used in `list all persons` (refer to link:#list-command[list all persons]). +
 
 Command Format: `select INDEX` or `s INDEX`
 
@@ -260,7 +260,7 @@ If you want to clear your Contact Plus application, you can do so by useing `cle
 
 Command Format: `clear` or `c`
 
-[WARNING]
+[NOTE]
 ====
 This command will clear all persons in the contact pane.
 ====
@@ -323,13 +323,13 @@ Command Format: `command_alise` +
 Quick demo: link:#how-to-use-alias-command[here]
 
 ==== How to use [[how-to-use-alias-command]]
-. The image below demonstrates the example of using `a` as the alias for `add` to add a person in your contact pane.
+. The image below demonstrates the example of using `a` as the alias for `add` link:#add-command[check out add command here] to add a person in your contact pane.
 +
-image:AddCommandAlias.png[width="500"]
+image:AddCommandAlias.png[width="700"]
 
 . The image below demonstrates the result of the above alias.
 +
-image:AddCommandAliasResult.png[width="500"]
+image:AddCommandAliasResult.png[width="700"]
 
 === Locating groups by tag: `search + tag name` [Since v1.1] [[searchtag-command]]
 
@@ -360,11 +360,11 @@ Quick demo: link:#how-to-use-locate-person_by_tag[here]
 ==== How to use [[how-to-use-locate-person_by_tag]]
 . Input the command to search contact of the same tag, e.g. friends.
 +
-image:SearchTagCommand.png[width="500"]
+image:SearchTagCommand.png[width="700"]
 
 . The image below demonstrates the result of the above searching.
 +
-image:SearchTagResult.png[width="500"]
+image:SearchTagResult.png[width="700"]
 ---
 
 === Add second phone number for a person [Since v1.1]
@@ -386,12 +386,11 @@ Command Format: `COMMAND_WORD PARAMETERS p2/PHONE_NUMBER OTHER_PARAMETERS` +
 
 //end::secondphone[]
 
-=== Locating persons by multiple criteria: `multifilter` [Since v1.1]
-
 //tag::multifilter-feature[]
+=== Locating persons by multiple criteria: `multifilter` [Since v1.1] [[multifilter-format]]
 
-[[multifilter-format]] Finds persons whose names, phone no., emails and addresses,
-match a set of specified criteria. +
+If you need to find persons whose names, phone no., emails and addresses,
+match a set of specified criteria, `multifilter` will help you to do so. +
 Format: `multifilter [n/NAME] [p/PHONE NO.] [e/EMAIL] [a/ADDRESS]` +
 Quick demo: <<how-to-use-multifilter,here>>
 
@@ -461,11 +460,10 @@ list of filter fields that you can use.
 
 //end::multifilter-feature[]
 
-=== Autocomplete command names [Since v1.2]
+=== Autocomplete command names [Since v1.2] [[autocomplete-feature]]
 
 //tag::autocomplete-feature[]
-
-[[autocomplete-feature]] Lazy to memorize command names? Press a shortcut key to automatically complete the text that you enter into the command box. +
+Lazy to memorize command names? Press a shortcut key to automatically complete the text that you enter into the command box. +
 
 Command Format: [Some text] +
 Quick demo:  <<how-to-use-autocomplete,here>>
@@ -539,11 +537,11 @@ NOTE: Auto-correct is not designed for alias.
 ==== How to use [[how-to-use-autoCorrect]]
 . The image below demonstrates the usage to autoCorrect "deleet".
 +
-image::AutoCorrectCommand.png[width="500"]
+image::AutoCorrectCommand.png[width="700"]
 
 . The image below is the result returned by Contact Plus using the command above.
 +
-image::AutoCorrectResult.png[width="500"]
+image::AutoCorrectResult.png[width="700"]
 
 
 ==== Examples
@@ -569,16 +567,16 @@ Quick demo: link:#how-to-use-multiple-persons[here]
 
 1) Enter `list` into the Command Box. You will see all the added contacts below. +
 
-image::deleteMultiplePerson1.png[width="500"]
+image::deleteMultiplePerson1.png[width="700"]
 
 2) Enter `delete 2/3` to delete the 2nd and 3rd person from `Contact Plus`. +
 
-image::deleteMultiplePerson2.png[width="500"]
+image::deleteMultiplePerson2.png[width="700"]
 
 3) You can now see that the 2nd and 3rd contact has been deleted and the +
 result is displayed to show the confirmation of deletion.
 
-image::deleteMultiplePerson3.png[width="500"]
+image::deleteMultiplePerson3.png[width="700"]
 
 ==== Examples
 |===
@@ -607,11 +605,11 @@ image::WeatherForecastButton.png[width="800"]
 +
 image::WeatherForecast.png[width="800"]
 
-=== Extended autocomplete for commands [Since v1.3]
+=== Extended autocomplete for commands [Since v1.3] [[extended-autocomplete-feature]]
 
 //tag::extended-autocomplete-feature[]
 
-[[extended-autocomplete-feature]] Try to save some time? Autocomplete is designed for you to operate efficiently on Contact Plus.Some commands such as `add` are very long and difficult to type.
+Try to save some time? Autocomplete is designed for you to operate efficiently on Contact Plus.Some commands such as `add` are very long and difficult to type.
 This feature enables you to automatically fill in the format of the command whose name matches
 the text that you entered. +
 
@@ -639,7 +637,7 @@ spelt command. To automatically complete a command name, see <<autocomplete-feat
 | `deletetag` | exapnds to `deletetag tag_name`
 | `dt` | `Contact Plus` does not respond.
 | `lisf` | `Contact Plus` does not respond.
-| LIST | `Contact Plus` does not respond.
+| `LIST` | `Contact Plus` does not respond.
 
 |===
 
@@ -736,9 +734,9 @@ Command Format: `task d/DESCRIPTION pr/PRIORITY(0/1/2) on DUE DATE(dd/MM/yyyy)`
 * Task due date should be a valid date following the format dd/MM/yyyy.
 * Prefix for due date is `on` (Do not forget the kbd:[SPACE] before the date).
 * If you input any invalid format, there will be a **Use Message** together with an example to guide you. +
-image:add_task_invalid_format.png[width="500"]
+image:add_task_invalid_format.png[width="700"]
 * Once the task is successfully added, it will be displayed on the sticky note under `Task` tab (as shown in the image below). +
-image:add_task_successful.png[width="500"]
+image:add_task_successful.png[width="700"]
 *************
 
 ==== Examples:
@@ -747,11 +745,11 @@ image:add_task_successful.png[width="500"]
 * `task d/Finish Teammate Feedback Session pr/0 on 01/11/2017`
 // end::addtask[]
 
-=== List tasks [Since v1.4]
+=== List tasks [Since v1.4] [[listtask]]
 
 //tag::listtask-command[]
 
-[[listtask]] This command enables you to retrieve personal tasks that you have stored in
+This command enables you to retrieve personal tasks that you have stored in
 `Contact Plus`. +
 
 Command Format: `listtask` +
@@ -818,7 +816,7 @@ Otherwise, an error message is shown.
 
 ==== How to use [[how-to-use-deletetask]]
 
-. Use the `<<listtask,listtask>>` command to display all your tasks.
+. Use the `<<listtask-command,listtask>>` command to display all your tasks.
 Note the number of the tasks that you wish to delete.
 +
 image:deletetask-listtask.png[width="800"]
@@ -827,16 +825,19 @@ image:deletetask-listtask.png[width="800"]
 +
 image:deletetask-command-pre.png[width="400"]
 
-. Hit the kbd:[ENTER] key. You will see a success
-message in the result pane if the command was successful. Also, observe that
- the tasks you have specified in the previous step have been deleted from
+. Hit the kbd:[ENTER] key. You will see the following success
+message if the command was successful.
++
+image:deletetask-command-post.png[width="400"]
+
+. Observe that
+ the tasks that you have specified in the previous step have been deleted from
  `Contact Plus`.
 +
 image:deletetask-proof.png[width="800"]
 
 //end::deletetask-command[]
 
-<<<<<<< HEAD
 === Sound effect for system events [Since v1.3]
 
 //tag::music-feature[]
@@ -865,8 +866,6 @@ Failure sound clip is played if command is unsuccessful.
 
 //end::music-feature[]
 
-=======
->>>>>>> acbcf8d14d2cb1fe3f3df0bf667d5a09a0cda551
 === Edit task: `edittask` [Since v1.4] [[edittask-command]]
 
 To edit your tasks, first you should learn how to link:#listtask[list task] . Listing tasks is for you to get the index of the task you indent to edit.
@@ -949,9 +948,14 @@ Quick demo: link:#how-to-use-switch-theme[here]
 * Once you update the theme, your preference will be saved. The next time you open Contact Plus, it will not
 set back to default theme.
 * Default themes in Contact Plus are *Dark*, *Light* and *Colourful*. Below are the preview of 3 themes: +
-image:DarkTheme.png[width="500"] +
-image:LightTheme.png[width="500"] +
-image:ColourfulTheme.png[width="500"]
+image:DarkTheme.png[width="450"] +
+_Dark Theme_ +
+ +
+image:LightTheme.png[width="450"] +
+_Light Theme_ +
+ +
+image:ColourfulTheme.png[width="450"] +
+_Colourful Theme_ +
 *************
 
 ==== How to use [[how-to-use-switch-theme]]
@@ -986,40 +990,64 @@ the application will automatically switch it for you based on the command you en
 
 ==== Examples
 
-1. Before entering any command, you are at the `Task` tab.
-image:switchtab1.png[width="800"]
+1. Before entering any command, you are at the `Task` tab. +
 
-2. Enter command `delete 1/2` and press kbd:[ENTER].
-image:switchtab2.png[width="800"]
+image:switchTab1.png[width="800"]
 
-3. The tab will be automatically switched to the `Map` tab.
-image:switchtab3.png[width="800"]
+2. Enter command `delete 1/2` and press kbd:[ENTER]. +
+
+image:switchTab2.png[width="800"]
+
+3. The tab will be automatically switched to the `Map` tab. +
+
+image:switchTab3.png[width="800"]
 
 //end::switchtab[]
 
 == Coming up
 
-=== Tag use emoji : `tag emoji` [Coming in V2.0]
+=== Tag use emoji : `tag emoji` [Coming in v2.0]
 
 Input characters to represent an emoji as a tag. +
 Command Format: `tag :wink:`
 
-=== Add non-English words as input [Coming in V2.0]
+=== Add non-English words as input [Coming in v2.0]
 
 Input non-English words to be saved in the application.
 Command Format: CommandWrd + inputText
 
-=== Add push notification [Coming in V2.0]
+=== Add push notification [Coming in v2.0]
 
 The application will prompt notifications for users on the computer for the up coming tasks.
 
-=== Save data
+=== Sync to Google Contacts [Coming in v2.0]
+// tag::googlesync[]
+`Sync` command allows you to sync your local contact lists with *Google Contacts* and save your changes online. +
+*Format*: `sync all` or `sync 1/2/3` or `sync 1` +
+
+==== Description
+*********
+* You must log in to Google before starting to use `sync` command.
+* After logging in to Google, you can choose the list of contacts you want to synchronise.
+* For instance, `sync 1` refers to sync the contact of Index 1 in your contact list, while `sync all` refers to all the contacts in the list.
+* Multiple contacts can be selected by inputting multiple Indexes, separating by `/`. For instance, `sync 1/2/3` refers to synchronising contacts of Index 1, 2 and 3.
+*********
+
+==== Implementation
+. After the command word `sync` is typed, `execute()` function in `LogicManager` will be called.
+. The command line will be passed to `AddressBookParser` which returns `SyncCommandParser`, and subsequently a `SyncCommand` object.
+. The command will post an event to the `EventCenter`, which is handled by an `OAuth` class.
+. The `OAuth` class is used to request for authorisations and interact with *Google Contacts*.
+. An instance will be created to perform relevant actions on *Google Contacts* and sync the contact list.
+
+==== Outcome
+You are able to see your contact list being uploaded to **Google Contacts** successfully.
+// end::googlesync[]
+
+== Saving data
 
 *Contact Plus* data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
-
-=== Sync to Google Contacts
-You can sync your local contact list with Google Contacts and save any changes online.
 
 == Command Summary [[command-summary]]
 

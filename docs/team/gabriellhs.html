@@ -468,10 +468,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><mark>Start of Extract [from: User Guide]</mark></p>
 </div>
 <div class="paragraph">
-<p>Need to reorganize your social groups? <code>deletetag</code> enables you to delete tags from all your contacts in <code>Contact Plus</code> !<br></p>
-</div>
-<div class="paragraph">
-<p>Command Format: <code>deletetag tag_name</code><br>
+<p><a id="deletetag-command"></a> Need to reorganize your social groups? <code>deletetag</code> enables you to delete
+tags from all your contacts in <code>Contact Plus</code> !<br>
+Command Format: <code>deletetag tag_name</code><br>
 Quick demo: <a href="#how-to-use-deletetag-command">here</a></p>
 </div>
 </div>
@@ -621,10 +620,8 @@ to every person who had that tag previously (except the one from which he wanted
 <p><mark>Start of Extract [from: User Guide]</mark></p>
 </div>
 <div class="paragraph">
-<p><a id="autocomplete-feature"></a> Lazy to memorize command names? Press a shortcut key to automatically complete the text that you enter into the command box.<br></p>
-</div>
-<div class="paragraph">
-<p>Command Format: [Some text]<br>
+<p><a id="autocomplete-feature"></a> Lazy to memorize command names? Press a shortcut key to automatically complete the text that you enter into the command box.<br>
+Format: [Some text]<br>
 Quick demo:  <a href="#how-to-use-autocomplete">here</a></p>
 </div>
 <div class="admonitionblock tip">
@@ -854,12 +851,10 @@ another method should be implemented in the <code>AutoCompleteUtil</code> class.
 <p><mark>Start of Extract [from: User Guide]</mark></p>
 </div>
 <div class="paragraph">
-<p><a id="extended-autocomplete-feature"></a> Try to save some time? Autocomplete is designed for you to operate efficiently on Contact Plus.Some commands such as <code>add</code> are very long and difficult to type.
+<p><a id="extended-autocomplete-feature"></a> Some commands such as <code>add</code> are very long and difficult to type.
 This feature enables you to automatically fill in the format of the command whose name matches
-the text that you entered.<br></p>
-</div>
-<div class="paragraph">
-<p>Command Format: [COMMAND_WORD]<br>
+the text that you entered.<br>
+Format: [COMMAND_WORD]<br>
 Quick demo: <a href="#how-to-use-extended-autocomplete">here</a></p>
 </div>
 <div class="admonitionblock tip">
@@ -1137,6 +1132,39 @@ will not be matched</p>
 </div>
 </div>
 <div class="sect3">
+<h4 id="_examples_4">Examples</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Your input</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Result</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mf a/gey</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns contacts whose address contain <code>gey</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mf</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns all contacts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mf n/iv p/9 e/g a/ge</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns contacts who match ALL of the following criteria:<br></p>
+<p class="tableblock">1. Name contains <code>iv</code><br>
+2. Phone no. contains <code>9</code><br>
+3. Email contains <code>g</code><br>
+4. Address contains <code>ge</code><br></p>
+<p class="tableblock">An example of a matching contact for this command would be<br>
+<code>Ivan</code> that has phone no. <code>999</code>, email <code>g@y.com</code> and address <code>123 geylang road</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
 <h4 id="how-to-use-multifilter">How to use</h4>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1292,11 +1320,9 @@ by address (using 2 commands).<br>
 <p><mark>Start of Extract [from: User Guide]</mark></p>
 </div>
 <div class="paragraph">
-<p><a id="listtask"></a> This command enables you to retrieve personal tasks that you have stored in
-<code>Contact Plus</code>.<br></p>
-</div>
-<div class="paragraph">
-<p>Command Format: <code>listtask</code><br>
+<p><a id="listtask-command"></a> This command enables you to retrieve personal tasks that you have stored in
+<code>Contact Plus</code>.<br>
+Format: <code>listtask</code><br>
 Quick demo: <a href="#how-to-use-listtask">here</a></p>
 </div>
 </div>
@@ -1323,7 +1349,7 @@ previously using the <code>task</code> command.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Click on the <code>Task</code> tab.</p>
+<p>Click on the <code>Tasks</code> tab.</p>
 <div class="paragraph">
 <p><span class="image"><img src="../images/tasks-tab-pre.png" alt="tasks tab pre" width="800"></span></p>
 </div>
@@ -1423,9 +1449,9 @@ the tasks in the address book.</p>
 <p><mark>Start of Extract [from: User Guide]</mark></p>
 </div>
 <div class="paragraph">
-<p>This command enables you to remove unnecessary/unwanted tasks from <code>Contact Plus</code>.<br>
-Command Format: <code>deletetask INDEX_1/INDEX_2/INDEX_3 &#8230;&#8203;</code><br>
-Quick demo: <a href="#how-to-use-deletetask">here</a></p>
+<p><a id="deletetask-command"></a> This command enables you to remove unnecessary/unwanted tasks
+from <code>Contact Plus</code>.<br>
+Command Format: <code>deletetask INDEX_1/INDEX_2/INDEX_3 &#8230;&#8203;</code><br></p>
 </div>
 </div>
 <div class="sect3">
@@ -1436,7 +1462,7 @@ Quick demo: <a href="#how-to-use-deletetask">here</a></p>
 <ul>
 <li>
 <p><code>INDEX_1</code>, <code>INDEX_2</code>, etc. refer to the task numbers that
-are shown when you use the <a href="#listtask"><code>listtask</code></a> command to show your tasks
+are shown when you use the <a href="#listtask-command"><code>listtask</code></a> command to show your tasks
 (See <a href="#how-to-use-deletetask">how to use</a> for an example).</p>
 </li>
 <li>
@@ -1461,8 +1487,8 @@ that you have specified when typing the <code>deletetask</code> command).</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Your input</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Result</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Your input</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Result</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>deletetask</code> 1</p></td>
@@ -1486,7 +1512,7 @@ Otherwise, an error message is shown.</p></td>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Use the <code><a href="#listtask">listtask</a></code> command to display all your tasks.
+<p>Use the <code><a href="#listtask-command">listtask</a></code> command to display all your tasks.
 Note the number of the tasks that you wish to delete.</p>
 <div class="paragraph">
 <p><span class="image"><img src="../images/deletetask-listtask.png" alt="deletetask listtask" width="800"></span></p>
@@ -1499,10 +1525,16 @@ Note the number of the tasks that you wish to delete.</p>
 </div>
 </li>
 <li>
-<p>Hit the <kbd>ENTER</kbd> key. You will see a success
-message in the result pane if the command was successful. Also, observe that
- the tasks you have specified in the previous step have been deleted from
- <code>Contact Plus</code>.</p>
+<p>Hit the <kbd>ENTER</kbd> key. You will see the following success
+message if the command was successful.</p>
+<div class="paragraph">
+<p><span class="image"><img src="../images/deletetask-command-post.png" alt="deletetask command post" width="400"></span></p>
+</div>
+</li>
+<li>
+<p>Observe that
+the tasks that you have specified in the previous step have been deleted from
+<code>Contact Plus</code>.</p>
 <div class="paragraph">
 <p><span class="image"><img src="../images/deletetask-proof.png" alt="deletetask proof" width="800"></span></p>
 </div>

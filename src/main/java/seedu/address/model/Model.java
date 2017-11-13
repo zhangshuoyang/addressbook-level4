@@ -103,8 +103,7 @@ public interface Model {
      * Deletes a specified tag from contacts in AddressBook
      *
      * @param t a tag object containing the information of the tag to delete
-     * @return returns an indicator that shows true if any tag was deleted from address book
      */
-    boolean deleteTag(Tag t);
+    void deleteTag(Tag t) throws DuplicatePersonException, PersonNotFoundException;
 
 }

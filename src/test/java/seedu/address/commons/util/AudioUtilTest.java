@@ -15,7 +15,6 @@ public class AudioUtilTest {
     @Test
     public void checkFileNotFoundThrowsIoException() {
         boolean exceptionWasThrown = false;
-        // try to open a non-existent file
         try {
             audioUtility.playClip("???????.wav");
         } catch (IOException e) {
@@ -33,7 +32,6 @@ public class AudioUtilTest {
     @Test
     public void checkInvalidFileFormatUnsupportedAudioFileException() {
         boolean exceptionWasThrown = false;
-        // attempt to open an invalid file as a audio file
         try {
             audioUtility.playClip("notavalidfile.png");
             assertTrue(false);

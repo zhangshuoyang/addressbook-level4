@@ -776,7 +776,6 @@ the `Command` class.
 **Cons:** Additional space is required for two different hashmaps. +
 //end::tabswitch[]
 
-// tag::themeselect[]
 
 === Keyboard Shortcut Mechanism
 The detection of keyboard shortcut is detected in the `CommandBox.java` class. In the method `handleKeyPress`, multiple key press situations are listed there and to handle the correct key pressed by users.
@@ -819,6 +818,7 @@ The code snippet is shown as follows:
 **Pros:**  Users can use shortcut for every command freely. +
 **Cons:** It would be confusing to have to memorise many shortcuts.
 
+// tag::themeselect[]
 === Theme Selection Mechanism
 
 The 'theme support' feature allows user to choose their favorite theme for the address book, other than the default
@@ -835,10 +835,13 @@ will be used to build the filepath, which allows `MainWindow` class to retrieve 
 theme accordingly.
 
 The overview of the themes is as follows:
+|===
+| *1* Dark Theme | image:DarkTheme.png[width="500"] +
+| *2* Light Theme | image:LightTheme.png[width="500"] +
+| *3* Colourful Theme| image:ColourfulTheme.png[width="500"]
+|===
 
-image::DarkTheme.png[width="500"]
-image::LightTheme.png[width="500"]
-image::ColourfulTheme.png[width="500"]
+
 
 ==== Prerequisites/Dependencies
 
