@@ -86,7 +86,7 @@ case AddCommand.COMMAND_WORD: case AddCommand.COMMAND_WORD_ALIAS:
 **Cons:** Three alphabets would be too long for commands like `add`.
 
 === Enhancement Added:  Locating groups by tag: search + tag name [Since v1.1]
-Searching a certain social group? or just search a certain group of persons? search + tag name` can help you achieve this. +
+Searching a certain social group? or just search a certain group of persons? `search + tag name` can help you achieve this. +
 
 ==== External behavior
 
@@ -119,7 +119,7 @@ image:SearchTagResult.png[width="800"]
 |===
 | *Your input* | *Result*
 | `search friends` | Returns the contacts with tag "friends", e.g. `John Alice` +
-| `search friend family ` | Returns the contacts with tag "friends" and "family", e.g. `John Alice David` +
+| `search friend family` | Returns the contacts with tag "friends" and "family", e.g. `John Alice David` +
 | `search fri` | No match will be returned, `Unknown tag` is displayed. +
 |===
 
