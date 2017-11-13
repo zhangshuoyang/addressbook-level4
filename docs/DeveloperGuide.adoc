@@ -824,10 +824,13 @@ will be used to build the filepath, which allows `MainWindow` class to retrieve 
 theme accordingly.
 
 The overview of the themes is as follows:
+|===
+| *1* Dark Theme | image:DarkTheme.png[width="500"] +
+| *2* Light Theme | image:LightTheme.png[width="500"] +
+| *3* Colourful Theme| image:ColourfulTheme.png[width="500"]
+|===
 
-image::DarkTheme.png[width="500"]
-image::LightTheme.png[width="500"]
-image::ColourfulTheme.png[width="500"]
+
 
 ==== Prerequisites/Dependencies
 
