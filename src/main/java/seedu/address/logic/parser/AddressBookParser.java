@@ -55,6 +55,7 @@ public class AddressBookParser {
 
         AutoCorrectCommand autoCorrectCommand = new AutoCorrectCommand();
         autoCorrectCommand.setMessageToUser(""); //reset the string value to empty after each auto-correct
+        System.out.println(autoCorrectCommand.getMessageToUser());
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
         final String autoCorrectedCommand = autoCorrectCommand(commandWord);

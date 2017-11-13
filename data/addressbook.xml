@@ -54,6 +54,10 @@
     <persons>
         <name>Thomas Scott</name>
         <phone>56063801</phone>
+=======
+        <name>David</name>
+        <phone>46384635</phone>
+>>>>>>> a1b7b61af21bb457af3bcbfc1191c7d8cdf67a8d
         <phone2>-</phone2>
         <email>risus.Morbi.metus@arcuMorbisit.org</email>
         <address>663-4645 At, Av.</address>
@@ -155,4 +159,6 @@
         <priority>1</priority>
         <duedate>10/10/2017</duedate>
     </tasks>
+=======
+>>>>>>> a1b7b61af21bb457af3bcbfc1191c7d8cdf67a8d
 </addressbook>

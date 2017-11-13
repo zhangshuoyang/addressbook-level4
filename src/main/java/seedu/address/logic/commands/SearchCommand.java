@@ -5,7 +5,8 @@ import seedu.address.model.tag.NameWithTagContainsKeywordsPredicate;
 
 //@@author JYL123
 /**
- * Search a group of Persons identified by the tag entered by users.
+ * Searches and lists all persons in address book whose tag name contains any of the argument keywords.
+ * Keyword matching is case sensitive.
  */
 public class SearchCommand extends Command {
 

@@ -148,11 +148,9 @@ public class AddCommandTest {
             fail("This method should not be called.");
         }
 
-        //@@author lancehaoh
         @Override
-        public boolean deleteTag(Tag t) {
-            fail("This method should not be called.");
-            return false;
+        public void deleteTag(Tag t) {
+
         }
 
         @Override

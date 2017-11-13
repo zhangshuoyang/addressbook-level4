@@ -4,7 +4,6 @@
     @Test
     public void checkFileNotFoundThrowsIoException() {
         boolean exceptionWasThrown = false;
-        // try to open a non-existent file
         try {
             audioUtility.playClip("???????.wav");
         } catch (IOException e) {
@@ -24,7 +23,6 @@
     @Test
     public void checkInvalidFileFormatUnsupportedAudioFileException() {
         boolean exceptionWasThrown = false;
-        // attempt to open an invalid file as a audio file
         try {
             audioUtility.playClip("notavalidfile.png");
             assertTrue(false);
@@ -39,21 +37,6 @@
         }
     }
 }
-```
-###### /java/seedu/address/logic/commands/AddCommandTest.java
-``` java
-        @Override
-        public boolean deleteTag(Tag t) {
-            fail("This method should not be called.");
-            return false;
-        }
-
-        @Override
-        public ObservableList<ReadOnlyPerson> getFilteredPersonByTagList() {
-            fail("This method should not be called.");
-            return null;
-        }
-
 ```
 ###### /java/seedu/address/logic/commands/CommandTest.java
 ``` java
@@ -129,8 +112,7 @@
         List<Tag> oldListOfTags = model.getAddressBook().getTagList();
 
         try {
-            CommandResult result = deleteTagHelper("friends");
-            assertEquals(result.feedbackToUser, MESSAGE_NO_SUCH_TAG);
+            deleteTagHelper("friends");
         } catch (CommandException ce) {
             ce.printStackTrace();
         }
@@ -213,21 +195,17 @@
         return deleteTagCommand;
     }
 
-```
-###### /java/seedu/address/logic/commands/DeleteTagCommandTest.java
-``` java
     /**
      * Helper method for deleting a given tagName
      *
      * @param tagName An arbitrary string
-     * @return CommandResult object containing the response from the deleteTagCommand
      *
      * Executes a Delete Tag command to delete tags
      * with matching tag name from all contacts
      */
-    private CommandResult deleteTagHelper(String tagName) throws CommandException {
+    private void deleteTagHelper(String tagName) throws CommandException {
         DeleteTagCommand deleteTagCommand = prepareCommand(tagName);
-        return deleteTagCommand.execute();
+        deleteTagCommand.execute();
     }
 
 ```

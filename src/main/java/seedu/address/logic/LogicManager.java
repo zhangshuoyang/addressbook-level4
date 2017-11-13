@@ -53,9 +53,7 @@ public class LogicManager extends ComponentManager implements Logic {
     public List<String> getPossibleCommands(String commandText) {
         logger.info("---------------[AUTO COMPLETE][PREFIX ENTERED:" + commandText + "]");
         List<String> listOfAvaliableCommands = new ArrayList<>();
-        // retrieve all commands whose names start with the user's input
         listOfAvaliableCommands.addAll(Command.getMapOfCommandFormats().keySet());
-        listOfAvaliableCommands.addAll(Command.getMapofTaskCommandFormats().keySet());
         return AutoCompleteUtil.autoCompleteCommand(commandText, listOfAvaliableCommands);
     }
 

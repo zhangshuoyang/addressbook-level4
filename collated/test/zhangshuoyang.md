@@ -234,9 +234,8 @@ public class AddTaskCommandTest {
         }
 
         @Override
-        public boolean deleteTag(Tag t) {
+        public void deleteTag(Tag t) throws DuplicatePersonException, PersonNotFoundException {
             fail("This method should not be called.");
-            return false;
         }
     }
 
@@ -633,7 +632,7 @@ public class AddTaskCommandSystemTest extends AddressBookSystemTest {
         /* Case: invalid due date -> rejected */
         command = AddTaskCommand.COMMAND_WORD + DESCRIPTION_DESC_SHOPPING + PRIORITY_DESC_SHOPPING
                 + INVALID_DUEDATE_DESC_SHOPPING;
-        assertCommandFailure(command, DueDate.MESSAGE_DATE_INVALID_CONSTRAINTS);
+        assertCommandFailure(command, DueDate.MESSAGE_DATE_FORMAT_CONSTRAINTS);
     }
 
 

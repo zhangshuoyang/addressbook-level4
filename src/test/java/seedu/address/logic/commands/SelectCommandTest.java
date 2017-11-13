@@ -20,6 +20,7 @@ import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.AutoCorrectCommand;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -42,6 +43,11 @@ public class SelectCommandTest {
     @Test
     public void execute_validIndexUnfilteredList_success() {
         Index lastPersonIndex = Index.fromOneBased(model.getFilteredPersonList().size());
+        //We need to set messageToUser here manually back to "". This is because in test cases,
+        //not all funcitons will actually go through AddressBookParser
+        //where we set messageToUser to "" at the begining of every command.
+        AutoCorrectCommand autoCorrectCommand =  new AutoCorrectCommand();
+        autoCorrectCommand.setMessageToUser("");
 
         assertExecutionSuccess(INDEX_FIRST_PERSON.get(0));
         assertExecutionSuccess(INDEX_THIRD_PERSON.get(0));

@@ -3,8 +3,10 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
-== Project: AddressBook - Level 4
-AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
+== Project: Contact Plus
+include::../UserGuide.adoc[tag=welcome]
+
+The user interacts with this application using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
 
 *Code contributed*: [https://github.com/CS2103AUG2017-W11-B1/main/blob/master/collated/main/zhangshuoyang.md[Functional code]] [https://github.com/CS2103AUG2017-W11-B1/main/blob/master/collated/test/zhangshuoyang.md[Test code]]
 
@@ -42,7 +44,7 @@ include::../DeveloperGuide.adoc[tag=addtask]
 #End of Extract#
 
 ---
-
+<<<
 === Enhancement Added: Theme Selection
 
 ==== External behavior
@@ -80,24 +82,7 @@ include::../DeveloperGuide.adoc[tag=themeselect]
 
 === Enhancement Proposed: command `sync`
 
-`Sync` command allows users to sync their local contact lists with *Google Contacts* and save their changes online. +
-*Format*: `sync all` or `sync 1/2/3` or `sync 1` +
-*Note*: Implement in the future
-
-==== Description
-*********
-* Users must log in to Google before they can use `sync` command.
-* After logging in to Google, users can choose the list of contacts they want to synchronise.
-* For instance, `sync 1` refers to sync the contact of Index 1 in the person list, while `sync all` refers to all the contacts in the list.
-* Multiple contacts can be selected by inputting multiple Indexes, separating by `/`. For instance, `sync 1/2/3` refers to synchronising contacts of Index 1, 2 and 3.
-*********
-
-==== Implementation
-. After the command word `sync` is typed, `execute()` function in `LogicManager` will be called.
-. The command line will be passed to `AddressBookParser` which returns `SyncCommandParser`, and subsequently a `SyncCommand` object.
-. The command will post an event to the `EventCenter`, which is handled by an `OAuth` class.
-. The `OAuth` class is used to request for authorisations and interact with *Google Contacts*.
-. An instance will be created to perform relevant actions on *Google Contacts* and sync the contact list.
+include::../UserGuide.adoc[tag=googlesync]
 
 === Other contributions
 
