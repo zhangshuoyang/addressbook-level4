@@ -43,8 +43,6 @@ image:AddCommandAlias.png[width="800"]
 +
 image:AddCommandAliasResult.png[width="800"]
 
----
-
 ==== Justification
 
 1. Inevitably the command could be too long for users to memorise. With alias, the need for memorization of each command word is saved. Alias allows
@@ -56,7 +54,6 @@ users to simply memorize one or two alphabets to perform the feature on the appl
 
 ==== Implementation
 
----
 Alias Mechanism
 
 Alias in this application is a single alphabet or two alphabets. This purpose of alias is to save the labor of typing the full corresponding command words, therefore it is more efficient and easier to use.
@@ -143,7 +140,6 @@ One of the property of tagging is that it categorizes contacts in the list, ther
 
 ==== Implementation
 
----
 Search Groups By Tag Mechanism
 
 The main logic for this mechanism lies in the class `NameWithTagContainsKeywordsPredicate.java`. This class compares the lists of tags from each person, and compare the list of tag with the set of tags given by users.
@@ -284,8 +280,6 @@ Edit distance 2 does not cover many other misspelt commands. +
 **Pros:** It would be easier for developers to maintain the autoCorrect feature as it is easier to update new commands into a file rather than in a method. +
 **Cons:** It would not be able to utilise `COMMAND_WORD` defined in each command class
 as it is a good practice to reused what is already defined and extend its usage (Close to modification and Open to extension Principle). +
-
----
 
 === Enhancement Added:  View Yahoo Weather Forecast [Since v1.3]
 
@@ -576,5 +570,5 @@ originally defined by GeoPlanet and now assigned by Yahoo!, that identifies any 
 
 === Other contributions
 
-* Updated the GUI statusFootBar, and icon images for email, phone number, and address. (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/162/commits/19c74676b0ffaa65b9c25daba5cf606836b2e75d[#162])
-* Update statusFootbar to display weather broadcast. (Pull request https://github.com/CS2103AUG2017-W11-B1/main/pull/112[#112])
+* Updated the icon images for email, phone number, and address. (Pull requests https://github.com/CS2103AUG2017-W11-B1/main/pull/162/commits/19c74676b0ffaa65b9c25daba5cf606836b2e75d[#162])
+* Updated GUI statusFootBar to display weather broadcast. (Pull request https://github.com/CS2103AUG2017-W11-B1/main/pull/112[#112])

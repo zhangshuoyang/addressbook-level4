@@ -633,7 +633,7 @@ spelt command. To automatically complete a command name, see link:#autocomplete-
 | `deletetag` | exapnds to `deletetag tag_name`
 | `dt` | `Contact Plus` does not respond.
 | `lisf` | `Contact Plus` does not respond.
-| LIST | `Contact Plus` does not respond.
+| `LIST` | `Contact Plus` does not respond.
 
 |===
 
