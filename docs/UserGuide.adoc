@@ -323,7 +323,7 @@ Command Format: `command_alise` +
 Quick demo: link:#how-to-use-alias-command[here]
 
 ==== How to use [[how-to-use-alias-command]]
-. The image below demonstrates the example of using `a` as the alias for `add` to add a person in your contact pane.
+. The image below demonstrates the example of using `a` as the alias for `add` link:#add-command[check out add command here] to add a person in your contact pane.
 +
 image:AddCommandAlias.png[width="700"]
 
