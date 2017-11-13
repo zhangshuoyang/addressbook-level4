@@ -136,7 +136,7 @@ Autofills the fields of the “Task” command into the command box and displays
 **Command syntax**: `listtask` +
 
 *Remarks*: +
- 
+
 * The ListTask command will list all tasks in the order that they were created.
 
 ==== List all tasks in ContactPlus:
